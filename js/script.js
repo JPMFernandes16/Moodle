@@ -2,12 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================================================
   // CONFIG & STATE
   // ======================================================
-  const QUIZ_DURATION_SECONDS = 40 * 60;
-  const TOTAL_QUESTIONS_DB = 115; 
+  const QUIZ_DURATION_SECONDS = 20 * 60;
 
-  // DOM Elements
+  // DOM Elements - GERAIS
   const disciplinaSelect = document.getElementById("disciplina");
   const carregarQuizBtn = document.getElementById("carregarQuiz");
+  const carregarFraquezasBtn = document.getElementById("carregarFraquezas"); // NOVO BOTÃO
   const submeterQuizBtn = document.getElementById("submeterQuiz");
   const finishLink = document.getElementById("finishLink");
   const timerElement = document.getElementById("timer");
@@ -28,12 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeText = document.getElementById("themeText");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
+  // DOM Elements - PROGRESSO E ANALYTICS (NOVOS)
   const globalProgressText = document.getElementById("globalProgressText");
   const globalProgressBarFill = document.getElementById("globalProgressBarFill");
   const globalProgressPercent = document.getElementById("globalProgressPercent");
   const resetProgressBtn = document.getElementById("resetProgressBtn");
+  const themeAnalyticsContainer = document.getElementById("themeAnalyticsContainer");
+
+  // DOM Elements - DICIONÁRIO (NOVOS)
+  const dictSearchInput = document.getElementById("dictSearchInput");
+  const dictResultsContainer = document.getElementById("dictResultsContainer");
 
   // State Variables
+  let fullDatabase = []; // Guarda todas as perguntas da disciplina selecionada
+  let configDatabase = {}; 
   let quizData = [];
   let userAnswers = {};
   let currentQuestionIndex = 0;
@@ -41,13 +49,79 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizSubmitted = false;
   let timerInterval = null;
   let timeLeft = QUIZ_DURATION_SECONDS;
-  let globalCorrectIds = JSON.parse(localStorage.getItem("iscap-global-progress")) || [];
+  let currentDisciplina = "";
+
+  // Memória Global: { "BIA_BIAT": { correct: [1,2], wrong: [3] }, "OUTRA": {...} }
+  let globalStorage = JSON.parse(localStorage.getItem("moodle-iscap-storage")) || {};
 
   // ======================================================
-  // O "MOTOR" DO TESTE (Substitui o Python)
+  // ANIMAÇÕES & MICRO-INTERAÇÕES (O "JUICE")
   // ======================================================
   
-  // Função para baralhar arrays de forma verdadeiramente aleatória (Fisher-Yates Shuffle)
+  // 1. Som de "Ding" gerado nativamente pelo browser (Sem MP3!)
+  function playDing() {
+    try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime); // Nota A5
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+    } catch(e) { console.log("Áudio não suportado neste browser."); }
+  }
+
+  // 2. Confettis Virtuais!
+  function fireConfetti() {
+    for (let i = 0; i < 70; i++) {
+        const conf = document.createElement('div');
+        conf.className = 'confetti';
+        conf.style.left = Math.random() * 100 + 'vw';
+        conf.style.backgroundColor = ['#8a1538', '#198754', '#ffc107', '#0dcaf0'][Math.floor(Math.random() * 4)];
+        conf.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        conf.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.body.appendChild(conf);
+        setTimeout(() => conf.remove(), 5000);
+    }
+  }
+
+  // ======================================================
+  // INICIALIZAÇÃO DA DISCIPLINA (Carrega o JSON para a Memória)
+  // ======================================================
+  async function carregarDisciplinaBase() {
+      currentDisciplina = disciplinaSelect?.value;
+      if (!currentDisciplina) return;
+
+      try {
+          const response = await fetch(`data/${currentDisciplina}.json`);
+          if (!response.ok) throw new Error("Ficheiro não encontrado.");
+          const data = await response.json();
+          fullDatabase = data.perguntas;
+          configDatabase = data.configuracao_teste;
+          
+          // Garante que a disciplina existe no localStorage
+          if (!globalStorage[currentDisciplina]) {
+              globalStorage[currentDisciplina] = { correct: [], wrong: [] };
+          }
+          
+          updateGlobalProgressUI();
+          if(dictSearchInput) procurarNoDicionario(); // Reseta dicionário
+
+      } catch (e) {
+          console.error(e);
+          alert("Aviso: Não foi possível carregar a base de dados desta disciplina.");
+      }
+  }
+
+  // ======================================================
+  // O "MOTOR" DE GERAÇÃO DE TESTES
+  // ======================================================
   function shuffleArray(array) {
       for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -56,111 +130,211 @@ document.addEventListener("DOMContentLoaded", () => {
       return array;
   }
 
-  async function generateQuizDataLocally(disciplina) {
-      // 1. Vai buscar o JSON diretamente à pasta local
-      const response = await fetch(`data/${disciplina}.json`);
-      if (!response.ok) throw new Error("Ficheiro JSON da disciplina não encontrado.");
-      const data = await response.json();
-
-      let todasPerguntas = [...data.perguntas];
-      let configTemas = { ...data.configuracao_teste };
+  function generateQuizDataLocally(mode = "normal") {
+      let todasPerguntas = [...fullDatabase];
+      let configTemas = { ...configDatabase };
       let testeFinal = [];
 
-      // 2. Garantir 1 pergunta de Arrastar e Largar
-      const perguntasDnd = todasPerguntas.filter(p => p.tipo === "drag_and_drop");
-      if (perguntasDnd.length > 0) {
-          const perguntaObrigatoria = perguntasDnd[Math.floor(Math.random() * perguntasDnd.length)];
-          testeFinal.push(perguntaObrigatoria);
+      // MODO: FOCO NAS FRAQUEZAS
+      if (mode === "mistakes") {
+          const wrongIds = globalStorage[currentDisciplina].wrong || [];
+          testeFinal = todasPerguntas.filter(p => wrongIds.includes(p.id));
+          if (testeFinal.length === 0) return []; // Se não houver erros
           
-          // Desconta na configuração do tema para não passarmos das 24
-          if (configTemas[perguntaObrigatoria.macro_tema] > 0) {
-              configTemas[perguntaObrigatoria.macro_tema] -= 1;
+          // Se houver mais de 24 erros, escolhe 24 à sorte
+          if (testeFinal.length > 24) {
+              testeFinal = shuffleArray(testeFinal).slice(0, 24);
+          } else {
+              testeFinal = shuffleArray(testeFinal);
           }
-          // Remove da pool global para não sair repetida
-          todasPerguntas = todasPerguntas.filter(p => p.id !== perguntaObrigatoria.id);
+      } 
+      // MODO: NORMAL (Sorteio Inteligente)
+      else {
+          // 1. Garantir 1 pergunta de Arrastar e Largar
+          const perguntasDnd = todasPerguntas.filter(p => p.tipo === "drag_and_drop");
+          if (perguntasDnd.length > 0) {
+              const perguntaObrigatoria = perguntasDnd[Math.floor(Math.random() * perguntasDnd.length)];
+              testeFinal.push(perguntaObrigatoria);
+              if (configTemas[perguntaObrigatoria.macro_tema] > 0) {
+                  configTemas[perguntaObrigatoria.macro_tema] -= 1;
+              }
+              todasPerguntas = todasPerguntas.filter(p => p.id !== perguntaObrigatoria.id);
+          }
+
+          // 2. Selecionar o resto das perguntas com base na configuração
+          for (const [macroTema, quantidade] of Object.entries(configTemas)) {
+              if (quantidade <= 0) continue;
+              const perguntasDoTema = todasPerguntas.filter(p => p.macro_tema === macroTema);
+              const selecionadas = shuffleArray([...perguntasDoTema]).slice(0, Math.min(quantidade, perguntasDoTema.length));
+              testeFinal.push(...selecionadas);
+          }
+          testeFinal = shuffleArray(testeFinal);
       }
 
-      // 3. Selecionar o resto das perguntas com base na configuração
-      for (const [macroTema, quantidade] of Object.entries(configTemas)) {
-          if (quantidade <= 0) continue;
-          
-          const perguntasDoTema = todasPerguntas.filter(p => p.macro_tema === macroTema);
-          const perguntasBaralhadas = shuffleArray([...perguntasDoTema]);
-          
-          const selecionadas = perguntasBaralhadas.slice(0, Math.min(quantidade, perguntasDoTema.length));
-          testeFinal.push(...selecionadas);
-      }
-
-      // 4. Baralhar a ordem final do teste e as alíneas
-      testeFinal = shuffleArray(testeFinal);
-
+      // Baralhar as opções dentro de cada pergunta
       testeFinal.forEach(p => {
-          if (p.tipo === "multiple_choice" && p.opcoes) {
-              p.opcoes = shuffleArray([...p.opcoes]);
-          } else if (p.tipo === "drag_and_drop" && p.pares) {
-              p.pares = shuffleArray([...p.pares]);
-          }
+          if (p.tipo === "multiple_choice" && p.opcoes) p.opcoes = shuffleArray([...p.opcoes]);
+          else if (p.tipo === "drag_and_drop" && p.pares) p.pares = shuffleArray([...p.pares]);
       });
 
-      return {
-          disciplina: data.disciplina,
-          total_perguntas: testeFinal.length,
-          perguntas: testeFinal
-      };
+      return testeFinal;
+  }
+
+  async function iniciarTeste(mode = "normal") {
+    if (!fullDatabase.length) await carregarDisciplinaBase();
+
+    quizData = generateQuizDataLocally(mode);
+    
+    if (quizData.length === 0 && mode === "mistakes") {
+        return alert("Parabéns! Não tens perguntas assinaladas como erradas nesta disciplina. Faz o modo normal!");
+    }
+
+    userAnswers = {};
+    currentQuestionIndex = 0;
+    quizLoaded = true;
+    quizSubmitted = false;
+
+    clearTopMessage();
+    renderQuestionNavigator();
+    renderCurrentQuestion();
+    updateTopIndicators();
+    updateNavButtonsState();
+    updateQuestionStateLabel();
+    startTimer();
+
+    if (submeterQuizBtn) {
+      submeterQuizBtn.classList.remove("hidden");
+      submeterQuizBtn.disabled = false;
+      submeterQuizBtn.textContent = "Submeter tudo e terminar";
+    }
+    if (finishLink) finishLink.style.display = "block";
+    
+    // Rola para a pergunta (ideal para telemóveis)
+    if(quizContainer) quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   // ======================================================
-  // CARREGAR O QUIZ (Evento do Botão)
+  // PROGRESSO GLOBAL & ANALYTICS
   // ======================================================
-  async function carregarQuiz() {
-    const disciplina = disciplinaSelect?.value;
-    if (!disciplina) return alert("Seleciona uma disciplina.");
+  function updateGlobalProgressUI() {
+    if (!globalProgressText || !fullDatabase.length) return;
+    
+    const subjData = globalStorage[currentDisciplina];
+    const totalQuestions = fullDatabase.length;
+    const correctCount = subjData.correct.length;
+    const percentage = Math.min(100, Math.round((correctCount / totalQuestions) * 100));
+    
+    globalProgressText.textContent = `${correctCount} / ${totalQuestions}`;
+    if(globalProgressBarFill) globalProgressBarFill.style.width = `${percentage}%`;
+    if(globalProgressPercent) globalProgressPercent.textContent = `${percentage}%`;
 
-    try {
-      quizContainer.innerHTML = "<p>A processar as perguntas...</p>";
-      
-      // Chamamos a nossa nova função 100% JavaScript (Sem Backend)
-      const data = await generateQuizDataLocally(disciplina);
+    if (percentage === 100 && globalProgressBarFill) globalProgressBarFill.style.backgroundColor = "var(--success)";
+    else if(globalProgressBarFill) globalProgressBarFill.style.backgroundColor = "var(--primary)";
 
-      quizData = data.perguntas;
-      userAnswers = {};
-      currentQuestionIndex = 0;
-      quizLoaded = true;
-      quizSubmitted = false;
+    // Renderizar Analytics por Tema (Radar)
+    if (themeAnalyticsContainer) {
+        const temasEstatisticas = {};
+        // Conta totais por tema
+        fullDatabase.forEach(p => {
+            if(!temasEstatisticas[p.macro_tema]) temasEstatisticas[p.macro_tema] = { total: 0, certos: 0 };
+            temasEstatisticas[p.macro_tema].total++;
+            if (subjData.correct.includes(p.id)) temasEstatisticas[p.macro_tema].certos++;
+        });
 
-      clearTopMessage();
-      renderQuestionNavigator();
-      renderCurrentQuestion();
-      updateTopIndicators();
-      updateNavButtonsState();
-      updateQuestionStateLabel();
-      startTimer();
+        let htmlRadar = "";
+        for (const [tema, stats] of Object.entries(temasEstatisticas)) {
+            const percTema = Math.round((stats.certos / stats.total) * 100);
+            let barColor = "var(--error)";
+            if (percTema >= 50) barColor = "var(--warning)";
+            if (percTema >= 80) barColor = "var(--success)";
 
-      if (submeterQuizBtn) {
-        submeterQuizBtn.classList.remove("hidden");
-        submeterQuizBtn.disabled = false;
-        submeterQuizBtn.textContent = "Submeter tudo e terminar";
-      }
-      if (finishLink) finishLink.style.display = "block";
-
-    } catch (error) {
-      console.error(error);
-      alert("Erro ao carregar o quiz. Verifica se a pasta 'data' tem o ficheiro BIA_BIAT.json e se estás a usar um Live Server.");
+            htmlRadar += `
+                <div style="margin-bottom: 10px;">
+                    <div style="display:flex; justify-content: space-between; font-size:0.75rem; font-weight:bold; color:var(--text-muted); text-transform:uppercase;">
+                        <span>${escapeHtml(tema.replace(/_/g, ' '))}</span>
+                        <span>${percTema}%</span>
+                    </div>
+                    <div style="width: 100%; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top:3px;">
+                        <div style="height: 100%; width: ${percTema}%; background: ${barColor}; transition: 0.5s;"></div>
+                    </div>
+                </div>
+            `;
+        }
+        themeAnalyticsContainer.innerHTML = htmlRadar;
     }
   }
 
+  function guardarResultadosNaMemoria() {
+      const subjData = globalStorage[currentDisciplina];
+      let todosCertos = true;
+
+      quizData.forEach((q, i) => {
+          const isCorrect = isQuestionCorrect(q, i);
+          if (isCorrect) {
+              // Se acertou, adiciona aos certos (se não estiver) e tira dos erros
+              if (!subjData.correct.includes(q.id)) subjData.correct.push(q.id);
+              subjData.wrong = subjData.wrong.filter(id => id !== q.id);
+          } else {
+              todosCertos = false;
+              // Se errou, e ainda não domina esta pergunta de forma permanente, adiciona aos erros
+              if (!subjData.wrong.includes(q.id) && !subjData.correct.includes(q.id)) {
+                  subjData.wrong.push(q.id);
+              }
+          }
+      });
+
+      localStorage.setItem("moodle-iscap-storage", JSON.stringify(globalStorage));
+      updateGlobalProgressUI();
+      return todosCertos;
+  }
 
   // ======================================================
-  // HELPERS DE SISTEMA (Inalterados)
+  // MODO DICIONÁRIO / CÁBULA
+  // ======================================================
+  function procurarNoDicionario() {
+      if(!dictSearchInput || !dictResultsContainer || !fullDatabase.length) return;
+      
+      const termo = dictSearchInput.value.toLowerCase().trim();
+      if(termo === "") {
+          dictResultsContainer.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted);'>Escreve um termo acima para pesquisar em toda a base de dados desta disciplina.</p>";
+          return;
+      }
+
+      // Procura na pergunta, na justificação e nas opções
+      const resultados = fullDatabase.filter(p => {
+          const textoCompleto = (p.pergunta + " " + p.justificacao + " " + (p.opcoes?p.opcoes.join(" "):"") + " " + (p.pares?p.pares.map(x=>x.conceito).join(" "):"")).toLowerCase();
+          return textoCompleto.includes(termo);
+      });
+
+      if(resultados.length === 0) {
+          dictResultsContainer.innerHTML = "<p style='font-size:0.85rem; color:var(--error);'>Nenhum conceito encontrado.</p>";
+          return;
+      }
+
+      let htmlResultados = "";
+      resultados.slice(0, 10).forEach((res, index) => {
+          htmlResultados += `
+              <div style="border-left: 3px solid var(--primary); padding-left: 10px; margin-bottom: 15px; font-size: 0.85rem;">
+                  <strong style="color:var(--text-main);">${escapeHtml(res.macro_tema.replace(/_/g, ' ').toUpperCase())}</strong><br>
+                  <i style="color:var(--text-muted);">${escapeHtml(res.pergunta)}</i>
+                  <p style="margin-top: 5px; color: var(--success); font-weight:600;">${escapeHtml(res.resposta_correta || "Pergunta de Arrastar e Largar")}</p>
+                  <p style="margin-top: 5px; background:var(--bg-body); padding:5px; border-radius:3px;">${escapeHtml(res.justificacao)}</p>
+              </div>
+          `;
+      });
+
+      if(resultados.length > 10) htmlResultados += `<p style='font-size:0.8rem; text-align:center;'>A mostrar 10 de ${resultados.length} resultados. Refina a pesquisa.</p>`;
+      dictResultsContainer.innerHTML = htmlResultados;
+  }
+
+  // ======================================================
+  // HELPERS BÁSICOS E NAVEGAÇÃO
   // ======================================================
   function escapeHtml(value) {
     if (value === null || value === undefined) return "";
     return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
-  function normalizeText(value) {
-    if (value === null || value === undefined) return "";
-    return String(value).trim();
-  }
+  function normalizeText(value) { return value === null || value === undefined ? "" : String(value).trim(); }
   function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
@@ -179,9 +353,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return Math.round((getAnsweredCount() / quizData.length) * 100);
   }
 
-  // ======================================================
-  // TIMER
-  // ======================================================
   function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
   function updateTimerUI() { if (timerElement) timerElement.textContent = formatTime(timeLeft); }
   function resetTimer() { stopTimer(); timeLeft = QUIZ_DURATION_SECONDS; updateTimerUI(); }
@@ -198,9 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   }
 
-  // ======================================================
-  // UI UPDATES (STATE & GLOBAL PROGRESS)
-  // ======================================================
   function setQuizState(text) { if (quizStateText) quizStateText.textContent = text; }
   function updateQuestionStateLabel() {
     if (!quizLoaded) return setQuizState("Aguardando início");
@@ -211,22 +379,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return setQuizState("Em progresso");
   }
 
-  function updateGlobalProgressUI() {
-    if (!globalProgressText || !globalProgressBarFill || !globalProgressPercent) return;
-    const correctCount = globalCorrectIds.length;
-    const percentage = Math.min(100, Math.round((correctCount / TOTAL_QUESTIONS_DB) * 100));
-    globalProgressText.textContent = `${correctCount} / ${TOTAL_QUESTIONS_DB}`;
-    globalProgressBarFill.style.width = `${percentage}%`;
-    globalProgressPercent.textContent = `${percentage}%`;
-    if (percentage === 100) globalProgressBarFill.style.backgroundColor = "var(--success)";
-    else globalProgressBarFill.style.backgroundColor = "var(--primary)";
-  }
-
   function clearTopMessage() { resultadoFinal.innerHTML = ""; }
 
-  // ======================================================
-  // THEME & SCROLL
-  // ======================================================
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("iscap-theme", theme);
@@ -238,11 +392,11 @@ document.addEventListener("DOMContentLoaded", () => {
     applyTheme(savedTheme === "dark" ? "dark" : "light");
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        applyTheme(currentTheme === "dark" ? "light" : "dark");
+        applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
       });
     }
   }
+
   function initScrollTopButton() {
     if (!scrollTopBtn) return;
     window.addEventListener("scroll", () => {
@@ -252,9 +406,6 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollTopBtn.addEventListener("click", scrollToTopSmooth);
   }
 
-  // ======================================================
-  // NAVIGATION LOGIC
-  // ======================================================
   function goToQuestion(index) {
     currentQuestionIndex = index;
     renderCurrentQuestion();
@@ -334,16 +485,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // RENDER QUESTION
+  // RENDER QUESTION E DRAG & DROP
   // ======================================================
   function renderCurrentQuestion() {
     if (!quizData.length) return;
 
     const question = quizData[currentQuestionIndex];
     const selectedAnswer = userAnswers[currentQuestionIndex];
+    const isCorrect = quizSubmitted ? isQuestionCorrect(question, currentQuestionIndex) : null;
 
     let html = `
-      <article class="question-card" id="q-card-${currentQuestionIndex}">
+      <article class="question-card ${quizSubmitted && !isCorrect ? 'shake' : ''}" id="q-card-${currentQuestionIndex}">
         <header class="question-card__header">
           <div class="question-card__meta">
             <span class="question-card__badge">Pergunta ${currentQuestionIndex + 1}</span>
@@ -359,13 +511,12 @@ document.addEventListener("DOMContentLoaded", () => {
     else html += renderMultipleChoice(question, selectedAnswer || "");
 
     if (quizSubmitted) {
-      const isCorrect = isQuestionCorrect(question, currentQuestionIndex);
       html += `
           <div class="justification-box">
             <p class="feedback-status" style="color: ${isCorrect ? 'var(--success)' : 'var(--error)'}">
               ${isCorrect ? "✅ Correto!" : "❌ Incorreto."}
             </p>
-            ${question.tipo === "multiple_choice" ? `<p><strong>A resposta correta é:</strong> ${escapeHtml(question.resposta_correta)}</p>` : ''}
+            ${question.tipo !== "drag_and_drop" ? `<p><strong>A resposta correta é:</strong> ${escapeHtml(question.resposta_correta)}</p>` : ''}
             <hr style="border: 0; border-top: 1px solid var(--border); margin: 10px 0;">
             <p><strong>Justificação:</strong> ${escapeHtml(question.justificacao)}</p>
           </div>
@@ -380,7 +531,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         if (quizSubmitted) {
             const card = document.getElementById(`q-card-${currentQuestionIndex}`);
-            const isCorrect = isQuestionCorrect(question, currentQuestionIndex);
             card.classList.add(isCorrect ? "correct" : "incorrect");
 
             card.querySelectorAll(".option-item").forEach(label => {
@@ -491,6 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   if (existingItem && existingItem !== draggedElement) bank.appendChild(existingItem);
                   zone.appendChild(draggedElement);
                   zone.classList.add('has-item');
+                  playDing(); // O SUMO DA ANIMAÇÃO!
                   saveDragAndDropState();
               }
           });
@@ -541,29 +692,26 @@ document.addEventListener("DOMContentLoaded", () => {
     quizSubmitted = true;
     stopTimer();
 
-    let score = 0;
-    quizData.forEach((q, i) => {
-      if (isQuestionCorrect(q, i)) {
-        score++;
-        if (q.id && !globalCorrectIds.includes(q.id)) {
-            globalCorrectIds.push(q.id);
-        }
-      }
-    });
+    // Grava os acertos, erros e vê se tirou 100%
+    const todosCertos = guardarResultadosNaMemoria();
 
-    localStorage.setItem("iscap-global-progress", JSON.stringify(globalCorrectIds));
-    updateGlobalProgressUI();
+    let score = 0;
+    quizData.forEach((q, i) => { if (isQuestionCorrect(q, i)) score++; });
 
     const percentage = ((score / quizData.length) * 100).toFixed(0);
     const notaMoodle = ((score / quizData.length) * 20).toFixed(2);
     
+    // Mostra confettis se tirar 20/20!
+    if (percentage == 100) fireConfetti();
+
     resultadoFinal.innerHTML = `
       <div class="quiz-final-summary">
         <h2 style="color: var(--primary);">${submissaoAutomatica ? "⏳ Tempo Esgotado" : "📊 Teste Concluído"}</h2>
         <p style="font-size: 1.2rem; margin-bottom: 5px;">Nota Moodle: <strong>${notaMoodle}</strong> / 20,00</p>
         <p>Acertaste <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas (<strong>${percentage}%</strong>).</p>
         <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 15px;">
-          Navega pelas perguntas usando o menu lateral para rever as tuas respostas e ler as justificações do professor.
+          Navega pelas perguntas usando o menu lateral para rever as tuas respostas. <br>
+          As perguntas que erraste foram gravadas no modo <strong>Foco nas Fraquezas</strong>.
         </p>
       </div>
     `;
@@ -581,16 +729,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================================================
   // EVENT LISTENERS & INITS
   // ======================================================
-  if (carregarQuizBtn) carregarQuizBtn.addEventListener("click", carregarQuiz);
+  if (disciplinaSelect) {
+      disciplinaSelect.addEventListener("change", carregarDisciplinaBase);
+  }
+  
+  if (carregarQuizBtn) carregarQuizBtn.addEventListener("click", () => iniciarTeste("normal"));
+  if (carregarFraquezasBtn) carregarFraquezasBtn.addEventListener("click", () => iniciarTeste("mistakes"));
+  
   if (submeterQuizBtn) submeterQuizBtn.addEventListener("click", () => verificarRespostas(false));
   if (prevQuestionBtn) prevQuestionBtn.addEventListener("click", goToPreviousQuestion);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", goToNextQuestion);
   
+  if (dictSearchInput) {
+      dictSearchInput.addEventListener("input", procurarNoDicionario);
+  }
+
   if (resetProgressBtn) {
     resetProgressBtn.addEventListener("click", () => {
-      if (confirm("Tens a certeza que queres apagar todo o teu progresso? Terás de acertar nas 115 perguntas novamente.")) {
-        localStorage.removeItem("iscap-global-progress");
-        globalCorrectIds = [];
+      if (confirm(`Queres mesmo apagar o teu progresso em ${currentDisciplina}? Terás de voltar a dominar a matéria do zero.`)) {
+        globalStorage[currentDisciplina] = { correct: [], wrong: [] };
+        localStorage.setItem("moodle-iscap-storage", JSON.stringify(globalStorage));
         updateGlobalProgressUI();
       }
     });
@@ -599,5 +757,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // INICIAR
   initTheme();
   initScrollTopButton();
-  updateGlobalProgressUI();
+  carregarDisciplinaBase(); // Carrega o JSON da disciplina por defeito logo ao abrir!
 });

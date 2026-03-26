@@ -45,13 +45,35 @@
     }
 
     /* =========================================================
-       BASE
+       BASE & ANIMAÇÕES (O JUICE)
        ========================================================= */
     body { margin: 0; font-family: 'Open Sans', 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
     h1, h2, h3, p { margin-top: 0; }
     .hidden { display: none !important; }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+    .shake { animation: shake 0.4s ease-in-out; }
+
+    .confetti {
+      position: fixed;
+      top: -10px;
+      width: 10px;
+      height: 10px;
+      z-index: 9999;
+      animation: fall linear forwards;
+      border-radius: 2px;
+    }
+    @keyframes fall {
+      to { transform: translateY(105vh) rotate(720deg); }
+    }
 
     /* =========================================================
        HEADER MOODLE
@@ -92,7 +114,7 @@
     .btn--ghost:hover:not(:disabled) { background: var(--border); color: var(--text-main); }
 
     /* =========================================================
-       PROGRESSO (NA BARRA LATERAL)
+       PROGRESSO E BARRAS
        ========================================================= */
     .status-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 15px; }
     .status-box { background: var(--bg-body); padding: 10px; border-radius: 4px; text-align: center; border: 1px solid var(--border);}
@@ -105,7 +127,7 @@
     .progress-bar__fill--global { background: var(--primary); }
 
     /* =========================================================
-       ÁREA DA PERGUNTA (GERADA PELO JS)
+       ÁREA DA PERGUNTA
        ========================================================= */
     .question-card { background: var(--bg-card); padding: 25px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);}
     .question-card.correct { border-left: 6px solid var(--success); }
@@ -209,9 +231,12 @@
 
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
+      .status-row { grid-template-columns: repeat(2, 1fr); }
       .moodle-header { flex-direction: column; align-items: flex-start; gap: 15px;}
       .moodle-header__right { width: 100%; justify-content: space-between; }
       .exam-header { flex-direction: column; align-items: flex-start; }
+      .exam-header__right { width: 100%; display: flex; flex-direction: column; gap: 10px; }
+      .exam-header__right button { width: 100%; margin-left: 0 !important; }
       .question-footer { flex-direction: column; gap: 15px;}
       .question-footer button { width: 100%; }
       .question-footer__center { order: -1; }
@@ -233,8 +258,8 @@
           <span id="themeIcon" aria-hidden="true">🌙</span> <span id="themeText" style="font-size: 0.9rem;">Tema</span>
         </button>
         <div class="user-profile">
-          <span class="user-name">Estudante BIA</span>
-          <div class="user-avatar">EB</div>
+          <span class="user-name">João Fernandes</span>
+          <div class="user-avatar">JF</div>
         </div>
       </div>
     </header>
@@ -245,9 +270,7 @@
         <li><span class="separator">/</span></li>
         <li><a href="#">As minhas disciplinas</a></li>
         <li><span class="separator">/</span></li>
-        <li><a href="#">BIA_BIAT</a></li>
-        <li><span class="separator">/</span></li>
-        <li><a href="#">Questionários</a></li>
+        <li><a href="#">Simulador de Exames</a></li>
         <li><span class="separator">/</span></li>
         <li><strong>Teste de Preparação</strong></li>
       </ul>
@@ -257,20 +280,24 @@
       <section class="exam-area">
         
         <div class="course-header">
-          <h2 class="course-title">Business Intelligence & Analytics Tools</h2>
+          <h2 class="course-title">Master BIA | Ferramenta de Estudo</h2>
         </div>
 
         <div class="moodle-card">
           <div class="exam-header">
             <div class="exam-header__left">
-              <label for="disciplina" class="form-label">Base de Dados de Perguntas:</label>
+              <label for="disciplina" class="form-label">Seleciona a Disciplina:</label>
               <select id="disciplina" name="disciplina" class="form-select moodle-input" required>
-                <option value="BIA_BIAT" selected>BIA - Banco de Perguntas (115)</option>
+                <option value="BIA_BIAT" selected>Business Intelligence & Analytics Tools</option>
               </select>
             </div>
-            <div class="exam-header__right">
+            
+            <div class="exam-header__right" style="display:flex; gap:10px;">
+              <button id="carregarFraquezas" class="btn btn--secondary" type="button" title="Gera um teste só com as perguntas que erraste">
+                Modo Fraquezas 🎯
+              </button>
               <button id="carregarQuiz" class="btn btn--primary" type="button">
-                Tentar responder agora
+                Modo Normal
               </button>
               <button id="submeterQuiz" class="btn btn--primary hidden" type="button" disabled>
                 Submeter tudo e terminar
@@ -279,14 +306,12 @@
           </div>
         </div>
 
-        <section id="resultado-final" class="result-area" aria-live="polite"></section>
-
         <section class="question-stage" aria-label="Pergunta atual">
           <div id="quiz-container" class="question-container">
              <article class="question-card">
-               <h2 class="question-card__title" style="color: var(--primary);">Simulador de Exame Moodle</h2>
-               <p class="question-card__text">Clica no botão <strong>Tentar responder agora</strong> acima para gerar a tua tentativa com 24 perguntas aleatórias.</p>
-               <p class="question-card__text">As perguntas que acertares serão guardadas no teu <strong>Progresso Global</strong>. Tenta dominar todo o banco de questões antes do exame!</p>
+               <h2 class="question-card__title" style="color: var(--primary);">Pronto para começar, João?</h2>
+               <p class="question-card__text">Clica no botão <strong>Modo Normal</strong> para gerar a tua tentativa com perguntas aleatórias.</p>
+               <p class="question-card__text">Sempre que errares uma pergunta, ela será guardada para o <strong>Modo Fraquezas</strong>. Não te deixes enganar nas rasteiras do exame!</p>
              </article>
           </div>
 
@@ -304,6 +329,13 @@
             </button>
           </div>
         </section>
+
+        <div class="moodle-card">
+          <h3 style="color: var(--primary); margin-bottom: 5px; font-size: 1.1rem;">Dicionário em Tempo Real</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Esqueceste-te do que significa CDO, KPI ou Lakehouse? Pesquisa aqui para ver a definição imediatamente.</p>
+          <input type="text" id="dictSearchInput" class="form-select moodle-input" placeholder="O que queres pesquisar hoje, João?">
+          <div id="dictResultsContainer" style="margin-top: 15px;"></div>
+        </div>
 
       </section>
 
@@ -329,7 +361,7 @@
               </article>
               <article class="status-box">
                 <span class="status-box__label">Tempo</span>
-                <strong id="timer" class="status-box__value timer-alert">40:00</strong>
+                <strong id="timer" class="status-box__value timer-alert">20:00</strong>
               </article>
             </div>
             <div class="progress-bar">
@@ -344,7 +376,7 @@
           </header>
           <div class="sidebar-card__body">
             <div class="user-info-small">
-              <div class="user-avatar-small">EB</div>
+              <div class="user-avatar-small">JF</div>
               <span id="quizStateText">Não iniciado</span>
             </div>
             
@@ -354,7 +386,7 @@
             <div class="sidebar-info-group">
               <div class="sidebar-info">
                 <span class="sidebar-info__label">Total da tentativa</span>
-                <strong id="expectedQuestions">24</strong>
+                <strong id="expectedQuestions">-</strong>
               </div>
               <a href="#" onclick="document.getElementById('submeterQuiz').click(); return false;" class="finish-link" id="finishLink" style="display:none;">Terminar tentativa...</a>
             </div>
@@ -369,7 +401,7 @@
             <div class="status-row" style="grid-template-columns: 1fr;">
               <article class="status-box">
                 <span class="status-box__label">Perguntas Dominadas</span>
-                <strong id="globalProgressText" class="status-box__value">0 / 115</strong>
+                <strong id="globalProgressText" class="status-box__value">0 / 0</strong>
               </article>
             </div>
             <div class="progress-bar">
@@ -378,6 +410,10 @@
             <div style="text-align: center; margin-top: 10px;">
                 <small><strong id="globalProgressPercent">0%</strong> da matéria concluída</small>
             </div>
+            
+            <div id="themeAnalyticsContainer" style="margin-top: 20px; border-top: 1px dashed var(--border); padding-top: 15px;">
+                </div>
+
             <button id="resetProgressBtn" class="btn btn--ghost" style="margin-top: 15px; padding: 6px;">Limpar Progresso</button>
           </div>
         </section>
