@@ -1,0 +1,221 @@
+{
+  "opcoes_exame": {
+    "duracao_minutos": 60,
+    "desconto_erro": 0.0
+  },
+  "configuracao_teste": {
+    "Conceitos_Gerais": 4,
+    "Triade_CIA_e_Ameaças": 5,
+    "Normativos": 5,
+    "Analise_de_Dados": 4
+  },
+  "perguntas": [
+    {
+      "id": "SP_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Gerais",
+      "pergunta": "A empresa XPTO decidiu comprar um scanner para converter todas as faturas de papel antigas em ficheiros PDF. Em que conceito se enquadra esta ação?",
+      "opcoes": [
+        "Digitization (Digitalização de Dados)",
+        "Digitalization (Digitalização de Processos)",
+        "Digital Transformation (Transformação Digital)",
+        "Data Masking (Mascaramento de Dados)"
+      ],
+      "resposta_correta": "Digitization (Digitalização de Dados)",
+      "justificacao": "A 'Digitization' é simplesmente o ato de converter informações do formato físico (papel) para o formato digital (ex: PDF). Não altera o processo de negócio em si, apenas o formato do dado."
+    },
+    {
+      "id": "SP_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Gerais",
+      "pergunta": "Se uma empresa deixar de aprovar faturas manualmente e passar a usar um software que lê o PDF e aprova automaticamente a fatura sem intervenção humana, estamos perante um caso de:",
+      "opcoes": [
+        "Digitalization (Digitalização de Processos)",
+        "Digitization (Digitalização de Dados)",
+        "Cybersecurity",
+        "Behavioral Analytics"
+      ],
+      "resposta_correta": "Digitalization (Digitalização de Processos)",
+      "justificacao": "A 'Digitalization' refere-se ao uso de informações digitais e tecnologias para melhorar ou automatizar processos existentes, como a aprovação automática de faturas."
+    },
+    {
+      "id": "SP_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Triade_CIA_e_Ameaças",
+      "pergunta": "Um ataque de Ransomware bloqueou o acesso aos sistemas de um hospital, impedindo os médicos de consultarem os processos dos doentes. Qual é o princípio da Tríade CIA que foi mais diretamente violado?",
+      "opcoes": [
+        "Disponibilidade (Availability)",
+        "Confidencialidade (Confidentiality)",
+        "Integridade (Integrity)",
+        "Transparência (Transparency)"
+      ],
+      "resposta_correta": "Disponibilidade (Availability)",
+      "justificacao": "A Disponibilidade garante que a informação está acessível sempre que necessário. Um ataque de ransomware (ou DoS) que bloqueia sistemas afeta diretamente a capacidade de os processos de negócio funcionarem de forma contínua."
+    },
+    {
+      "id": "SP_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Triade_CIA_e_Ameaças",
+      "pergunta": "Um ataque informático a uma grande empresa foi realizado não atacando a empresa diretamente, mas sim explorando uma vulnerabilidade no software de contabilidade de um pequeno fornecedor dessa empresa. Que tipo de ameaça é esta?",
+      "opcoes": [
+        "Supply Chain Attack",
+        "Insider Threat",
+        "Advanced Persistent Threat (APT)",
+        "Zero-Day Exploit"
+      ],
+      "resposta_correta": "Supply Chain Attack",
+      "justificacao": "Num 'Supply Chain Attack', o hacker ataca uma organização indiretamente, explorando o 'elo mais fraco' da cadeia de valor, como um fornecedor de software ou serviços menos protegido."
+    },
+    {
+      "id": "SP_005",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Triade_CIA_e_Ameaças",
+      "pergunta": "Associa corretamente o tipo de ameaça cibernética à sua descrição prática.",
+      "pares": [
+        { "definicao": "Aproveita uma falha de software que ainda é desconhecida pelos próprios criadores do programa.", "conceito": "Zero-Day Exploit" },
+        { "definicao": "Ataque prolongado, indetetável, com o objetivo de roubar informação de forma contínua sem causar danos imediatos.", "conceito": "Advanced Persistent Threat (APT)" },
+        { "definicao": "Manipulação psicológica de pessoas (ex: falsos emails) para que revelem passwords.", "conceito": "Phishing / Social Engineering" },
+        { "definicao": "Esquemas para comprometer carteiras virtuais ou roubar Bitcoin.", "conceito": "Cryptocurrency Threats" }
+      ],
+      "justificacao": "O panorama das ameaças é vasto: Phishing ataca o fator humano; Zero-Day ataca falhas novas; APTs focam-se na persistência silenciosa (como o caso Carbanak); e Crypto Threats focam-se em ativos digitais."
+    },
+    {
+      "id": "SP_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Normativos",
+      "pergunta": "De acordo com o framework NIST, a fase que envolve a 'implementação de backups que estavam guardados offline para restaurar os sistemas e pôr a empresa a funcionar novamente' corresponde a:",
+      "opcoes": [
+        "Recuperar (Recover)",
+        "Responder (Respond)",
+        "Proteger (Protect)",
+        "Identificar (Identify)"
+      ],
+      "resposta_correta": "Recuperar (Recover)",
+      "justificacao": "A fase 'Recover' do NIST foca-se em recuperar os serviços normais após um incidente, o que envolve tipicamente restaurar backups e garantir que a empresa volta à operação normal."
+    },
+    {
+      "id": "SP_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Normativos",
+      "pergunta": "No contexto do ciclo da ISO 27001, se uma empresa decide 'trocar as fechaduras do edifício porque alguém perdeu uma chave', em que fase do ciclo nos encontramos?",
+      "opcoes": [
+        "Improvement (Melhoria)",
+        "Performance evaluation (Avaliação)",
+        "Operation (Operação)",
+        "Planning (Planeamento)"
+      ],
+      "resposta_correta": "Improvement (Melhoria)",
+      "justificacao": "A fase de 'Improvement' lida com ações corretivas e melhoria contínua. Mudar as fechaduras após um incidente (perda de chave) é uma ação corretiva para melhorar a segurança."
+    },
+    {
+      "id": "SP_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Normativos",
+      "pergunta": "A norma ISO 27001 categoriza os controlos de segurança. A categoria 'A06 People controls' lida especificamente com:",
+      "opcoes": [
+        "Trabalho remoto, acordos de confidencialidade (NDA) e processos de onboarding/offboarding.",
+        "Monitorização de segurança física, manutenção de instalações e armazenamento de media.",
+        "Autenticação, encriptação de dados e prevenção de fuga de dados técnicos.",
+        "Gestão de identidades a nível organizacional e recolha de evidências forenses."
+      ],
+      "resposta_correta": "Trabalho remoto, acordos de confidencialidade (NDA) e processos de onboarding/offboarding.",
+      "justificacao": "Os controlos 'A06 People' gerem a forma como os funcionários interagem com a informação sensível no dia a dia, incluindo verificação de antecedentes (screening), NDAs e gestão do ciclo de vida do funcionário na empresa."
+    },
+    {
+      "id": "SP_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Normativos",
+      "pergunta": "O João vai dar uma festa de aniversário e usa o seu livro de endereços privado (com emails e telemóveis de amigos) para enviar os convites. No âmbito do RGPD (Regulamento Geral de Proteção de Dados), esta ação:",
+      "opcoes": [
+        "Não está sujeita ao RGPD, pois enquadra-se na exceção para atividades domésticas/pessoais.",
+        "Viola o RGPD, pois o João não pediu consentimento explícito por escrito aos amigos.",
+        "Obriga o João a nomear um DPO (Data Protection Officer) para a gestão da festa.",
+        "Cumpre o RGPD apenas se o João garantir que apaga os dados após a festa (Limitação da conservação)."
+      ],
+      "resposta_correta": "Não está sujeita ao RGPD, pois enquadra-se na exceção para atividades domésticas/pessoais.",
+      "justificacao": "O RGPD não se aplica ao tratamento de dados pessoais efetuado por uma pessoa singular no exercício de atividades exclusivamente pessoais ou domésticas."
+    },
+    {
+      "id": "SP_010",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Normativos",
+      "pergunta": "Associa os princípios do RGPD às suas descrições.",
+      "pares": [
+        { "definicao": "Recolhidos apenas para fins determinados, explícitos e legítimos, não podendo ser usados para outros fins.", "conceito": "Finalidade" },
+        { "definicao": "Os dados devem ser eliminados ou anonimizados assim que o seu propósito tenha sido cumprido.", "conceito": "Limitação da conservação" },
+        { "definicao": "Recolher apenas os dados estritamente necessários (ex: não pedir a religião para vender uns ténis).", "conceito": "Minimização dos dados" },
+        { "definicao": "Garantir que os dados não são acedidos por quem não necessita e não são alterados sem autorização.", "conceito": "Integridade e confidencialidade" }
+      ],
+      "justificacao": "Estes princípios são a espinha dorsal do RGPD e obrigam as empresas a pensar no ciclo de vida completo dos dados, desde a minimização na recolha até ao momento da sua destruição (limitação de conservação)."
+    },
+    {
+      "id": "SP_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_de_Dados",
+      "pergunta": "O analista de cibersegurança repara que um utilizador específico (que costuma fazer apenas leitura de relatórios) fez o download massivo de 50GB de dados da intranet às 3 da manhã. Que tecnologia/metodologia é ideal para detetar este padrão anormal?",
+      "opcoes": [
+        "Behavioral Analytics",
+        "External Threat Intelligence",
+        "Data Masking",
+        "Forensic Data Analysis"
+      ],
+      "resposta_correta": "Behavioral Analytics",
+      "justificacao": "O 'Behavioral Analytics' analisa o comportamento dos utilizadores para detetar padrões atípicos que fogem à rotina normal (como 'mass downloads', viagens atípicas ou logins a horas estranhas), indicando potenciais ameaças internas ou contas comprometidas."
+    },
+    {
+      "id": "SP_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_de_Dados",
+      "pergunta": "Qual é a principal vantagem de utilizar ferramentas SOAR (Security Orchestration, Automation, and Response) num Security Operations Center (SOC)?",
+      "opcoes": [
+        "Automatizar tarefas repetitivas, orquestrar diferentes ferramentas numa única plataforma e acelerar o tempo de resposta a incidentes.",
+        "Criar backups físicos de dados offline para evitar ataques de ransomware.",
+        "Mascarar dados de cartões de crédito nas bases de dados da empresa.",
+        "Fazer recolha de evidências forenses (imagens de discos) para levar a tribunal."
+      ],
+      "resposta_correta": "Automatizar tarefas repetitivas, orquestrar diferentes ferramentas numa única plataforma e acelerar o tempo de resposta a incidentes.",
+      "justificacao": "SOAR centraliza a inteligência de ameaças e automatiza fluxos de trabalho que de outra forma ocupariam demasiado tempo aos analistas manuais, reduzindo o 'mean time to respond'."
+    },
+    {
+      "id": "SP_013",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Analise_de_Dados",
+      "pergunta": "Para garantir a privacidade em ambientes de teste, usam-se técnicas de Data Masking (Mascaramento) e Anonimização. Faz a correspondência correta:",
+      "pares": [
+        { "definicao": "Substituição de dados sensíveis por valores gerados à sorte.", "conceito": "Randomização" },
+        { "definicao": "Substituição de valores originais por dados fictícios, mas que parecem reais (ex: trocar 'João' por 'Pedro').", "conceito": "Substituição" },
+        { "definicao": "Alterar a ordem dos dados originais numa coluna, misturando as informações de forma aleatória.", "conceito": "Shuffling" },
+        { "definicao": "Uso de algoritmos matemáticos para proteger os dados com uma chave secreta.", "conceito": "Criptografia" }
+      ],
+      "justificacao": "O mascaramento de dados é crucial para manter a conformidade com o RGPD enquanto se permite que programadores e analistas trabalhem com bases de dados que se assemelham à realidade sem expor os dados verdadeiros dos clientes."
+    },
+    {
+      "id": "SP_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Gerais",
+      "pergunta": "O infame vírus Stuxnet é um caso de estudo clássico na cibersegurança. O que o tornou tão único e perigoso?",
+      "opcoes": [
+        "Causou a disrupção física permanente de sistemas de controlo industrial (centrifugadoras nucleares no Irão) usando vulnerabilidades zero-day.",
+        "Foi o primeiro ransomware a exigir pagamento em Bitcoin para devolver o acesso aos hospitais britânicos.",
+        "Roubou informações de 143 milhões de pessoas da Equifax explorando uma falha de base de dados.",
+        "Usou inteligência artificial para adivinhar as passwords de administradores de sistemas em todo o mundo."
+      ],
+      "resposta_correta": "Causou a disrupção física permanente de sistemas de controlo industrial (centrifugadoras nucleares no Irão) usando vulnerabilidades zero-day.",
+      "justificacao": "O Stuxnet foi inovador por saltar do mundo digital para o mundo físico (destruindo equipamento) e por utilizar multiplos exploits zero-day simultaneamente, direcionados a sistemas SCADA/ICS específicos da Siemens."
+    },
+    {
+      "id": "SP_015",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_de_Dados",
+      "pergunta": "A equipa de segurança usa listas de CVEs (Common Vulnerabilities and Exposures) e bases de dados da Dark Web para enriquecer os seus modelos preditivos de ameaças. Que conceito descreve esta prática?",
+      "opcoes": [
+        "External Threat Intelligence",
+        "Network Forensics",
+        "Digitalization",
+        "Data Leakage Prevention (DLP)"
+      ],
+      "resposta_correta": "External Threat Intelligence",
+      "justificacao": "A 'External Threat Intelligence' consiste em ir buscar informação fora da organização (fontes externas, dark web, feeds de antivírus) para antecipar e prevenir incidentes antes que eles atinjam as defesas internas da empresa."
+    }
+  ]
+}

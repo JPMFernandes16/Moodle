@@ -1,5 +1,9 @@
 {
   "disciplina": "BIA - Applications & Tools",
+  "opcoes_exame": {
+    "duracao_minutos": 40,
+    "desconto_erro": 0
+  },
   "configuracao_teste": {
     "organizacao_orientada_dados": 5,
     "data_driven_transformation": 4,

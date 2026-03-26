@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <meta name="robots" content="noindex, nofollow" />
+  
   <title>Master BIA | App</title>
   <meta name="description" content="App premium de preparação de testes BIA." />
   
@@ -91,7 +94,7 @@
        ========================================================= */
     .app-header { 
       background: rgba(159, 18, 57, 0.95); 
-      backdrop-filter: blur(10px); /* Efeito iPhone */
+      backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       color: white; 
       padding: 12px 24px; 
@@ -131,7 +134,7 @@
     .exam-header { display: flex; flex-direction: column; gap: 15px;}
     .exam-header__actions { display: flex; gap: 10px; flex-wrap: wrap;}
     
-    .form-select, #dictSearchInput { 
+    .form-select, #dictSearchInput, #app-password { 
       padding: 14px 16px; 
       border: 2px solid var(--border); 
       border-radius: 12px; 
@@ -145,7 +148,7 @@
       transition: var(--transition);
       appearance: none;
     }
-    .form-select:focus, #dictSearchInput:focus { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);}
+    .form-select:focus, #dictSearchInput:focus, #app-password:focus { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);}
     
     .btn { 
       padding: 14px 20px; 
@@ -176,8 +179,6 @@
        ÁREA DA PERGUNTA
        ========================================================= */
     .question-card { background: var(--bg-card); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 20px; box-shadow: var(--shadow-md); position: relative; overflow: hidden;}
-    
-    /* Efeito visual na borda quando acerta/erra */
     .question-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; transition: var(--transition); }
     .question-card.correct::before { background: var(--success); }
     .question-card.incorrect::before { background: var(--error); }
@@ -192,7 +193,6 @@
     .option-item { display: flex; align-items: flex-start; gap: 15px; padding: 16px 20px; background: var(--bg-body); border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: var(--transition); }
     .option-item:hover { background: var(--bg-card); border-color: var(--border); transform: translateY(-2px); box-shadow: var(--shadow-sm);}
     
-    /* Custom Radio Button */
     .option-item input { appearance: none; background: var(--bg-card); margin: 0; width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 50%; display: grid; place-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; margin-top: 2px;}
     .option-item input::before { content: ""; width: 10px; height: 10px; border-radius: 50%; transform: scale(0); transition: 0.2s transform ease-in-out; box-shadow: inset 1em 1em var(--primary); }
     .option-item input:checked { border-color: var(--primary); }
@@ -237,14 +237,12 @@
     .sidebar-card__title { margin: 0; font-size: 1rem; font-weight: 800; color: var(--text-main); }
     .sidebar-card__body { padding: 20px; }
 
-    /* Stats Grid */
     .status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
     .status-box { background: var(--secondary); padding: 12px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border);}
     .status-box__label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;}
     .status-box__value { font-size: 1.4rem; color: var(--text-main); font-weight: 800; line-height: 1.2;}
     #timer { color: var(--primary); }
 
-    /* Nav Grid */
     .question-navigator { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
     .question-nav-item { aspect-ratio: 1; border: 2px solid var(--border); background: var(--bg-body); color: var(--text-main); border-radius: 50%; cursor: pointer; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: var(--transition);}
     .question-nav-item:hover { border-color: var(--primary); transform: scale(1.1);}
@@ -256,7 +254,6 @@
     .finish-link { display: block; padding: 12px; background: var(--secondary); border-radius: 8px; color: var(--primary); text-align: center; cursor: pointer; font-weight: 700; font-size: 0.9rem; transition: var(--transition);}
     .finish-link:hover { background: var(--error-light); }
 
-    /* Barra Progresso Global */
     .progress-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;}
     .progress-bar { width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
     .progress-bar__fill { height: 100%; width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
@@ -274,14 +271,14 @@
     .scroll-top-btn:hover { transform: translateY(-5px); }
 
     /* =========================================================
-       MOBILE OPTIMIZATIONS (iPhone & afins)
+       MOBILE OPTIMIZATIONS
        ========================================================= */
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; margin: 15px auto; gap: 20px;}
       .moodle-card, .question-card, .sidebar-card__body { padding: 20px; }
       
       .exam-header__actions { flex-direction: column; width: 100%; }
-      .btn { width: 100%; padding: 16px; font-size: 1.05rem;} /* Gigante e confortável no toque */
+      .btn { width: 100%; padding: 16px; font-size: 1.05rem;}
       
       .dnd-row { flex-direction: column; gap: 0;}
       .dnd-definition { border-right: none; border-bottom: 1px solid var(--border); padding: 12px;}
@@ -295,6 +292,20 @@
   </style>
 </head>
 <body>
+
+  <div id="security-layer" style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-body); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; transition: opacity 0.4s ease, visibility 0.4s;">
+    <div style="background:var(--bg-card); padding:40px 30px; border-radius:var(--radius); box-shadow:var(--shadow-hover); text-align:center; max-width: 400px; width: 100%; border: 1px solid var(--border);">
+      <div style="font-size: 3.5rem; margin-bottom: 15px;">🔒</div>
+      <h2 style="color:var(--text-main); margin-bottom:10px; font-weight:800;">Acesso Restrito</h2>
+      <p style="color:var(--text-muted); margin-bottom:25px; font-size: 0.95rem;">Insere a palavra-passe para aceder à plataforma de estudo.</p>
+      
+      <input type="password" id="app-password" class="form-select" style="margin-bottom:20px; text-align: center; font-size: 1.1rem;" placeholder="Palavra-passe">
+      <button id="btn-unlock" class="btn btn--primary" style="width:100%; padding: 16px; font-size: 1.05rem;">Desbloquear App</button>
+      
+      <p id="pwd-error" style="color:var(--error); margin-top:15px; font-weight:700; display:none; font-size:0.9rem;">❌ Palavra-passe incorreta.</p>
+    </div>
+  </div>
+
   <div class="app">
     
     <header class="app-header">
@@ -314,6 +325,7 @@
           <div class="exam-header">
             <select id="disciplina" name="disciplina" class="form-select" required>
               <option value="BIA_BIAT" selected>Business Intelligence & Analytics Tools</option>
+              <option value="SP">Segurança e Privacidade</option>
             </select>
             
             <div class="exam-header__actions">
@@ -349,7 +361,7 @@
           <h3 style="color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
             📚 Dicionário e Cábula Rápida
           </h3>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Esqueceste-te do que é um "Lakehouse" ou "CDO"? Escreve e encontra instantaneamente.</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Pesquisa de forma instantânea em toda a base de dados da disciplina selecionada.</p>
           <input type="text" id="dictSearchInput" class="form-select" placeholder="Pesquisar conceitos...">
           <div id="dictResultsContainer" style="margin-top: 20px;"></div>
         </div>
