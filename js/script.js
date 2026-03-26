@@ -2,12 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================================================
   // CONFIG & STATE
   // ======================================================
-  const QUIZ_DURATION_SECONDS = 20 * 60;
+  const QUIZ_DURATION_SECONDS = 40 * 60;
 
-  // DOM Elements - GERAIS
   const disciplinaSelect = document.getElementById("disciplina");
   const carregarQuizBtn = document.getElementById("carregarQuiz");
-  const carregarFraquezasBtn = document.getElementById("carregarFraquezas"); // NOVO BOTÃO
+  const carregarFraquezasBtn = document.getElementById("carregarFraquezas");
   const submeterQuizBtn = document.getElementById("submeterQuiz");
   const finishLink = document.getElementById("finishLink");
   const timerElement = document.getElementById("timer");
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const progressBarFill = document.getElementById("progressBarFill");
   const questionNavigator = document.getElementById("questionNavigator");
   const quizContainer = document.getElementById("quiz-container");
-  const resultadoFinal = document.getElementById("resultado-final");
+  const resultadoFinal = document.getElementById("resultado-final"); // O culpado estava aqui!
   const prevQuestionBtn = document.getElementById("prevQuestionBtn");
   const nextQuestionBtn = document.getElementById("nextQuestionBtn");
   const themeToggle = document.getElementById("themeToggle");
@@ -28,19 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeText = document.getElementById("themeText");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
 
-  // DOM Elements - PROGRESSO E ANALYTICS (NOVOS)
   const globalProgressText = document.getElementById("globalProgressText");
   const globalProgressBarFill = document.getElementById("globalProgressBarFill");
   const globalProgressPercent = document.getElementById("globalProgressPercent");
   const resetProgressBtn = document.getElementById("resetProgressBtn");
   const themeAnalyticsContainer = document.getElementById("themeAnalyticsContainer");
 
-  // DOM Elements - DICIONÁRIO (NOVOS)
   const dictSearchInput = document.getElementById("dictSearchInput");
   const dictResultsContainer = document.getElementById("dictResultsContainer");
 
-  // State Variables
-  let fullDatabase = []; // Guarda todas as perguntas da disciplina selecionada
+  let fullDatabase = []; 
   let configDatabase = {}; 
   let quizData = [];
   let userAnswers = {};
@@ -51,14 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let timeLeft = QUIZ_DURATION_SECONDS;
   let currentDisciplina = "";
 
-  // Memória Global: { "BIA_BIAT": { correct: [1,2], wrong: [3] }, "OUTRA": {...} }
   let globalStorage = JSON.parse(localStorage.getItem("moodle-iscap-storage")) || {};
 
   // ======================================================
-  // ANIMAÇÕES & MICRO-INTERAÇÕES (O "JUICE")
+  // ANIMAÇÕES & MICRO-INTERAÇÕES
   // ======================================================
-  
-  // 1. Som de "Ding" gerado nativamente pelo browser (Sem MP3!)
   function playDing() {
     try {
         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -67,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(880, ctx.currentTime); // Nota A5
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
         gain.gain.setValueAtTime(0.1, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
         osc.connect(gain);
@@ -77,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch(e) { console.log("Áudio não suportado neste browser."); }
   }
 
-  // 2. Confettis Virtuais!
   function fireConfetti() {
     for (let i = 0; i < 70; i++) {
         const conf = document.createElement('div');
@@ -92,30 +84,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // INICIALIZAÇÃO DA DISCIPLINA (Carrega o JSON para a Memória)
+  // INICIALIZAÇÃO DA DISCIPLINA COM FALLBACK INTELIGENTE
   // ======================================================
   async function carregarDisciplinaBase() {
-      currentDisciplina = disciplinaSelect?.value;
-      if (!currentDisciplina) return;
+      currentDisciplina = disciplinaSelect?.value || "BIA_BIAT";
 
       try {
-          const response = await fetch(`data/${currentDisciplina}.json`);
-          if (!response.ok) throw new Error("Ficheiro não encontrado.");
+          let response = await fetch(`data/${currentDisciplina}.json`);
+          if (!response.ok) response = await fetch(`${currentDisciplina}.json`);
+          if (!response.ok) throw new Error(`Ficheiro JSON não encontrado.`);
+
           const data = await response.json();
-          fullDatabase = data.perguntas;
-          configDatabase = data.configuracao_teste;
+          fullDatabase = data.perguntas || [];
+          configDatabase = data.configuracao_teste || {};
           
-          // Garante que a disciplina existe no localStorage
           if (!globalStorage[currentDisciplina]) {
               globalStorage[currentDisciplina] = { correct: [], wrong: [] };
           }
           
           updateGlobalProgressUI();
-          if(dictSearchInput) procurarNoDicionario(); // Reseta dicionário
+          if(dictSearchInput) procurarNoDicionario();
 
       } catch (e) {
-          console.error(e);
-          alert("Aviso: Não foi possível carregar a base de dados desta disciplina.");
+          console.error("Erro a carregar o JSON:", e);
+          throw e; 
       }
   }
 
@@ -135,22 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
       let configTemas = { ...configDatabase };
       let testeFinal = [];
 
-      // MODO: FOCO NAS FRAQUEZAS
       if (mode === "mistakes") {
-          const wrongIds = globalStorage[currentDisciplina].wrong || [];
+          const wrongIds = globalStorage[currentDisciplina]?.wrong || [];
           testeFinal = todasPerguntas.filter(p => wrongIds.includes(p.id));
-          if (testeFinal.length === 0) return []; // Se não houver erros
-          
-          // Se houver mais de 24 erros, escolhe 24 à sorte
-          if (testeFinal.length > 24) {
-              testeFinal = shuffleArray(testeFinal).slice(0, 24);
-          } else {
-              testeFinal = shuffleArray(testeFinal);
-          }
+          if (testeFinal.length === 0) return []; 
+          if (testeFinal.length > 24) testeFinal = shuffleArray(testeFinal).slice(0, 24);
+          else testeFinal = shuffleArray(testeFinal);
       } 
-      // MODO: NORMAL (Sorteio Inteligente)
       else {
-          // 1. Garantir 1 pergunta de Arrastar e Largar
           const perguntasDnd = todasPerguntas.filter(p => p.tipo === "drag_and_drop");
           if (perguntasDnd.length > 0) {
               const perguntaObrigatoria = perguntasDnd[Math.floor(Math.random() * perguntasDnd.length)];
@@ -161,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
               todasPerguntas = todasPerguntas.filter(p => p.id !== perguntaObrigatoria.id);
           }
 
-          // 2. Selecionar o resto das perguntas com base na configuração
           for (const [macroTema, quantidade] of Object.entries(configTemas)) {
               if (quantidade <= 0) continue;
               const perguntasDoTema = todasPerguntas.filter(p => p.macro_tema === macroTema);
@@ -171,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
           testeFinal = shuffleArray(testeFinal);
       }
 
-      // Baralhar as opções dentro de cada pergunta
       testeFinal.forEach(p => {
           if (p.tipo === "multiple_choice" && p.opcoes) p.opcoes = shuffleArray([...p.opcoes]);
           else if (p.tipo === "drag_and_drop" && p.pares) p.pares = shuffleArray([...p.pares]);
@@ -181,47 +163,77 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function iniciarTeste(mode = "normal") {
-    if (!fullDatabase.length) await carregarDisciplinaBase();
+      try {
+          if(quizContainer) quizContainer.innerHTML = "<p>A preparar o teu teste...</p>";
 
-    quizData = generateQuizDataLocally(mode);
-    
-    if (quizData.length === 0 && mode === "mistakes") {
-        return alert("Parabéns! Não tens perguntas assinaladas como erradas nesta disciplina. Faz o modo normal!");
-    }
+          if (!fullDatabase || fullDatabase.length === 0) {
+              await carregarDisciplinaBase();
+          }
 
-    userAnswers = {};
-    currentQuestionIndex = 0;
-    quizLoaded = true;
-    quizSubmitted = false;
+          if (!fullDatabase || fullDatabase.length === 0) {
+              throw new Error("O ficheiro JSON foi encontrado, mas não contém perguntas válidas (verifica a formatação).");
+          }
 
-    clearTopMessage();
-    renderQuestionNavigator();
-    renderCurrentQuestion();
-    updateTopIndicators();
-    updateNavButtonsState();
-    updateQuestionStateLabel();
-    startTimer();
+          quizData = generateQuizDataLocally(mode);
+          
+          if (quizData.length === 0 && mode === "mistakes") {
+              if(quizContainer) quizContainer.innerHTML = `<article class="question-card"><h2 style="color:var(--success);">Tudo dominado! 🎉</h2><p>Não tens perguntas assinaladas como erradas nesta disciplina. Faz o modo normal!</p></article>`;
+              return;
+          }
 
-    if (submeterQuizBtn) {
-      submeterQuizBtn.classList.remove("hidden");
-      submeterQuizBtn.disabled = false;
-      submeterQuizBtn.textContent = "Submeter tudo e terminar";
-    }
-    if (finishLink) finishLink.style.display = "block";
-    
-    // Rola para a pergunta (ideal para telemóveis)
-    if(quizContainer) quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (quizData.length === 0) {
+              throw new Error("O teste gerou 0 perguntas. Verifica se os nomes dos temas na 'configuracao_teste' coincidem com os temas das perguntas.");
+          }
+
+          userAnswers = {};
+          currentQuestionIndex = 0;
+          quizLoaded = true;
+          quizSubmitted = false;
+
+          clearTopMessage();
+          renderQuestionNavigator();
+          renderCurrentQuestion();
+          updateTopIndicators();
+          updateNavButtonsState();
+          updateQuestionStateLabel();
+          startTimer();
+
+          if (submeterQuizBtn) {
+            submeterQuizBtn.classList.remove("hidden");
+            submeterQuizBtn.disabled = false;
+            submeterQuizBtn.textContent = "Submeter tudo e terminar";
+          }
+          if (finishLink) finishLink.style.display = "block";
+          if (quizContainer) quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      } catch (err) {
+          console.error(err);
+          if(quizContainer) {
+              quizContainer.innerHTML = `
+                  <article class="question-card" style="border-left: 6px solid var(--error);">
+                      <h2 style="color: var(--error);">⚠️ Ups! Ocorreu um problema a carregar.</h2>
+                      <p>O teste parou de processar porque detetou um erro técnico:</p>
+                      <pre style="background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 0.85rem; color: #dc3545;">${err.message}</pre>
+                      <p><strong>Dicas de resolução:</strong></p>
+                      <ul style="font-size: 0.9rem;">
+                          <li>Confirma se tens o <strong style="color:var(--primary);">Live Server</strong> ligado no VS Code.</li>
+                          <li>Confirma se tens alguma vírgula esquecida no ficheiro <code>${disciplinaSelect?.value || 'BIA_BIAT'}.json</code> que possa estar a quebrar o código.</li>
+                      </ul>
+                  </article>
+              `;
+          }
+      }
   }
 
   // ======================================================
   // PROGRESSO GLOBAL & ANALYTICS
   // ======================================================
   function updateGlobalProgressUI() {
-    if (!globalProgressText || !fullDatabase.length) return;
+    if (!globalProgressText || !fullDatabase || !fullDatabase.length) return;
     
-    const subjData = globalStorage[currentDisciplina];
+    const subjData = globalStorage[currentDisciplina] || { correct: [], wrong: [] };
     const totalQuestions = fullDatabase.length;
-    const correctCount = subjData.correct.length;
+    const correctCount = subjData.correct ? subjData.correct.length : 0;
     const percentage = Math.min(100, Math.round((correctCount / totalQuestions) * 100));
     
     globalProgressText.textContent = `${correctCount} / ${totalQuestions}`;
@@ -231,14 +243,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (percentage === 100 && globalProgressBarFill) globalProgressBarFill.style.backgroundColor = "var(--success)";
     else if(globalProgressBarFill) globalProgressBarFill.style.backgroundColor = "var(--primary)";
 
-    // Renderizar Analytics por Tema (Radar)
     if (themeAnalyticsContainer) {
         const temasEstatisticas = {};
-        // Conta totais por tema
         fullDatabase.forEach(p => {
+            if(!p.macro_tema) return; 
             if(!temasEstatisticas[p.macro_tema]) temasEstatisticas[p.macro_tema] = { total: 0, certos: 0 };
             temasEstatisticas[p.macro_tema].total++;
-            if (subjData.correct.includes(p.id)) temasEstatisticas[p.macro_tema].certos++;
+            if (subjData.correct && subjData.correct.includes(p.id)) temasEstatisticas[p.macro_tema].certos++;
         });
 
         let htmlRadar = "";
@@ -266,17 +277,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function guardarResultadosNaMemoria() {
       const subjData = globalStorage[currentDisciplina];
+      if(!subjData) return false;
+
       let todosCertos = true;
 
       quizData.forEach((q, i) => {
           const isCorrect = isQuestionCorrect(q, i);
           if (isCorrect) {
-              // Se acertou, adiciona aos certos (se não estiver) e tira dos erros
               if (!subjData.correct.includes(q.id)) subjData.correct.push(q.id);
               subjData.wrong = subjData.wrong.filter(id => id !== q.id);
           } else {
               todosCertos = false;
-              // Se errou, e ainda não domina esta pergunta de forma permanente, adiciona aos erros
               if (!subjData.wrong.includes(q.id) && !subjData.correct.includes(q.id)) {
                   subjData.wrong.push(q.id);
               }
@@ -292,17 +303,21 @@ document.addEventListener("DOMContentLoaded", () => {
   // MODO DICIONÁRIO / CÁBULA
   // ======================================================
   function procurarNoDicionario() {
-      if(!dictSearchInput || !dictResultsContainer || !fullDatabase.length) return;
+      if(!dictSearchInput || !dictResultsContainer || !fullDatabase || !fullDatabase.length) return;
       
       const termo = dictSearchInput.value.toLowerCase().trim();
       if(termo === "") {
-          dictResultsContainer.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted);'>Escreve um termo acima para pesquisar em toda a base de dados desta disciplina.</p>";
+          dictResultsContainer.innerHTML = "<p style='font-size:0.85rem; color:var(--text-muted);'>Escreve um termo acima para pesquisar na base de dados.</p>";
           return;
       }
 
-      // Procura na pergunta, na justificação e nas opções
       const resultados = fullDatabase.filter(p => {
-          const textoCompleto = (p.pergunta + " " + p.justificacao + " " + (p.opcoes?p.opcoes.join(" "):"") + " " + (p.pares?p.pares.map(x=>x.conceito).join(" "):"")).toLowerCase();
+          const textoCompleto = (
+              (p.pergunta || "") + " " + 
+              (p.justificacao || "") + " " + 
+              (p.opcoes ? p.opcoes.join(" ") : "") + " " + 
+              (p.pares ? p.pares.map(x=>x.conceito).join(" ") : "")
+          ).toLowerCase();
           return textoCompleto.includes(termo);
       });
 
@@ -312,10 +327,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       let htmlResultados = "";
-      resultados.slice(0, 10).forEach((res, index) => {
+      resultados.slice(0, 10).forEach((res) => {
           htmlResultados += `
               <div style="border-left: 3px solid var(--primary); padding-left: 10px; margin-bottom: 15px; font-size: 0.85rem;">
-                  <strong style="color:var(--text-main);">${escapeHtml(res.macro_tema.replace(/_/g, ' ').toUpperCase())}</strong><br>
+                  <strong style="color:var(--text-main);">${escapeHtml((res.macro_tema || "TEMA").replace(/_/g, ' ').toUpperCase())}</strong><br>
                   <i style="color:var(--text-muted);">${escapeHtml(res.pergunta)}</i>
                   <p style="margin-top: 5px; color: var(--success); font-weight:600;">${escapeHtml(res.resposta_correta || "Pergunta de Arrastar e Largar")}</p>
                   <p style="margin-top: 5px; background:var(--bg-body); padding:5px; border-radius:3px;">${escapeHtml(res.justificacao)}</p>
@@ -379,7 +394,9 @@ document.addEventListener("DOMContentLoaded", () => {
     return setQuizState("Em progresso");
   }
 
-  function clearTopMessage() { resultadoFinal.innerHTML = ""; }
+  function clearTopMessage() { 
+      if (resultadoFinal) resultadoFinal.innerHTML = ""; // Proteção adicionada
+  }
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
@@ -488,7 +505,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // RENDER QUESTION E DRAG & DROP
   // ======================================================
   function renderCurrentQuestion() {
-    if (!quizData.length) return;
+    if (!quizData.length || !quizContainer) return; // Proteção
 
     const question = quizData[currentQuestionIndex];
     const selectedAnswer = userAnswers[currentQuestionIndex];
@@ -531,13 +548,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         if (quizSubmitted) {
             const card = document.getElementById(`q-card-${currentQuestionIndex}`);
-            card.classList.add(isCorrect ? "correct" : "incorrect");
-
-            card.querySelectorAll(".option-item").forEach(label => {
-                const radioVal = normalizeText(label.querySelector('input').value);
-                if (radioVal === normalizeText(question.resposta_correta)) label.classList.add("option-correct");
-                else if (radioVal === normalizeText(selectedAnswer) && !isCorrect) label.classList.add("option-selected-wrong");
-            });
+            if(card) {
+                card.classList.add(isCorrect ? "correct" : "incorrect");
+                card.querySelectorAll(".option-item").forEach(label => {
+                    const radioVal = normalizeText(label.querySelector('input').value);
+                    if (radioVal === normalizeText(question.resposta_correta)) label.classList.add("option-correct");
+                    else if (radioVal === normalizeText(selectedAnswer) && !isCorrect) label.classList.add("option-selected-wrong");
+                });
+            }
         } else {
             quizContainer.querySelectorAll(`input[type="radio"]`).forEach(radio => {
                 radio.addEventListener("change", (e) => {
@@ -612,6 +630,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setupDragAndDropEvents() {
+      if(!quizContainer) return;
       const items = quizContainer.querySelectorAll('.dnd-item');
       const dropzones = quizContainer.querySelectorAll('.dnd-dropzone');
       const bank = quizContainer.querySelector('#dnd-bank');
@@ -638,10 +657,10 @@ document.addEventListener("DOMContentLoaded", () => {
               
               if (draggedElement) {
                   const existingItem = zone.querySelector('.dnd-item');
-                  if (existingItem && existingItem !== draggedElement) bank.appendChild(existingItem);
+                  if (existingItem && existingItem !== draggedElement && bank) bank.appendChild(existingItem);
                   zone.appendChild(draggedElement);
                   zone.classList.add('has-item');
-                  playDing(); // O SUMO DA ANIMAÇÃO!
+                  playDing(); 
                   saveDragAndDropState();
               }
           });
@@ -665,6 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function saveDragAndDropState() {
+      if(!quizContainer) return;
       const dropzones = quizContainer.querySelectorAll('.dnd-dropzone');
       let currentAnswers = {};
       dropzones.forEach(zone => {
@@ -692,7 +712,6 @@ document.addEventListener("DOMContentLoaded", () => {
     quizSubmitted = true;
     stopTimer();
 
-    // Grava os acertos, erros e vê se tirou 100%
     const todosCertos = guardarResultadosNaMemoria();
 
     let score = 0;
@@ -701,20 +720,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const percentage = ((score / quizData.length) * 100).toFixed(0);
     const notaMoodle = ((score / quizData.length) * 20).toFixed(2);
     
-    // Mostra confettis se tirar 20/20!
     if (percentage == 100) fireConfetti();
 
-    resultadoFinal.innerHTML = `
-      <div class="quiz-final-summary">
+    // Como o HTML do Utilizador não tem a secção "resultado-final", vamos desenhar isto diretamente dentro do quizContainer!
+    let htmlResultado = `
+      <article class="question-card" style="border-left: 6px solid var(--primary); text-align: center;">
         <h2 style="color: var(--primary);">${submissaoAutomatica ? "⏳ Tempo Esgotado" : "📊 Teste Concluído"}</h2>
         <p style="font-size: 1.2rem; margin-bottom: 5px;">Nota Moodle: <strong>${notaMoodle}</strong> / 20,00</p>
         <p>Acertaste <strong>${score}</strong> de <strong>${quizData.length}</strong> perguntas (<strong>${percentage}%</strong>).</p>
         <p style="color: var(--text-muted); font-size: 0.9em; margin-top: 15px;">
           Navega pelas perguntas usando o menu lateral para rever as tuas respostas. <br>
-          As perguntas que erraste foram gravadas no modo <strong>Foco nas Fraquezas</strong>.
+          As perguntas que erraste foram guardadas no modo <strong>Foco nas Fraquezas</strong>.
         </p>
-      </div>
+      </article>
     `;
+
+    // Se o resultado-final existir, usamos. Se não, metemos no topo do quiz-container!
+    if (resultadoFinal) {
+        resultadoFinal.innerHTML = htmlResultado;
+    } else if (quizContainer) {
+        quizContainer.insertAdjacentHTML("afterbegin", htmlResultado);
+    }
 
     if (submeterQuizBtn) submeterQuizBtn.classList.add("hidden");
     if (finishLink) finishLink.style.display = "none";
@@ -757,5 +783,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // INICIAR
   initTheme();
   initScrollTopButton();
-  carregarDisciplinaBase(); // Carrega o JSON da disciplina por defeito logo ao abrir!
+  carregarDisciplinaBase();
 });
