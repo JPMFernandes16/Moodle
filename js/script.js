@@ -137,12 +137,10 @@ document.addEventListener("DOMContentLoaded", () => {
               dictSearchInput.placeholder = `Pesquisar em ${nomeCadeira}...`;
           }
 
-          // --- NOVIDADE: Atualiza o link do PDF ---
           const btnLerResumo = document.getElementById("btnLerResumo");
           if (btnLerResumo) {
               btnLerResumo.href = `pdfs/${currentDisciplina}.pdf`;
           }
-          // ----------------------------------------
 
           updateGlobalProgressUI();
           if(dictSearchInput) procurarNoDicionario();
@@ -174,7 +172,6 @@ document.addEventListener("DOMContentLoaded", () => {
           testeFinal = todasPerguntas.filter(p => wrongIds.includes(p.id));
           if (testeFinal.length === 0) return []; 
           
-          // Calcula o total de perguntas normal do exame para o limite das fraquezas
           let totalNormal = Object.values(configTemas).reduce((a, b) => a + b, 0) || 24;
           if (testeFinal.length > totalNormal) testeFinal = shuffleArray(testeFinal).slice(0, totalNormal);
           else testeFinal = shuffleArray(testeFinal);
@@ -366,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <strong style="color:var(--text-main); display:block; margin-bottom:4px;">${escapeHtml((res.macro_tema || "TEMA").replace(/_/g, ' ').toUpperCase())}</strong>
                   <i style="color:var(--text-muted); display:block; margin-bottom:8px;">${escapeHtml(res.pergunta)}</i>
                   <div style="background: var(--bg-card); padding: 10px; border-radius: 6px; border: 1px solid var(--border);">
-                      <p style="margin: 0 0 8px 0; color: var(--success); font-weight:700;">✅ ${escapeHtml(res.resposta_correta || "Pergunta de Arrastar e Largar")}</p>
+                      <p style="margin: 0 0 8px 0; color: var(--success); font-weight:700;">✅ ${escapeHtml(res.resposta_correta || res.resposta_referencia || "Pergunta de Arrastar e Largar")}</p>
                       <p style="margin: 0; font-size: 0.9rem; line-height: 1.4;">${escapeHtml(res.justificacao)}</p>
                   </div>
               </div>
@@ -385,6 +382,12 @@ document.addEventListener("DOMContentLoaded", () => {
     return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
   function normalizeText(value) { return value === null || value === undefined ? "" : String(value).trim(); }
+  
+  // Função auxiliar para remoção de acentos (usada na correção do open_ended)
+  function removeAcentos(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   function formatTime(totalSeconds) {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
@@ -479,7 +482,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAnswered && !quizSubmitted) className += " is-answered";
       
       if (quizSubmitted) {
-         if (isQuestionCorrect(q, index)) className += " is-correct";
+         const score = getQuestionScore(q, index);
+         if (score === 1) className += " is-correct";
+         else if (score === 0.5) className += " is-partial"; // Podes adicionar um estilo no CSS para is-partial (ex: border-color: orange)
          else className += " is-incorrect";
       }
       return `<button type="button" class="${className}" data-question-index="${index}">${index + 1}</button>`;
@@ -497,18 +502,45 @@ document.addEventListener("DOMContentLoaded", () => {
       return normalizeText(ans) !== "";
   }
 
-  function isQuestionCorrect(question, index) {
+  // ======================================================
+  // SISTEMA DE AVALIAÇÃO INTELIGENTE (SCORE)
+  // ======================================================
+  function getQuestionScore(question, index) {
       const selectedAnswer = userAnswers[index];
-      if (!selectedAnswer) return false;
+      if (selectedAnswer === undefined || selectedAnswer === null) return 0;
+
       if (question.tipo === "drag_and_drop") {
-          if (typeof selectedAnswer !== 'object') return false;
+          if (typeof selectedAnswer !== 'object') return 0;
           for (let p of question.pares) {
-              if (selectedAnswer[p.definicao] !== p.conceito) return false;
+              if (selectedAnswer[p.definicao] !== p.conceito) return 0;
           }
-          return true;
-      } else {
-          return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta);
+          return 1; // Tudo certo
+      } 
+      else if (question.tipo === "open_ended") {
+          const text = removeAcentos(normalizeText(selectedAnswer).toLowerCase());
+          if (text === "") return 0;
+          
+          let gruposAtingidos = 0;
+          // Verifica cada grupo de sinónimos
+          for (let group of question.palavras_chave) {
+              const hasMatch = group.some(word => text.includes(removeAcentos(word.toLowerCase())));
+              if (hasMatch) gruposAtingidos++;
+          }
+          
+          if (gruposAtingidos >= 4) return 1;    // Cotação Total (4 ou 5 grupos)
+          if (gruposAtingidos >= 2) return 0.5;  // Metade da Cotação (2 ou 3 grupos)
+          return 0;                              // Zero (0 ou 1 grupo)
+      } 
+      else {
+          // Múltipla escolha
+          return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta) ? 1 : 0;
       }
+  }
+
+  // Mantido para não quebrar outras dependências de lógicas (ex: progresso local storage)
+  // Considera "Correct" (verde) apenas se teve cotação 100% total
+  function isQuestionCorrect(question, index) {
+      return getQuestionScore(question, index) === 1;
   }
 
   function updateTopIndicators() {
@@ -523,68 +555,119 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // RENDER QUESTION E DRAG & DROP
+  // RENDER QUESTION (INCLUI DRAG & DROP E OPEN ENDED)
   // ======================================================
   function renderCurrentQuestion() {
-    if (!quizData.length || !quizContainer) return;
+      if (!quizData.length || !quizContainer) return;
 
-    const question = quizData[currentQuestionIndex];
-    const selectedAnswer = userAnswers[currentQuestionIndex];
-    const isCorrect = quizSubmitted ? isQuestionCorrect(question, currentQuestionIndex) : null;
+      const question = quizData[currentQuestionIndex];
+      const selectedAnswer = userAnswers[currentQuestionIndex];
+      
+      const score = quizSubmitted ? getQuestionScore(question, currentQuestionIndex) : null;
+      const isCorrect = score === 1;
+      const isPartial = score === 0.5;
 
-    let html = `
-      <article class="question-card ${quizSubmitted && !isCorrect ? 'shake' : ''}" id="q-card-${currentQuestionIndex}">
-        <div class="question-card__meta">
-          <span class="question-card__badge">Q.${currentQuestionIndex + 1}</span>
-          ${question.macro_tema ? `<span class="question-card__topic">${escapeHtml(question.macro_tema.replace(/_/g, ' ').toUpperCase())}</span>` : ""}
-        </div>
-        <h2 class="question-card__title">${escapeHtml(question.pergunta)}</h2>
-    `;
-
-    if (question.tipo === "drag_and_drop") html += renderDragAndDrop(question, selectedAnswer);
-    else html += renderMultipleChoice(question, selectedAnswer || "");
-
-    if (quizSubmitted) {
-      html += `
-          <div class="justification-box">
-            <p class="feedback-status" style="color: ${isCorrect ? 'var(--success)' : 'var(--error)'}">
-              ${isCorrect ? "✅ Resposta Certa!" : "❌ Resposta Errada"}
-            </p>
-            ${question.tipo !== "drag_and_drop" ? `<p><strong>Correta:</strong> ${escapeHtml(question.resposta_correta)}</p>` : ''}
-            <div style="margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px;">
-                <p style="margin:0;"><strong>Justificação:</strong> ${escapeHtml(question.justificacao)}</p>
-            </div>
+      let html = `
+        <article class="question-card ${quizSubmitted && score === 0 ? 'shake' : ''}" id="q-card-${currentQuestionIndex}">
+          <div class="question-card__meta">
+            <span class="question-card__badge">Q.${currentQuestionIndex + 1}</span>
+            ${question.macro_tema ? `<span class="question-card__topic">${escapeHtml(question.macro_tema.replace(/_/g, ' ').toUpperCase())}</span>` : ""}
           </div>
+          <h2 class="question-card__title">${escapeHtml(question.pergunta)}</h2>
       `;
-    }
 
-    html += `</article>`;
-    quizContainer.innerHTML = html;
+      // Renderiza o input com base no tipo
+      if (question.tipo === "drag_and_drop") html += renderDragAndDrop(question, selectedAnswer);
+      else if (question.tipo === "open_ended") html += renderOpenEnded(question, selectedAnswer);
+      else html += renderMultipleChoice(question, selectedAnswer || "");
 
-    if (question.tipo === "drag_and_drop") {
-        if (!quizSubmitted) setupDragAndDropEvents();
-    } else {
-        if (quizSubmitted) {
-            const card = document.getElementById(`q-card-${currentQuestionIndex}`);
-            if(card) {
-                card.classList.add(isCorrect ? "correct" : "incorrect");
-                card.querySelectorAll(".option-item").forEach(label => {
-                    const radioVal = normalizeText(label.querySelector('input').value);
-                    if (radioVal === normalizeText(question.resposta_correta)) label.classList.add("option-correct");
-                    else if (radioVal === normalizeText(selectedAnswer) && !isCorrect) label.classList.add("option-selected-wrong");
-                });
-            }
-        } else {
-            quizContainer.querySelectorAll(`input[type="radio"]`).forEach(radio => {
-                radio.addEventListener("change", (e) => {
-                    userAnswers[currentQuestionIndex] = e.target.value;
-                    updateTopIndicators();
-                    renderQuestionNavigator();
-                    updateQuestionStateLabel();
-                });
-            });
-        }
-    }
+      // Mostra o Feedback se já submetido
+      if (quizSubmitted) {
+          let statusColor = isCorrect ? 'var(--success)' : (isPartial ? 'var(--warning)' : 'var(--error)');
+          let statusText = isCorrect ? '✅ Resposta Certa!' : (isPartial ? '⚠️ Resposta Incompleta (Metade da Cotação)' : '❌ Resposta Errada');
+          
+          html += `
+            <div class="justification-box">
+              <p class="feedback-status" style="color: ${statusColor}; font-weight: bold; margin-bottom: 8px;">
+                ${statusText}
+              </p>
+              ${question.tipo === "open_ended" ? `<p><strong>Resposta de Referência:</strong> ${escapeHtml(question.resposta_referencia)}</p>` : ''}
+              ${question.tipo === "multiple_choice" ? `<p><strong>Correta:</strong> ${escapeHtml(question.resposta_correta)}</p>` : ''}
+              <div style="margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px;">
+                  <p style="margin:0;"><strong>Justificação Técnica:</strong> ${escapeHtml(question.justificacao)}</p>
+              </div>
+            </div>
+          `;
+      }
+
+      html += `</article>`;
+      quizContainer.innerHTML = html;
+
+      // Event Listeners Dinâmicos
+      if (question.tipo === "drag_and_drop") {
+          if (!quizSubmitted) setupDragAndDropEvents();
+      } 
+      else if (question.tipo === "open_ended") {
+          if (!quizSubmitted) {
+              const textarea = quizContainer.querySelector(`#open-ended-${currentQuestionIndex}`);
+              if (textarea) {
+                  textarea.addEventListener("input", (e) => {
+                      userAnswers[currentQuestionIndex] = e.target.value;
+                      updateTopIndicators();
+                      renderQuestionNavigator();
+                      updateQuestionStateLabel();
+                  });
+              }
+          } else {
+              const card = document.getElementById(`q-card-${currentQuestionIndex}`);
+              if(card) {
+                  if (isCorrect) card.classList.add("correct");
+                  else if (isPartial) card.style.borderLeft = "6px solid var(--warning)"; // Styling especial visual
+                  else card.classList.add("incorrect");
+              }
+          }
+      } 
+      else {
+          // Múltipla Escolha Clássica
+          if (quizSubmitted) {
+              const card = document.getElementById(`q-card-${currentQuestionIndex}`);
+              if(card) {
+                  card.classList.add(isCorrect ? "correct" : "incorrect");
+                  card.querySelectorAll(".option-item").forEach(label => {
+                      const radioVal = normalizeText(label.querySelector('input').value);
+                      if (radioVal === normalizeText(question.resposta_correta)) label.classList.add("option-correct");
+                      else if (radioVal === normalizeText(selectedAnswer) && !isCorrect) label.classList.add("option-selected-wrong");
+                  });
+              }
+          } else {
+              quizContainer.querySelectorAll(`input[type="radio"]`).forEach(radio => {
+                  radio.addEventListener("change", (e) => {
+                      userAnswers[currentQuestionIndex] = e.target.value;
+                      updateTopIndicators();
+                      renderQuestionNavigator();
+                      updateQuestionStateLabel();
+                  });
+              });
+          }
+      }
+  }
+
+  function renderOpenEnded(question, selectedAnswer) {
+      return `
+        <div class="open-ended-group">
+          <textarea 
+              id="open-ended-${currentQuestionIndex}"
+              class="open-ended-input"
+              placeholder="Escreve a tua resposta de forma corrida..."
+              rows="6"
+              style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-main); font-family: inherit; font-size: 1rem; resize: vertical;"
+              ${quizSubmitted ? "disabled" : ""}
+          >${escapeHtml(selectedAnswer || "")}</textarea>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">
+             💡 Dica: Utiliza vocabulário técnico. O sistema inteligente vai procurar pelas palavras-chave centrais do conceito.
+          </p>
+        </div>
+      `;
   }
 
   function renderMultipleChoice(question, selectedAnswer) {
@@ -722,74 +805,71 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // CORREÇÃO E CÁLCULO DE PENALIZAÇÃO
+  // CORREÇÃO E CÁLCULO DE PENALIZAÇÃO (NOVO MODELO)
   // ======================================================
   function verificarRespostas(submissaoAutomatica = false) {
-    if (!quizLoaded || quizSubmitted) return;
+      if (!quizLoaded || quizSubmitted) return;
 
-    quizSubmitted = true;
-    stopTimer();
+      quizSubmitted = true;
+      stopTimer();
 
-    guardarResultadosNaMemoria();
+      guardarResultadosNaMemoria();
 
-    let acertos = 0;
-    let errosComPenalizacao = 0;
-    let respondidas = 0;
+      let pontuacaoPonderada = 0; // Pode ter decimais (ex: 0.5) nas abertas
+      let errosComPenalizacao = 0;
+      let respondidas = 0;
 
-    quizData.forEach((q, i) => { 
-        const isCorrect = isQuestionCorrect(q, i);
-        const ans = userAnswers[i];
-        
-        // Verifica se o aluno respondeu a esta pergunta (ou preencheu o drag and drop)
-        const hasAnswer = ans !== undefined && ans !== null && ans !== "" && (typeof ans !== 'object' || Object.keys(ans).length > 0);
+      quizData.forEach((q, i) => { 
+          const ans = userAnswers[i];
+          const hasAnswer = ans !== undefined && ans !== null && ans !== "" && (typeof ans !== 'object' || Object.keys(ans).length > 0);
 
-        if (isCorrect) {
-            acertos++;
-            respondidas++;
-        } else if (hasAnswer) {
-            errosComPenalizacao++; // Só penaliza se tentou responder e errou
-            respondidas++;
-        }
-    });
+          if (hasAnswer) {
+              respondidas++;
+              const score = getQuestionScore(q, i);
+              pontuacaoPonderada += score;
+              
+              // Só há penalização em erros totais (score 0). As meias cotações (0.5) não ativam o desconto por erro.
+              if (score === 0) {
+                  errosComPenalizacao++; 
+              }
+          }
+      });
 
-    // CÁLCULO DE NOTA COM NEGATIVAS
-    const valorPorPergunta = 20 / quizData.length;
-    let notaCalculada = (acertos * valorPorPergunta) - (errosComPenalizacao * valorPorPergunta * penalizacaoPorErro);
-    if (notaCalculada < 0) notaCalculada = 0; // A nota não pode ser abaixo de 0
+      // CÁLCULO DE NOTA MOODLE
+      const valorPorPergunta = 20 / quizData.length;
+      let notaCalculada = (pontuacaoPonderada * valorPorPergunta) - (errosComPenalizacao * valorPorPergunta * penalizacaoPorErro);
+      if (notaCalculada < 0) notaCalculada = 0; // A nota mínima é 0
 
-    const notaMoodle = notaCalculada.toFixed(2);
-    
-    // Mostra confettis se nota final for 20!
-    if (notaCalculada >= 19.99) fireConfetti();
+      const notaMoodle = notaCalculada.toFixed(2);
+      
+      if (notaCalculada >= 19.99) fireConfetti();
 
-    let msgPenalizacao = penalizacaoPorErro > 0 
-        ? `<p style="font-size: 0.85rem; color: var(--error); margin-top: 5px;">(Sofreste penalização de ${(penalizacaoPorErro * 100).toFixed(0)}% por cada um dos teus ${errosComPenalizacao} erros)</p>` 
-        : ``;
+      let msgPenalizacao = penalizacaoPorErro > 0 
+          ? `<p style="font-size: 0.85rem; color: var(--error); margin-top: 5px;">(Desconto aplicado de ${(penalizacaoPorErro * 100).toFixed(0)}% por cada um dos teus ${errosComPenalizacao} erros totais)</p>` 
+          : ``;
 
-    let htmlResultado = `
-      <div class="quiz-final-summary">
-        <h2 style="margin-bottom: 5px;">${submissaoAutomatica ? "⏳ Tempo Esgotado" : "📊 Exame Concluído"}</h2>
-        <p style="font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; color: white;">Nota: ${notaMoodle} / 20</p>
-        <p style="font-size: 1rem; margin-bottom: 0;">Acertaste <strong>${acertos}</strong>, erraste <strong>${errosComPenalizacao}</strong> e deixaste <strong>${quizData.length - respondidas}</strong> em branco.</p>
-        ${msgPenalizacao}
-      </div>
-    `;
+      let htmlResultado = `
+        <div class="quiz-final-summary">
+          <h2 style="margin-bottom: 5px;">${submissaoAutomatica ? "⏳ Tempo Esgotado" : "📊 Exame Concluído"}</h2>
+          <p style="font-size: 1.5rem; font-weight: 800; margin-bottom: 5px; color: white;">Nota: ${notaMoodle} / 20</p>
+          <p style="font-size: 1rem; margin-bottom: 0;">Obtiveste a pontuação de <strong>${pontuacaoPonderada}</strong> em ${quizData.length} pontos possíveis. Erraste totalmente <strong>${errosComPenalizacao}</strong> e deixaste <strong>${quizData.length - respondidas}</strong> em branco.</p>
+          ${msgPenalizacao}
+        </div>
+      `;
 
-    if (quizContainer) {
-        // Remover a pergunta atual do ecrã e mostrar os resultados no topo
-        quizContainer.innerHTML = "";
-        quizContainer.insertAdjacentHTML("afterbegin", htmlResultado);
-    }
+      if (quizContainer) {
+          quizContainer.innerHTML = "";
+          quizContainer.insertAdjacentHTML("afterbegin", htmlResultado);
+      }
 
-    if (submeterQuizBtn) submeterQuizBtn.classList.add("hidden");
-    if (finishLink) finishLink.classList.add("hidden");
+      if (submeterQuizBtn) submeterQuizBtn.classList.add("hidden");
+      if (finishLink) finishLink.classList.add("hidden");
 
-    // Forçamos a renderização na primeira pergunta para o aluno começar a rever os erros
-    currentQuestionIndex = 0;
-    renderQuestionNavigator(); 
-    renderCurrentQuestion();   
-    updateQuestionStateLabel();
-    scrollToTopSmooth();
+      currentQuestionIndex = 0;
+      renderQuestionNavigator(); 
+      renderCurrentQuestion();   
+      updateQuestionStateLabel();
+      scrollToTopSmooth();
   }
 
   // ======================================================

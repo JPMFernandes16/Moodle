@@ -1,3 +1,4 @@
+
 {
   "disciplina": "BIA - Applications & Tools",
   "opcoes_exame": {
@@ -13,1754 +14,953 @@
   },
   "perguntas": [
     {
-      "id": 1,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "conceitos_base",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal diferença entre os dados e o petróleo (oil), segundo a metáfora abordada na aula?",
-      "opcoes": [
+        "id": 1,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "conceitos_base",
+        "tipo": "multiple_choice",
+        "pergunta": "Qual é a principal diferença entre os dados e o petróleo (oil), segundo a metáfora abordada na aula?",
+        "opcoes": [
+        "Os dados exigem infraestruturas físicas muito mais caras para a sua extração inicial do que o petróleo.",
+        "O petróleo perde valor à medida que é refinado, enquanto os dados ganham valor com o processamento analítico.",
         "Os dados são infinitos, replicáveis e distribuídos a baixo custo, enquanto o petróleo é finito e exige transporte físico.",
-        "Os dados são mais difíceis de extrair que o petróleo e geram menos impacto económico.",
-        "O petróleo pode ser usado sem refinamento, enquanto os dados precisam sempre de algoritmos complexos.",
-        "Não existe diferença, ambos dependem inteiramente de infraestruturas físicas como oleodutos e data centers para gerar valor."
-      ],
-      "resposta_correta": "Os dados são infinitos, replicáveis e distribuídos a baixo custo, enquanto o petróleo é finito e exige transporte físico.",
-      "justificacao": "Ao contrário do petróleo, que é um recurso finito e exige transporte físico, os dados são abundantes, infinitos e podem ser partilhados globalmente num instante."
+        "Não existe diferença técnica, ambos são recursos finitos que sofrem escassez mediante o aumento da procura global."
+        ],
+        "resposta_correta": "Os dados são infinitos, replicáveis e distribuídos a baixo custo, enquanto o petróleo é finito e exige transporte físico.",
+        "justificacao": "Ao contrário do petróleo, que é um recurso finito e exige transporte físico, os dados são abundantes, infinitos e podem ser partilhados globalmente num instante."
     },
     {
-      "id": 2,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "conceitos_base",
-      "tipo": "true_false",
-      "pergunta": "A atual revolução da Inteligência Artificial é impulsionada unicamente pela enorme quantidade de dados disponíveis na cloud.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A revolução da IA é impulsionada pela combinação de uma explosão massiva de dados com o aumento drástico do poder de computação (GPUs)."
-    },
-    {
-      "id": 3,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "O que significa o acrónimo 'MAD' no contexto da tomada de decisão?",
-      "opcoes": [
-        "Make, Analyze, Deliver",
-        "Measure, Analyse, Decide",
-        "Manage, Automate, Deploy",
-        "Model, Assess, Distribute"
-      ],
-      "resposta_correta": "Measure, Analyse, Decide",
-      "justificacao": "MAD significa Measure, Analyse, Decide (Medir, Analisar, Decidir). É o princípio de basear decisões em evidências concretas e não em suposições."
-    },
-    {
-      "id": 4,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "Um dos grandes inimigos de uma cultura Data-Driven é o 'HiPPO'. A que se refere este termo?",
-      "opcoes": [
-        "Highly Integrated Predictive Performance Output.",
-        "A tendência de olhar apenas para dados passados e ignorar o futuro.",
+        "id": 4,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "Um dos grandes inimigos de uma cultura Data-Driven é o 'HiPPO'. A que se refere este termo?",
+        "opcoes": [
+        "Historical Performance and Predictive Optimization (Otimização Preditiva e Desempenho Histórico).",
+        "A tendência cognitiva de ignorar outliers estatísticos (dados anómalos) durante a fase de modelação.",
         "Highest Paid Person's Opinion (A opinião da pessoa mais bem paga da sala).",
-        "Hidden Patterns and Predictive Outliers."
-      ],
-      "resposta_correta": "Highest Paid Person's Opinion (A opinião da pessoa mais bem paga da sala).",
-      "justificacao": "HiPPO é uma sigla para Highest Paid Person's Opinion. Uma verdadeira cultura de dados foca-se nas evidências e não na intuição de quem tem o cargo mais alto."
+        "Heuristic Information Processing for Prescriptive Operations (Processamento Heurístico para Operações Prescritivas)."
+        ],
+        "resposta_correta": "Highest Paid Person's Opinion (A opinião da pessoa mais bem paga da sala).",
+        "justificacao": "HiPPO é uma sigla para Highest Paid Person's Opinion. Uma verdadeira cultura de dados foca-se nas evidências e não na intuição de quem tem o cargo mais alto."
     },
     {
-      "id": 5,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "true_false",
-      "pergunta": "Ser 'Data-Driven' significa seguir cegamente o que os dados indicam, eliminando a necessidade de raciocínio humano ou experiência de negócio.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "'Fé Cega' nos dados é um erro. Os dados não substituem a experiência, eles apoiam e fortalecem-na. O raciocínio crítico humano e o contexto continuam a ser essenciais."
-    },
-    {
-      "id": 6,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "Dentro dos pilares de uma Cultura de Dados, o que defende o princípio 'Goals First'?",
-      "opcoes": [
-        "A equipa deve primeiro recolher toda a informação possível e só depois ver o que pode descobrir.",
-        "Deve-se investir na tecnologia mais recente antes de pensar na estratégia.",
-        "Os objetivos de negócio devem ser definidos primeiro, procurando-se depois os dados/ferramentas para os atingir.",
-        "O principal objetivo de uma empresa deve ser sempre a venda e os dados devem justificar isso."
-      ],
-      "resposta_correta": "Os objetivos de negócio devem ser definidos primeiro, procurando-se depois os dados/ferramentas para os atingir.",
-      "justificacao": "A abordagem 'Goals First' garante que a análise de dados tem uma direção clara e está alinhada com a estratégia da organização."
-    },
-    {
-      "id": 7,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "Como é descrita a falácia do 'Unicórnio' na gestão de equipas de dados?",
-      "opcoes": [
-        "A ideia de que uma startup de mil milhões (unicórnio) não precisa de dados.",
+        "id": 7,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "Como é descrita a falácia do 'Unicórnio' na gestão de equipas de dados?",
+        "opcoes": [
+        "A ilusão de que a implementação de uma arquitetura Data Lakehouse resolve automaticamente os problemas de governação.",
         "A crença de que uma única pessoa domina perfeitamente todas as áreas técnicas e de negócio necessárias.",
-        "A ilusão de que a Inteligência Artificial pode substituir todos os analistas.",
-        "A expectativa de que os dados vão resolver todos os problemas da empresa como por magia."
-      ],
-      "resposta_correta": "A crença de que uma única pessoa domina perfeitamente todas as áreas técnicas e de negócio necessárias.",
-      "justificacao": "Nenhum indivíduo é um unicórnio que domina todas as áreas. O sucesso depende de uma equipa multidisciplinar."
+        "A expectativa irrealista de que os modelos de Inteligência Artificial operem com 100% de precisão desde o primeiro dia.",
+        "A ideia de que uma startup tecnológica necessita de mil milhões de pontos de dados para começar a gerar valor."
+        ],
+        "resposta_correta": "A crença de que uma única pessoa domina perfeitamente todas as áreas técnicas e de negócio necessárias.",
+        "justificacao": "Nenhum indivíduo é um unicórnio que domina todas as áreas. O sucesso depende de uma equipa multidisciplinar."
     },
     {
-      "id": 8,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual dos seguintes tipos de análise responde à questão 'O que aconteceu?'",
-      "opcoes": [
-        "Análise Prescritiva",
-        "Análise Preditiva",
-        "Análise Diagnóstica",
-        "Análise Descritiva"
-      ],
-      "resposta_correta": "Análise Descritiva",
-      "justificacao": "A Análise Descritiva olha para o passado através de dados históricos (ex: dashboards, relatórios de vendas) para resumir o que aconteceu."
-    },
-    {
-      "id": 9,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Estás a analisar uma queda acentuada nas vendas do último mês. Para descobrir a causa raiz desse problema, que tipo de Analytics deves utilizar?",
-      "opcoes": [
-        "Análise Descritiva",
-        "Análise Preditiva",
-        "Análise Diagnóstica",
-        "Análise Prescritiva"
-      ],
-      "resposta_correta": "Análise Diagnóstica",
-      "justificacao": "A Análise Diagnóstica vai além do 'o quê' e investiga o 'porquê', focando-se na causa raiz e em correlações."
-    },
-    {
-      "id": 10,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "true_false",
-      "pergunta": "Na Análise Diagnóstica, se identificarmos uma forte correlação entre duas variáveis, isso significa automaticamente que uma causa a outra (Correlação = Causalidade).",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Correlação não implica causalidade. Exemplo: Vendas de gelados e afogamentos sobem ambos no verão, mas comprar gelados não causa afogamentos (é o calor)."
-    },
-    {
-      "id": 11,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "A Análise Preditiva é frequentemente associada a que ferramentas e métodos?",
-      "opcoes": [
-        "Modelos de otimização e árvores de decisão para simular cenários futuros.",
+        "id": 11,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "A Análise Preditiva é frequentemente associada a que ferramentas e métodos?",
+        "opcoes": [
+        "Otimização linear, simulação de Monte Carlo e recomendação dinâmica de rotas.",
         "Modelos estatísticos, regressão, forecasting de séries temporais e Machine Learning.",
-        "Criação de dashboards básicos de KPIs e relatórios padronizados.",
-        "Apenas intuição de negócio e experiência de gestão."
-      ],
-      "resposta_correta": "Modelos estatísticos, regressão, forecasting de séries temporais e Machine Learning.",
-      "justificacao": "A Análise Preditiva usa padrões do passado, modelos estatísticos e IA para prever a probabilidade de eventos futuros."
+        "Criação de dashboards interativos em tempo real baseados em consultas SQL avançadas.",
+        "Identificação das causas raízes de quebras de vendas através de análise de variância (ANOVA)."
+        ],
+        "resposta_correta": "Modelos estatísticos, regressão, forecasting de séries temporais e Machine Learning.",
+        "justificacao": "A Análise Preditiva usa padrões do passado, modelos estatísticos e IA para prever a probabilidade de eventos futuros. A otimização pertence à Prescritiva; Dashboards à Descritiva; e análise de causa raiz à Diagnóstica."
     },
     {
-      "id": 12,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal função da Análise Prescritiva?",
-      "opcoes": [
-        "Avisar sobre o que correu mal no último trimestre.",
-        "Prever tendências futuras com base em dados históricos.",
-        "Simular cenários e recomendar qual a melhor ação a tomar para otimizar um resultado.",
-        "Armazenar e limpar grandes volumes de dados (ETL)."
-      ],
-      "resposta_correta": "Simular cenários e recomendar qual a melhor ação a tomar para otimizar um resultado.",
-      "justificacao": "A Análise Prescritiva é o nível mais avançado. Responde à pergunta 'O que devemos fazer?', recomendando ações ideais."
-    },
-    {
-      "id": 13,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "true_false",
-      "pergunta": "A Análise Preditiva garante com 100% de certeza o que vai acontecer no futuro.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A Análise Preditiva prevê probabilidades, não garantias absolutas. O futuro pode sempre alterar-se devido a imprevistos (ex: uma pandemia ou guerra)."
-    },
-    {
-      "id": 14,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "o_analista",
-      "tipo": "multiple_choice",
-      "pergunta": "Na Cadeia de Valor da Analítica (Data Value Chain), qual é a transição correta para que os dados se transformem em impacto real?",
-      "opcoes": [
-        "Action -> Value -> Data -> Information -> Analysis",
-        "Data -> Information -> Analysis -> Action -> Value",
-        "Analysis -> Data -> Action -> Information -> Value",
-        "Information -> Analysis -> Value -> Action -> Data"
-      ],
-      "resposta_correta": "Data -> Information -> Analysis -> Action -> Value",
-      "justificacao": "Os dados brutos passam a informação, que é analisada. Essa análise dita uma ação, e é apenas essa ação executada que gera verdadeiro Valor para a empresa."
-    },
-    {
-      "id": 15,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "o_analista",
-      "tipo": "true_false",
-      "pergunta": "Na cadeia de valor dos dados, se uma análise profunda for feita mas não gerar nenhuma Ação (Action), ela ainda assim extrai Valor (Value) para a organização.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Sem Ação não há Valor! Uma excelente análise guardada numa gaveta sem influenciar decisões é um desperdício de recursos."
-    },
-    {
-      "id": 16,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "o_analista",
-      "tipo": "multiple_choice",
-      "pergunta": "Um excelente analista de dados precisa de ser 'Business Savvy'. O que é que isto significa na prática?",
-      "opcoes": [
-        "Saber focar-se inteiramente na escrita de código complexo e arquiteturas de Machine Learning, ignorando a gestão.",
+        "id": 16,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "o_analista",
+        "tipo": "multiple_choice",
+        "pergunta": "Um excelente analista de dados precisa de ser 'Business Savvy'. O que é que isto significa na prática?",
+        "opcoes": [
+        "Dominar todas as linguagens de programação e arquiteturas para não depender da equipa de Engenharia de Dados.",
         "Ter a capacidade de compreender o contexto do negócio, traduzir dados para os gestores e focar-se no impacto estratégico.",
-        "Ter a habilidade de vender relatórios aos clientes como se fosse do departamento comercial.",
-        "Significa que o analista tem obrigatoriamente um MBA em Finanças."
-      ],
-      "resposta_correta": "Ter a capacidade de compreender o contexto do negócio, traduzir dados para os gestores e focar-se no impacto estratégico.",
-      "justificacao": "Ser 'Business Savvy' significa entender o negócio a fundo, fazer as perguntas certas e ser o tradutor entre o mundo técnico e as decisões da gestão."
+        "Priorizar sempre a intuição da gestão de topo (HiPPO) em detrimento do que os modelos estatísticos indicam.",
+        "Focar-se exclusivamente na otimização técnica dos modelos matemáticos para garantir a precisão máxima."
+        ],
+        "resposta_correta": "Ter a capacidade de compreender o contexto do negócio, traduzir dados para os gestores e focar-se no impacto estratégico.",
+        "justificacao": "Ser 'Business Savvy' significa entender o negócio a fundo, fazer as perguntas certas e ser o tradutor entre o mundo técnico e as decisões da gestão."
     },
     {
-      "id": 17,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "O que caracteriza uma cultura de 'Open/Sharing' dentro de uma organização Data-Driven?",
-      "opcoes": [
-        "A existência de vários silos de dados mantidos em segredo por diferentes departamentos.",
-        "A partilha total do código-fonte dos algoritmos com empresas concorrentes.",
-        "O fim dos silos de dados, juntando informações de várias fontes para dar contexto às análises.",
-        "A publicação de dados sensíveis de clientes nas redes sociais."
-      ],
-      "resposta_correta": "O fim dos silos de dados, juntando informações de várias fontes para dar contexto às análises.",
-      "justificacao": "Juntar e partilhar dados entre departamentos destrói silos de informação, permitindo cruzar dados e obter insights muito mais ricos e contextuais."
-    },
-    {
-      "id": 18,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "Em relação à cultura de testes (Testing), qual é a mentalidade correta numa empresa Data-Driven?",
-      "opcoes": [
-        "Evitar testes ao máximo para poupar recursos técnicos.",
-        "Testar hipóteses através de experimentação contínua e não ter medo de falhar rápido.",
-        "Testar apenas as ideias vindas da administração superior (HiPPO).",
-        "Fazer testes apenas em laboratório fechado sem feedback dos utilizadores reais."
-      ],
-      "resposta_correta": "Testar hipóteses através de experimentação contínua e não ter medo de falhar rápido.",
-      "justificacao": "Uma forte cultura de testes abraça a inovação por via de experiências. Geram-se hipóteses, mede-se o resultado e se falhar, aprende-se e muda-se de rumo (pivot/persevere)."
-    },
-    {
-      "id": 19,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "conceitos_base",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual destas afirmações sobre o impacto económico dos dados (Digital Economy) é falsa?",
-      "opcoes": [
-        "Empresas data-centric como a Google e Amazon estão entre as mais valiosas do mundo.",
-        "O uso maciço de dados trouxe grandes desafios éticos e de privacidade, como a criação do RGPD.",
-        "A tomada de decisões baseada em dados permite otimizar operações e antecipar comportamentos de clientes.",
-        "Apenas o setor tecnológico de software (IT) consegue retirar proveito da exploração de dados."
-      ],
-      "resposta_correta": "Apenas o setor tecnológico de software (IT) consegue retirar proveito da exploração de dados.",
-      "justificacao": "Falso. Todos os setores beneficiam! Desde a saúde (prevenção), passando pela agricultura (agricultura de precisão), até à manufatura, finanças e retalho."
-    },
-    {
-      "id": 20,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "De acordo com os 8 pilares de uma Cultura Data-Driven, o que é a 'Literacia de Dados' (Broad Data Literacy)?",
-      "opcoes": [
-        "A exigência de que todos os funcionários saibam programar em Python ou SQL.",
-        "A capacidade da equipa em ler, compreender e comunicar com recurso a dados de forma eficaz.",
-        "Um certificado internacional que a empresa tem de comprar anualmente.",
-        "Apenas a capacidade de ler um gráfico num PowerPoint."
-      ],
-      "resposta_correta": "A capacidade da equipa em ler, compreender e comunicar com recurso a dados de forma eficaz.",
-      "justificacao": "A literacia de dados significa que as pessoas se sentem confortáveis a falar a 'linguagem dos dados', interpretando insights corretamente para os seus papéis específicos."
-    },
-    {
-      "id": 21,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Se uma empresa utiliza um algoritmo para rever as suas rotas de entrega diariamente e indicar aos motoristas o trajeto que gasta menos combustível mediante o trânsito atual, que análise está a usar?",
-      "opcoes": [
-        "Descritiva",
-        "Diagnóstica",
-        "Preditiva",
-        "Prescritiva"
-      ],
-      "resposta_correta": "Prescritiva",
-      "justificacao": "Como a IA não só prevê o trânsito, mas otimiza a decisão ao recomendar a ação exata a tomar (o melhor percurso), trata-se de Análise Prescritiva."
-    },
-    {
-      "id": 22,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "o_analista",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual das seguintes NÃO é uma característica esperada num analista de dados excelente?",
-      "opcoes": [
-        "Ceticismo em relação a anomalias nos dados.",
-        "Capacidade de comunicação clara.",
-        "A tendência para trabalhar isolado das necessidades da equipa de marketing ou vendas.",
-        "Uma mente curiosa e que questiona o porquê das coisas."
-      ],
-      "resposta_correta": "A tendência para trabalhar isolado das necessidades da equipa de marketing ou vendas.",
-      "justificacao": "Um grande analista atua de forma interativa com o negócio. Trabalhar isolado impede o alinhamento com a estratégia da empresa e os resultados práticos."
-    },
-    {
-      "id": 23,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "cultura_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "Como deves lidar com o grau de incerteza ao comunicar uma previsão analítica à administração?",
-      "opcoes": [
-        "Omitir a incerteza para parecer que a equipa tem o controlo total da situação.",
-        "Fornecer um número fixo (ex: 'vamos vender 10 mil') e rezar para que as surpresas não afetem a previsão.",
-        "Comunicar a incerteza de forma transparente, apresentando intervalos de probabilidade e cenários diferentes.",
-        "Evitar fazer previsões de todo, reportando apenas análises descritivas."
-      ],
-      "resposta_correta": "Comunicar a incerteza de forma transparente, apresentando intervalos de probabilidade e cenários diferentes.",
-      "justificacao": "A comunicação clara da incerteza constrói confiança. Dizer 'há 70% de hipótese de vendermos entre 9 mil e 11 mil' é muito mais robusto e útil para o planeamento do que uma promessa falsa."
-    },
-    {
-      "id": 24,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Para extrair o máximo valor dos dados, as organizações tendem a mover-se num espectro de dificuldade e valor. Qual é a ordem crescente de dificuldade e valor na Analítica?",
-      "opcoes": [
-        "Preditiva -> Descritiva -> Prescritiva -> Diagnóstica",
-        "Descritiva -> Preditiva -> Diagnóstica -> Prescritiva",
-        "Descritiva -> Diagnóstica -> Preditiva -> Prescritiva",
-        "Prescritiva -> Preditiva -> Diagnóstica -> Descritiva"
-      ],
-      "resposta_correta": "Descritiva -> Diagnóstica -> Preditiva -> Prescritiva",
-      "justificacao": "Começa-se pela Descritiva (O que aconteceu?), depois Diagnóstica (Porquê?), passa-se para a Preditiva (O que vai acontecer?) e o topo do valor e dificuldade é a Prescritiva (O que fazer?)."
-    },
-    {
-      "id": 25,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "conceitos_base",
-      "tipo": "multiple_choice",
-      "pergunta": "O que tenta provar o conceito de 'Data Leadership' (Liderança em Dados) numa organização?",
-      "opcoes": [
-        "Que apenas o CEO tem autorização para ver dados reais.",
-        "Que a mudança cultural precisa de influência 'top-down' (líderes) que evangelizem os dados, e 'bottom-up' (empregados) que melhorem as suas skills.",
-        "Que as empresas precisam de contratar um líder exclusivamente focado em apagar dados que já não servem.",
-        "Que todas as decisões têm de passar obrigatoriamente por uma reunião administrativa com a liderança do departamento de TI."
-      ],
-      "resposta_correta": "Que a mudança cultural precisa de influência 'top-down' (líderes) que evangelizem os dados, e 'bottom-up' (empregados) que melhorem as suas skills.",
-      "justificacao": "A liderança serve como catalisadora de mudança. Precisa de criar o orçamento, cultura e espaço para a inovação baseada em dados, exigindo compromisso desde a gestão até à base."
-    },
-    {
-      "id": 26,
-      "macro_tema": "data_driven_transformation",
-      "tema": "transformacao_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "O que define o conceito de 'Data-Driven Decision Making' (DDDM)?",
-      "opcoes": [
-        "A compra de dashboards caros para a administração justificar decisões já tomadas.",
-        "O uso sistemático da análise de dados para fazer escolhas estratégicas, substituindo a intuição.",
-        "A delegação de todas as decisões da empresa para algoritmos de Inteligência Artificial.",
-        "A recolha massiva de dados dos clientes sem um objetivo claro de negócio."
-      ],
-      "resposta_correta": "O uso sistemático da análise de dados para fazer escolhas estratégicas, substituindo a intuição.",
-      "justificacao": "DDDM significa tomar decisões (estratégicas e operacionais) com base em evidências e análises de dados, em vez de depender de palpites ou intuição humana."
-    },
-    {
-      "id": 27,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "multiple_choice",
-      "pergunta": "No modelo de Evolução da Cultura de Dados, qual é o exemplo clássico de uma empresa no Estágio 1 (Data Denial)?",
-      "opcoes": [
-        "Uma startup tecnológica que usa apenas o Google Analytics.",
-        "A Amazon, que usa dados para otimizar toda a sua logística.",
-        "Pequenos negócios familiares tradicionais que confiam apenas na intuição e na sua reputação local.",
-        "A Blockbuster no início dos anos 2000."
-      ],
-      "resposta_correta": "Pequenos negócios familiares tradicionais que confiam apenas na intuição e na sua reputação local.",
-      "justificacao": "No estágio de 'Negação' (Data Denial), a empresa ignora os dados e baseia-se exclusivamente noutras fontes de conhecimento, como a experiência, tradição e intuição."
-    },
-    {
-      "id": 28,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "true_false",
-      "pergunta": "A Blockbuster faliu porque estava no estágio de 'Data Denial' (Negação), ou seja, não guardava absolutamente nenhuns dados sobre os alugueres dos clientes.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A Blockbuster estava no estágio 2 (Data Indifference). Eles recolhiam dados sobre os alugueres para registo, mas NÃO os utilizavam para decisões estratégicas (como prever o streaming), o que os levou à ruína."
-    },
-    {
-      "id": 29,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal diferença entre uma empresa 'Data Aware' (Consciente) e uma empresa 'Data Informed' (Informada)?",
-      "opcoes": [
-        "A 'Data Aware' usa os dados para todas as decisões; a 'Data Informed' usa-os apenas no marketing.",
-        "A 'Data Aware' recolhe dados mas não os usa nas decisões de negócio; a 'Data Informed' já os usa como apoio, misturando-os com intuição.",
-        "A 'Data Informed' ignora completamente a intuição humana; a 'Data Aware' não.",
-        "Não existe diferença, são sinónimos na evolução da cultura de dados."
-      ],
-      "resposta_correta": "A 'Data Aware' recolhe dados mas não os usa nas decisões de negócio; a 'Data Informed' já os usa como apoio, misturando-os com intuição.",
-      "justificacao": "No estágio 'Aware', os dados existem mas não têm impacto prático. No 'Informed', os dados já começam a influenciar a tomada de decisão, embora ainda haja peso da intuição."
-    },
-    {
-      "id": 30,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "multiple_choice",
-      "pergunta": "A Netflix, Amazon e Google estão em que estágio da evolução da cultura de dados?",
-      "opcoes": [
-        "Data Aware",
-        "Data Indifference",
-        "Data Informed",
-        "Data Driven"
-      ],
-      "resposta_correta": "Data Driven",
-      "justificacao": "Estão no Estágio 5 (Data Driven). Estas empresas implementam uma abordagem baseada em dados em absolutamente todas as áreas possíveis, sendo a sua principal fonte de conhecimento."
-    },
-    {
-      "id": 31,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é um dos principais objetivos de uma boa Estratégia de Infraestrutura de Dados?",
-      "opcoes": [
-        "Garantir que a informação certa chega aos sistemas certos na hora certa, evitando os 'silos de dados'.",
-        "Criar o máximo de cópias de dados possíveis para evitar que se percam.",
-        "Garantir que todos os dados da empresa são públicos na internet.",
-        "Substituir todos os analistas humanos por algoritmos preditivos."
-      ],
-      "resposta_correta": "Garantir que a informação certa chega aos sistemas certos na hora certa, evitando os 'silos de dados'.",
-      "justificacao": "Uma infraestrutura sólida visa manter o fluxo, garantir a qualidade, minimizar cópias desnecessárias e impedir que a informação fique isolada em departamentos (silos)."
-    },
-    {
-      "id": 32,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "true_false",
-      "pergunta": "A mudança de Data Centers locais (On-premises) para ambientes de nuvem híbrida (Hybrid/Multi-cloud) tornou a gestão da Infraestrutura de Dados muito mais simples e com menos desafios.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A mudança para a Cloud Híbrida/Edge aumentou imenso a complexidade. Gerir fluxos de dados distribuídos por múltiplos locais exige infraestruturas e governança muito mais robustas."
-    },
-    {
-      "id": 33,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "Se uma empresa precisa de um sistema focado em relatórios históricos (BI), com dados altamente estruturados e processados, mas tem um orçamento elevado, que arquitetura deve escolher?",
-      "opcoes": [
-        "Data Lake",
-        "Data Warehouse",
-        "Landing Zone",
-        "Blockchain"
-      ],
-      "resposta_correta": "Data Warehouse",
-      "justificacao": "O Data Warehouse é desenhado para dados estruturados (schema pré-definido) que já foram processados via ETL. É ideal para BI, mas os seus custos de armazenamento são altos."
-    },
-    {
-      "id": 34,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal vantagem de um 'Data Lake' em relação a um 'Data Warehouse'?",
-      "opcoes": [
-        "Garante que os dados estão perfeitamente limpos e organizados numa tabela.",
-        "Custa muito mais caro, mas oferece gráficos mais bonitos.",
+        "id": 34,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "infraestrutura_armazenamento",
+        "tipo": "multiple_choice",
+        "pergunta": "Qual é a principal vantagem de um 'Data Lake' em relação a um 'Data Warehouse'?",
+        "opcoes": [
+        "Impõe um esquema altamente estruturado à entrada (schema-on-write), garantindo maior qualidade inicial dos dados.",
+        "É otimizado especificamente para relatórios transacionais rápidos e dashboards operacionais da gestão de topo.",
         "Guarda dados brutos (raw) no seu formato original (estruturados e não-estruturados), sendo ideal e económico para análise exploratória.",
-        "Apenas permite a entrada de dados numéricos."
-      ],
-      "resposta_correta": "Guarda dados brutos (raw) no seu formato original (estruturados e não-estruturados), sendo ideal e económico para análise exploratória.",
-      "justificacao": "Os Data Lakes resolvem o problema do custo e da rigidez do Warehouse, aceitando qualquer tipo de dados (textos, imagens, logs), o que é vital para Data Scientists explorarem padrões."
+        "Dispensa completamente processos de governação de dados e segurança, visto atuar apenas como um repositório temporário."
+        ],
+        "resposta_correta": "Guarda dados brutos (raw) no seu formato original (estruturados e não-estruturados), sendo ideal e económico para análise exploratória.",
+        "justificacao": "Os Data Lakes resolvem o problema do custo e da rigidez do Warehouse, aceitando qualquer tipo de dados (textos, imagens, logs), o que é vital para Data Scientists explorarem padrões."
     },
     {
-      "id": 35,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "Porque é que o 'Data Lakehouse' é considerado a arquitetura ideal para integrar Inteligência Artificial e Machine Learning?",
-      "opcoes": [
-        "Porque elimina a necessidade de programadores.",
-        "Porque junta a flexibilidade e baixo custo de armazenamento do Lake com as estruturas e governação do Warehouse, tudo no mesmo ambiente.",
-        "Porque converte instantaneamente dados não-estruturados em dashboards do Excel.",
-        "Porque é a única arquitetura que permite trabalhar sem ligação à internet."
-      ],
-      "resposta_correta": "Porque junta a flexibilidade e baixo custo de armazenamento do Lake com as estruturas e governação do Warehouse, tudo no mesmo ambiente.",
-      "justificacao": "O Lakehouse une o melhor dos dois mundos. Evita ter os dados de IA (no Lake) separados dos dados de BI (no Warehouse), criando uma plataforma unificada."
+        "id": 40,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "Qual é a vantagem da 'Cost Efficiency' (Eficiência de Custos) ao integrar IA num Data Lakehouse em vez de usar arquiteturas antigas?",
+        "opcoes": [
+        "Elimina a necessidade de armazenamento na Cloud, permitindo processamento computacional inteiramente na memória local (Edge).",
+        "Reduz a necessidade de ter ambientes separados para guardar dados e processar modelos, baixando os custos de gestão e duplicação.",
+        "Substitui os dispendiosos Data Warehouses por bases de dados NoSQL transacionais que dispensam manutenção técnica.",
+        "Reduz o custo operacional ao automatizar 100% da limpeza de dados (ETL) através de algoritmos pré-treinados na camada Bronze."
+        ],
+        "resposta_correta": "Reduz a necessidade de ter ambientes separados para guardar dados e processar modelos, baixando os custos de gestão e duplicação.",
+        "justificacao": "Arquiteturas tradicionais obrigavam a duplicar dados e manter dois sistemas distintos (um para BI, outro para ML). O Lakehouse unifica o armazenamento e o treino de modelos num só local."
     },
     {
-      "id": 36,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "Na arquitetura de zonas de um Lakehouse (Medallion Architecture), o que acontece na zona 'Bronze' (Landing Zone)?",
-      "opcoes": [
-        "Os dados são agregados a nível de negócio para serem consumidos em relatórios.",
-        "Os dados são limpos, filtrados e melhorados.",
-        "Ocorre a ingestão de dados na sua forma mais bruta (raw), sem qualquer alteração.",
-        "Os modelos de Machine Learning são treinados e avaliados."
-      ],
-      "resposta_correta": "Ocorre a ingestão de dados na sua forma mais bruta (raw), sem qualquer alteração.",
-      "justificacao": "A camada Bronze serve como repositório de aterragem (Landing). Os dados chegam exatamente como saíram dos sistemas de origem, garantindo que não se perde nenhuma informação original."
-    },
-    {
-      "id": 37,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "Um analista de BI está a criar um Dashboard executivo com os KPIs de faturação do trimestre. A que zona do Lakehouse ele deve ir buscar os dados?",
-      "opcoes": [
-        "Bronze Zone",
-        "Silver Zone",
-        "Gold Zone",
-        "Landing Zone"
-      ],
-      "resposta_correta": "Gold Zone",
-      "justificacao": "A zona Gold (Curated Zone) contém dados agregados, de alta qualidade e prontos para consumo por áreas de negócio, relatórios (BI) e aplicações analíticas."
-    },
-    {
-      "id": 38,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "true_false",
-      "pergunta": "Na arquitetura de um Lakehouse, à medida que os dados avançam da camada Bronze para a camada Gold, a qualidade dos dados diminui.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "É exatamente o oposto! A jornada de Bronze -> Silver -> Gold representa um aumento progressivo na Qualidade dos Dados (limpeza, padronização e agregação)."
-    },
-    {
-      "id": 39,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "Se uma empresa de retalho pretender utilizar modelos de 'Natural Language Processing' (NLP) dentro do seu Data Lakehouse, qual será a sua principal aplicação?",
-      "opcoes": [
-        "Detetar anomalias em transações com cartões de crédito.",
-        "Analisar dados não-estruturados, como o sentimento nos comentários e avaliações escritas pelos clientes.",
-        "Prever quando uma máquina no armazém vai avariar.",
-        "Otimizar as rotas de entrega dos camiões."
-      ],
-      "resposta_correta": "Analisar dados não-estruturados, como o sentimento nos comentários e avaliações escritas pelos clientes.",
-      "justificacao": "NLP (Processamento de Linguagem Natural) é a vertente da IA especializada em interpretar e analisar texto e linguagem humana."
-    },
-    {
-      "id": 40,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a vantagem da 'Cost Efficiency' (Eficiência de Custos) ao integrar IA num Data Lakehouse em vez de arquiteturas antigas?",
-      "opcoes": [
-        "A IA deixa de precisar de eletricidade para correr.",
-        "Reduz a necessidade de ter ambientes separados para guardar dados e processar modelos, baixando os custos de gestão.",
-        "Permite à empresa parar de pagar os salários dos Data Scientists.",
-        "Transforma dados em criptomoedas para financiar a infraestrutura."
-      ],
-      "resposta_correta": "Reduz a necessidade de ter ambientes separados para guardar dados e processar modelos, baixando os custos de gestão.",
-      "justificacao": "Arquiteturas tradicionais obrigavam a duplicar dados e manter dois sistemas distintos (um para BI, outro para ML). O Lakehouse unifica o armazenamento e o treino de modelos num só local."
-    },
-    {
-      "id": 41,
-      "macro_tema": "data_driven_transformation",
-      "tema": "transformacao_dados",
-      "tipo": "true_false",
-      "pergunta": "A Transformação Orientada a Dados (Data-Driven Transformation) melhora a eficiência operacional, mas não tem qualquer impacto na experiência do cliente (Customer Experience).",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A transformação afeta a organização em várias frentes: eficiência, inovação e, claro, na Experiência do Cliente (ex: personalização extrema como a da Netflix ou Amazon)."
-    },
-    {
-      "id": 42,
-      "macro_tema": "data_driven_transformation",
-      "tema": "transformacao_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "No roteiro (roadmap) para uma organização se tornar Data-Driven, qual deve ser, idealmente, o primeiro passo?",
-      "opcoes": [
-        "Promover a literacia de dados entre os funcionários.",
-        "Comprar o Data Warehouse mais caro do mercado.",
-        "Definir objetivos alinhados com as prioridades organizacionais (Set data-driven goals).",
-        "Começar a construir modelos de Machine Learning."
-      ],
-      "resposta_correta": "Definir objetivos alinhados com as prioridades organizacionais (Set data-driven goals).",
-      "justificacao": "O roteiro começa sempre por 'Set data-driven goals'. Sem alinhar os objetivos de dados às prioridades do negócio, qualquer esforço tecnológico será inútil (princípio do Goals First)."
-    },
-    {
-      "id": 43,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "No pipeline de Analítica de Dados de ponta a ponta, qual é a ordem correta das etapas macro?",
-      "opcoes": [
-        "Analyze -> Store -> Process -> Capture -> Use",
-        "Capture -> Process -> Store -> Analyze -> Use",
-        "Process -> Capture -> Analyze -> Store -> Use",
-        "Store -> Capture -> Use -> Analyze -> Process"
-      ],
-      "resposta_correta": "Capture -> Process -> Store -> Analyze -> Use",
-      "justificacao": "Primeiro ingere-se a informação (Capture), depois trata-se o fluxo (Process), guarda-se na infraestrutura (Store), tira-se o insight (Analyze) e por fim aplica-se ao negócio (Use)."
-    },
-    {
-      "id": 44,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "A manutenção preditiva na indústria manufatureira é um excelente caso de uso de IA integrada na infraestrutura de dados. O que faz exatamente?",
-      "opcoes": [
-        "Agenda férias automáticas para os operadores das máquinas.",
-        "Produz relatórios anuais sobre quantas vezes a máquina falhou no passado.",
+        "id": 44,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "A manutenção preditiva na indústria manufatureira é um excelente caso de uso de IA integrada na infraestrutura de dados. O que faz exatamente?",
+        "opcoes": [
+        "Cruza dados de produção com escalas de recursos humanos para identificar falhas de operação manual antes que afetem as máquinas.",
+        "Produz relatórios de diagnóstico automáticos que identificam retroativamente qual foi o componente exato que causou a última paragem.",
         "Analisa dados de sensores das máquinas em tempo real para prever falhas antes que elas aconteçam, minimizando o tempo de paragem.",
-        "Lê emails de reclamações dos clientes sobre produtos com defeito."
-      ],
-      "resposta_correta": "Analisa dados de sensores das máquinas em tempo real para prever falhas antes que elas aconteçam, minimizando o tempo de paragem.",
-      "justificacao": "Usar IA em Lakehouses para manutenção preditiva permite analisar fluxos contínuos de dados IoT (sensores) e prever quando o equipamento vai ceder, permitindo reparações proativas."
+        "Utiliza modelos prescritivos para desligar automaticamente toda a linha de montagem ao detetar oscilações térmicas no armazém."
+        ],
+        "resposta_correta": "Analisa dados de sensores das máquinas em tempo real para prever falhas antes que elas aconteçam, minimizando o tempo de paragem.",
+        "justificacao": "Usar IA em Lakehouses para manutenção preditiva permite analisar fluxos contínuos de dados IoT (sensores) e prever quando o equipamento vai ceder, permitindo reparações proativas."
     },
     {
-      "id": 45,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "No conceito de Lakehouse, o que é a zona 'Silver' (Staging Zone)?",
-      "opcoes": [
-        "O repositório onde os dados já não servem e são arquivados para sempre.",
-        "A zona de visualização de relatórios finais e PDFs.",
-        "Onde ocorre a ingestão sem qualquer filtro.",
-        "O local onde os dados brutos são filtrados, limpos e melhorados/aumentados."
-      ],
-      "resposta_correta": "O local onde os dados brutos são filtrados, limpos e melhorados/aumentados.",
-      "justificacao": "A camada Silver atua como um 'staging' onde a qualidade dos dados é garantida. Aqui os dados já sofreram limpeza, normalização e estão preparados para cruzamentos ou análises intermédias."
-    },
-    {
-      "id": 46,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "true_false",
-      "pergunta": "Uma empresa no estágio 'Data Indifference' recolhe dados, tem bases de dados cheias, mas os gestores não olham para lá na hora de decidir o rumo do negócio.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "No estágio de indiferença, os dados são recolhidos (muitas vezes por obrigação fiscal ou de registo), mas são totalmente ignorados quando é preciso tomar decisões."
-    },
-    {
-      "id": 47,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "A plataforma de dados do Spotify processa 1.4 Biliões de pontos de dados diariamente. Qual o resultado principal em termos de negócio desta infraestrutura colossal?",
-      "opcoes": [
-        "Poupar dinheiro na compra de servidores.",
-        "Gerar personalização extrema para o utilizador, experimentação contínua e insights analíticos que se traduzem em Retenção e Valor ($).",
-        "Apenas garantir que o software não vai abaixo durante os concertos.",
-        "Vender dados de utilizadores a terceiros ilegalmente."
-      ],
-      "resposta_correta": "Gerar personalização extrema para o utilizador, experimentação contínua e insights analíticos que se traduzem em Retenção e Valor ($).",
-      "justificacao": "No diagrama da plataforma do Spotify, o funil da infraestrutura converte os triliões de dados num 'Value' ($) através da Personalização e das Recomendações precisas que retêm o cliente."
-    },
-    {
-      "id": 48,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "multiple_choice",
-      "pergunta": "O que significa 'Continuous Learning' (Aprendizagem Contínua) quando falamos de modelos de IA num Data Lakehouse?",
-      "opcoes": [
-        "Os colaboradores da empresa têm de fazer cursos online constantemente.",
-        "Os modelos de IA são treinados uma vez e trancados para nunca mais mudarem.",
-        "Os modelos adaptam-se automaticamente a novos padrões de dados à medida que nova informação entra no sistema.",
-        "A infraestrutura necessita de reiniciar todos os dias à meia-noite."
-      ],
-      "resposta_correta": "Os modelos adaptam-se automaticamente a novos padrões de dados à medida que nova informação entra no sistema.",
-      "justificacao": "Como o Lakehouse recebe dados em tempo real/contínuo, os modelos de ML podem consumir essa nova informação para recalibrar as suas previsões, tornando-se mais inteligentes com o tempo."
-    },
-    {
-      "id": 49,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "multiple_choice",
-      "pergunta": "Um EHR (Electronic Health Record) é um exemplo prático de infraestrutura de dados na saúde. Qual destas NÃO é uma vantagem da sua utilização?",
-      "opcoes": [
-        "Aumento da produtividade administrativa.",
-        "Promoção de decisões clínicas mais embasadas.",
-        "Isolamento da informação do paciente num silo intocável.",
-        "Redução de custos operacionais hospitalares."
-      ],
-      "resposta_correta": "Isolamento da informação do paciente num silo intocável.",
-      "justificacao": "O objetivo de um EHR é precisamente evitar os silos! Ele visa uma comunicação mais eficaz e a partilha segura dos dados do doente entre departamentos para uma melhor prestação de cuidados."
-    },
-    {
-      "id": 50,
-      "macro_tema": "data_driven_transformation",
-      "tema": "transformacao_dados",
-      "tipo": "multiple_choice",
-      "pergunta": "No contexto da transformação organizacional, um dos passos é garantir o 'Leadership Support'. Porque é que o suporte de topo (executivos) é tão crítico?",
-      "opcoes": [
-        "Para que eles possam programar as bases de dados pessoalmente.",
+        "id": 50,
+        "macro_tema": "data_driven_transformation",
+        "tema": "transformacao_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "No contexto da transformação organizacional, um dos passos é garantir o 'Leadership Support'. Porque é que o suporte de topo (executivos) é tão crítico?",
+        "opcoes": [
+        "Porque a adoção de infraestruturas complexas como Lakehouses requer validação técnica exclusiva do conselho de administração.",
+        "Para assegurar que a equipa de Data Science tem total autonomia e independência técnica em relação às regras de negócio diárias.",
         "Porque sem influência, mandato e orçamento vindos do topo, é quase impossível impor uma mudança cultural profunda na empresa.",
-        "Apenas por razões de marketing, para aparecerem em revistas da especialidade.",
-        "Porque os líderes são sempre os únicos que percebem de estatística."
-      ],
-      "resposta_correta": "Porque sem influência, mandato e orçamento vindos do topo, é quase impossível impor uma mudança cultural profunda na empresa.",
-      "justificacao": "Segundo o Economist Intelligence Unit (citado na aula), a estratégia mais bem sucedida para fomentar uma cultura de dados é o 'Top-down guidance/mandates'. Sem líderes a empurrar a estratégia e a dar o exemplo, a cultura não muda."
+        "Porque os líderes devem aprovar e validar pessoalmente o rigor estatístico de todos os modelos preditivos antes de passarem a produção."
+        ],
+        "resposta_correta": "Porque sem influência, mandato e orçamento vindos do topo, é quase impossível impor uma mudança cultural profunda na empresa.",
+        "justificacao": "A estratégia mais bem sucedida para fomentar uma cultura de dados é o 'Top-down guidance/mandates'. Sem líderes a empurrar a estratégia e a dar o exemplo, a cultura não muda."
     },
     {
-      "id": 51,
-      "macro_tema": "business_analytics",
-      "tema": "bi_vs_ba",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal diferença de foco entre Business Intelligence (BI) e Business Analytics (BA)?",
-      "opcoes": [
-        "O BI usa Machine Learning, enquanto o BA usa apenas o Microsoft Excel.",
-        "O BI está focado em analisar o passado e o presente (o que aconteceu?), enquanto o BA está focado no futuro, prevendo resultados e prescrevendo ações.",
-        "Não existe diferença, são apenas termos de marketing para vender software.",
-        "O BA foca-se apenas na contabilidade e finanças, enquanto o BI foca-se nos recursos humanos."
-      ],
-      "resposta_correta": "O BI está focado em analisar o passado e o presente (o que aconteceu?), enquanto o BA está focado no futuro, prevendo resultados e prescrevendo ações.",
-      "justificacao": "Business Intelligence (BI) resume dados históricos (reporting, dashboards), enquanto Business Analytics (BA) usa estatística avançada e data mining para prever e otimizar o futuro."
+        "id": 63,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "papeis_lideranca",
+        "tipo": "multiple_choice",
+        "pergunta": "Nas grandes empresas data-driven, qual é a diferença fundamental entre as responsabilidades do Chief Data Officer (CDO) e do Chief Analytics Officer (CAO)?",
+        "opcoes": [
+        "O CDO atua sobretudo na vertente de hardware de infraestrutura, enquanto o CAO foca-se no desenvolvimento de software e dashboards.",
+        "O CDO foca-se na governança, estratégia e gestão dos ativos de dados (segurança/qualidade), enquanto o CAO foca-se em extrair insights e guiar decisões a partir desses dados.",
+        "O CDO foca-se na análise descritiva e diagnóstica (o que aconteceu), enquanto o CAO foca-se estritamente na preditiva e prescritiva (futuro).",
+        "O CDO reporta exclusivamente ao departamento de TI, enquanto o CAO atua de forma autónoma lidando diretamente com o cliente final (B2C)."
+        ],
+        "resposta_correta": "O CDO foca-se na governança, estratégia e gestão dos ativos de dados (segurança/qualidade), enquanto o CAO foca-se em extrair insights e guiar decisões a partir desses dados.",
+        "justificacao": "O CDO constrói e protege a infraestrutura/governança (o 'armazém' de dados). O CAO é quem pega nesses dados limpos e gera modelos preditivos e valor para o negócio."
     },
     {
-      "id": 52,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "true_false",
-      "pergunta": "É correto afirmar que todas as métricas recolhidas por uma empresa são KPIs (Key Performance Indicators).",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Regra de ouro: 'Todos os KPIs são métricas, mas nem todas as métricas são KPIs'. Uma métrica só é um KPI se estiver diretamente ligada ao desempenho e aos objetivos estratégicos do negócio."
-    },
-    {
-      "id": 53,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "O GPS do teu carro não só prevê que vais apanhar trânsito, como recomenda ativamente que saias na próxima saída para poupar 15 minutos. Que tipo de Analytics está a ser utilizado?",
-      "opcoes": [
-        "Análise Preditiva",
-        "Análise Prescritiva",
-        "Análise Descritiva",
-        "Análise Diagnóstica"
-      ],
-      "resposta_correta": "Análise Prescritiva",
-      "justificacao": "Ao recomendar ativamente a melhor ação a tomar (o desvio) para otimizar um resultado (poupar tempo), o sistema entra no domínio da Análise Prescritiva."
-    },
-    {
-      "id": 54,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual das seguintes opções define melhor o propósito de um KBI (Key Business Indicator)?",
-      "opcoes": [
-        "Monitorizar e prever puramente a saúde financeira da empresa.",
-        "Servir como sinal de alerta precoce para potenciais riscos operacionais.",
-        "Avaliar exclusivamente a satisfação do cliente com o produto.",
-        "Medir o número de horas que os colaboradores passam em reuniões."
-      ],
-      "resposta_correta": "Monitorizar e prever puramente a saúde financeira da empresa.",
-      "justificacao": "Os KBIs são indicadores primariamente financeiros que ajudam a entender e melhorar o desempenho económico da empresa (ex: Margem de Lucro, Custo de Aquisição de Cliente)."
-    },
-    {
-      "id": 55,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "A Taxa de Rotação de Colaboradores (Employee Turnover Rate), especialmente em posições críticas, é classicamente classificada como que tipo de métrica?",
-      "opcoes": [
-        "KPI (Key Performance Indicator)",
-        "KBI (Key Business Indicator)",
-        "KRI (Key Risk Indicator)",
-        "ROI (Return on Investment)"
-      ],
-      "resposta_correta": "KRI (Key Risk Indicator)",
-      "justificacao": "Uma alta rotação de pessoal crítico é um sinal de alerta precoce (Risk Indicator) para potenciais riscos de continuidade, perda de conhecimento e problemas de gestão."
-    },
-    {
-      "id": 56,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "O Custo de Aquisição de Cliente (CAC) e o Valor do Tempo de Vida do Cliente (CLV) são fundamentais para medir a sustentabilidade de uma empresa. A que categoria pertencem?",
-      "opcoes": [
-        "KRIs",
-        "KBIs",
-        "KPIs",
-        "SLAs"
-      ],
-      "resposta_correta": "KBIs",
-      "justificacao": "Sendo métricas que lidam diretamente com o custo (dinheiro gasto em marketing/vendas) e o valor financeiro gerado pelo cliente ao longo do tempo, são KBIs (foco financeiro)."
-    },
-    {
-      "id": 57,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "A métrica 'Dias de Vendas Pendentes' (DSO - Days Sales Outstanding) mede o tempo médio que a empresa demora a receber pagamentos. O aumento deste número é um alerta para um problema de liquidez, sendo considerado um:",
-      "opcoes": [
-        "KRI (Key Risk Indicator)",
-        "KBI (Key Business Indicator)",
-        "KPI (Key Performance Indicator)",
-        "Nenhuma das anteriores"
-      ],
-      "resposta_correta": "KRI (Key Risk Indicator)",
-      "justificacao": "Como foca na gestão proativa de riscos (risco de falta de liquidez ou incobrabilidade), o DSO é um excelente exemplo de um KRI financeiro."
-    },
-    {
-      "id": 58,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal utilidade de introduzir métricas padrão da indústria (Industry-standard metrics) na tua organização?",
-      "opcoes": [
-        "Garantir que a equipa de TI tem trabalho a criar novos relatórios.",
-        "Permitir o 'Benchmarking', ou seja, comparar o desempenho da empresa com outras empresas que operam no mesmo setor.",
-        "Impedir que os concorrentes saibam como a empresa opera.",
-        "Reduzir a velocidade de processamento dos dados."
-      ],
-      "resposta_correta": "Permitir o 'Benchmarking', ou seja, comparar o desempenho da empresa com outras empresas que operam no mesmo setor.",
-      "justificacao": "Usar métricas padronizadas pela indústria permite que faças benchmarking: saber se o teu desempenho é bom ou mau em comparação direta com a tua concorrência."
-    },
-    {
-      "id": 59,
-      "macro_tema": "business_analytics",
-      "tema": "ba_vs_bigdata",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal diferença na natureza dos dados analisados em Business Analytics (BA) vs Big Data Analytics?",
-      "opcoes": [
-        "Business Analytics analisa posts de redes sociais, enquanto Big Data analisa apenas folhas de Excel.",
-        "Business Analytics lida maioritariamente com dados estruturados (BDs, CRM), enquanto Big Data lida com dados massivos, complexos e não-estruturados (sensores, vídeo, texto).",
-        "Business Analytics requer servidores na Cloud, enquanto Big Data pode ser feito num smartphone.",
-        "Não há diferença, são sinónimos na literatura de gestão."
-      ],
-      "resposta_correta": "Business Analytics lida maioritariamente com dados estruturados (BDs, CRM), enquanto Big Data lida com dados massivos, complexos e não-estruturados (sensores, vídeo, texto).",
-      "justificacao": "O BA clássico usa dados estruturados e ferramentas como SQL. O Big Data trata dos dados gerados a alta velocidade e variedade (IoT, redes sociais), exigindo frameworks como Hadoop ou Spark."
-    },
-    {
-      "id": 60,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "big_data",
-      "tipo": "multiple_choice",
-      "pergunta": "No contexto dos 5 V's do Big Data, o que representa a 'Variedade'?",
-      "opcoes": [
-        "A rapidez com que os dados chegam aos servidores.",
-        "A quantidade de lucro gerada a partir dos dados.",
-        "O facto de os dados provirem de vários formatos além de tabelas, como vídeo, áudio, JSON e texto livre.",
-        "A confiança e qualidade na limpeza dos dados."
-      ],
-      "resposta_correta": "O facto de os dados provirem de vários formatos além de tabelas, como vídeo, áudio, JSON e texto livre.",
-      "justificacao": "A Variedade refere-se aos múltiplos formatos de dados não-estruturados ou semi-estruturados que hoje existem, indo muito além das tradicionais linhas e colunas."
-    },
-    {
-      "id": 61,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "big_data",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual dos 5 V's do Big Data está relacionado com a capacidade de verificar, validar e confiar na qualidade da informação (Data reliability and trust)?",
-      "opcoes": [
-        "Volume",
-        "Velocidade",
-        "Veracidade",
-        "Valor"
-      ],
-      "resposta_correta": "Veracidade",
-      "justificacao": "Veracidade (Veracity) diz respeito à confiabilidade dos dados. Sem limpar e confiar nos dados, qualquer modelo preditivo irá falhar ('garbage in, garbage out')."
-    },
-    {
-      "id": 62,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "big_data",
-      "tipo": "true_false",
-      "pergunta": "Se uma empresa dominar o Volume, a Velocidade, a Variedade e a Veracidade dos seus dados, o 'Valor' (Value) surge automaticamente sem esforço.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "O 'Valor' não surge por magia. Os outros 4 V's são inúteis se a empresa não conseguir traduzir todo esse esforço técnico em insights úteis e lucros para o negócio (Actionable Insights)."
-    },
-    {
-      "id": 63,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "papeis_lideranca",
-      "tipo": "multiple_choice",
-      "pergunta": "Nas grandes empresas data-driven, qual é a diferença fundamental entre as responsabilidades do Chief Data Officer (CDO) e do Chief Analytics Officer (CAO)?",
-      "opcoes": [
-        "O CDO apenas gere redes sociais, enquanto o CAO programa os servidores.",
-        "O CDO foca-se na governança, estratégia e gestão dos ativos de dados (data security/quality), enquanto o CAO foca-se em extrair insights e guiar decisões a partir desses dados.",
-        "O CDO é o CEO disfarçado, o CAO é o estagiário de TI.",
-        "Não existe diferença, ambas as siglas referem-se à mesma pessoa na C-Suite."
-      ],
-      "resposta_correta": "O CDO foca-se na governança, estratégia e gestão dos ativos de dados (data security/quality), enquanto o CAO foca-se em extrair insights e guiar decisões a partir desses dados.",
-      "justificacao": "O CDO constrói e protege a infraestrutura/governança (o 'armazém' de dados). O CAO é quem pega nesses dados limpos e gera modelos preditivos e valor para o negócio."
-    },
-    {
-      "id": 64,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "papeis_lideranca",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a responsabilidade central de um Chief Digital Officer em contraste com um Chief Data Officer?",
-      "opcoes": [
-        "Gerir a firewall da empresa.",
-        "Orquestrar a transformação digital da organização (marketing, e-commerce, novos modelos de negócio digitais).",
-        "Reduzir o peso do compliance e a carga regulatória do RGPD.",
-        "Criar relatórios no Excel para a administração."
-      ],
-      "resposta_correta": "Orquestrar a transformação digital da organização (marketing, e-commerce, novos modelos de negócio digitais).",
-      "justificacao": "O Chief Digital Officer lidera a mudança do modelo de negócio para o digital (visão de negócio e adoção tecnológica), cruzando-se com o Chief Data Officer na utilização de dados para inovar."
-    },
-    {
-      "id": 65,
-      "macro_tema": "business_analytics",
-      "tema": "evolucao_ba",
-      "tipo": "multiple_choice",
-      "pergunta": "Segundo a linha temporal da evolução do Business Analytics, o que aconteceu na década de 1980 a 2000?",
-      "opcoes": [
-        "Surgiu a Inteligência Artificial Generativa.",
-        "Nasceram os primeiros computadores a válvulas.",
-        "Ocorreu a ascensão do Data Warehousing e do Business Intelligence (BI), permitindo centralizar grandes volumes de dados.",
-        "Surgiram as ferramentas de Self-Service Analytics como o Power BI."
-      ],
-      "resposta_correta": "Ocorreu a ascensão do Data Warehousing e do Business Intelligence (BI), permitindo centralizar grandes volumes de dados.",
-      "justificacao": "Foi entre os anos 80 e 2000 que os Data Warehouses se popularizaram, seguidos pelo desenvolvimento de técnicas como data mining e relatórios de BI nos anos 90."
-    },
-    {
-      "id": 66,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "A Taxa de Crescimento de Receita (Revenue Growth Rate) e a Quota de Mercado (Market Share) são clássicos exemplos de:",
-      "opcoes": [
-        "KRIs",
-        "KPIs",
-        "SLAs",
-        "KBIs"
-      ],
-      "resposta_correta": "KPIs",
-      "justificacao": "São Key Performance Indicators (KPIs) porque focam no desempenho geral, no sucesso direto do negócio e no posicionamento estratégico perante a concorrência."
-    },
-    {
-      "id": 67,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "true_false",
-      "pergunta": "Uma simples análise SWOT (Forças, Fraquezas, Oportunidades, Ameaças) enquadra-se essencialmente na fase da Análise Descritiva/Diagnóstica, pois ajuda a explicar variâncias e observar o estado atual.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "Correto. Uma análise SWOT resume factos históricos e a situação atual da empresa (Descritiva) e ajuda a diagnosticar o porquê de certas fraquezas ou forças existirem (Diagnóstica)."
-    },
-    {
-      "id": 68,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Para passar de 'Hindsight' (visão do passado) para 'Foresight' (previsão do futuro), a análise de dados transita de Descritiva para:",
-      "opcoes": [
-        "Preditiva",
-        "Diagnóstica",
-        "Exploratória",
-        "Estatística básica"
-      ],
-      "resposta_correta": "Preditiva",
-      "justificacao": "Hindsight diz respeito à Análise Descritiva. Insight liga-se à Diagnóstica. E Foresight (visão de futuro) é o objetivo da Análise Preditiva e Prescritiva."
-    },
-    {
-      "id": 69,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "A Taxa de Incidentes de Cibersegurança mede a frequência de violações de dados ou tentativas de acesso não autorizado. Classifica esta métrica.",
-      "opcoes": [
-        "KPI",
-        "KBI",
-        "KRI",
-        "SEO"
-      ],
-      "resposta_correta": "KRI",
-      "justificacao": "Trata-se de um KRI (Key Risk Indicator), pois foca num risco extremo para a continuidade de negócio, conformidade regulatória e reputação da empresa."
-    },
-    {
-      "id": 70,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "multiple_choice",
-      "pergunta": "O Índice de Satisfação do Cliente (CSI), normalmente obtido através de inquéritos e ratings, é uma métrica centrada no cliente classificada como:",
-      "opcoes": [
-        "KRI",
-        "KBI",
-        "KPI",
-        "DSO"
-      ],
-      "resposta_correta": "KPI",
-      "justificacao": "O CSI é um KPI porque fornece uma visão estratégica do desempenho e sucesso da empresa em reter o cliente a longo prazo e manter a sua proposta de valor."
-    },
-    {
-      "id": 71,
-      "macro_tema": "business_analytics",
-      "tema": "evolucao_ba",
-      "tipo": "true_false",
-      "pergunta": "O termo 'Self-Service Analytics', onde utilizadores não técnicos (como gestores) podem criar os seus próprios relatórios sem pedir apoio ao departamento de TI, surgiu essencialmente na década de 1970.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "O Self-Service Analytics (com ferramentas como o Tableau e o Power BI) explodiu no final da década de 2000 (Late 2000s) e início de 2010."
-    },
-    {
-      "id": 72,
-      "macro_tema": "business_analytics",
-      "tema": "tipos_analytics",
-      "tipo": "multiple_choice",
-      "pergunta": "Quando um algoritmo de Machine Learning analisa centenas de milhares de registos para prever que clientes têm maior probabilidade de cancelar a sua subscrição (Churn), estamos a utilizar:",
-      "opcoes": [
-        "Análise Descritiva",
-        "Análise Preditiva",
-        "Análise Prescritiva",
-        "Data Warehousing"
-      ],
-      "resposta_correta": "Análise Preditiva",
-      "justificacao": "O objetivo é prever um comportamento ou evento futuro (quem vai cancelar). Identificar padrões para estimar probabilidades futuras é o coração da Análise Preditiva."
-    },
-    {
-      "id": 73,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "papeis_lideranca",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual destes profissionais na C-Suite é classicamente o responsável por garantir a 'compliance' (conformidade legal), a segurança e a qualidade técnica dos dados empresariais?",
-      "opcoes": [
-        "Chief Analytics Officer (CAO)",
-        "Chief Digital Officer",
-        "Chief Data Officer (CDO)",
-        "Chief Executive Officer (CEO)"
-      ],
-      "resposta_correta": "Chief Data Officer (CDO)",
-      "justificacao": "A responsabilidade primária de um CDO inclui Enterprise Information Management (EIM), governação de dados, segurança, compliance e redução de riscos regulatórios."
-    },
-    {
-      "id": 74,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "big_data",
-      "tipo": "multiple_choice",
-      "pergunta": "No contexto da Big Data, o que significa a 'Velocidade' (Velocity)?",
-      "opcoes": [
-        "A taxa de rotação dos colaboradores na equipa de dados.",
-        "A rapidez com que as métricas são lidas pelo CEO.",
-        "A velocidade extrema a que os dados são gerados, recolhidos e processados em tempo real (ex: streams de sensores IoT).",
-        "A velocidade da ligação de internet num escritório."
-      ],
-      "resposta_correta": "A velocidade extrema a que os dados são gerados, recolhidos e processados em tempo real (ex: streams de sensores IoT).",
-      "justificacao": "Velocity diz respeito à rapidez com que os dados emanam de fontes diversas (como redes sociais ou sensores de IoT) e à necessidade de os processar quase em tempo real."
-    },
-    {
-      "id": 75,
-      "macro_tema": "business_analytics",
-      "tema": "bi_vs_ba",
-      "tipo": "multiple_choice",
-      "pergunta": "Um painel (dashboard) no Power BI que mostra os produtos mais vendidos da última semana em cada distrito do país é um exemplo puro de:",
-      "opcoes": [
-        "Business Intelligence (Análise Descritiva)",
-        "Business Analytics (Análise Prescritiva)",
-        "Big Data Analytics (Velocidade)",
-        "Machine Learning"
-      ],
-      "resposta_correta": "Business Intelligence (Análise Descritiva)",
-      "justificacao": "Está a responder à pergunta 'O que aconteceu?' reportando dados históricos num formato visual. Isto é o pilar clássico de Business Intelligence."
-    },
-    {
-      "id": 76,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_base",
-      "tipo": "multiple_choice",
-      "pergunta": "O que significa a sigla CRISP-DM e qual a sua principal função?",
-      "opcoes": [
-        "Creative Retrieval of Information System Process; serve para programar bases de dados.",
+        "id": 76,
+        "macro_tema": "crisp_dm",
+        "tema": "crisp_dm_base",
+        "tipo": "multiple_choice",
+        "pergunta": "O que significa a sigla CRISP-DM e qual a sua principal função?",
+        "opcoes": [
+        "Continuous Reporting and Intelligence System Process; define as regras de atualização de dashboards de BI em tempo real.",
+        "Categorical Research in Statistical Projects; é uma framework desenhada para normalizar testes de hipóteses em projetos de Big Data.",
         "CRoss-Industry Standard Process for Data Mining; fornece uma abordagem estruturada e padronizada para planear projetos de mineração de dados.",
-        "Complex Reporting and Information Standard Protocol; define regras de segurança na cloud.",
-        "Categorical Research in Statistical Projects; é uma ferramenta exclusiva da IBM para análise de vendas."
-      ],
-      "resposta_correta": "CRoss-Industry Standard Process for Data Mining; fornece uma abordagem estruturada e padronizada para planear projetos de mineração de dados.",
-      "justificacao": "O CRISP-DM é a metodologia mais utilizada no mundo por ser neutra em relação a ferramentas e indústrias, tornando os projetos fiáveis e repetíveis[cite: 6325, 6326, 6331]."
+        "Corporate Risk and Information Security Protocol; estabelece diretrizes europeias para a anonimização e conformidade de dados sensíveis."
+        ],
+        "resposta_correta": "CRoss-Industry Standard Process for Data Mining; fornece uma abordagem estruturada e padronizada para planear projetos de mineração de dados.",
+        "justificacao": "O CRISP-DM é a metodologia mais utilizada no mundo por ser neutra em relação a ferramentas e indústrias, tornando os projetos fiáveis e repetíveis."
     },
     {
-      "id": 77,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_fases",
-      "tipo": "multiple_choice",
-      "pergunta": "O ciclo de vida de um projeto no CRISP-DM é composto por quantas fases principais?",
-      "opcoes": [
-        "4 fases",
-        "5 fases",
-        "6 fases",
-        "8 fases"
-      ],
-      "resposta_correta": "6 fases",
-      "justificacao": "A metodologia quebra o projeto em 6 fases: Business Understanding, Data Understanding, Data Preparation, Modeling, Evaluation e Deployment[cite: 6432, 6442]."
+        "id": 83,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_04_modeling",
+        "tipo": "multiple_choice",
+        "pergunta": "Na fase de 'Modeling', o que deve ser feito ANTES de correr o algoritmo no dataset?",
+        "opcoes": [
+        "Afinar os hiperparâmetros do algoritmo estatístico escolhido para maximizar a precisão inicial.",
+        "Gerar um design de teste (Generate Test Design), como dividir os dados em partições de treino e teste.",
+        "Avaliar se o modelo final atinge os critérios de sucesso de negócio definidos na fase de Business Understanding.",
+        "Integrar bases de dados dispersas e formatar variáveis categóricas para o formato tabular."
+        ],
+        "resposta_correta": "Gerar um design de teste (Generate Test Design), como dividir os dados em partições de treino e teste.",
+        "justificacao": "Antes de construir o modelo, deve-se definir o mecanismo de teste da sua validade (ex: margem de erro, precisão) e separar os dados para treino e teste."
     },
     {
-      "id": 78,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_01_business",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é o objetivo central da primeira fase, 'Business Understanding'?",
-      "opcoes": [
-        "Limpar os dados e tratar valores nulos.",
-        "Escolher o algoritmo de Machine Learning a utilizar.",
-        "Entender os objetivos e requisitos do projeto do ponto de vista do negócio e converter isso num problema técnico de Data Mining.",
-        "Colocar o modelo em produção para os utilizadores finais."
-      ],
-      "resposta_correta": "Entender os objetivos e requisitos do projeto do ponto de vista do negócio e converter isso num problema técnico de Data Mining.",
-      "justificacao": "Nesta fase, foca-se no que o cliente realmente quer realizar e definem-se os critérios de sucesso do negócio[cite: 6451, 6453, 6505]."
+        "id": 88,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_06_deployment",
+        "tipo": "multiple_choice",
+        "pergunta": "Porque é que o 'Plan Monitoring & Maintenance' é crucial na fase de Deployment?",
+        "opcoes": [
+        "Para reavaliar constantemente o 'Business Understanding' e gerar novos critérios técnicos de sucesso para a equipa.",
+        "Para assegurar que o modelo de Data Mining é retreinado diariamente exclusivamente com a mesma amostra original de dados.",
+        "Para evitar períodos longos de utilização incorreta dos resultados, monitorizando a performance dos modelos à medida que o mercado muda.",
+        "Para validar se a limpeza de dados executada na fase de Data Preparation foi realizada sem perda de registos transacionais críticos."
+        ],
+        "resposta_correta": "Para evitar períodos longos de utilização incorreta dos resultados, monitorizando a performance dos modelos à medida que o mercado muda.",
+        "justificacao": "Modelos preditivos perdem eficácia (drift) com o tempo. Um plano de monitorização garante que o modelo continua a ser preciso à medida que os padrões de comportamento mudam."
     },
     {
-      "id": 79,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_01_business",
-      "tipo": "true_false",
-      "pergunta": "Na fase de Business Understanding, é necessário realizar uma análise de custos e benefícios do projeto.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "Como parte da tarefa 'Assess Situation', deve-se construir uma análise custo-benefício que compare os custos do projeto com os potenciais ganhos[cite: 6536, 6563, 6565]."
+        "id": 93,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_05_evaluation",
+        "tipo": "multiple_choice",
+        "pergunta": "A tarefa 'Review Process' na fase de Evaluation serve para quê?",
+        "opcoes": [
+        "Para comparar o desempenho estatístico do modelo atual com benchmarks da concorrência direta no mercado.",
+        "Para rever os passos executados, identificar falhas no processo e garantir que não houve erros (ex: uso de atributos não permitidos que viciem o modelo).",
+        "Para recalibrar os hiperparâmetros técnicos caso o modelo não atinja a precisão técnica mínima exigida pelo cliente.",
+        "Para reescrever o código do algoritmo em linguagem de baixo nível, garantindo um processamento otimizado na infraestrutura de Deployment."
+        ],
+        "resposta_correta": "Para rever os passos executados, identificar falhas no processo e garantir que não houve erros (ex: uso de atributos não permitidos que viciem o modelo).",
+        "justificacao": "Serve para analisar criticamente o trabalho executado: alguma atividade crítica foi esquecida? Algum dado futuro foi usado acidentalmente para prever o passado (data leakage)?"
     },
     {
-      "id": 80,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_02_data_und",
-      "tipo": "multiple_choice",
-      "pergunta": "Um analista está a verificar se os dados extraídos do banco têm idades negativas ou valores impossíveis. Em que fase do CRISP-DM ele se encontra?",
-      "opcoes": [
-        "Business Understanding",
-        "Data Understanding",
-        "Modeling",
-        "Deployment"
-      ],
-      "resposta_correta": "Data Understanding",
-      "justificacao": "A fase de Data Understanding inclui a tarefa 'Verify Data Quality', onde se explora a qualidade dos dados iniciais e se detetam problemas de integridade[cite: 6442, 6606, 6622]."
+        "id": 98,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_03_data_prep",
+        "tipo": "multiple_choice",
+        "pergunta": "A tarefa 'Format Data' envolve o quê?",
+        "opcoes": [
+        "Normalizar distribuições estatísticas ou aplicar transformações logarítmicas contínuas para evitar enviesamento no algoritmo.",
+        "Transformações técnicas puramente sintáticas (ex: reformatar datas, remover vírgulas ou caracteres especiais) sem alterar o significado semântico dos dados.",
+        "Fundir diferentes tabelas (joins) e agrupar registos soltos para criar a visão única e agregada do cliente no dataset final.",
+        "Derivar novos atributos matemáticos a partir dos existentes (ex: calcular a margem de lucro subtraindo custos às receitas) para dar maior poder preditivo."
+        ],
+        "resposta_correta": "Transformações técnicas puramente sintáticas (ex: reformatar datas, remover vírgulas ou caracteres especiais) sem alterar o significado semântico dos dados.",
+        "justificacao": "A formatação de dados diz respeito estritamente a aspetos sintáticos e computacionais para que a ferramenta de modelação consiga ler a tabela corretamente. Derivar dados é 'Construct Data', cruzar é 'Integrate Data'."
     },
     {
-      "id": 81,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_03_data_prep",
-      "tipo": "multiple_choice",
-      "pergunta": "A criação de novos atributos a partir dos existentes (ex: calcular a idade com base na data de nascimento) ocorre em que fase?",
-      "opcoes": [
-        "Data Understanding",
-        "Data Preparation",
-        "Modeling",
-        "Evaluation"
-      ],
-      "resposta_correta": "Data Preparation",
-      "justificacao": "A tarefa 'Construct Data' (dentro de Data Preparation) envolve atividades como a derivação de novos atributos e geração de registos[cite: 6442, 6639, 6653]."
+        "id": 201,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "Numa organização de grande escala, qual é a diferença fundamental entre 'Data Governance' (Governança de Dados) e 'Data Management' (Gestão de Dados)?",
+        "opcoes": [
+        "Data Governance é o processo técnico de estruturar bases de dados em SQL, enquanto Data Management é a documentação legal exigida estritamente para auditorias de RGPD.",
+        "Data Management define as métricas estratégicas de negócio (KPIs), enquanto Data Governance otimiza a velocidade de processamento dos algoritmos de Machine Learning na Cloud.",
+        "Data Governance define as políticas, os padrões de segurança e quem tem autoridade sobre os dados, enquanto Data Management é a execução técnica dessas regras no dia-a-dia.",
+        "Não existe diferença prática na arquitetura moderna; ambos os termos descrevem o papel de um Engenheiro de Dados na limpeza de tabelas dentro da camada Silver de um Lakehouse."
+        ],
+        "resposta_correta": "Data Governance define as políticas, os padrões de segurança e quem tem autoridade sobre os dados, enquanto Data Management é a execução técnica dessas regras no dia-a-dia.",
+        "justificacao": "A Governança é o 'volante' (regras, conformidade, estratégia de quem pode aceder ao quê), enquanto a Gestão é o 'motor' (a implementação técnica diária de extração, limpeza e armazenamento que cumpre essas regras)."
     },
     {
-      "id": 82,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_03_data_prep",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual destas tarefas NÃO pertence à fase de Data Preparation?",
-      "opcoes": [
-        "Limpar os dados (Clean Data).",
-        "Integrar dados de várias fontes (Integrate Data).",
-        "Avaliar a precisão do modelo final (Evaluate Results).",
-        "Selecionar os dados relevantes (Select Data)."
-      ],
-      "resposta_correta": "Avaliar a precisão do modelo final (Evaluate Results).",
-      "justificacao": "A avaliação dos resultados é uma tarefa específica da fase 05 (Evaluation), não da preparação de dados[cite: 6442, 6767]."
+        "id": 202,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma das grandes inovações da arquitetura Data Lakehouse é a introdução de 'ACID transactions' diretamente sobre ficheiros de dados num Data Lake. O que é que isto garante na prática?",
+        "opcoes": [
+        "Transforma automaticamente todos os dados não-estruturados (como vídeos e áudios brutos) em tabelas relacionais organizadas instantaneamente na camada Gold.",
+        "Garante que múltiplos utilizadores e processos possam ler e escrever dados simultaneamente sem corromper a base de dados, assegurando a consistência e integridade da informação.",
+        "Assegura que a latência de processamento é reduzida a zero, alojando os modelos preditivos diretamente na memória RAM dos computadores locais dos utilizadores (Edge Computing).",
+        "Garante a criptografia irreversível de todos os dados na camada Bronze, impedindo que os Data Scientists apliquem algoritmos sem aprovação do Chief Data Officer."
+        ],
+        "resposta_correta": "Garante que múltiplos utilizadores e processos possam ler e escrever dados simultaneamente sem corromper a base de dados, assegurando a consistência e integridade da informação.",
+        "justificacao": "As transações ACID (Atomicity, Consistency, Isolation, Durability) resolvem o maior problema dos Data Lakes antigos: a corrupção de dados quando vários pipelines tentam atualizar e ler dados ao mesmo tempo. É isto que traz o rigor do 'Warehouse' para o 'Lake'."
     },
     {
-      "id": 83,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_04_modeling",
-      "tipo": "multiple_choice",
-      "pergunta": "Na fase de 'Modeling', o que deve ser feito ANTES de correr o algoritmo no dataset?",
-      "opcoes": [
-        "Entregar o relatório final ao CEO.",
-        "Gerar um design de teste (Generate Test Design), como dividir os dados em treino e teste.",
-        "Limpar os dados brutos pela primeira vez.",
-        "Definir os objetivos de negócio."
-      ],
-      "resposta_correta": "Gerar um design de teste (Generate Test Design), como dividir os dados em treino e teste.",
-      "justificacao": "Antes de construir o modelo, deve-se definir o mecanismo de teste da sua validade (ex: erro, precisão) e separar os dados para treino e teste[cite: 6674, 6712, 6715, 6718]."
+        "id": 203,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_05_evaluation",
+        "tipo": "multiple_choice",
+        "pergunta": "Um modelo preditivo de churn obteve 98% de precisão (Accuracy) durante a fase de 'Modeling'. Contudo, na fase de 'Evaluation', o projeto foi chumbado e não avançou para a fase de 'Deployment'. Qual é a justificação mais plausível segundo a metodologia CRISP-DM?",
+        "opcoes": [
+        "A precisão técnica (98%) excedeu o limiar de 'overfitting' permitido pela plataforma, indicando que o servidor iria falhar por sobrecarga computacional.",
+        "Na fase de Evaluation, os protocolos exigem que os modelos sejam reescritos numa linguagem de baixo nível (como C++) para garantir a redundância do sistema em produção.",
+        "A equipa detetou 'Data Leakage' (fuga de dados) e percebeu que o algoritmo não suportava as variáveis categóricas, exigindo o retorno à fase de Business Understanding.",
+        "O modelo provou ser tecnicamente excelente, mas a equipa apercebeu-se de que ele não resolvia o objetivo de negócio original, ou que o custo de implementação superava o benefício financeiro."
+        ],
+        "resposta_correta": "O modelo provou ser tecnicamente excelente, mas a equipa apercebeu-se de que ele não resolvia o objetivo de negócio original, ou que o custo de implementação superava o benefício financeiro.",
+        "justificacao": "No CRISP-DM, a avaliação técnica (Assess Model) é feita em 'Modeling'. A fase de 'Evaluation' serve explicitamente para avaliar se os resultados técnicos cumprem os Business Success Criteria definidos na fase 1. Um modelo pode ser muito preciso, mas inútil ou demasiado caro para o negócio."
     },
     {
-      "id": 84,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_04_modeling",
-      "tipo": "true_false",
-      "pergunta": "A fase de Modelagem é puramente técnica e não deve levar em conta as suposições ou formatos de dados descritos nas fases anteriores.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Deve-se comparar as suposições do algoritmo com o 'Data Description Report' e, se necessário, voltar à fase de Data Preparation para ajustar os dados[cite: 6702, 6706, 6708, 6709]."
+        "id": 204,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_03_data_prep",
+        "tipo": "multiple_choice",
+        "pergunta": "Durante a fase de 'Data Preparation' no CRISP-DM, a equipa decide aplicar técnicas de 'Outlier Handling' (tratamento de valores atípicos extremos) e preenchimento de valores nulos pela média. Em que tarefa específica se enquadram estas ações?",
+        "opcoes": [
+        "Select Data (Selecionar apenas as colunas qualitativas que farão parte do dataset final).",
+        "Construct Data (Derivar novos atributos matemáticos que não existiam nas tabelas originais).",
+        "Integrate Data (Combinar informação proveniente de bases de dados diferentes através de 'Joins' complexos).",
+        "Clean Data (Limpar os dados, corrigindo, inferindo ou removendo valores errados/ausentes para aumentar a qualidade do modelo)."
+        ],
+        "resposta_correta": "Clean Data (Limpar os dados, corrigindo, inferindo ou removendo valores errados/ausentes para aumentar a qualidade do modelo).",
+        "justificacao": "Lidar com *outliers* ou valores nulos (missing values) faz estritamente parte da limpeza de dados (Clean Data), garantindo que o algoritmo não será enviesado por ruído. Criar colunas novas seria 'Construct Data'."
     },
     {
-      "id": 85,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_05_evaluation",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a diferença fundamental entre 'Assess Model' (em Modeling) e 'Evaluate Results' (em Evaluation)?",
-      "opcoes": [
-        "Nenhuma, são o mesmo processo.",
-        "O 'Assess Model' avalia apenas a qualidade técnica; o 'Evaluate Results' avalia se o modelo cumpre os objetivos de negócio definidos na fase 01.",
-        "O 'Evaluate Results' é feito por computadores, o 'Assess Model' por humanos.",
-        "O 'Assess Model' foca no futuro e o 'Evaluate Results' no passado."
-      ],
-      "resposta_correta": "O 'Assess Model' avalia apenas a qualidade técnica; o 'Evaluate Results' avalia se o modelo cumpre os objetivos de negócio definidos na fase 01.",
-      "justificacao": "Na avaliação final, verifica-se se o modelo serve para a empresa e se algum problema de negócio foi ignorado antes da decisão de avançar[cite: 6734, 6767, 6772, 6773, 6780]."
+        "id": 205,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "multiple_choice",
+        "pergunta": "Porque é que os 'Key Risk Indicators' (KRIs) são frequentemente descritos na analítica como métricas de 'leading' (antecipação), em oposição a muitos KPIs tradicionais que tendem a ser 'lagging' (retrospetivos)?",
+        "opcoes": [
+        "Porque os KRIs atuam como sinais de alerta precoce, indicando que a probabilidade de um impacto negativo futuro está a aumentar antes mesmo de os resultados do negócio serem afetados.",
+        "Porque os KRIs são projetados para medir com exatidão o impacto financeiro de um evento prejudicial que já ocorreu no último trimestre fiscal.",
+        "Porque apenas os KRIs são processados através de Machine Learning em tempo real na Cloud, enquanto os KPIs são inerentemente calculados de forma manual no final do mês.",
+        "Porque os KRIs ditam a estratégia de longo prazo utilizada pela gestão de topo, ditando como o mercado se vai comportar, enquanto os KPIs apenas reagem à concorrência."
+        ],
+        "resposta_correta": "Porque os KRIs atuam como sinais de alerta precoce, indicando que a probabilidade de um impacto negativo futuro está a aumentar antes mesmo de os resultados do negócio serem afetados.",
+        "justificacao": "Métricas 'Lagging' olham para trás (ex: Faturação mensal - o mês já acabou, o KPI só constata o facto). Um KRI (como o aumento súbito de demissões em posições críticas) é 'Leading', pois alerta de que algo vai correr mal futuramente, permitindo à gestão agir atempadamente."
     },
     {
-      "id": 86,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_05_evaluation",
-      "tipo": "true_false",
-      "pergunta": "No final da fase de Evaluation, deve ser tomada uma decisão final sobre como proceder (avançar para deployment ou repetir iterações).",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "Com base na revisão do processo e resultados, decide-se se o modelo está aprovado para uso ou se precisa de melhorias[cite: 6758, 6761, 6774, 6802, 6812]."
+        "id": 206,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_02_data_und",
+        "tipo": "multiple_choice",
+        "pergunta": "Um analista de dados cria um gráfico de dispersão (scatter plot) para identificar visualmente a relação entre o volume de compras dos clientes e o seu histórico de devoluções, notando a presença de vários 'outliers' (valores atípicos). De acordo com a metodologia CRISP-DM, em que fase e tarefa específica este trabalho está a ser realizado?",
+        "opcoes": [
+        "Fase de 'Data Preparation', na tarefa 'Clean Data', pois a identificação visual é o primeiro passo algorítmico para a remoção de anomalias.",
+        "Fase de 'Evaluation', na tarefa 'Assess Situation', onde o analista mapeia os riscos de negócio associados a clientes fraudulentos.",
+        "Fase de 'Data Understanding', na tarefa 'Explore Data', cujo objetivo é formular hipóteses e familiarizar-se com os padrões e problemas iniciais dos dados.",
+        "Fase de 'Modeling', na tarefa 'Generate Test Design', que exige a validação gráfica das distribuições antes de aplicar os modelos de Machine Learning."
+        ],
+        "resposta_correta": "Fase de 'Data Understanding', na tarefa 'Explore Data', cujo objetivo é formular hipóteses e familiarizar-se com os padrões e problemas iniciais dos dados.",
+        "justificacao": "Embora os 'outliers' sejam TRATADOS e removidos na fase 3 (Data Preparation / Clean Data), a sua IDENTIFICAÇÃO através de visualizações, criação de gráficos e exploração de correlações ocorre na fase 2 (Data Understanding / Explore Data)."
     },
     {
-      "id": 87,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_06_deployment",
-      "tipo": "multiple_choice",
-      "pergunta": "A fase de 'Deployment' pode ser tão simples como gerar um relatório ou tão complexa como implementar um processo repetível em toda a empresa.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "A complexidade da implementação depende inteiramente dos requisitos do cliente[cite: 6842, 6848]."
+        "id": 207,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "multiple_choice",
+        "pergunta": "O rácio LTV/CAC (Customer Lifetime Value a dividir pelo Customer Acquisition Cost) é uma métrica fundamental para avaliar a sustentabilidade do modelo de negócio. Como classificarias tecnicamente este indicador?",
+        "opcoes": [
+        "Como um KRI (Key Risk Indicator), pois se o rácio for inferior a 1, a empresa corre o risco iminente de falência e incumprimento regulatório.",
+        "Como um SLA (Service Level Agreement), pois estabelece a garantia de retorno financeiro exigida pelos Stakeholders e equipas de vendas.",
+        "Como um KPI (Key Performance Indicator) puramente operacional, focado na medição da taxa de conversão transacional das campanhas digitais.",
+        "Como um KBI (Key Business Indicator), pois traduz diretamente a saúde financeira da empresa e a eficiência do capital aplicado na aquisição de receita."
+        ],
+        "resposta_correta": "Como um KBI (Key Business Indicator), pois traduz diretamente a saúde financeira da empresa e a eficiência do capital aplicado na aquisição de receita.",
+        "justificacao": "O foco primário de métricas baseadas em custos e valor financeiro gerado (como o CLV e o CAC) é a saúde financeira do negócio, o que as enquadra perfeitamente na categoria de Key Business Indicators (KBIs)."
     },
     {
-      "id": 88,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_06_deployment",
-      "tipo": "multiple_choice",
-      "pergunta": "Porque é que o 'Plan Monitoring & Maintenance' é crucial na fase de Deployment?",
-      "opcoes": [
-        "Para garantir que o analista continua a ser pago mensalmente.",
-        "Para evitar períodos longos de utilização incorreta dos resultados, monitorizando a performance dos modelos ao longo do tempo.",
-        "Para impedir que os dados sejam apagados acidentalmente.",
-        "Apenas para cumprir normas de segurança informática."
-      ],
-      "resposta_correta": "Para evitar períodos longos de utilização incorreta dos resultados, monitorizando a performance dos modelos ao longo do tempo.",
-      "justificacao": "Modelos podem perder eficácia com o tempo. Um plano de monitorização garante que o modelo continua a ser útil à medida que o mercado ou dados mudam[cite: 6859, 6862, 6863, 6864, 6866]."
+        "id": 208,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "Numa arquitetura 'Data Lakehouse' (Medallion Architecture), a equipa de Engenharia de Dados concluiu o processo de filtragem de valores nulos, deduplicação de registos e normalização de formatos de datas. Os dados estão agora limpos e formam uma visão unificada (Enterprise View), mas ainda não foram agregados para relatórios de BI de departamentos específicos. Em que zona se encontram estes dados?",
+        "opcoes": [
+        "Na zona Bronze (Landing Zone), pois a limpeza inicial de dados (ETL básico) ocorre obrigatoriamente no momento da ingestão contínua para evitar corrupção.",
+        "Na zona Gold (Curated Zone), uma vez que a deduplicação e normalização já os torna perfeitamente aptos para consumo pelos dashboards executivos de nível C (C-Suite).",
+        "Na zona Silver (Staging Zone), que atua como repositório de dados limpos, padronizados e enriquecidos, prontos para serem cruzados antes das agregações finais.",
+        "Na zona Platinum (Analytics Zone), um ambiente isolado em nuvem reservado exclusivamente para o treino de modelos de Processamento de Linguagem Natural (NLP)."
+        ],
+        "resposta_correta": "Na zona Silver (Staging Zone), que atua como repositório de dados limpos, padronizados e enriquecidos, prontos para serem cruzados antes das agregações finais.",
+        "justificacao": "A camada Bronze guarda os dados brutos. A camada Silver aplica as regras de qualidade, limpeza e normalização, criando a 'fonte da verdade' (Single Source of Truth). Só depois avançam para a Gold, onde são agregados e modelados especificamente para o negócio (ex: Faturação mensal por distrito)."
     },
     {
-      "id": 89,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_agile",
-      "tipo": "multiple_choice",
-      "pergunta": "Segundo o material, qual é a melhor abordagem para equipas de Data Science obterem resultados?",
-      "opcoes": [
-        "Seguir o CRISP-DM de forma rígida e linear (Waterfall).",
-        "Ignorar o CRISP-DM e usar apenas Kanban.",
-        "Combinar uma implementação flexível do CRISP-DM com abordagens de gestão ágil de equipas (Agile/Scrum).",
-        "Não utilizar nenhuma metodologia para manter a criatividade."
-      ],
-      "resposta_correta": "Combinar uma implementação flexível do CRISP-DM com abordagens de gestão ágil de equipas (Agile/Scrum).",
-      "justificacao": "A flexibilidade do CRISP-DM unida à agilidade organizacional permite responder a mudanças e novas descobertas durante o projeto[cite: 6333, 6402, 6403]."
+        "id": 209,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "O conceito de 'Broad Data Literacy' (Literacia de Dados Abrangente) é um dos pilares de uma cultura organizacional orientada a dados. Qual das seguintes ações demonstra melhor a implementação bem-sucedida deste pilar?",
+        "opcoes": [
+        "Exigir que a totalidade dos quadros médios e superiores da empresa possua certificações técnicas formais em linguagens de programação analítica, como Python e SQL.",
+        "Centralizar todas as decisões baseadas em dados num Chief Analytics Officer (CAO), libertando o resto dos departamentos da carga cognitiva de interagir com relatórios complexos.",
+        "Garantir que os colaboradores de vários departamentos conseguem ler relatórios, interpretar corretamente os insights e argumentar com base em evidências numéricas no seu dia-a-dia.",
+        "Garantir que o acesso aos 'Data Lakes' seja totalmente aberto (Open/Sharing) e sem restrições de governança, permitindo a exploração livre sem intervenção tecnológica."
+        ],
+        "resposta_correta": "Garantir que os colaboradores de vários departamentos conseguem ler relatórios, interpretar corretamente os insights e argumentar com base em evidências numéricas no seu dia-a-dia.",
+        "justificacao": "Literacia de dados não é transformar todos os funcionários em programadores ou Cientistas de Dados. É criar o conforto e a habilidade para falar a 'linguagem dos dados' — ler, interpretar gráficos e tomar decisões informadas com as ferramentas que têm à disposição."
     },
     {
-      "id": 90,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_02_data_und",
-      "tipo": "multiple_choice",
-      "pergunta": "A tarefa 'Collect Initial Data' ocorre em que fase?",
-      "opcoes": [
-        "Business Understanding",
-        "Data Understanding",
-        "Data Preparation",
-        "Modeling"
-      ],
-      "resposta_correta": "Data Understanding",
-      "justificacao": "É a primeira tarefa técnica após definir o negócio: adquirir os dados e documentar a sua localização e problemas de recolha[cite: 6442, 6616, 6629, 6630]."
+        "id": 210,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma cadeia de supermercados utiliza um algoritmo avançado que processa o histórico de vendas. O sistema não só prevê que as vendas de gelados vão disparar no fim de semana devido ao calor, como gera automaticamente ordens de compra para os fornecedores e ajusta a alocação de prateleiras nas lojas para maximizar o lucro, sem intervenção humana. Que nível de analítica está a ser executado?",
+        "opcoes": [
+        "Análise Preditiva, uma vez que o motor principal de todo o modelo é o 'forecasting' algorítmico (previsão) do aumento da procura induzida pela onda de calor.",
+        "Análise Diagnóstica Automatizada, pois o sistema identifica a relação de causa-efeito (onda de calor gera vendas) correlacionando Big Data não estruturado.",
+        "Business Intelligence Operacional, visto que se trata da otimização de uma cadeia de abastecimento (Supply Chain) baseada num Data Warehouse centralizado.",
+        "Análise Prescritiva, pois o sistema vai além da previsão do cenário (o que vai acontecer), recomendando e executando ativamente a melhor ação (o que fazer) para otimizar o resultado."
+        ],
+        "resposta_correta": "Análise Prescritiva, pois o sistema vai além da previsão do cenário (o que vai acontecer), recomendando e executando ativamente a melhor ação (o que fazer) para otimizar o resultado.",
+        "justificacao": "O salto do Preditivo para o Prescritivo acontece no momento da AÇÃO/RECOMENDAÇÃO. Prever o aumento das vendas de gelados é Preditivo. Emitir as ordens de compra aos fornecedores automaticamente para lucrar com isso é Prescritivo."
     },
     {
-      "id": 91,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_03_data_prep",
-      "tipo": "multiple_choice",
-      "pergunta": "Ao cruzar tabelas de clientes de marketing com tabelas financeiras, o analista está a realizar que tarefa?",
-      "opcoes": [
-        "Explore Data",
-        "Integrate Data",
-        "Select Data",
-        "Assess Situation"
-      ],
-      "resposta_correta": "Integrate Data",
-      "justificacao": "A integração envolve a fusão (merge) de dados de múltiplas fontes para criar o dataset final[cite: 6442, 6656, 6670]."
-    },
-    {
-      "id": 92,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_04_modeling",
-      "tipo": "multiple_choice",
-      "pergunta": "O que são 'Modeling Assumptions'?",
-      "opcoes": [
-        "Suposições que o negócio faz sobre os lucros futuros.",
-        "Requisitos técnicos ou distribuições de dados que um algoritmo específico exige (ex: distribuição normal).",
-        "Os nomes dos analistas que vão treinar o modelo.",
-        "Suposições sobre a segurança da base de dados."
-      ],
-      "resposta_correta": "Requisitos técnicos ou distribuições de dados que um algoritmo específico exige (ex: distribuição normal).",
-      "justificacao": "Cada técnica tem exigências sobre o formato ou qualidade dos dados que devem ser validadas antes de correr o modelo[cite: 6674, 6683, 6701, 6706, 6707]."
-    },
-    {
-      "id": 93,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_05_evaluation",
-      "tipo": "multiple_choice",
-      "pergunta": "A tarefa 'Review Process' na fase de Evaluation serve para quê?",
-      "opcoes": [
-        "Para criticar os colegas de equipa.",
-        "Para rever os passos executados, identificar falhas e garantir que não houve erros (ex: uso de atributos não permitidos).",
-        "Para formatar o PowerPoint final.",
-        "Para atualizar o antivírus do servidor."
-      ],
-      "resposta_correta": "Para rever os passos executados, identificar falhas e garantir que não houve erros (ex: uso de atributos não permitidos).",
-      "justificacao": "Serve para analisar se alguma atividade crítica foi esquecida ou se algum passo enganador foi tomado antes da implementação[cite: 6746, 6756, 6788, 6791, 6798, 6799]."
-    },
-    {
-      "id": 94,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_06_deployment",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é o output final esperado da fase de Deployment para o encerramento do projeto?",
-      "opcoes": [
-        "Um novo dataset limpo.",
-        "O código-fonte do algoritmo no GitHub.",
-        "Relatório Final, Apresentação Final e Documentação de Experiência.",
-        "Uma lista de riscos futuros."
-      ],
-      "resposta_correta": "Relatório Final, Apresentação Final e Documentação de Experiência.",
-      "justificacao": "O encerramento envolve formalizar o que foi aprendido, os resultados obtidos e documentar a experiência para futuros projetos[cite: 6819, 6831, 6832, 6835, 6837, 6872, 6889]."
-    },
-    {
-      "id": 95,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_base",
-      "tipo": "true_false",
-      "pergunta": "O CRISP-DM é um processo linear e unidirecional; uma vez terminada uma fase, nunca se deve voltar à anterior.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "É um processo iterativo. As setas no diagrama mostram que é comum (e necessário) voltar atrás, por exemplo, de Modeling para Data Preparation[cite: 6403, 6404, 6430]."
-    },
-    {
-      "id": 96,
-      "macro_tema": "crisp_dm",
-      "tema": "agile",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual destas metodologias ágeis é descrita como sendo a mais comum para colaboração em software, mas por vezes difícil de implementar eficazmente em Data Science?",
-      "opcoes": [
-        "Kanban",
-        "Scrum",
-        "Waterfall",
-        "Data Driven Scrum"
-      ],
-      "resposta_correta": "Scrum",
-      "justificacao": "O Scrum é muito popular, mas equipas de dados muitas vezes lutam com a sua estrutura rígida de sprints em projetos de investigação incerta[cite: 6904, 6905, 6906, 6908]."
-    },
-    {
-      "id": 97,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_01_business",
-      "tipo": "multiple_choice",
-      "pergunta": "O que são 'Success Criteria' (Critérios de Sucesso) no CRISP-DM?",
-      "opcoes": [
-        "O número de horas faturadas ao cliente.",
-        "As definições de como o sucesso será medido tanto do ponto de vista do negócio como do ponto de vista técnico (Data Mining).",
-        "Apenas a precisão estatística do modelo.",
-        "O bónus salarial da equipa."
-      ],
-      "resposta_correta": "As definições de como o sucesso será medido tanto do ponto de vista do negócio como do ponto de vista técnico (Data Mining).",
-      "justificacao": "Devem existir critérios claros para ambos: o que o negócio considera sucesso (ex: lucro) e o que a técnica considera sucesso (ex: precisão)[cite: 6450, 6476, 6488, 6525]."
-    },
-    {
-      "id": 98,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_03_data_prep",
-      "tipo": "multiple_choice",
-      "pergunta": "A tarefa 'Format Data' envolve o quê?",
-      "opcoes": [
-        "Mudar a cor dos gráficos.",
-        "Transformações técnicas puramente sintáticas (ex: reformatar datas, remover vírgulas ou caracteres especiais) sem alterar o significado.",
-        "Apagar registos antigos.",
-        "Escolher o algoritmo final."
-      ],
-      "resposta_correta": "Transformações técnicas puramente sintáticas (ex: reformatar datas, remover vírgulas ou caracteres especiais) sem alterar o significado.",
-      "justificacao": "Refere-se a alterações de formatação necessárias para que as ferramentas de modelagem consigam ler os dados corretamente[cite: 6442, 6639, 6659, 6671]."
-    },
-    {
-      "id": 99,
-      "macro_tema": "crisp_dm",
-      "tema": "agile",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual é a principal diferença entre Scrum e Kanban no contexto de Data Science?",
-      "opcoes": [
-        "O Scrum usa quadros, o Kanban não.",
-        "O Scrum é baseado em sprints (tempo fixo), enquanto o Kanban foca no fluxo contínuo de trabalho (menos definido).",
-        "O Kanban é apenas para engenheiros, o Scrum para gestores.",
-        "Não existe diferença prática."
-      ],
-      "resposta_correta": "O Scrum é baseado em sprints (tempo fixo), enquanto o Kanban foca no fluxo contínuo de trabalho (menos definido).",
-      "justificacao": "O Kanban é mais simples e flexível, mas menos definitivo que o Scrum, adaptando-se bem a certos ambientes de fluxo contínuo[cite: 6909, 6910, 6911, 6912]."
-    },
-    {
-      "id": 100,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_base",
-      "tipo": "multiple_choice",
-      "pergunta": "Em que ano foi publicado o modelo CRISP-DM 1.0 para padronizar processos entre indústrias?",
-      "opcoes": [
-        "1990",
-        "1999",
-        "2005",
-        "2010"
-      ],
-      "resposta_correta": "1999",
-      "justificacao": "O CRISP-DM foi publicado em 1999 e tornou-se a metodologia padrão da indústria desde então[cite: 6331]."
-    },
-    {
-      "id": 101,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "infraestrutura_armazenamento",
-      "tipo": "drag_and_drop",
-      "pergunta": "Associa cada tipo de infraestrutura de dados à sua descrição correspondente, arrastando o conceito para o lado da definição correta.",
-      "pares": [
+        "id": 211,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "evolucao_cultura",
+        "tipo": "drag_and_drop",
+        "pergunta": "Associa cada um dos estágios de evolução da Cultura de Dados à sua definição correta dentro de uma organização.",
+        "pares": [
         {
-          "conceito": "Data Warehouse",
-          "definicao": "Guarda dados estruturados que já foram processados e limpos. Ideal para BI e relatórios históricos. Custo Alto."
+            "conceito": "Data Denial (Negação)",
+            "definicao": "A empresa desconfia ativamente dos dados, baseando a sua estratégia e operações exclusivamente na tradição, experiência e intuição dos líderes (HiPPO)."
         },
         {
-          "conceito": "Data Lake",
-          "definicao": "Guarda dados brutos (raw) no seu formato original. Ideal para explorar padrões escondidos e análises avançadas. Custo Baixo/Económico."
+            "conceito": "Data Indifference (Indiferença)",
+            "definicao": "A organização recolhe dados por obrigação legal ou registo transacional, mas estes são completamente ignorados na hora de tomar decisões estratégicas."
         },
         {
-          "conceito": "Data Lakehouse",
-          "definicao": "Junta a flexibilidade do Lake com as estruturas do Warehouse. Excelente para integrar IA e Machine Learning."
+            "conceito": "Data Informed (Informada)",
+            "definicao": "Os dados são analisados e utilizados para apoiar a tomada de decisão, mas funcionam essencialmente como um conselheiro secundário à intuição dos gestores."
+        },
+        {
+            "conceito": "Data Driven (Orientada a Dados)",
+            "definicao": "A análise de evidências numéricas é o motor central da estratégia, estando enraizada em todos os departamentos como a principal fonte de conhecimento para agir."
         }
-      ],
-      "justificacao": "O Warehouse serve para dados estruturados (BI), o Lake para dados brutos (exploração/ML) e o Lakehouse une o melhor dos dois mundos, sendo a arquitetura moderna de eleição para Inteligência Artificial."
+        ],
+        "justificacao": "A evolução cultural não acontece de um dia para o outro. Passa-se da negação total para a indiferença (recolher sem usar), para a fase informada (dados + forte intuição) até atingir o patamar orientado a dados (dados como motor de decisão primário)."
     },
     {
-      "id": 102,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "lakehouse_ia",
-      "tipo": "drag_and_drop",
-      "pergunta": "Na arquitetura Medallion de um Lakehouse, existem 3 zonas distintas. Arrasta cada zona para a fase de tratamento de dados correspondente.",
-      "pares": [
+        "id": 212,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_03_data_prep",
+        "tipo": "drag_and_drop",
+        "pergunta": "A fase de 'Data Preparation' no CRISP-DM consome habitualmente a maior parte do tempo de um projeto. Arrasta cada tarefa técnica para o seu propósito prático.",
+        "pares": [
         {
-          "conceito": "Bronze (Landing Zone)",
-          "definicao": "Ingestão de dados na sua forma mais bruta (Raw), sem qualquer tipo de alteração."
+            "conceito": "Construct Data",
+            "definicao": "Derivar novos atributos matemáticos a partir dos existentes ou agrupar variáveis em categorias para aumentar o poder preditivo do modelo final."
         },
         {
-          "conceito": "Silver (Staging Zone)",
-          "definicao": "A zona onde os dados são filtrados, limpos e melhorados/aumentados."
+            "conceito": "Integrate Data",
+            "definicao": "Combinar informações dispersas de múltiplas tabelas ou bases de dados distintas através de operações de cruzamento ('joins' e 'merges')."
         },
         {
-          "conceito": "Gold (Curated Zone)",
-          "definicao": "Dados agregados, de alta qualidade, prontos para consumo do negócio, relatórios e modelos de IA."
+            "conceito": "Format Data",
+            "definicao": "Realizar alterações puramente sintáticas (ex: remover caracteres especiais, ajustar formatos de data) para que o algoritmo consiga ler a tabela corretamente, sem alterar o seu significado."
+        },
+        {
+            "conceito": "Select Data",
+            "definicao": "Decidir estrategicamente quais as colunas (features) e linhas (registos) que serão incluídas ou excluídas do dataset final para evitar ruído ou irrelevância."
         }
-      ],
-      "justificacao": "A jornada dos dados na arquitetura Medallion significa um aumento progressivo de qualidade: entra bruto na Bronze, é limpo na Silver e fica pronto a gerar valor na Gold."
+        ],
+        "justificacao": "É crucial não confundir 'Construct' (criar informação nova a partir da antiga) com 'Format' (apenas mudar o aspeto técnico do dado para evitar erros de compilação do algoritmo)."
     },
     {
-      "id": 103,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "drag_and_drop",
-      "pergunta": "Associa cada categoria de métrica à sua principal característica e foco de análise.",
-      "pares": [
+        "id": 213,
+        "macro_tema": "crisp_dm",
+        "tema": "crisp_dm_base",
+        "tipo": "drag_and_drop",
+        "pergunta": "O CRISP-DM é um processo altamente iterativo. Associa o motivo técnico que justificaria um 'retrocesso' (loop) entre as fases do projeto.",
+        "pares": [
         {
-          "conceito": "KPI (Key Performance Indicator)",
-          "definicao": "Foco no desempenho e sucesso estratégico. Analisa o passado/presente para extrair insights (ex: Quota de Mercado)."
+            "conceito": "De 'Evaluation' para 'Business Understanding'",
+            "definicao": "O modelo obteve alta precisão técnica, mas falhou em atingir os critérios de sucesso financeiro do negócio ou a estratégia da empresa mudou durante o projeto."
         },
         {
-          "conceito": "KBI (Key Business Indicator)",
-          "definicao": "Foco puramente financeiro. Monitoriza, prevê e entende a saúde económica da empresa (ex: Margem de Lucro, Custo de Aquisição)."
+            "conceito": "De 'Modeling' para 'Data Preparation'",
+            "definicao": "O algoritmo estatístico escolhido revelou a necessidade de que os dados sigam uma distribuição normal, obrigando a regressar atrás para aplicar transformações logarítmicas."
         },
         {
-          "conceito": "KRI (Key Risk Indicator)",
-          "definicao": "Sinais de alerta precoce para potenciais problemas internos ou externos (ex: Incidentes de Cibersegurança, Turnover)."
+            "conceito": "De 'Data Understanding' para 'Business Understanding'",
+            "definicao": "A exploração inicial dos sistemas de informação revelou que os dados necessários não existem, obrigando a redefinir o problema ou os objetivos do projeto com o cliente."
         }
-      ],
-      "justificacao": "Os KPIs são primariamente não-financeiros e avaliam desempenho [cite: 191], os KBIs são estritamente financeiros [cite: 193] e os KRIs gerem riscos proativamente[cite: 195]."
+        ],
+        "justificacao": "As setas de retrocesso no diagrama do CRISP-DM não são falhas, são mecanismos de segurança. A Evaluation garante a validade do negócio, a Modelação dita as regras matemáticas aos dados, e a Compreensão dos Dados valida se o projeto é sequer exequível."
     },
     {
-      "id": 104,
-      "macro_tema": "data_driven_infrastructure",
-      "tema": "big_data",
-      "tipo": "drag_and_drop",
-      "pergunta": "O Big Data é caracterizado por 5 pilares fundamentais (Os 5 V's). Associa o conceito à sua definição correta.",
-      "pares": [
+        "id": 214,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "drag_and_drop",
+        "pergunta": "Na gestão de desempenho de uma organização, as métricas dividem-se em várias categorias estratégicas. Faz a correspondência correta.",
+        "pares": [
         {
-          "conceito": "Volume",
-          "definicao": "A escala pura e a quantidade massiva de dados gerados a cada segundo."
+            "conceito": "Indicador de Risco (KRI)",
+            "definicao": "Uma métrica tipicamente 'Leading' (antecipatória) que funciona como sinal de alerta precoce para a probabilidade crescente de um impacto adverso futuro (ex: Taxa de incidentes de segurança)."
         },
         {
-          "conceito": "Velocidade",
-          "definicao": "A rapidez com que os dados chegam de diversas fontes e precisam de ser processados em tempo real."
+            "conceito": "Indicador de Desempenho (KPI)",
+            "definicao": "Uma métrica frequentemente 'Lagging' (retrospetiva) focada em avaliar o sucesso estratégico geral e a eficácia operacional da empresa face à concorrência (ex: Índice de Satisfação do Cliente)."
         },
         {
-          "conceito": "Variedade",
-          "definicao": "A capacidade de usar dados não estruturados (vídeo, áudio, texto) além dos estruturados."
-        },
-        {
-          "conceito": "Veracidade",
-          "definicao": "A necessidade de verificar, validar e confiar na qualidade da informação recolhida."
+            "conceito": "Indicador de Negócio (KBI)",
+            "definicao": "Uma métrica de foco macroeconómico que avalia estritamente a saúde financeira, a rendibilidade e a eficiência de alocação de capital da organização (ex: Margem EBITDA, CAC)."
         }
-      ],
-      "justificacao": "O Volume refere-se à quantidade [cite: 504], a Velocidade à rapidez das mudanças [cite: 492], a Variedade aos múltiplos formatos [cite: 506] e a Veracidade à fiabilidade[cite: 502]. O Valor só é extraído se os outros 4 V's forem bem geridos."
+        ],
+        "justificacao": "Decorar exemplos não basta; é preciso entender a natureza da métrica. O KPI olha para o sucesso da operação, o KBI para o dinheiro/sustentabilidade, e o KRI tenta prever desastres e ameaças."
     },
     {
-      "id": 105,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "papeis_lideranca",
-      "tipo": "drag_and_drop",
-      "pergunta": "Associa o cargo de liderança (C-Suite) da área de dados à sua responsabilidade central.",
-      "pares": [
+        "id": 215,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "big_data",
+        "tipo": "drag_and_drop",
+        "pergunta": "O Big Data lida com desafios que as bases de dados tradicionais não conseguem suportar. Associa o desafio prático a um dos respetivos 'V's do Big Data.",
+        "pares": [
         {
-          "conceito": "Chief Data Officer (CDO)",
-          "definicao": "Gere a governança, estratégia, compliance, segurança e qualidade dos ativos de dados."
+            "conceito": "O Desafio da Variedade",
+            "definicao": "Tentar integrar tabelas relacionais em SQL com milhares de horas de gravações de áudio de Call Centers e publicações em texto livre no Twitter."
         },
         {
-          "conceito": "Chief Analytics Officer (CAO)",
-          "definicao": "Foca-se em extrair insights, construir capacidades preditivas e transformar dados em decisões de negócio."
+            "conceito": "O Desafio da Velocidade",
+            "definicao": "Processar milhões de transações de cartões de crédito por segundo para detetar fraudes antes que a compra seja aprovada na máquina do comerciante."
         },
         {
-          "conceito": "Chief Digital Officer",
-          "definicao": "Orquestra a transformação digital da empresa, adoção de novas tecnologias e novos modelos de negócio."
+            "conceito": "O Desafio da Veracidade",
+            "definicao": "Lidar com sensores de máquinas industriais defeituosos que por vezes enviam dados corrompidos, exigindo limpeza e validação de confiança ativas."
+        },
+        {
+            "conceito": "O Desafio do Volume",
+            "definicao": "Migrar a infraestrutura de armazenamento para a Cloud Híbrida devido à incapacidade dos servidores locais guardarem Petabytes de informação histórica acumulada."
         }
-      ],
-      "justificacao": "O CDO constrói a fundação e governa os dados [cite: 561, 604], o CAO usa esses dados para gerar modelos [cite: 561], e o Chief Digital Officer guia a transformação do negócio em si[cite: 588]."
+        ],
+        "justificacao": "Variedade lida com os diferentes formatos (estruturado vs não-estruturado). Velocidade lida com o processamento em tempo real (streams). Veracidade lida com a qualidade e anomalias. Volume lida com a escala absoluta de armazenamento."
     },
     {
-      "id": 106,
-      "macro_tema": "crisp_dm",
-      "tema": "crisp_dm_fases",
-      "tipo": "drag_and_drop",
-      "pergunta": "No modelo CRISP-DM, cada fase tem tarefas muito específicas. Arrasta a Fase para o grupo de tarefas correto.",
-      "pares": [
+        "id": 216,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_05_evaluation",
+        "tipo": "multiple_choice",
+        "pergunta": "Um modelo preditivo de propensão de compra apresenta uma precisão anormalmente elevada (99.9%). O analista descobre que uma das variáveis usadas no treino do modelo foi o 'Método de Pagamento' (dado que só é gerado no sistema *após* o cliente já ter decidido comprar). Este erro conceptual clássico na modelação é conhecido como:",
+        "opcoes": [
+        "Overfitting, devendo ser corrigido na fase de 'Data Preparation' através da redução da dimensionalidade do dataset.",
+        "Concept Drift, obrigando a equipa a ativar de imediato o 'Monitoring & Maintenance Plan' delineado na fase de Deployment.",
+        "Data Leakage (Fuga de Dados), onde informação do futuro vicia a previsão do passado, um erro que deve ser ativamente procurado na tarefa 'Review Process'.",
+        "Underfitting heurístico, pois o modelo memorizou perfeitamente a base de dados de treino em vez de generalizar para o 'Test Design'."
+        ],
+        "resposta_correta": "Data Leakage (Fuga de Dados), onde informação do futuro vicia a previsão do passado, um erro que deve ser ativamente procurado na tarefa 'Review Process'.",
+        "justificacao": "O 'Data Leakage' ocorre quando usamos dados para treinar o modelo que não estarão disponíveis no momento real da previsão (ex: prever se alguém vai comprar usando os dados do recibo de pagamento). É um erro grave que a fase de 'Evaluation' (Review Process) visa detetar."
+    },
+    {
+        "id": 217,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "Historicamente, a rápida transição de arquiteturas de 'Data Lakes' puros para as novas arquiteturas 'Data Lakehouse' foi motivada por um problema estrutural muito grave das plataformas de Big Data iniciais. Qual?",
+        "opcoes": [
+        "A incapacidade tecnológica dos Data Lakes em armazenarem ficheiros não-estruturados em tempo real devido à imposição de esquemas rígidos (Schema-on-write).",
+        "Os Data Lakes começaram a transformar-se em 'Data Swamps' (Pântanos de Dados) caóticos, devido à total ausência de governança, qualidade de dados e suporte a transações ACID.",
+        "O custo proibitivo de armazenamento em nuvem (Cloud Storage) exigia que os dados fossem comprimidos e estruturados puramente em arquiteturas SQL tradicionais.",
+        "A impossibilidade regulatória de processar modelos de 'Deep Learning' diretamente na camada Bronze, o que violava as normativas do RGPD."
+        ],
+        "resposta_correta": "Os Data Lakes começaram a transformar-se em 'Data Swamps' (Pântanos de Dados) caóticos, devido à total ausência de governança, qualidade de dados e suporte a transações ACID.",
+        "justificacao": "Como os Data Lakes aceitavam qualquer tipo de dado de forma barata, as empresas faziam 'dump' (despejo) de tudo sem organização. Sem governança (garantida agora pelo Lakehouse através de transações ACID e camadas Medallion), o Lake tornava-se um pântano inútil e impossível de auditar."
+    },
+    {
+        "id": 218,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma companhia aérea utiliza algoritmos matemáticos complexos para definir o preço dinâmico dos bilhetes em tempo real e realocar a tripulação de forma a maximizar a margem de lucro operacional, respondendo autonomamente a cancelamentos inesperados de voos devido ao mau tempo. Este é um exemplo prático de:",
+        "opcoes": [
+        "Análise Preditiva, dado que a readequação dos preços depende exclusivamente da previsão climática e do forecasting probabilístico de cancelamentos futuros.",
+        "Análise Diagnóstica Automatizada, pois o sistema atua através da identificação da causa-raiz (mau tempo) registada no sistema transacional do Data Warehouse.",
+        "Big Data Analytics, visto que obriga ao cruzamento nativo de dados estruturados (preços da concorrência) com dados não-estruturados (imagens de satélite do tempo).",
+        "Análise Prescritiva, pois utiliza regras de otimização matemática para calcular e executar ativamente a melhor configuração de recursos e preços para atingir o objetivo financeiro."
+        ],
+        "resposta_correta": "Análise Prescritiva, pois utiliza regras de otimização matemática para calcular e executar ativamente a melhor configuração de recursos e preços para atingir o objetivo financeiro.",
+        "justificacao": "Sempre que lês termos como 'Otimização', 'Maximizar lucros' e 'Sistemas que executam autonomamente a melhor ação', estás no topo da escada analítica: A Análise Prescritiva. Ela não prevê apenas o tempo, ela diz-te (ou decide) o que deves fazer em relação a isso."
+    },
+    {
+        "id": 219,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "Um Diretor de Marketing pede à equipa de dados para construir um dashboard que 'prove de forma irrefutável' que a sua recente e milionária campanha publicitária foi um sucesso, orientando os analistas a ignorarem as métricas que indicam um aumento nas reclamações dos clientes. Na perspetiva da Cultura Orientada a Dados, que fenómeno tóxico está aqui patente?",
+        "opcoes": [
+        "O 'Confirmation Bias' (Viés de Confirmação), onde os dados são usados como uma 'arma' apenas para justificar uma decisão já tomada, subvertendo a tomada de decisão baseada em evidências.",
+        "O efeito 'HiPPO', onde a equipa de dados impõe a sua visão tecnológica sobre a intuição comercial da pessoa mais bem paga da sala.",
+        "O estágio de 'Data Indifference', visto que o diretor se recusa categoricamente a olhar para relatórios de Business Intelligence na sua operação diária.",
+        "O paradigma do 'Unicórnio', pois exige-se que o painel de BI execute simultaneamente análise descritiva e processamento de linguagem natural (NLP) das reclamações."
+        ],
+        "resposta_correta": "O 'Confirmation Bias' (Viés de Confirmação), onde os dados são usados como uma 'arma' apenas para justificar uma decisão já tomada, subvertendo a tomada de decisão baseada em evidências.",
+        "justificacao": "Numa verdadeira cultura Data-Driven, usa-se os dados para descobrir a verdade, mesmo que ela doa (Goals First, Objective Analysis). Usar dados de forma seletiva apenas para confirmar uma crença prévia (Confirmation Bias) é a antítese do Data-Driven Decision Making (DDDM)."
+    },
+    {
+        "id": 220,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "multiple_choice",
+        "pergunta": "O 'Customer Lifetime Value' (CLV) mede o lucro líquido estimado que uma empresa irá gerar a partir de um cliente ao longo de toda a sua relação comercial. Porque é que o CLV é classicamente categorizado como um KBI (Key Business Indicator) e não apenas como um KPI genérico?",
+        "opcoes": [
+        "Porque funciona primordialmente como um sinal de alerta precoce ('leading indicator') para o departamento de Recursos Humanos, indicando a necessidade de contratar mais gestores de suporte ao cliente.",
+        "Porque foca estritamente no acompanhamento macroeconómico e na métrica financeira fundamental do negócio (lucratividade sustentável vs custos), medindo a saúde direta da geração de capital.",
+        "Porque é um indicador exigido por entidades reguladoras (compliance) para avaliar o nível de segurança e privacidade do histórico financeiro do cliente armazenado no Data Lakehouse.",
+        "Porque avalia essencialmente a quota de mercado (Market Share) e a popularidade da marca face aos concorrentes diretos no setor de atuação."
+        ],
+        "resposta_correta": "Porque foca estritamente no acompanhamento macroeconómico e na métrica financeira fundamental do negócio (lucratividade sustentável vs custos), medindo a saúde direta da geração de capital.",
+        "justificacao": "A linha que separa um KPI de um KBI é o dinheiro e a visão de negócio pura. O CLV (tal como o Custo de Aquisição de Cliente - CAC) traduz o valor monetário fundamental da empresa, sendo o foco central da saúde e viabilidade económica de qualquer negócio moderno."
+    },
+    {
+        "id": 221,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "big_data",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma empresa de retalho consolida dados do seu CRM (estruturados), cliques do website (semi-estruturados) e avaliações de texto nas redes sociais (não-estruturados). Contudo, o algoritmo de recomendação está a falhar miseravelmente porque muitos dos perfis sociais são falsos (bots) e os cliques do website contêm erros de servidor. Qual dos 5 V's do Big Data está a causar diretamente o fracasso do projeto?",
+        "opcoes": [
+        "Variedade, pois a arquitetura técnica não suporta o cruzamento de dados estruturados com não-estruturados no mesmo modelo preditivo.",
+        "Velocidade, porque a latência entre a recolha do clique e a deteção da anomalia no servidor ultrapassa o tempo limite do algoritmo.",
+        "Veracidade, uma vez que a falta de fiabilidade, ruído e falsidade dos dados está a gerar modelos preditivos inúteis ('garbage in, garbage out').",
+        "Volume, dado que o algoritmo atingiu o limite de capacidade de processamento da memória local (Overfitting) ao tentar ler todas as fontes simultaneamente."
+        ],
+        "resposta_correta": "Veracidade, uma vez que a falta de fiabilidade, ruído e falsidade dos dados está a gerar modelos preditivos inúteis ('garbage in, garbage out').",
+        "justificacao": "A armadilha aqui é a 'Variedade'. O texto descreve muita variedade (CRM, cliques, redes sociais), o que induz em erro. No entanto, o verdadeiro motivo da FALHA é que os dados são falsos ou têm erros. O pilar que lida com a confiança, limpeza e autenticidade da informação é a Veracidade."
+    },
+    {
+        "id": 222,
+        "macro_tema": "crisp_dm",
+        "tema": "agile",
+        "tipo": "multiple_choice",
+        "pergunta": "Porque é que a aplicação estrita do framework 'Scrum' tradicional (desenhado para Engenharia de Software) entra frequentemente em conflito com equipas de Data Science que utilizam o CRISP-DM?",
+        "opcoes": [
+        "Porque o CRISP-DM é um modelo puramente 'Waterfall' (Cascata), sendo estritamente proibido voltar a uma fase anterior após a sua conclusão.",
+        "Porque o Scrum exige que todo o código desenvolvido seja colocado imediatamente na zona 'Gold' do Lakehouse, violando os princípios de Data Governance.",
+        "Porque a Ciência de Dados é inerentemente exploratória e incerta; é extremamente difícil garantir um incremento de produto funcional e previsível no final de cada 'Sprint' de duas semanas.",
+        "Porque a metodologia Ágil não reconhece a figura do 'Chief Data Officer' (CDO), transferindo toda a responsabilidade de compliance para o 'Scrum Master'."
+        ],
+        "resposta_correta": "Porque a Ciência de Dados é inerentemente exploratória e incerta; é extremamente difícil garantir um incremento de produto funcional e previsível no final de cada 'Sprint' de duas semanas.",
+        "justificacao": "No desenvolvimento de software normal, sabes que vais demorar X dias a fazer um botão. Em Data Science, podes passar 2 semanas a limpar dados e no fim descobrir que não há padrão matemático nenhum (a hipótese falha). A incerteza da pesquisa choca com os prazos rígidos dos Sprints do Scrum (daí o surgimento do Data Driven Scrum)."
+    },
+    {
+        "id": 223,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma operadora de telecomunicações utiliza um modelo que deteta que o cliente 'João' tem 85% de probabilidade de cancelar o contrato este mês. Em frações de segundo, um segundo algoritmo simula centenas de cenários e decide automaticamente enviar-lhe uma oferta de 20% de desconto (em vez de um pacote de canais grátis), pois concluiu que o desconto maximiza o lucro retido. Que tipo de analítica foi aplicado no passo final desta operação?",
+        "opcoes": [
+        "Análise Diagnóstica, pois o sistema identificou a causa principal do possível cancelamento antes de enviar o SMS.",
+        "Análise Prescritiva, pois o sistema utilizou lógicas de otimização para recomendar e executar a melhor ação possível face à previsão.",
+        "Análise Preditiva Avançada, porque o cálculo de 85% de probabilidade é o verdadeiro motor de geração de valor neste cenário.",
+        "Análise Descritiva em Tempo Real, já que a ação consiste na emissão automática de um relatório de faturação atualizado para o cliente."
+        ],
+        "resposta_correta": "Análise Prescritiva, pois o sistema utilizou lógicas de otimização para recomendar e executar a melhor ação possível face à previsão.",
+        "justificacao": "A primeira parte (85% de chance de churn) é Análise Preditiva. Mas o PASSO FINAL descrito — simular cenários, escolher a oferta mais lucrativa e agir autonomamente ('Next Best Action') — é o expoente máximo da Análise Prescritiva."
+    },
+    {
+        "id": 224,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "A administração de uma empresa decide investir 2 milhões de euros num Data Lakehouse topo de gama, integra centenas de bases de dados e contrata dez Cientistas de Dados. Na primeira reunião, o CEO diz: 'Aqui têm todos os nossos dados. Explorem e encontrem insights fantásticos que nos façam ganhar dinheiro!'. Que princípio fundamental de uma Cultura de Dados está a ser violado?",
+        "opcoes": [
+        "A falácia do 'Unicórnio', pois a administração assumiu que dez cientistas conseguem fazer o trabalho de um único Engenheiro de Dados.",
+        "O princípio da 'Literacia de Dados' (Broad Data Literacy), visto que o CEO usou jargão técnico inapropriado para a equipa.",
+        "A necessidade de 'Top-down guidance' (Suporte de Liderança), uma vez que o CEO delegou o trabalho em vez de o programar ele mesmo.",
+        "O princípio 'Goals First' (Objetivos Primeiro), pois a tecnologia e os dados foram colocados à frente da definição dos problemas de negócio que precisam de ser resolvidos."
+        ],
+        "resposta_correta": "O princípio 'Goals First' (Objetivos Primeiro), pois a tecnologia e os dados foram colocados à frente da definição dos problemas de negócio que precisam de ser resolvidos.",
+        "justificacao": "Este é um erro clássico (e caro) do mundo real. Começar pelos dados/tecnologia e esperar que o valor apareça por magia nunca funciona. A cultura Data-Driven dita que os objetivos estratégicos de negócio (Goals First) devem ser definidos PRIMEIRO, procurando-se depois os dados para lhes dar resposta."
+    },
+    {
+        "id": 225,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_04_modeling",
+        "tipo": "multiple_choice",
+        "pergunta": "Na fase de 'Modeling' da metodologia CRISP-DM, existe uma tarefa crucial chamada 'Assess Model' (Avaliar Modelo). Qual é a diferença estrita entre esta tarefa e a fase subsequente de 'Evaluation' (Avaliação)?",
+        "opcoes": [
+        "O 'Assess Model' calcula o Retorno sobre o Investimento (ROI) final do projeto, enquanto a fase de 'Evaluation' avalia apenas a velocidade de processamento do algoritmo na nuvem.",
+        "O 'Assess Model' foca-se puramente na precisão técnica e estatística do algoritmo (ex: taxa de erro), enquanto a fase de 'Evaluation' verifica se o modelo cumpre realmente os Critérios de Sucesso de Negócio.",
+        "O 'Assess Model' é realizado exclusivamente pelo cliente (Stakeholders), enquanto a fase de 'Evaluation' é conduzida em laboratório fechado pelos Data Scientists.",
+        "Não existe diferença prática na documentação; são duas fases redundantes mantidas no framework apenas por razões de compliance histórico da década de 90."
+        ],
+        "resposta_correta": "O 'Assess Model' foca-se puramente na precisão técnica e estatística do algoritmo (ex: taxa de erro), enquanto a fase de 'Evaluation' verifica se o modelo cumpre realmente os Critérios de Sucesso de Negócio.",
+        "justificacao": "Uma das rasteiras mais comuns do exame sobre o CRISP-DM. Na fase 4 (Modelação), tu avalias se o modelo é MATEMATICAMENTE bom. Na fase 5 (Evaluation), tu avalias se o modelo serve para o NEGÓCIO (pode ter 99% de precisão estatística, mas ser impossível de implementar legalmente, chumbando na Evaluation)."
+    },
+    {
+        "id": 226,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_03_data_prep",
+        "tipo": "multiple_choice",
+        "pergunta": "Na execução de um projeto de Machine Learning guiado pela metodologia CRISP-DM e suportado por uma moderna arquitetura 'Data Lakehouse', a fase de 'Data Preparation' (onde ocorrem operações de limpeza, formatação e deduplicação) mapeia-se de forma mais direta com a transição de dados para que camada da infraestrutura?",
+        "opcoes": [
+        "Para a camada Gold (Curated Zone), porque a preparação de dados exige a aplicação de regras de negócio consolidadas e agregações finais para Business Intelligence.",
+        "Para a camada Silver (Staging Zone), pois é aqui que os dados brutos recém-chegados são efetivamente limpos, filtrados e padronizados antes da modelação ou agregação.",
+        "Para a camada Bronze (Landing Zone), visto que o processo 'Clean Data' deve ser executado obrigatoriamente no momento da ingestão contínua para evitar o surgimento de um 'Data Swamp'.",
+        "Para a área de Data Warehousing tradicional, uma vez que as transações ACID do Lakehouse não suportam a derivação de novos atributos (Construct Data)."
+        ],
+        "resposta_correta": "Para a camada Silver (Staging Zone), pois é aqui que os dados brutos recém-chegados são efetivamente limpos, filtrados e padronizados antes da modelação ou agregação.",
+        "justificacao": "Cruzamento perfeito de conceitos: O 'Data Preparation' do CRISP-DM envolve limpar e integrar dados. Num Lakehouse (arquitetura Medallion), esse trabalho sujo de refinamento acontece na transição da camada Bronze (onde o dado cai bruto) para a camada Silver (onde o dado fica limpo e normalizado)."
+    },
+    {
+        "id": 227,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "O departamento de cibersegurança implementou um modelo que monitoriza o tráfego de rede. Quando o algoritmo prevê um pico anómalo de dados com 95% de probabilidade de ser um ataque DDoS, ele isola automaticamente os servidores afetados sem intervenção humana, alertando a equipa a posteriori. Em termos de gestão analítica e métricas, o que está a acontecer aqui?",
+        "opcoes": [
+        "Um sistema de Análise Preditiva está a otimizar um KPI operacional estritamente focado no aumento do 'Customer Lifetime Value' (CLV).",
+        "Um sistema de Análise Prescritiva está a atuar proativamente para mitigar a degradação de um KRI (Key Risk Indicator) relacionado com a continuidade e segurança do negócio.",
+        "Um dashboard de Análise Diagnóstica está a reportar a causa-raiz de um KBI financeiro diretamente à C-Suite através de Self-Service Analytics.",
+        "Uma rotina de Big Data está a corrigir anomalias estruturais de 'Variedade' e 'Veracidade' diretamente na camada Gold do Lakehouse."
+        ],
+        "resposta_correta": "Um sistema de Análise Prescritiva está a atuar proativamente para mitigar a degradação de um KRI (Key Risk Indicator) relacionado com a continuidade e segurança do negócio.",
+        "justificacao": "Mistura de 2 módulos: Primeiro, o sistema atua sozinho mediante uma previsão (recomenda/executa o isolamento dos servidores) -> logo, é Análise Prescritiva. Segundo, ciberataques são ameaças à continuidade do negócio -> logo, a métrica que os acompanha é um KRI (Key Risk Indicator), e não um KPI ou KBI."
+    },
+    {
+        "id": 228,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "papeis_lideranca",
+        "tipo": "multiple_choice",
+        "pergunta": "Numa empresa em plena Transformação Data-Driven, o CEO decide aplicar o princípio 'Goals First' e define como prioridade anual a redução do 'Customer Churn' (cancelamento de subscrições). Na distribuição de tarefas pela C-Suite, como devem colaborar o CDO (Chief Data Officer) e o CAO (Chief Analytics Officer) para executar esta visão?",
+        "opcoes": [
+        "O CDO treina os algoritmos preditivos para detetar o churn, enquanto o CAO constrói os pipelines da infraestrutura Lakehouse e garante as permissões legais do RGPD.",
+        "Ambos devem focar-se exclusivamente na adoção de ferramentas de 'Self-Service Analytics' para o departamento de vendas, relegando a modelação estatística para as equipas de TI.",
+        "O CAO traduz o objetivo num problema de modelação preditiva e extrai os insights, enquanto o CDO assegura que o histórico de clientes necessário para o modelo está acessível, seguro e com qualidade governada.",
+        "O CAO define a estratégia macro de transformação digital (e-commerce e novos produtos), enquanto o CDO atua como consultor de negócio para eliminar a cultura do 'HiPPO' nas reuniões."
+        ],
+        "resposta_correta": "O CAO traduz o objetivo num problema de modelação preditiva e extrai os insights, enquanto o CDO assegura que o histórico de clientes necessário para o modelo está acessível, seguro e com qualidade governada.",
+        "justificacao": "O CDO é o guardião e arquiteto dos dados (Segurança, Qualidade, Governança). O CAO é o explorador desses dados (Machine Learning, Preditiva, geração de Valor). Quem desenha a transformação digital é o Chief Digital Officer, e não o CAO."
+    },
+    {
+        "id": 229,
+        "macro_tema": "business_analytics",
+        "tema": "bi_vs_ba",
+        "tipo": "multiple_choice",
+        "pergunta": "Ao observarmos a 'Escada de Maturidade Analítica' e a evolução temporal das tecnologias de dados, que transição ilustra perfeitamente a mudança de paradigma do Business Intelligence (BI) clássico para o Business Analytics (BA) avançado?",
+        "opcoes": [
+        "Passar do uso exclusivo de 'Data Warehouses' transacionais para a adoção massiva de relatórios de 'Self-Service Analytics' criados por utilizadores de negócio.",
+        "Mudar o foco analítico de métricas estritamente financeiras (KBIs) para a monitorização de riscos operacionais através de painéis visuais interativos (Dashboards de KRIs).",
+        "Abandonar completamente os modelos de Análise Prescritiva para focar esforços na limpeza de Big Data não-estruturado (texto e vídeo) via metodologias Ágeis.",
+        "Passar de relatórios padronizados que explicam a variância histórica ('Hindsight' e 'Insight') para a extração de padrões via algoritmos para estimar probabilidades futuras ('Foresight')."
+        ],
+        "resposta_correta": "Passar de relatórios padronizados que explicam a variância histórica ('Hindsight' e 'Insight') para a extração de padrões via algoritmos para estimar probabilidades futuras ('Foresight').",
+        "justificacao": "O BI responde ao que aconteceu (Hindsight/Descritiva) e porquê (Insight/Diagnóstica) usando relatórios e Dashboards (mesmo que sejam Self-Service). O salto para o BA representa a introdução de modelação, mineração de dados e IA para antever o futuro (Foresight/Preditiva) e agir (Prescritiva)."
+    },
+    {
+        "id": 230,
+        "macro_tema": "crisp_dm",
+        "tema": "mistura_conceitos",
+        "tipo": "drag_and_drop",
+        "pergunta": "Lê atentamente os cenários práticos abaixo que ocorreram numa empresa. Associa cada cenário ao conceito técnico ou fase metodológica exata que o descreve ou resolve.",
+        "pares": [
         {
-          "conceito": "Business Understanding",
-          "definicao": "Determinar os objetivos, avaliar a situação, definir critérios de sucesso e criar o plano de projeto inicial."
+            "conceito": "Tarefa 'Review Process' na fase Evaluation (CRISP-DM).",
+            "definicao": "A equipa descobre que o algoritmo de pontuação de crédito utilizou indevidamente a variável 'Género', violando as métricas de ética definidas no início do projeto."
         },
         {
-          "conceito": "Data Preparation",
-          "definicao": "Selecionar, limpar, integrar, formatar os dados e construir novos atributos (dataset final)."
+            "conceito": "Análise Prescritiva",
+            "definicao": "O sistema prevê que a máquina 4 vai avariar e aciona autonomamente uma ordem de serviço, agendando a paragem para o turno da noite para minimizar perdas financeiras."
         },
         {
-          "conceito": "Evaluation",
-          "definicao": "Avaliar os resultados face aos critérios de sucesso do negócio, rever o processo e decidir os próximos passos."
+            "conceito": "Desafio da 'Velocidade' (5 V's do Big Data).",
+            "definicao": "A infraestrutura da empresa está a gerar estrangulamentos na rede porque os carros autónomos enviam milhares de leituras de telemetria por segundo e o sistema não os consegue processar a tempo."
+        },
+        {
+            "conceito": "Fase 'Data Understanding' (CRISP-DM).",
+            "definicao": "O analista documenta que 40% da coluna 'Data de Nascimento' tem valores preenchidos com o ano 1900, reportando um claro problema de qualidade que terá de ser resolvido na próxima fase."
         }
-      ],
-      "justificacao": "Business Understanding foca-se nos objetivos do negócio[cite: 782]. Data Preparation é a construção do dataset[cite: 997]. Evaluation garante que os modelos servem o propósito antes do deployment[cite: 1103]."
+        ],
+        "justificacao": "Este exercício cruza 4 áreas diferentes: Validar erros/ética antes do deployment é o 'Review Process' da Evaluation; Agir sozinho face a um problema é Prescritivo; Lidar com streams intensos é a Velocidade do Big Data; e Detetar (sem ainda resolver) anomalias é o 'Verify Data Quality' do Data Understanding."
     },
     {
-      "id": 107,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_02_data_und",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual das seguintes tarefas pertence à fase de Data Understanding no modelo CRISP-DM?",
-      "opcoes": [
-        "Selecionar a técnica de modelação a utilizar.",
-        "Construir e derivar novos atributos.",
-        "Verificar a qualidade dos dados (Verify Data Quality).",
-        "Definir os critérios de sucesso do negócio."
-      ],
-      "resposta_correta": "Verificar a qualidade dos dados (Verify Data Quality).",
-      "justificacao": "A fase de Data Understanding inclui 4 tarefas principais: Recolher os dados iniciais, Descrevê-los, Explorá-los e Verificar a sua qualidade (Verify Data Quality)[cite: 953]."
+        "id": 231,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "multiple_choice",
+        "pergunta": "Numa reunião de planeamento estratégico, o Diretor de Vendas (o elemento mais bem pago da sala) insiste em lançar um produto baseado num 'pressentimento' ignorando relatórios prévios. Como é que uma verdadeira organização Data-Driven (focada em combater o efeito HiPPO) deve mitigar sistematicamente esta situação?",
+        "opcoes": [
+        "Automatizando 100% da tomada de decisão através de modelos de Análise Prescritiva, retirando completamente o poder de veto aos executivos humanos.",
+        "Promovendo o 'Confirmation Bias', orientando rapidamente a equipa de analistas a encontrar dados históricos que justifiquem a intuição do Diretor perante a administração.",
+        "Exigindo que qualquer decisão estratégica seja suportada por experimentação (A/B testing) ou evidências analíticas prévias, independentemente da hierarquia de quem a propõe.",
+        "Implementando uma zona de 'Self-Service Analytics' no Lakehouse para que o Diretor possa executar consultas sem o rigoroso controlo da equipa de Data Governance."
+        ],
+        "resposta_correta": "Exigindo que qualquer decisão estratégica seja suportada por experimentação (A/B testing) ou evidências analíticas prévias, independentemente da hierarquia de quem a propõe.",
+        "justificacao": "Combater o HiPPO (Highest Paid Person's Opinion) não significa eliminar os líderes ou a intuição, mas sim exigir que a intuição seja testada e validada com dados antes de se investirem recursos. A regra é: 'Perante a ausência de dados, ganha a hierarquia; com dados, ganha a melhor evidência'."
     },
     {
-      "id": 108,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_05_evaluation",
-      "tipo": "true_false",
-      "pergunta": "No CRISP-DM, a tarefa 'Assess Model' (Avaliar o Modelo) é uma das tarefas principais da fase de Evaluation (Avaliação).",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "É uma rasteira clássica! 'Assess Model' faz parte da fase de Modeling (avaliação técnica do modelo)[cite: 1065]. Na fase de Evaluation, a tarefa correspondente é 'Evaluate Results' (avaliar os resultados face aos objetivos do negócio)[cite: 1107]."
+        "id": 232,
+        "macro_tema": "crisp_dm",
+        "tema": "crisp_dm_base",
+        "tipo": "multiple_choice",
+        "pergunta": "O CRISP-DM prevê retornos sistemáticos a fases anteriores (loops). Qual das seguintes situações práticas forçaria justificadamente um retorno direto da fase de 'Data Understanding' para a fase de 'Business Understanding'?",
+        "opcoes": [
+        "A equipa técnica percebe, na tarefa 'Assess Model', que o algoritmo obteve uma precisão abaixo de 70% e não cumpre os Critérios de Sucesso de Negócio definidos.",
+        "A exploração inicial dos dados ('Explore Data') revela que as bases de dados históricas necessárias não existem ou não têm qualidade suficiente, impossibilitando a resolução do problema tal como foi formulado.",
+        "A distribuição estatística da variável-alvo não é normal, o que viola as 'Modeling Assumptions' da regressão linear escolhida pelo analista.",
+        "A integração de tabelas cruzadas ('Integrate Data') gerou uma duplicação maciça de registos que distorce a visão única do cliente no CRM."
+        ],
+        "resposta_correta": "A exploração inicial dos dados ('Explore Data') revela que as bases de dados históricas necessárias não existem ou não têm qualidade suficiente, impossibilitando a resolução do problema tal como foi formulado.",
+        "justificacao": "Se na Fase 2 (Compreender os Dados) descobres que não tens a matéria-prima (os dados) para fazer o que o negócio pediu na Fase 1, tens de voltar à Fase 1 para renegociar o objetivo. A opção A é um loop da Fase 5; a opção C é da Fase 4 para a 3; a opção D é um erro na Fase 3."
     },
     {
-      "id": 109,
-      "macro_tema": "business_analytics",
-      "tema": "evolucao_ba",
-      "tipo": "drag_and_drop",
-      "pergunta": "Associa cada período histórico ao marco correspondente na evolução do Business Analytics.",
-      "pares": [
-        {
-          "conceito": "Anos 1960",
-          "definicao": "Surgimento dos Decision Support Systems (DSS) para processamento de dados."
+        "id": 233,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "multiple_choice",
+        "pergunta": "Ao desenhar uma arquitetura 'Medallion' num ecossistema de Data Lakehouse, qual é o propósito exclusivo e o estado dos dados alojados na camada 'Gold' (Curated Zone)?",
+        "opcoes": [
+        "Armazenar os dados no seu formato bruto e original (raw), garantindo que nenhuma informação semântica é perdida durante a ingestão contínua em tempo real.",
+        "Servir de área de 'staging' transitória onde os dados são filtrados de valores nulos, enriquecidos e normalizados, garantindo qualidade ao nível do registo individual.",
+        "Alojar dados altamente agregados, refinados e modelados de acordo com as regras de negócio de departamentos específicos, estando prontos para consumo final por Dashboards e modelos analíticos.",
+        "Atuar como um repositório isolado de 'Dark Data', onde dados não-estruturados (como vídeo e voz) são arquivados temporariamente para mitigar os desafios de 'Volume' do Big Data."
+        ],
+        "resposta_correta": "Alojar dados altamente agregados, refinados e modelados de acordo com as regras de negócio de departamentos específicos, estando prontos para consumo final por Dashboards e modelos analíticos.",
+        "justificacao": "A jornada de qualidade Medallion: A Bronze guarda o dado bruto. A Silver limpa-o e normaliza-o de forma genérica. A Gold é o requinte final: os dados são agregados (ex: 'Soma de vendas por loja por mês') especificamente para quem os vai consumir (Analytics e BI)."
+    },
+    {
+        "id": 234,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "multiple_choice",
+        "pergunta": "Um dashboard de BI indica que as vendas da região Norte caíram 15% no último trimestre (Análise Descritiva). O analista utiliza então técnicas de 'drill-down', cruza esses dados com os registos de logística e conclui que a queda se deveu a ruturas de stock provocadas por uma greve num fornecedor local. Que tipo de analítica foi aplicado nesta segunda etapa?",
+        "opcoes": [
+        "Análise Preditiva, pois a equipa usou o histórico para estimar a probabilidade matemática de ruturas de stock futuras com base no comportamento sindical.",
+        "Análise Prescritiva, uma vez que o cruzamento de dados gerou uma recomendação automática para a troca imediata de fornecedor.",
+        "Big Data Exploratório, visto que as operações de 'drill-down' num Lakehouse dispensam a existência de métricas estruturadas como KPIs.",
+        "Análise Diagnóstica, pois a investigação aprofundou os dados históricos além do 'o que aconteceu' para determinar de forma clara a causa-raiz ('por que aconteceu')."
+        ],
+        "resposta_correta": "Análise Diagnóstica, pois a investigação aprofundou os dados históricos além do 'o que aconteceu' para determinar de forma clara a causa-raiz ('por que aconteceu').",
+        "justificacao": "Sempre que o objetivo de uma análise é encontrar a explicação ou a causa de um evento passado (responder à pergunta 'Por que é que isto aconteceu?'), enquadra-se estritamente na Análise Diagnóstica."
+    },
+    {
+        "id": 235,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "multiple_choice",
+        "pergunta": "No contexto da gestão do desempenho e da Cultura de Dados, os gestores avaliam o sucesso usando indicadores 'Leading' (Antecipatórios) e 'Lagging' (Retrospetivos). Qual das seguintes alternativas apresenta a correspondência prática correta?",
+        "opcoes": [
+        "O 'Custo de Aquisição de Cliente' (CAC) atua como um indicador Leading financeiro, enquanto o 'Volume de Tráfego Web Diário' é um clássico indicador Lagging.",
+        "A percentagem de cumprimento do 'Plano de Formação e Literacia de Dados' atua como um indicador Leading (prevendo ganhos futuros de produtividade), enquanto a 'Margem de Lucro Trimestral' é um indicador Lagging (medindo o resultado fechado do passado).",
+        "Qualquer KRI (Key Risk Indicator) é, por definição estrita, um indicador Lagging, dado que os planos de contingência só são acionados após a ocorrência de um evento adverso.",
+        "Os KPIs estratégicos definidos pelo CEO são obrigatoriamente indicadores Leading, pois ditam a visão e os objetivos ('Goals First') que a empresa terá de alcançar no futuro."
+        ],
+        "resposta_correta": "A percentagem de cumprimento do 'Plano de Formação e Literacia de Dados' atua como um indicador Leading (prevendo ganhos futuros de produtividade), enquanto a 'Margem de Lucro Trimestral' é um indicador Lagging (medindo o resultado fechado do passado).",
+        "justificacao": "Métricas Lagging medem resultados de ações que já terminaram (Faturação, Lucro). Métricas Leading medem as atividades (inputs) que vão influenciar os resultados de amanhã (Formação, Visitas, Clientes Prospectados). Avaliar o lucro é olhar pelo espelho retrovisor; avaliar o treino de equipas é olhar para a frente."
+    },
+    {
+        "id": 236,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "o_analista",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma equipa de Data Science constrói um modelo preditivo de 'Churn' incrivelmente complexo e com 96% de precisão. No entanto, a equipa de Marketing, que devia usar o modelo para reter clientes, não compreende como o algoritmo funciona, desconfia dos resultados e decide continuar a fazer campanhas com base na sua intuição. Olhando para a 'Cadeia de Valor da Analítica' (Data Value Chain), onde é que este projeto falhou?",
+        "opcoes": [
+        "Falhou na transição de 'Data' para 'Information', pois os dados não foram limpos corretamente na camada Silver do Lakehouse.",
+        "Falhou na transição de 'Information' para 'Analysis', visto que o modelo sofreu de 'Overfitting' e a sua precisão de 96% era uma ilusão estatística.",
+        "Falhou na transição de 'Analysis' para 'Action', pois a falta de literacia de dados e alinhamento com o negócio impediu que a análise se traduzisse numa ação prática, resultando em zero 'Value' final.",
+        "Não falhou. Como o modelo atingiu 96% de precisão, o 'Value' (Valor) é gerado automaticamente para a organização, independentemente da adoção pelo departamento de Marketing."
+        ],
+        "resposta_correta": "Falhou na transição de 'Analysis' para 'Action', pois a falta de literacia de dados e alinhamento com o negócio impediu que a análise se traduzisse numa ação prática, resultando em zero 'Value' final.",
+        "justificacao": "A Cadeia de Valor dita: Data -> Information -> Analysis -> Action -> Value. Uma análise (Analysis) guardada numa gaveta ou ignorada porque o negócio não a entende não gera Ação (Action). Sem Ação, não há absolutamente nenhum Valor (Value) extraído dos dados."
+    },
+    {
+        "id": 237,
+        "macro_tema": "crisp_dm",
+        "tema": "fase_06_deployment",
+        "tipo": "multiple_choice",
+        "pergunta": "Um modelo de deteção de fraude em cartões de crédito, que operava com sucesso há um ano, começou subitamente a classificar compras legítimas como fraude (Falsos Positivos) após a introdução de uma nova lei europeia que alterou os padrões de consumo online. No contexto do CRISP-DM, como se classifica este fenómeno e que mecanismo devia estar preparado para lidar com ele?",
+        "opcoes": [
+        "Trata-se de 'Data Leakage'; a equipa deve regressar à fase de 'Data Understanding' para remover a variável da nova lei europeia do dataset original.",
+        "Trata-se de 'Concept Drift' (Degradação do Modelo com o tempo); devia ser detetado e corrigido atempadamente graças ao 'Monitoring and Maintenance Plan' criado na fase de Deployment.",
+        "Trata-se de uma falha no 'Test Design'; o modelo deve ser imediatamente desativado e o projeto recomeçado a partir da fase de 'Business Understanding'.",
+        "Trata-se de 'Confirmation Bias'; a solução é transferir a responsabilidade do algoritmo para a equipa de Data Governance na camada Gold do Lakehouse."
+        ],
+        "resposta_correta": "Trata-se de 'Concept Drift' (Degradação do Modelo com o tempo); devia ser detetado e corrigido atempadamente graças ao 'Monitoring and Maintenance Plan' criado na fase de Deployment.",
+        "justificacao": "Modelos em produção não são eternos. Quando a realidade muda (uma nova lei, uma pandemia, inflação), os padrões antigos deixam de fazer sentido (Concept Drift). É por isso que a fase de Deployment EXIGE um plano de monitorização e manutenção, para saber exatamente quando é hora de retreinar o modelo."
+    },
+    {
+        "id": 238,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "papeis_lideranca",
+        "tipo": "multiple_choice",
+        "pergunta": "Durante uma auditoria externa, descobre-se que a empresa violou o RGPD (Regulamento Geral sobre a Proteção de Dados) porque os números de segurança social dos clientes não foram anonimizados na zona 'Silver' do Data Lakehouse, ficando expostos aos Cientistas de Dados. Na C-Suite, quem tem a responsabilidade executiva direta por esta falha de 'Compliance' e Governança?",
+        "opcoes": [
+        "O Chief Digital Officer, pois é o responsável por toda a infraestrutura digital e novos modelos de negócio B2C.",
+        "O Chief Analytics Officer (CAO), visto que a equipa de Data Science reporta diretamente a este cargo.",
+        "O Chief Data Officer (CDO), pois é o executivo responsável pela gestão, segurança, governança e conformidade legal (compliance) dos ativos de dados.",
+        "O Scrum Master, uma vez que a falha de anonimização não foi identificada durante a revisão do 'Sprint' na metodologia Data Driven Scrum."
+        ],
+        "resposta_correta": "O Chief Data Officer (CDO), pois é o executivo responsável pela gestão, segurança, governança e conformidade legal (compliance) dos ativos de dados.",
+        "justificacao": "Embora os Cientistas de Dados (liderados pelo CAO) sejam os utilizadores da plataforma, a proteção, governação (Data Governance), segurança e conformidade regulatória dos dados da empresa recaem inteiramente sob a alçada do Chief Data Officer (CDO)."
+    },
+    {
+        "id": 239,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "infraestrutura_armazenamento",
+        "tipo": "multiple_choice",
+        "pergunta": "Uma empresa global de retalho quer começar a cruzar os seus dados de vendas estruturados (SQL) com milhares de horas de áudio das chamadas de apoio ao cliente para aplicar processamento de linguagem natural (NLP). Porque é que um 'Data Warehouse' tradicional seria a pior escolha para esta nova estratégia?",
+        "opcoes": [
+        "Porque os Data Warehouses apenas suportam dados limpos, estruturados e em esquemas rígidos, sendo técnica e financeiramente inviáveis para armazenar ficheiros de áudio massivos (dados não-estruturados).",
+        "Porque a arquitetura de um Data Warehouse não permite a criação de dashboards de Business Intelligence (BI), impedindo a visualização dos resultados do NLP pela administração.",
+        "Porque os Data Warehouses operam exclusivamente com metodologias de processamento em tempo real (Streams), o que anularia a análise do histórico de vendas.",
+        "Porque a aplicação de NLP requer transações ACID, uma funcionalidade exclusiva das bases de dados NoSQL transacionais e inexistente em Data Warehouses."
+        ],
+        "resposta_correta": "Porque os Data Warehouses apenas suportam dados limpos, estruturados e em esquemas rígidos, sendo técnica e financeiramente inviáveis para armazenar ficheiros de áudio massivos (dados não-estruturados).",
+        "justificacao": "O Data Warehouse é rei para dados estruturados (linhas e colunas) e BI. Mas é péssimo (e incrivelmente caro) para guardar áudio, vídeo ou texto livre. Para armazenar e processar dados não-estruturados a baixo custo com ML/NLP, a empresa precisaria de um Data Lake ou de um Lakehouse."
+    },
+    {
+        "id": 240,
+        "macro_tema": "business_analytics",
+        "tema": "metricas",
+        "tipo": "multiple_choice",
+        "pergunta": "Um gestor monitoriza diariamente o 'Monthly Recurring Revenue (MRR)' e o 'Número de Minutos de Inatividade dos Servidores (Downtime)'. De acordo com as categorias de métricas em Business Analytics, qual é a classificação mais correta para estes dois indicadores, respetivamente?",
+        "opcoes": [
+        "O MRR é um KRI (Risco) e o Downtime é um KPI (Desempenho).",
+        "O MRR é um KBI (Negócio/Financeiro) e o Downtime é um KRI (Risco).",
+        "Ambos são estritamente KPIs (Key Performance Indicators), visto que ambos avaliam a estratégia de marketing da empresa face à concorrência.",
+        "O MRR é um indicador de Variedade e o Downtime é um indicador de Veracidade, enquadrando-se ambos na gestão de Big Data."
+        ],
+        "resposta_correta": "O MRR é um KBI (Negócio/Financeiro) e o Downtime é um KRI (Risco).",
+        "justificacao": "O MRR (Receita Mensal Recorrente) traduz a saúde financeira pura da empresa (KBI). O Downtime (tempo de inatividade) é um alerta de falha de serviço que pode causar perda imediata de clientes e quebras contratuais de SLA, atuando como um forte Key Risk Indicator (KRI)."
+    },
+    {
+        "id": 241,
+        "macro_tema": "organizacao_orientada_dados",
+        "tema": "cultura_dados",
+        "tipo": "open_ended",
+        "pergunta": "Explique o conceito de 'HiPPO' e explique por que motivo a sua predominância numa organização destrói a transição para uma verdadeira cultura Data-Driven.",
+        "palavras_chave": [
+        ["opinião", "intuição", "palpite", "achismo"],
+        ["salário", "cargo", "hierarquia", "chefe", "topo"],
+        ["evidências", "dados", "factos", "métricas"],
+        ["decisão", "dddm", "escolhas"],
+        ["testes", "experimentação", "a/b"]
+        ],
+        "criterios_avaliacao": {
+        "logica": "Contar quantos dos 5 grupos de palavras-chave estão representados na resposta do utilizador.",
+        "0_ou_1_grupo": 0,
+        "2_ou_3_grupos": 0.5,
+        "4_ou_5_grupos": 1
         },
-        {
-          "conceito": "Finais de 2000 (Late 2000s)",
-          "definicao": "Surgimento de ferramentas de Self-Service Analytics (ex: Power BI, Tableau)."
+        "resposta_referencia": "O HiPPO refere-se à imposição da opinião da pessoa com o maior salário (ou cargo superior). Destrói a cultura Data-Driven porque as decisões passam a basear-se na intuição e não em evidências, ignorando a necessidade de validar ideias através de testes e experimentação.",
+        "justificacao": "A resposta ideal deve contrastar a intuição ditada pela hierarquia com a decisão baseada em factos e testes estruturados."
+    },
+    {
+        "id": 242,
+        "macro_tema": "business_analytics",
+        "tema": "tipos_analytics",
+        "tipo": "open_ended",
+        "pergunta": "Descreva a transição da Análise Preditiva para a Análise Prescritiva, destacando o que a Prescritiva faz de diferente que gera o maior nível de valor e dificuldade na Analítica de Negócio.",
+        "palavras_chave": [
+        ["prever", "probabilidade", "futuro", "tendência"],
+        ["ação", "agir", "fazer", "executar"],
+        ["recomendar", "prescrever", "sugerir", "aconselhar"],
+        ["otimizar", "maximizar", "melhor", "ideal"],
+        ["autonomia", "automático", "simular", "cenários"]
+        ],
+        "criterios_avaliacao": {
+        "logica": "Contar quantos dos 5 grupos de palavras-chave estão representados na resposta do utilizador.",
+        "0_ou_1_grupo": 0,
+        "2_ou_3_grupos": 0.5,
+        "4_ou_5_grupos": 1
         },
-        {
-          "conceito": "Década de 2010",
-          "definicao": "Integração generalizada do Data Science e Machine Learning na analítica de negócio."
-        }
-      ],
-      "justificacao": "Os DSS começaram nos anos 60[cite: 354]. O Self-Service Analytics surgiu no final dos anos 2000 [cite: 366], e a adoção maciça de Machine Learning explodiu na década de 2010[cite: 373]."
+        "resposta_referencia": "Enquanto a preditiva tenta prever o futuro com base em probabilidades, a prescritiva vai um passo além ao recomendar ativamente a melhor ação a tomar. Faz isso ao simular cenários para otimizar o resultado, podendo muitas vezes atuar com autonomia automática sem intervenção humana.",
+        "justificacao": "O aluno deve conseguir distinguir que prever não é agir. A palavra-chave da prescritiva é otimização e recomendação de ações concretas."
     },
     {
-      "id": 110,
-      "macro_tema": "business_analytics",
-      "tema": "metricas",
-      "tipo": "drag_and_drop",
-      "pergunta": "Faz a correspondência entre a métrica/indicador e a sua classificação mais correta.",
-      "pares": [
-        {
-          "conceito": "Market Share (Quota de Mercado)",
-          "definicao": "É considerado um KPI, pois foca no desempenho competitivo perante a concorrência."
+        "id": 243,
+        "macro_tema": "data_driven_infrastructure",
+        "tema": "lakehouse_ia",
+        "tipo": "open_ended",
+        "pergunta": "Qual foi o principal problema prático que os Data Lakes de primeira geração enfrentaram (que os transformou em repositórios inúteis) e como é que a arquitetura Data Lakehouse moderna resolve esse problema?",
+        "palavras_chave": [
+        ["pântano", "swamp", "caos", "desorganização"],
+        ["governança", "qualidade", "segurança", "fiabilidade"],
+        ["transações", "acid", "leitura", "escrita"],
+        ["estruturados", "raw", "brutos", "semi-estruturados"],
+        ["camadas", "medallion", "bronze", "silver", "gold"]
+        ],
+        "criterios_avaliacao": {
+        "logica": "Contar quantos dos 5 grupos de palavras-chave estão representados na resposta do utilizador.",
+        "0_ou_1_grupo": 0,
+        "2_ou_3_grupos": 0.5,
+        "4_ou_5_grupos": 1
         },
-        {
-          "conceito": "Customer Acquisition Cost (CAC)",
-          "definicao": "É considerado um KBI, pois avalia puramente a eficiência e custo financeiro em marketing e vendas."
-        },
-        {
-          "conceito": "Employee Turnover em posições críticas",
-          "definicao": "É considerado um KRI, servindo como alerta precoce para problemas de estabilidade e retenção."
-        }
-      ],
-      "justificacao": "Market Share reflete posicionamento estratégico (KPI)[cite: 252]. CAC foca na eficiência de capital (KBI)[cite: 209]. A alta rotação de pessoal é um risco grave de negócio (KRI)[cite: 212, 233]."
-    },
-    {
-      "id": 111,
-      "macro_tema": "crisp_dm",
-      "tema": "agile",
-      "tipo": "multiple_choice",
-      "pergunta": "Embora o Kanban seja muito simples e o Scrum seja o mais comum em desenvolvimento de software, qual é a mais recente 'framework' ágil abordada na aula desenhada especificamente para projetos de Data Science?",
-      "opcoes": [
-        "Waterfall",
-        "Data Driven Scrum",
-        "SEMMA",
-        "TDSP"
-      ],
-      "resposta_correta": "Data Driven Scrum",
-      "justificacao": "Data Driven Scrum é uma abordagem ágil recente que tenta combinar o melhor do Scrum e do Kanban, focado estritamente nas perspetivas e incertezas da ciência de dados[cite: 1245]."
-    },
-    {
-      "id": 112,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_06_deployment",
-      "tipo": "multiple_choice",
-      "pergunta": "Na fase de Deployment, uma das tarefas fundamentais é a criação de um 'Monitoring & Maintenance Plan'. Porquê?",
-      "opcoes": [
-        "Para garantir que o modelo de Data Mining continua preciso e relevante à medida que o tempo passa e a realidade muda.",
-        "Para monitorizar as horas de trabalho dos Data Scientists.",
-        "Para manter a infraestrutura de hardware (servidores) ligada.",
-        "Para justificar a criação do relatório final aos administradores."
-      ],
-      "resposta_correta": "Para garantir que o modelo de Data Mining continua preciso e relevante à medida que o tempo passa e a realidade muda.",
-      "justificacao": "Um plano de monitorização ajuda a evitar longos períodos de uso incorreto do modelo, já que com o tempo (e mudanças no mercado/comportamento), a precisão das previsões pode decair[cite: 1194, 1197]."
-    },
-    {
-      "id": 113,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "papeis_lideranca",
-      "tipo": "multiple_choice",
-      "pergunta": "Qual destas NÃO é uma competência ou área de background típica de um Chief Digital Officer?",
-      "opcoes": [
-        "Marketing e E-commerce.",
-        "Gestão da Mudança e Relações Públicas.",
-        "Enterprise Information Management (Gestão de Dados Mestres).",
-        "Capacidade para articular a visão e estratégia digital."
-      ],
-      "resposta_correta": "Enterprise Information Management (Gestão de Dados Mestres).",
-      "justificacao": "Enterprise Information Management (EIM), juntamente com a segurança e compliance dos dados, são responsabilidades diretas de um Chief Data Officer (CDO) [cite: 606, 611], e não do Chief Digital Officer[cite: 585]."
-    },
-    {
-      "id": 114,
-      "macro_tema": "organizacao_orientada_dados",
-      "tema": "evolucao_cultura",
-      "tipo": "true_false",
-      "pergunta": "No modelo de Evolução da Cultura de Dados, uma empresa 'Data Aware' já utiliza os seus dados para tomar a maioria das suas decisões estratégicas, relegando a intuição para segundo plano.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Numa cultura 'Data Aware', a empresa recolhe dados e sabe da sua existência, mas AINDA NÃO os usa ativamente na tomada de decisão (dependendo ainda fortemente da intuição). Só a partir de 'Data Informed' ou 'Data Driven' é que isso acontece."
-    },
-    {
-      "id": 115,
-      "macro_tema": "crisp_dm",
-      "tema": "fase_01_business",
-      "tipo": "drag_and_drop",
-      "pergunta": "Na fase 'Business Understanding' do CRISP-DM existem quatro tarefas principais. Associa a tarefa ao seu output correto.",
-      "pares": [
-        {
-          "conceito": "Determine Business Objectives",
-          "definicao": "Gera os 'Business Success Criteria'."
-        },
-        {
-          "conceito": "Assess Situation",
-          "definicao": "Faz o inventário de recursos, riscos e contingências (Risks & Contingencies)."
-        },
-        {
-          "conceito": "Determine Data Science Goals",
-          "definicao": "Gera os 'Data Science Success Criteria'."
-        }
-      ],
-      "justificacao": "O Business Understanding foca-se em 4 eixos principais: Objetivos de negócio (com critérios de sucesso), Avaliação da Situação (recursos e riscos), Objetivos Técnicos (Data Science) e Produção do Plano de Projeto inicial[cite: 788]."
+        "resposta_referencia": "Os Data Lakes originais aceitavam dados brutos e não estruturados sem qualquer filtro, tornando-se num caos conhecido como Pântano de Dados (Data Swamp) por falta de governança. O Lakehouse resolve isto introduzindo transações ACID e a arquitetura de camadas (Medallion: Bronze, Silver, Gold), garantindo a qualidade e organização dos dados num só local.",
+        "justificacao": "É essencial referir a transição do caos (Swamp/Falta de Governança) para a ordem trazida pelas transações ACID e pelas camadas de limpeza progressiva."
     }
-  ]
+    ]
 }

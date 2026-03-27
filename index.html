@@ -134,7 +134,7 @@
     .exam-header { display: flex; flex-direction: column; gap: 15px;}
     .exam-header__actions { display: flex; gap: 10px; flex-wrap: wrap;}
     
-    .form-select, #dictSearchInput, #app-password { 
+    .form-select, #dictSearchInput, #app-password, .open-ended-input { 
       padding: 14px 16px; 
       border: 2px solid var(--border); 
       border-radius: 12px; 
@@ -148,7 +148,7 @@
       transition: var(--transition);
       appearance: none;
     }
-    .form-select:focus, #dictSearchInput:focus, #app-password:focus { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);}
+    .form-select:focus, #dictSearchInput:focus, #app-password:focus, .open-ended-input:focus { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);}
     
     .btn { 
       padding: 14px 20px; 
@@ -223,7 +223,7 @@
     .dnd-dropzone.incorrect .dnd-item { border-color: var(--error); border-left-color: var(--error); background: var(--error-light); }
     .dnd-correct-answer { display: block; font-size: 0.85rem; color: var(--success); font-weight: 800; margin-top: 8px; text-align: center; width: 100%; }
 
-    /* JUSTIFICAÇÃO */
+    /* JUSTIFICAÇÃO E TEXTO LIVRE */
     .justification-box { margin-top: 25px; padding: 20px; background: var(--secondary); border-radius: 12px; font-size: 0.95rem; border: 1px solid var(--border);}
     .feedback-status { font-weight: 800; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
 
@@ -249,6 +249,7 @@
     .question-nav-item.is-answered { background: var(--border); }
     .question-nav-item.is-active { border-color: var(--primary); background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(159, 18, 57, 0.3);}
     .question-nav-item.is-correct { background: var(--success); color: white; border-color: var(--success); }
+    .question-nav-item.is-partial { background: var(--warning); color: white; border-color: var(--warning); } /* Novo estado: Meia Cotação */
     .question-nav-item.is-incorrect { background: var(--error); color: white; border-color: var(--error); }
 
     .finish-link { display: block; padding: 12px; background: var(--secondary); border-radius: 8px; color: var(--primary); text-align: center; cursor: pointer; font-weight: 700; font-size: 0.9rem; transition: var(--transition);}
