@@ -1,0 +1,700 @@
+{
+  "opcoes_exame": {
+    "duracao_minutos": 90,
+    "desconto_erro": 0.25
+  },
+  "configuracao_teste": {
+    "Conceitos_Fundamentais": 7,
+    "Metricas_de_Avaliacao": 8,
+    "Ferramentas_e_Bibliotecas": 3,
+    "Modelos_de_Base": 7
+  },
+  "perguntas": [
+    {
+      "id": "STP_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Na anatomia dos dados de uma Série Temporal, como se classificam variáveis como 'Temperatura' ou 'Preço', que se alteram ao longo do tempo e ajudam o modelo a prever o alvo?",
+      "opcoes": [
+        "Features Estáticas",
+        "Target Variables",
+        "Features Dinâmicas",
+        "Variáveis Categóricas Isoladas"
+      ],
+      "resposta_correta": "Features Dinâmicas",
+      "justificacao": "As features dinâmicas são dados adicionais que mudam com o tempo (ex: temperatura, preço) e que têm impacto no valor do target."
+    },
+    {
+      "id": "STP_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Pretendes prever as vendas de 500 lojas diferentes. Decides treinar um único algoritmo com os dados de todas as lojas em simultâneo para aprender padrões transversais. Que tipo de arquitetura estás a utilizar?",
+      "opcoes": [
+        "Modelo Local",
+        "Modelo Global",
+        "Previsão Univariada",
+        "Modelo Naïve"
+      ],
+      "resposta_correta": "Modelo Global",
+      "justificacao": "Um Modelo Global é treinado usando múltiplas séries temporais (um dataset agregado) e um único modelo faz previsões para todas as séries. É um processo mais demorado e 'offline', mas potente."
+    },
+    {
+      "id": "STP_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Sobre a previsão pontual (Point Forecast) e a previsão probabilística, assinala a afirmação VERDADEIRA:",
+      "opcoes": [
+        "A previsão pontual quantifica o risco associado à margem de erro, ideal para a gestão de stocks.",
+        "A previsão probabilística gera um único número que representa o valor mais provável do futuro.",
+        "A previsão pontual omite a incerteza e apresenta alto risco de erro na tomada de decisão isolada.",
+        "A previsão probabilística requer exclusividade de modelos locais para ser executada."
+      ],
+      "resposta_correta": "A previsão pontual omite a incerteza e apresenta alto risco de erro na tomada de decisão isolada.",
+      "justificacao": "A previsão pontual fornece apenas um único número, não indicando o nível de incerteza. Para gestão de risco e tomada de decisão informada (ex: gestão de stock), a previsão probabilística é superior por fornecer intervalos e probabilidades."
+    },
+    {
+      "id": "STP_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Numa previsão probabilística, o que significa concretamente o limite P90 (ou percentil 90)?",
+      "opcoes": [
+        "O valor real será exatamente igual à previsão em 90% dos casos.",
+        "Espera-se que o valor real seja inferior a esse limite em 90% das vezes.",
+        "Espera-se que o valor real seja superior a esse limite em 90% das vezes.",
+        "O modelo tem uma margem de erro fixa de 10% para cima e para baixo."
+      ],
+      "resposta_correta": "Espera-se que o valor real seja inferior a esse limite em 90% das vezes.",
+      "justificacao": "O P90 (0.9 quantile) significa que a probabilidade de o valor real observado cair abaixo desse valor previsto é de 90%, e de 10% de ficar acima dele."
+    },
+    {
+      "id": "STP_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Verdadeiro ou Falso: Um modelo que faz Previsão Univariada não utiliza 'features' externas como meteorologia ou indicadores económicos, dependendo apenas do histórico do próprio Target.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "A Previsão Univariada (Univariate Time Series Forecasting) usa apenas os valores anteriores da própria série para prever os seus valores futuros."
+    },
+    {
+      "id": "STP_006",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "Associa corretamente a métrica de avaliação à sua principal característica e caso de uso ideal.",
+      "pares": [
+        { "definicao": "Métricas para medir a precisão da distribuição e incerteza (previsão probabilística).", "conceito": "WQL / SQL" },
+        { "definicao": "Métrica resistente a outliers que otimiza o modelo para encontrar a mediana.", "conceito": "MAE / MASE" },
+        { "definicao": "Métrica sensível a outliers que penaliza fortemente erros grandes, estimando a média.", "conceito": "RMSE / MSE" },
+        { "definicao": "Métrica percentual que falha com zeros (intermitência) e penaliza incorretamente as previsões altas.", "conceito": "MAPE" }
+      ],
+      "justificacao": "A escolha da métrica dita o comportamento do modelo: baseadas em quantis (WQL/SQL) avaliam incerteza; erros absolutos (MAE) encontram a mediana resistindo a outliers; e os erros quadráticos (MSE/RMSE) dão peso elevado a erros anómalos, estimando a média esperada."
+    },
+    {
+      "id": "STP_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "Se o teu objetivo for prever as vendas de uma grande variedade de produtos, sendo que queres garantir que os erros de previsão nos 'Best-Sellers' (produtos que vendem milhões) afetem o modelo com mais peso do que os erros nos produtos que vendem poucas unidades, que métrica(s) deves escolher?",
+      "opcoes": [
+        "Métricas escalonadas como o MASE ou RMSSE.",
+        "Métricas dependentes de escala (scale-dependent) como WQL, MAE ou RMSE.",
+        "Métricas baseadas em percentagem absoluta como o MAPE.",
+        "Métricas de probabilidade invertida."
+      ],
+      "resposta_correta": "Métricas dependentes de escala (scale-dependent) como WQL, MAE ou RMSE.",
+      "justificacao": "Métricas dependentes de escala atribuem maior perda (loss) aos erros cometidos em séries temporais com valores absolutos maiores. Se quisesses que todos os produtos tivessem a mesma importância independentemente do seu volume, usarias métricas escalonadas (MASE, RMSSE)."
+    },
+    {
+      "id": "STP_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "A Quantile Loss (função pinball loss) possui uma propriedade assimétrica. Se quisermos avaliar o quantil Q75 (P75) na nossa previsão de stock, o que acontece?",
+      "opcoes": [
+        "O modelo penaliza de igual forma a sobreprevisão (ter stock a mais) e a subprevisão (ter falta de stock).",
+        "O modelo penaliza mais severamente a sobreprevisão (prever mais do que a procura real).",
+        "O modelo penaliza mais severamente a subprevisão (prever menos do que a procura real, falhando vendas).",
+        "A função ignora erros abaixo do P50."
+      ],
+      "resposta_correta": "O modelo penaliza mais severamente a subprevisão (prever menos do que a procura real, falhando vendas).",
+      "justificacao": "Para Q > 0.50 (ex: 0.75), a Quantile Loss dá um peso maior quando a observação real é maior que a estimativa (underforecasting) do que quando a observação é menor que a estimativa (overforecasting). O objetivo de ter um P75 é garantir que a procura seja satisfeita 75% do tempo."
+    },
+    {
+      "id": "STP_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Ferramentas_e_Bibliotecas",
+      "pergunta": "A biblioteca StatsForecast (do ecossistema Nixtla) obriga a que o DataFrame de entrada (input data) tenha uma estrutura em formato 'long' rigorosa. Quais são as três colunas obrigatórias?",
+      "opcoes": [
+        "id_serie, data, target",
+        "unique_id, ds, y",
+        "series_id, time_index, value",
+        "store_id, datetime, feature_y"
+      ],
+      "resposta_correta": "unique_id, ds, y",
+      "justificacao": "De acordo com as normas da Nixtla/StatsForecast, o DataFrame tem de conter: 'unique_id' (identificador da série), 'ds' (datestamp, a data) e 'y' (a variável numérica que pretendemos prever)."
+    },
+    {
+      "id": "STP_010",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Ferramentas_e_Bibliotecas",
+      "pergunta": "Associa a biblioteca do Ecossistema Nixtla ao seu principal propósito.",
+      "pares": [
+        { "definicao": "Previsões usando modelos estatísticos e econométricos focados em alta velocidade de execução.", "conceito": "StatsForecast" },
+        { "definicao": "Escala técnicas tradicionais de machine learning para previsão de várias séries temporais em volume.", "conceito": "MLForecast" },
+        { "definicao": "Fornece algoritmos de Deep Learning aplicados a séries temporais.", "conceito": "NeuralForecast" },
+        { "definicao": "Focada em previsões probabilísticas para dados em níveis agrupados/hierárquicos.", "conceito": "HierarchicalForecast" }
+      ],
+      "justificacao": "O Nixtlaverse separa as abordagens: StatsForecast para estatística rápida (ex: ARIMA), MLForecast para machine learning, NeuralForecast para redes neuronais e Hierarchical para hierarquias de dados."
+    },
+    {
+      "id": "STP_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Antes de avançarmos para algoritmos complexos de Machine Learning, é boa prática aplicar modelos 'Baseline'. O que pressupõe o modelo 'Naïve'?",
+      "opcoes": [
+        "Pressupõe que o valor futuro será igual à média histórica de todos os dados anteriores.",
+        "Pressupõe que todos os valores futuros serão exatamente iguais ao último valor observado.",
+        "Pressupõe que as previsões futuras seguem a tendência observada entre o primeiro e o último ponto.",
+        "Pressupõe que o valor amanhã será igual ao valor do mesmo dia da semana anterior."
+      ],
+      "resposta_correta": "Pressupõe que todos os valores futuros serão exatamente iguais ao último valor observado.",
+      "justificacao": "O modelo Naïve ('Ingénuo') é a baseline mais simples, definindo que a previsão para t+h é simplesmente igual à observação em t (o último dado). É surpreendentemente difícil de bater em algumas séries financeiras."
+    },
+    {
+      "id": "STP_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Ao trabalhar com dados de vendas MENSAIS de protetor solar, o analista define um modelo 'Seasonal Naïve'. O valor previsto para o mês de Agosto do próximo ano será igual a:",
+      "opcoes": [
+        "Ao último valor registado em Julho do mesmo ano.",
+        "À média das vendas de Agosto de todos os anos registados no dataset.",
+        "Ao valor das vendas registadas no mês de Agosto do ano passado.",
+        "Ao último valor registado na série temporal (último mês disponível na base)."
+      ],
+      "resposta_correta": "Ao valor das vendas registadas no mês de Agosto do ano passado.",
+      "justificacao": "O 'Seasonal Naïve' prevê que o valor seja igual ao valor observado na mesma 'estação' do ciclo anterior. Para dados mensais (season_length=12), prevê que o valor de Agosto de Y+1 seja igual a Agosto de Y."
+    },
+    {
+      "id": "STP_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "O modelo 'Random Walk With Drift' (Passeio Aleatório com Tendência) é uma expansão do modelo Naïve. Como é calculado o 'Drift' (tendência)?",
+      "opcoes": [
+        "Traçando uma linha que liga a primeira observação e a última observação da série de treino.",
+        "Aplicando uma média móvel exponencial com peso maior nas observações mais recentes.",
+        "Através de algoritmos de otimização de mínimos quadrados na série de treino e validação.",
+        "Multiplicando o último ponto por um rácio constante de crescimento estipulado pelo utilizador."
+      ],
+      "resposta_correta": "Traçando uma linha que liga a primeira observação e a última observação da série de treino.",
+      "justificacao": "O 'Drift' é calculado através da mudança média nos dados históricos, o que matematicamente equivale a traçar uma linha reta do primeiro ao último ponto observado e extrapolá-la para o futuro."
+    },
+    {
+      "id": "STP_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Qual é a principal razão pela qual dividimos os dados em conjuntos de Treino (Train) e Teste (Test/Hold-out) nas séries temporais?",
+      "opcoes": [
+        "Para acelerar o processo computacional dos modelos locais.",
+        "Porque o tamanho dos resíduos no conjunto de treino é um indicador infalível de que o modelo fará boas previsões no futuro.",
+        "Porque a precisão real das previsões só pode ser medida validando o modelo com dados novos (Teste) que o algoritmo não viu durante a estimativa de parâmetros.",
+        "Para calibrarmos exclusivamente as features dinâmicas da base de teste sem enviesar as features estáticas."
+      ],
+      "resposta_correta": "Porque a precisão real das previsões só pode ser medida validando o modelo com dados novos (Teste) que o algoritmo não viu durante a estimativa de parâmetros.",
+      "justificacao": "Avaliar o modelo apenas no treino leva a over-fitting. A única forma de provar que o modelo consegue prever o futuro é escondendo uma porção dos dados no final da série (test set) e testar se ele consegue acertar nesses dados cegos."
+    },
+    {
+      "id": "STP_015",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Associa a formulação ou lógica ao respetivo modelo base (Baseline).",
+      "pares": [
+        { "definicao": "y(T+h) = y(T)", "conceito": "Naïve" },
+        { "definicao": "A previsão para todos os valores futuros é a média de todos os dados históricos.", "conceito": "Historic Average" },
+        { "definicao": "Ideal para dados altamente sazonais, ex: prever que os dados das 15:00h de hoje serão iguais aos das 15:00h de ontem.", "conceito": "Seasonal Naïve" },
+        { "definicao": "A previsão aumenta ou diminui ao longo do tempo baseando-se no crescimento médio observado desde o início.", "conceito": "Random Walk with Drift" }
+      ],
+      "justificacao": "As quatro baselines principais: Naïve replica a cauda; Historic usa a média absoluta; Seasonal replica a estação correspondente (y_{T+h-m}); e Drift traça a inclinação média do histórico."
+    },
+    {
+      "id": "STP_016",
+      "tipo": "multiple_choice",
+      "macro_tema": "Ferramentas_e_Bibliotecas",
+      "pergunta": "Na biblioteca StatsForecast, para configurar um modelo AutoARIMA para dados com sazonalidade TRIMESTRAL, qual deve ser o valor definido para o parâmetro `season_length`?",
+      "opcoes": [
+        "12",
+        "4",
+        "52",
+        "1"
+      ],
+      "resposta_correta": "4",
+      "justificacao": "A frequência dos dados dita o período sazonal (quantas observações antes de o padrão se repetir). Para dados trimestrais (Quarters), um ano tem 4 trimestres, logo `season_length` = 4. Para meses seria 12; para semanas, 52."
+    },
+    {
+      "id": "STP_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "Sobre a métrica MASE (Mean Absolute Scaled Error), assinala a afirmação FALSA:",
+      "opcoes": [
+        "O MASE é resistente a outliers e prefere modelos que estimem de forma precisa a mediana.",
+        "Normaliza o erro de cada série através do erro histórico sazonal (Naïve ou Seasonal Naïve da série).",
+        "Pode ser usado para comparar a precisão dos modelos entre diferentes séries com escalas variadas.",
+        "O MASE não pode ser calculado se a série contiver valores nulos (zeros), falhando tal como o MAPE."
+      ],
+      "resposta_correta": "O MASE não pode ser calculado se a série contiver valores nulos (zeros), falhando tal como o MAPE.",
+      "justificacao": "A afirmação é FALSA. O MASE foi criado precisamente como uma métrica de escala (scaled metric) que supera o problema do MAPE com valores a zero, escalonando pelo erro histórico, tornando-o perfeitamente adequado para séries temporais esparsas/com intermitência de zeros."
+    },
+    {
+      "id": "STP_018",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Como foi demonstrado em 2020 devido às restrições pandémicas no tráfego aéreo, os modelos de previsão de Séries Temporais falharam em antecipar o decréscimo da procura. Porquê?",
+      "opcoes": [
+        "Porque operam sob a premissa de que os fatores subjacentes e observáveis do passado que afetam os valores da série continuam a existir de forma contínua no futuro.",
+        "Porque todos os modelos baseados no ecossistema Nixtla ignoram features dinâmicas por defeito.",
+        "Porque usaram métricas focadas na média (RMSE) em vez de focar na mediana (MAE).",
+        "Porque a pandemia apenas pode ser prevista através de Previsão Univariada."
+      ],
+      "resposta_correta": "Porque operam sob a premissa de que os fatores subjacentes e observáveis do passado que afetam os valores da série continuam a existir de forma contínua no futuro.",
+      "justificacao": "O 'Forecasting' é uma ferramenta para prever o que é regular e expectável, baseando-se no facto de que padrões do passado se irão repetir. Não consegue prever eventos totalmente novos ('black swans') que quebram drasticamente as condições estruturais do sistema."
+    },
+    {
+      "id": "STP_019",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Verdadeiro ou Falso: As previsões baseadas num 'Modelo Naïve' vão gerar uma linha perfeitamente reta (plana) horizontal aquando da plotagem do Point Forecast para os passos futuros no horizonte h.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "Uma vez que a fórmula do modelo Naïve fixa todos os pontos previstos (T+h) como o exato valor registado no instante temporal atual (T), o gráfico futuro resulta numa linha reta/plana sem flutuações e sem tendência."
+    },
+    {
+      "id": "STP_020",
+      "tipo": "multiple_choice",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "Uma equipa construiu um modelo de previsão. Ao compararem o MAE (Mean Absolute Error) contra o RMSE (Root Mean Squared Error) constataram que o RMSE era drasticamente mais alto que o MAE. Qual a interpretação mais provável desta discrepância?",
+      "opcoes": [
+        "A série temporal é constante e possui média zero.",
+        "O modelo tem dificuldades em lidar com sazonalidade e usa features inválidas.",
+        "O modelo comete erros de pequena escala frequentes em toda a série.",
+        "O modelo fez previsões bastante desajustadas da realidade (grandes erros ou falhou na adaptação a mudanças abruptas) nalguns pontos, devido à sensibilidade do RMSE aos outliers."
+      ],
+      "resposta_correta": "O modelo fez previsões bastante desajustadas da realidade (grandes erros ou falhou na adaptação a mudanças abruptas) nalguns pontos, devido à sensibilidade do RMSE aos outliers.",
+      "justificacao": "O RMSE eleva os erros ao quadrado antes de efetuar a média. Isto significa que penaliza brutalmente falhas grandes e isoladas (outliers). Quando o RMSE diverge altamente do MAE, sinaliza a presença de grandes desvios pontuais na previsão."
+    },
+    {
+      "id": "STP_021",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "O que constitui a Incerteza associada a uma previsão e como é expressa num Prediction Interval de 95%?",
+      "opcoes": [
+        "O modelo tem 95% de precisão absoluta (accuracy) no Point Forecast gerado.",
+        "O intervalo contém a totalidade da população estatística de todos os parâmetros possíveis do mundo.",
+        "Indica que, estimando a distribuição em 100 séries futuras hipotéticas, o valor real estará compreendido nesse limite superior e inferior em 95% das ocorrências.",
+        "Os valores do modelo só são confiáveis nas primeiras 95 observações temporais do teste."
+      ],
+      "resposta_correta": "Indica que, estimando a distribuição em 100 séries futuras hipotéticas, o valor real estará compreendido nesse limite superior e inferior em 95% das ocorrências.",
+      "justificacao": "Um Prediction Interval foca-se nas observações futuras; dizer que o nível é de 95% implica que esperamos que a verdadeira observação futura fique dentro daquele leque estabelecido (ex: entre P02.5 e P97.5) 95% do tempo."
+    },
+    {
+      "id": "STP_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Metricas_de_Avaliacao",
+      "pergunta": "O que significa dizer que uma métrica avaliadora de erros é 'Scale-dependent' (Dependente de escala)?",
+      "opcoes": [
+        "Os modelos de Machine Learning não as podem processar, pois afetam a capacidade da GPU.",
+        "Se os dados originais sofrerem uma conversão (ex: milhares para milhões), o valor da métrica altera-se, sendo difícil usá-las para comparar a precisão entre diferentes datasets com unidades díspares.",
+        "Só funcionam bem quando dividimos as séries pelo seu erro sazonal anterior.",
+        "Ficam indefinidas se houver intermitência e valores zeros na base de dados."
+      ],
+      "resposta_correta": "Se os dados originais sofrerem uma conversão (ex: milhares para milhões), o valor da métrica altera-se, sendo difícil usá-las para comparar a precisão entre diferentes datasets com unidades díspares.",
+      "justificacao": "O MAE e o RMSE estão na mesma 'escala' que os dados originais. Um MAE de 10 significa um erro de '10 carros' se o target for a venda de carros. Logo, não permitem comparar uma série que vende unidades dezenas com outra que fatura em milhões."
+    },
+    {
+      "id": "STP_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Ferramentas_e_Bibliotecas",
+      "pergunta": "Na configuração do StatsForecast, qual a finalidade da indicação da `freq` (frequência) nos parâmetros?",
+      "opcoes": [
+        "Estipular a duração em que o modelo treina antes de terminar por timeout.",
+        "Definir a distância e espaçamento temporal entre cada registo no índice 'ds' (ex: 'D' para Dias, 'MS' para Início do Mês, 'h' para Horas).",
+        "Ajustar a frequência de CPU ('n_jobs') que será dedicada ao treino do modelo Global.",
+        "Calcular a métrica dependente de escala da penalização WQL."
+      ],
+      "resposta_correta": "Definir a distância e espaçamento temporal entre cada registo no índice 'ds' (ex: 'D' para Dias, 'MS' para Início do Mês, 'h' para Horas).",
+      "justificacao": "A `freq` dita como o StatsForecast avança o horizonte de tempo t, t+1, etc. Baseado na convenção do Pandas, 'MS' (Month Start) ou 'D' garantem a coerência cronológica ao gerar as datas das previsões (Horizon)."
+    },
+    {
+      "id": "STP_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Modelos_de_Base",
+      "pergunta": "Tendo em conta o conjunto total do dataset e a premissa de que os Baseline Models são a 'Régua de Medição', qual a afirmação VERDADEIRA?",
+      "opcoes": [
+        "Os algoritmos base de Machine Learning avançado substituem os Baseline models que já não se utilizam na indústria moderna.",
+        "Um algoritmo complexo desenvolvido internamente é considerado bem sucedido se a sua precisão, medida na amostra de teste, bater a performance dos modelos Baseline (ex: Naïve) na mesma amostra.",
+        "As baselines não suportam cálculos de Prediction Intervals por serem muito rudimentares.",
+        "As baselines requerem sempre dezenas de hyperparameters para fazerem overfitting inicial antes da comparação."
+      ],
+      "resposta_correta": "Um algoritmo complexo desenvolvido internamente é considerado bem sucedido se a sua precisão, medida na amostra de teste, bater a performance dos modelos Baseline (ex: Naïve) na mesma amostra.",
+      "justificacao": "Os Baseline Models servem como termo de comparação mínimo garantido. A regra de ouro no Forecasting é: antes de se gastar tempo e esforço em IA/Machine Learning ou AutoARIMA complexos, tem de se provar primeiro que eles conseguem melhorar as previsões rudimentares de baselines estatísticos muito básicos."
+    },
+    {
+      "id": "STP_025",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_Fundamentais",
+      "pergunta": "Qual das definições abaixo descreve uma feature 'Categórica' em oposição a uma feature 'Contínua/Real'?",
+      "opcoes": [
+        "A feature Categórica indica que o número em si possui significado e uma ordem hierárquica escalar intrínseca.",
+        "As features categóricas referem-se estritamente à medição climática externa da base.",
+        "A feature Categórica indica entidades separadas sem relação matemática de grandeza entre si (ex: Loja 0, Loja 1, Loja 2, onde a Loja 2 não é matematicamente maior ou 'dobro' da Loja 1).",
+        "A feature Categórica garante que a Previsão Univariada é possível aplicando o SQL loss."
+      ],
+      "resposta_correta": "A feature Categórica indica entidades separadas sem relação matemática de grandeza entre si (ex: Loja 0, Loja 1, Loja 2, onde a Loja 2 não é matematicamente maior ou 'dobro' da Loja 1).",
+      "justificacao": "Features como IDs, zonas ou marcas são Categóricas - os seus identificadores servem unicamente para agrupar e dar nome, os números subjacentes (1, 2, 3...) não operam com o significado matemático de grandeza."
+    },
+    {
+      "id": "STP_026",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "O modelo ARIMA é composto por três partes fundamentais (p, d, q). O que representa a componente 'MA' (Moving Average / Média Móvel), identificada pela letra 'q'?",
+      "opcoes": [
+        "Olha para o passado fazendo uma regressão sobre os valores anteriores da própria série.",
+        "Refere-se ao grau de diferenciação necessário para tornar a série estacionária.",
+        "Olha para os erros, fazendo uma regressão sobre os erros de previsão passados.",
+        "Suaviza a série temporal calculando a média móvel dos últimos 12 meses."
+      ],
+      "resposta_correta": "Olha para os erros, fazendo uma regressão sobre os erros de previsão passados.",
+      "justificacao": "Num modelo MA (Moving Average), a previsão é feita usando uma combinação linear (regressão) de erros de previsão passados (ruído branco), e não através do alisamento da série."
+    },
+    {
+      "id": "STP_027",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Num modelo ARIMA (p, d, q), a componente 'AR' (AutoRegressive) de ordem 'p' significa que:",
+      "opcoes": [
+        "A variável é prevista usando uma regressão contra os seus próprios valores defasados (lagged values) do passado.",
+        "O modelo aplica 'p' subtrações consecutivas à série para remover a tendência.",
+        "A série é gerada exclusivamente por um processo de ruído branco (white noise).",
+        "A amplitude da série aumenta exponencialmente com o tempo."
+      ],
+      "resposta_correta": "A variável é prevista usando uma regressão contra os seus próprios valores defasados (lagged values) do passado.",
+      "justificacao": "O termo 'Auto' significa 'próprio', indicando uma regressão da variável contra ela mesma (valores anteriores / lags)."
+    },
+    {
+      "id": "STP_028",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Muitos modelos de base (baselines) são casos especiais do modelo ARIMA. Faz a correspondência correta entre o modelo conceptual e a sua notação ARIMA.",
+      "pares": [
+        { "definicao": "ARIMA(0,0,0) sem constante", "conceito": "White noise (Ruído Branco)" },
+        { "definicao": "ARIMA(0,1,0) sem constante", "conceito": "Random walk (Passeio Aleatório)" },
+        { "definicao": "ARIMA(0,1,0) com constante", "conceito": "Random walk with drift (Passeio com Tendência)" },
+        { "definicao": "ARIMA(p,0,0)", "conceito": "Autoregression (Autoregressão)" }
+      ],
+      "justificacao": "O ARIMA é um modelo generalista. Se apenas tivermos a parte AR, é um ARIMA(p,0,0). Se apenas diferenciarmos a série uma vez sem termos AR ou MA, temos um Random Walk: ARIMA(0,1,0)."
+    },
+    {
+      "id": "STP_029",
+      "tipo": "multiple_choice",
+      "macro_tema": "Componentes_da_Serie",
+      "pergunta": "Ao analisar a anatomia de uma série temporal, reparas que a amplitude (altura e profundidade) dos ciclos sazonais vai ficando mais 'agressiva' e larga à medida que a tendência geral da série sobe. Que tipo de modelo descreve melhor este comportamento?",
+      "opcoes": [
+        "Modelo Aditivo",
+        "Modelo Multiplicativo",
+        "Modelo Estacionário",
+        "Modelo de Ruído Branco"
+      ],
+      "resposta_correta": "Modelo Multiplicativo",
+      "justificacao": "Num modelo multiplicativo, os componentes (nível, tendência, sazonalidade) multiplicam-se. Como resultado, as flutuações sazonais aumentam ou diminuem proporcionalmente ao nível da série."
+    },
+    {
+      "id": "STP_030",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "Uma série temporal estacionária é aquela em que as propriedades estatísticas (média, variância) não dependem do momento em que a série é observada. Das seguintes opções, qual é considerada uma série estacionária?",
+      "opcoes": [
+        "Uma série com uma forte tendência de crescimento a longo prazo.",
+        "Uma série com um padrão sazonal claro que se repete a cada 12 meses.",
+        "Uma série composta puramente por ruído branco (White Noise).",
+        "Uma série com tendência decrescente e sazonalidade trimestral."
+      ],
+      "resposta_correta": "Uma série composta puramente por ruído branco (White Noise).",
+      "justificacao": "Séries com tendência ou sazonalidade nunca são estacionárias, pois as suas propriedades mudam dependendo da altura do ano ou do momento no tempo. O ruído branco, por outro lado, mantém sempre as mesmas propriedades estatísticas (média zero e variância constante)."
+    },
+    {
+      "id": "STP_031",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "No teste estatístico Augmented Dickey-Fuller (ADF) para avaliar a estacionariedade, qual é a Hipótese Nula (H0)?",
+      "opcoes": [
+        "A série é estacionária.",
+        "A série é não-estacionária (possui tendência dependente do tempo).",
+        "A série contém ruído branco perfeitamente distribuído.",
+        "A série necessita de duas diferenciações."
+      ],
+      "resposta_correta": "A série é não-estacionária (possui tendência dependente do tempo).",
+      "justificacao": "No teste ADF, a Hipótese Nula (H0) assume o 'caos', ou seja, que a série tem uma raiz unitária e é não-estacionária. Precisamos de um p-value < 0.05 para rejeitar H0 e provar que a série é estacionária (H1)."
+    },
+    {
+      "id": "STP_032",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "Executaste o Teste ADF na tua série de vendas e obtiveste um p-value de 0.83. Qual deve ser o teu próximo passo lógico para modelar com ARIMA?",
+      "opcoes": [
+        "Avançar diretamente para a modelação AR e MA, pois a série é estacionária.",
+        "Falha em rejeitar a Hipótese Nula; a série não é estacionária. É necessário aplicar Diferenciação (d >= 1).",
+        "Rejeitar a Hipótese Nula; a série é não-estacionária. É necessário suavizar a série com uma Média Móvel Simples.",
+        "Aplicar imediatamente uma transformação de Box-Cox para remover a sazonalidade."
+      ],
+      "resposta_correta": "Falha em rejeitar a Hipótese Nula; a série não é estacionária. É necessário aplicar Diferenciação (d >= 1).",
+      "justificacao": "Como o p-value (0.83) é maior que o nível de significância de 0.05, não rejeitamos H0. A série não é estacionária, logo a solução (segundo o diagrama de fluxo) é aplicar a diferenciação (subtrair y_t - y_t-1)."
+    },
+    {
+      "id": "STP_033",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "Associa corretamente as lógicas do Teste Augmented Dickey-Fuller (ADF) e da Diferenciação.",
+      "pares": [
+        { "definicao": "P-value < 0.05", "conceito": "Rejeita H0 (Série Estacionária)" },
+        { "definicao": "P-value > 0.05", "conceito": "Falha em rejeitar H0 (Série Não-Estacionária)" },
+        { "definicao": "Solução estatística para remover tendência", "conceito": "Diferenciação (y_t - y_t-1)" },
+        { "definicao": "Solução estatística para remover sazonalidade", "conceito": "Diferenciação Sazonal (y_t - y_t-m)" }
+      ],
+      "justificacao": "O p-value funciona como um 'semáforo': abaixo de 0.05, o caminho está verde para modelar (série estacionária). Acima, temos de aplicar diferenciações ordinárias (tendência) ou sazonais."
+    },
+    {
+      "id": "STP_034",
+      "tipo": "multiple_choice",
+      "macro_tema": "ACF_PACF",
+      "pergunta": "O que distingue a Função de Autocorrelação Parcial (PACF) da Função de Autocorrelação clássica (ACF)?",
+      "opcoes": [
+        "A PACF apenas mede a correlação linear dos lags sazonais, ignorando os primeiros lags.",
+        "A PACF mede a relação entre y_t e y_t-k, removendo os efeitos das correlações dos lags intermédios (1, 2, ... k-1).",
+        "A PACF nunca pode ter valores negativos, ao contrário do ACF.",
+        "A PACF é utilizada exclusivamente para descobrir a ordem 'q' (Moving Average), enquanto a ACF descobre a ordem 'p' (AutoRegressive)."
+      ],
+      "resposta_correta": "A PACF mede a relação entre y_t e y_t-k, removendo os efeitos das correlações dos lags intermédios (1, 2, ... k-1).",
+      "justificacao": "Se y_t e y_t-1 estão correlacionados, y_t-1 e y_t-2 também estarão. O ACF capta este efeito em cadeia. A PACF 'limpa' a interferência de y_t-1, mostrando apenas o impacto direto e puro de y_t-2 em y_t."
+    },
+    {
+      "id": "STP_035",
+      "tipo": "multiple_choice",
+      "macro_tema": "ACF_PACF",
+      "pergunta": "Após diferenciares uma série temporal, geras os gráficos ACF e PACF. Observas que o gráfico ACF exibe um declínio gradual (decai gradualmente/sinusoidal), enquanto o gráfico PACF corta abruptamente para zero após o 'lag' 3. Qual é a configuração recomendada para o teu modelo?",
+      "opcoes": [
+        "Modelo MA(3), ou seja, q = 3.",
+        "Modelo AR(3), ou seja, p = 3.",
+        "Modelo ARIMA(0, 1, 3).",
+        "Modelo ARIMA de ruído branco."
+      ],
+      "resposta_correta": "Modelo AR(3), ou seja, p = 3.",
+      "justificacao": "A regra de ouro: Se o PACF corta após o lag 'p' e o ACF decai gradualmente, a série precisa de termos AutoRegressivos (AR) de ordem 'p'."
+    },
+    {
+      "id": "STP_036",
+      "tipo": "multiple_choice",
+      "macro_tema": "ACF_PACF",
+      "pergunta": "Se o gráfico ACF exibir um corte abrupto após o 'lag' 1 (apenas o lag 1 é significativo) e o PACF decair gradualmente, isto é um forte indicador de que a série precisa de uma componente:",
+      "opcoes": [
+        "AutoRegressiva de ordem 1 (p = 1).",
+        "Média Móvel de ordem 1 (q = 1).",
+        "Integração sazonal de ordem 1 (D = 1).",
+        "Tendência quadrática."
+      ],
+      "resposta_correta": "Média Móvel de ordem 1 (q = 1).",
+      "justificacao": "O inverso da regra anterior: Se o ACF corta após o lag 'q' e o PACF decai gradualmente, a série deve ser modelada com uma componente Moving Average (MA) de ordem 'q'."
+    },
+    {
+      "id": "STP_037",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "Verdadeiro ou Falso: Ao depararmo-nos com uma série fortemente sazonal, é matematicamente obrigatório aplicar a primeira diferenciação ordinária (y_t - y_t-1) antes de aplicar a diferenciação sazonal (y_t - y_t-m).",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Matematicamente, a ordem não importa (o resultado é o mesmo). Contudo, a recomendação prática é aplicar primeiro a diferenciação sazonal, pois muitas vezes isso torna a série imediatamente estacionária, escusando-se uma diferenciação ordinária extra."
+    },
+    {
+      "id": "STP_038",
+      "tipo": "multiple_choice",
+      "macro_tema": "Componentes_da_Serie",
+      "pergunta": "Algumas séries temporais exibem 'comportamentos cíclicos' provocados pela economia (ex: períodos de recessão e expansão) sem que ocorram em intervalos fixos. Estas séries são consideradas estacionárias ou não-estacionárias (assumindo que não têm tendência nem sazonalidade)?",
+      "opcoes": [
+        "Não-estacionárias, porque flutuam ao longo do tempo.",
+        "Estacionárias, porque os ciclos não têm uma duração fixa e o comportamento não é previsível no longo prazo num dado instante de tempo.",
+        "Não-estacionárias, porque requerem obrigatoriamente um modelo multiplicativo.",
+        "Estacionárias, mas apenas se o ciclo for superior a 10 anos."
+      ],
+      "resposta_correta": "Estacionárias, porque os ciclos não têm uma duração fixa e o comportamento não é previsível no longo prazo num dado instante de tempo.",
+      "justificacao": "É uma rasteira comum. Um ciclo não é sazonalidade. A sazonalidade tem duração fixa (ex: todos os Natais). Um ciclo económico não tem período fixo. Logo, se a série só tiver ciclos sem duração fixa e não tiver tendência, as suas propriedades mantêm-se estacionárias (o observador não sabe onde está o pico antes de olhar)."
+    },
+    {
+      "id": "STP_039",
+      "tipo": "multiple_choice",
+      "macro_tema": "AutoARIMA_e_Residuos",
+      "pergunta": "Como avaliamos se o nosso modelo ARIMA é de facto um 'bom modelo'? Quais devem ser as propriedades dos resíduos (erros) que sobram após a modelação?",
+      "opcoes": [
+        "Devem seguir uma forte correlação no ACF e ter média positiva.",
+        "Devem ser não-correlacionados (ruído branco) e apresentar uma média zero.",
+        "Devem apresentar homoscedasticidade, mas uma variância decrescente.",
+        "Devem conter toda a sazonalidade que o modelo não conseguiu capturar."
+      ],
+      "resposta_correta": "Devem ser não-correlacionados (ruído branco) e apresentar uma média zero.",
+      "justificacao": "Um bom modelo extraiu toda a informação útil da série. O que sobra (resíduos) não pode ter padrões (tem de ser não-correlacionado) e a sua média deve ser zero (se não for zero, significa que as previsões estão sistematicamente enviesadas)."
+    },
+    {
+      "id": "STP_040",
+      "tipo": "multiple_choice",
+      "macro_tema": "AutoARIMA_e_Residuos",
+      "pergunta": "Durante a análise de resíduos de um modelo ARIMA, constatas que os resíduos têm uma média diferente de zero (ex: média = 15). Como podes resolver este problema específico?",
+      "opcoes": [
+        "Aplicando uma diferenciação sazonal extra.",
+        "Aumentando a ordem 'p' da componente AutoRegressiva.",
+        "O problema resolve-se facilmente somando a média (15) a todas as previsões futuras geradas (ajuste de viés).",
+        "Aumentando a ordem 'q' da componente Moving Average."
+      ],
+      "resposta_correta": "O problema resolve-se facilmente somando a média (15) a todas as previsões futuras geradas (ajuste de viés).",
+      "justificacao": "Como indicado no material, corrigir o enviesamento ('bias') é fácil: se os resíduos têm uma média diferente de zero (ex: b), basta adicionar 'b' a todas as previsões. Já resolver correlações nos resíduos é muito mais difícil."
+    },
+    {
+      "id": "STP_041",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Na notação do operador 'Backshift' (B), como se representa a primeira diferenciação (y_t - y_t-1)?",
+      "opcoes": [
+        "B y_t",
+        "(1 - B) y_t",
+        "(1 - B^2) y_t",
+        "B^12 y_t"
+      ],
+      "resposta_correta": "(1 - B) y_t",
+      "justificacao": "O operador B 'atrasa' a série um período. Logo, B y_t = y_t-1. A primeira diferenciação é y_t - y_t-1, o que fatorizando em notação de operador se escreve como (1 - B) y_t."
+    },
+    {
+      "id": "STP_042",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Na notação do operador Backshift, a que corresponde a expressão B^12 y_t no contexto de dados mensais?",
+      "opcoes": [
+        "A uma diferenciação de segunda ordem.",
+        "Ao valor observado no mesmo mês do ano anterior (y_t-12).",
+        "A um modelo AutoRegressivo com 12 parâmetros.",
+        "Ao quadrado da variância sazonal."
+      ],
+      "resposta_correta": "Ao valor observado no mesmo mês do ano anterior (y_t-12).",
+      "justificacao": "O expoente no operador B indica quantos períodos estamos a recuar. B^12 y_t recua 12 períodos, ou seja, y_t-12 (o mesmo mês do ano passado)."
+    },
+    {
+      "id": "STP_043",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Qual é a notação padrão de um modelo ARIMA Sazonal?",
+      "opcoes": [
+        "ARIMA (P, D, Q) (p, d, q)_m",
+        "ARIMA (p, d, q) (P, D, Q)_m",
+        "ARIMA (p, d, q)_season",
+        "ARIMA [p, d, q] * [P, D, Q]"
+      ],
+      "resposta_correta": "ARIMA (p, d, q) (P, D, Q)_m",
+      "justificacao": "A notação padrão é ARIMA seguida dos parâmetros não-sazonais (p, d, q), seguidos dos parâmetros sazonais em maiúsculas (P, D, Q) e o subscrito 'm' que indica o período da sazonalidade (ex: 12 para meses)."
+    },
+    {
+      "id": "STP_044",
+      "tipo": "multiple_choice",
+      "macro_tema": "AutoARIMA_e_Residuos",
+      "pergunta": "Qual é o objetivo principal do algoritmo 'AutoARIMA' presente em bibliotecas como o `statsforecast`?",
+      "opcoes": [
+        "Apenas converter séries não-estacionárias em estacionárias sem prever o futuro.",
+        "Encontrar automaticamente os hiperparâmetros ótimos (p, d, q, P, D, Q) de um modelo ARIMA usando critérios de otimização como o AICc e validação cruzada.",
+        "Garantir que a série é modelada exclusivamente como um passeio aleatório (Random Walk).",
+        "Treinar uma rede neuronal profunda para captar anomalias na série temporal."
+      ],
+      "resposta_correta": "Encontrar automaticamente os hiperparâmetros ótimos (p, d, q, P, D, Q) de um modelo ARIMA usando critérios de otimização como o AICc e validação cruzada.",
+      "justificacao": "O AutoARIMA automatiza o moroso processo empírico de ler gráficos ACF/PACF e testar diferenciações, testando múltiplas combinações e devolvendo o modelo com o menor Critério de Informação (ex: AICc)."
+    },
+    {
+      "id": "STP_045",
+      "tipo": "multiple_choice",
+      "macro_tema": "AutoARIMA_e_Residuos",
+      "pergunta": "O que tenta medir o Critério de Informação de Akaike (AIC e AICc)?",
+      "opcoes": [
+        "Maximizar o número de parâmetros (p, q) para garantir um Overfitting da série temporal.",
+        "Equilibrar a bondade de ajuste (likelihood) do modelo aos dados, penalizando a inclusão de parâmetros desnecessários para evitar Overfitting.",
+        "Calcular a média dos erros quadráticos absolutos (RMSE).",
+        "Determinar se os resíduos do modelo são homocedásticos ou heterocedásticos."
+      ],
+      "resposta_correta": "Equilibrar a bondade de ajuste (likelihood) do modelo aos dados, penalizando a inclusão de parâmetros desnecessários para evitar Overfitting.",
+      "justificacao": "O AIC (Akaike Information Criterion) avalia quão bem o modelo explica os dados, mas aplica uma penalização (o termo + 2k) por cada parâmetro extra que se adiciona. Modelos com AIC menor são preferidos porque são mais precisos sem serem desnecessariamente complexos."
+    },
+    {
+      "id": "STP_046",
+      "tipo": "drag_and_drop",
+      "macro_tema": "ACF_PACF",
+      "pergunta": "Com base na observação dos gráficos sazonais ACF e PACF de uma série já diferenciada sazonalmente, associa o comportamento à ordem sugerida.",
+      "pares": [
+        { "definicao": "Pico significativo no lag 60 (5 anos), sem picos sazonais adicionais no PACF.", "conceito": "Ordem AutoRegressiva sazonal P = 5" },
+        { "definicao": "Pico significativo no lag 12, sem outros lags sazonais significativos no ACF.", "conceito": "Ordem Moving Average sazonal Q = 1" },
+        { "definicao": "Pico no lag 4 no PACF não sazonal e decaimento do ACF.", "conceito": "Ordem AutoRegressiva não-sazonal p = 4" },
+        { "definicao": "Pico no lag 1 no ACF não sazonal e decaimento do PACF.", "conceito": "Ordem Moving Average não-sazonal q = 1" }
+      ],
+      "justificacao": "Para modelos sazonais, olhamos para os 'múltiplos' da sazonalidade (lags 12, 24, 36...). Se um pico sazonal existir no PACF, indica a necessidade de P. Se existir no ACF, indica Q. O mesmo princípio aplica-se para 'p' e 'q' nos primeiros lags (não-sazonais)."
+    },
+    {
+      "id": "STP_047",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "Verdadeiro ou Falso: Aplicar mais diferenciações (d) do que o estritamente necessário é uma boa prática para 'garantir' a estacionariedade sem efeitos secundários prejudiciais.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Aplicar mais diferenciações do que o necessário ('over-differencing') introduz falsas dinâmicas ou falsas autocorrelações na série temporal que na realidade não existem, corrompendo a capacidade preditiva do modelo."
+    },
+    {
+      "id": "STP_048",
+      "tipo": "multiple_choice",
+      "macro_tema": "Componentes_da_Serie",
+      "pergunta": "No contexto da decomposição de uma série temporal estatística, o que descreve corretamente a componente 'Nível' (Level)?",
+      "opcoes": [
+        "O comportamento cíclico não previsível da série.",
+        "A direção geral para onde os dados se movem a longo prazo.",
+        "O valor médio ou ponto de partida sobre o qual a série flutua.",
+        "A variação aleatória impossível de modelar matematicamente."
+      ],
+      "resposta_correta": "O valor médio ou ponto de partida sobre o qual a série flutua.",
+      "justificacao": "A anatomia da série dita que: Nível = valor base/padrão. Tendência = direção a longo prazo. Sazonalidade = ciclo repetitivo. Ruído = o resto."
+    },
+    {
+      "id": "STP_049",
+      "tipo": "multiple_choice",
+      "macro_tema": "Conceitos_ARIMA",
+      "pergunta": "Se um modelo for identificado como ARIMA(0, 0, 1), significa que a equação que gera as suas previsões depende de:",
+      "opcoes": [
+        "Apenas um atraso (lag) do próprio valor histórico da série.",
+        "Um erro de previsão passado (ruído branco passado).",
+        "Uma tendência determinística linear.",
+        "Duas diferenciações e um atraso histórico."
+      ],
+      "resposta_correta": "Um erro de previsão passado (ruído branco passado).",
+      "justificacao": "ARIMA(0,0,1) tem p=0, d=0, q=1. Portanto, não tem autoregressão nem diferenciação, baseando-se apenas num termo Moving Average (MA) de ordem 1, ou seja, depende do erro (epsilon) do momento anterior."
+    },
+    {
+      "id": "STP_050",
+      "tipo": "multiple_choice",
+      "macro_tema": "Estacionariedade_e_Testes",
+      "pergunta": "No modelo de treino para testar um algoritmo preditivo de séries temporais, porque é que o método `arima.predict(h=6)` devolve a sua resposta no formato de dicionário de Python (Dict)?",
+      "opcoes": [
+        "Porque o Pandas DataFrame não consegue lidar com índices temporais.",
+        "Porque devolve simultaneamente a previsão pontual ('mean') e, opcionalmente, os limites inferiores e superiores dos intervalos de predição (ex: 'lo-95', 'hi-95').",
+        "Porque gera uma nova série temporal não-estacionária para cada horizonte h.",
+        "Porque é necessário para contornar o limite de memória do modelo global."
+      ],
+      "resposta_correta": "Porque devolve simultaneamente a previsão pontual ('mean') e, opcionalmente, os limites inferiores e superiores dos intervalos de predição (ex: 'lo-95', 'hi-95').",
+      "justificacao": "Como demonstrado no notebook, a função retorna um dicionário para acomodar os múltiplos outputs associados à previsão probabilística (o Point Forecast 'mean' e os limites dos intervalos de confiança requisitados, como 'hi-95')."
+    }
+  ]
+}
