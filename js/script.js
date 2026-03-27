@@ -131,15 +131,18 @@ document.addEventListener("DOMContentLoaded", () => {
           
           resetTimer(); 
           
-          if (!globalStorage[currentDisciplina]) {
-              globalStorage[currentDisciplina] = { correct: [], wrong: [] };
-          }
-          
           // Atualiza o texto da barra do Dicionário
           if (dictSearchInput && disciplinaSelect) {
               const nomeCadeira = disciplinaSelect.options[disciplinaSelect.selectedIndex].text;
               dictSearchInput.placeholder = `Pesquisar em ${nomeCadeira}...`;
           }
+
+          // --- NOVIDADE: Atualiza o link do PDF ---
+          const btnLerResumo = document.getElementById("btnLerResumo");
+          if (btnLerResumo) {
+              btnLerResumo.href = `pdfs/${currentDisciplina}.pdf`;
+          }
+          // ----------------------------------------
 
           updateGlobalProgressUI();
           if(dictSearchInput) procurarNoDicionario();
