@@ -1,0 +1,22 @@
+{
+  "name": "Moodle BIA | João Fernandes",
+  "short_name": "BIA OS.26",
+  "description": "Dashboard premium de estudo preditivo do ISCAP.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#e11d48",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "image/iscap-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "image/iscap-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

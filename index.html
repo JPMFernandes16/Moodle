@@ -1,373 +1,108 @@
 <!DOCTYPE html>
-<html lang="pt-PT" data-theme="light">
+<html lang="pt-PT" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  
   <meta name="robots" content="noindex, nofollow" />
   
-  <title>Master BIA | App</title>
-  <meta name="description" content="App premium de preparação de testes BIA." />
+  <title>Moodle BIA | João Fernandes</title>
+  <meta name="description" content="Dashboard premium de estudo preditivo. ISCAP 2026." />
+  
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#e11d48" />
+  <link rel="apple-touch-icon" href="image/iscap-logo.png">
+  <link rel="icon" href="image/iscap-logo.png" type="image/png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
-  <style>
-    /* =========================================================
-       VARIABLES & THEME (MODERN APP UI)
-       ========================================================= */
-    :root {
-      --bg-body: #f3f4f6;
-      --bg-card: #ffffff;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
-      
-      /* ISCAP Red Modernizado */
-      --primary: #9f1239; 
-      --primary-hover: #be123c;
-      --primary-gradient: linear-gradient(135deg, #9f1239, #e11d48);
-      
-      --secondary: #f8fafc;
-      --secondary-hover: #e2e8f0;
-      
-      /* Cores de Feedback Modernas */
-      --success: #10b981;
-      --success-light: #d1fae5;
-      --error: #ef4444;
-      --error-light: #fee2e2;
-      --warning: #f59e0b;
-      
-      --radius: 16px;
-      --radius-btn: 9999px; /* Pill buttons */
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      
-      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    [data-theme="dark"] {
-      --bg-body: #0f172a;
-      --bg-card: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #334155;
-      --primary: #e11d48;
-      --primary-hover: #f43f5e;
-      --primary-gradient: linear-gradient(135deg, #e11d48, #fb7185);
-      --secondary: #0f172a;
-      --secondary-hover: #334155;
-      --success-light: rgba(16, 185, 129, 0.15);
-      --error-light: rgba(239, 68, 68, 0.15);
-    }
-
-    /* =========================================================
-       BASE & ANIMAÇÕES
-       ========================================================= */
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-main); line-height: 1.6; -webkit-tap-highlight-color: transparent; transition: background-color 0.3s ease;}
-    a { color: var(--primary); text-decoration: none; }
-    h1, h2, h3, p { margin-top: 0; }
-    .hidden { display: none !important; }
-
-    /* Entradas suaves */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .question-card, .moodle-card { animation: fadeInUp 0.4s ease-out forwards; }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-6px); }
-      75% { transform: translateX(6px); }
-    }
-    .shake { animation: shake 0.3s ease-in-out; }
-
-    .confetti { position: fixed; top: -10px; width: 8px; height: 16px; z-index: 9999; animation: fall linear forwards; border-radius: 4px; }
-    @keyframes fall { to { transform: translateY(105vh) rotate(720deg); } }
-
-    /* =========================================================
-       HEADER (GLASSMORPHISM)
-       ========================================================= */
-    .app-header { 
-      background: rgba(159, 18, 57, 0.95); 
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: white; 
-      padding: 12px 24px; 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      box-shadow: var(--shadow-sm); 
-      position: sticky; 
-      top: 0; 
-      z-index: 100;
-      transition: background 0.3s ease;
-    }
-    [data-theme="dark"] .app-header { background: rgba(30, 41, 59, 0.95); border-bottom: 1px solid var(--border); }
-    
-    .app-brand { margin: 0; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;}
-    .app-brand span { background: white; color: var(--primary); padding: 2px 8px; border-radius: 8px; font-size: 0.9rem;}
-    [data-theme="dark"] .app-brand span { background: var(--primary); color: white; }
-
-    .app-header__right { display: flex; align-items: center; gap: 15px; }
-    .icon-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; transition: var(--transition);}
-    .icon-btn:hover { background: rgba(255,255,255,0.3); transform: scale(1.05); }
-    
-    .user-profile { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.9rem;}
-    .user-avatar { background: white; color: var(--primary); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; box-shadow: var(--shadow-sm);}
-    [data-theme="dark"] .user-avatar { background: var(--primary); color: white; }
-
-    /* =========================================================
-       LAYOUT PRINCIPAL
-       ========================================================= */
-    .layout { display: grid; grid-template-columns: 1fr 340px; gap: 24px; max-width: 1200px; margin: 30px auto; padding: 0 20px; align-items: start;}
-    .moodle-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; box-shadow: var(--shadow-md); transition: var(--transition); }
-    .moodle-card:hover { box-shadow: var(--shadow-hover); }
-
-    /* =========================================================
-       BOTÕES E INPUTS
-       ========================================================= */
-    .exam-header { display: flex; flex-direction: column; gap: 15px;}
-    .exam-header__actions { display: flex; gap: 10px; flex-wrap: wrap;}
-    
-    .form-select, #dictSearchInput, #app-password, .open-ended-input { 
-      padding: 14px 16px; 
-      border: 2px solid var(--border); 
-      border-radius: 12px; 
-      background: var(--secondary); 
-      color: var(--text-main); 
-      width: 100%; 
-      font-family: inherit; 
-      font-size: 1rem; 
-      font-weight: 500;
-      outline: none; 
-      transition: var(--transition);
-      appearance: none;
-    }
-    .form-select:focus, #dictSearchInput:focus, #app-password:focus, .open-ended-input:focus { border-color: var(--primary); background: var(--bg-card); box-shadow: 0 0 0 4px rgba(225, 29, 72, 0.1);}
-    
-    .btn { 
-      padding: 14px 20px; 
-      border-radius: var(--radius-btn); 
-      font-size: 0.95rem; 
-      font-weight: 700; 
-      cursor: pointer; 
-      border: none; 
-      transition: var(--transition); 
-      display: inline-flex; 
-      justify-content: center; 
-      align-items: center;
-      gap: 8px;
-    }
-    .btn:active:not(:disabled) { transform: scale(0.96); }
-    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-    
-    .btn--primary { background: var(--primary-gradient); color: white; box-shadow: 0 4px 12px rgba(159, 18, 57, 0.3); }
-    .btn--primary:hover:not(:disabled) { box-shadow: 0 6px 16px rgba(159, 18, 57, 0.4); transform: translateY(-2px);}
-    
-    .btn--secondary { background-color: var(--text-main); color: var(--bg-card); }
-    .btn--secondary:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-    
-    .btn--ghost { background: transparent; border: 2px solid var(--border); color: var(--text-muted); }
-    .btn--ghost:hover:not(:disabled) { border-color: var(--text-main); color: var(--text-main); }
-
-    /* =========================================================
-       ÁREA DA PERGUNTA
-       ========================================================= */
-    .question-card { background: var(--bg-card); padding: 30px; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 20px; box-shadow: var(--shadow-md); position: relative; overflow: hidden;}
-    .question-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; transition: var(--transition); }
-    .question-card.correct::before { background: var(--success); }
-    .question-card.incorrect::before { background: var(--error); }
-
-    .question-card__meta { display: flex; gap: 8px; margin-bottom: 12px; align-items: center; flex-wrap: wrap;}
-    .question-card__badge { background: var(--primary-gradient); color: white; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;}
-    .question-card__topic { background: var(--secondary); color: var(--text-muted); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border);}
-    .question-card__title { font-size: 1.25rem; font-weight: 700; margin-top: 10px; margin-bottom: 25px; line-height: 1.5; color: var(--text-main); }
-
-    /* ESCOLHA MÚLTIPLA */
-    .options-group { display: flex; flex-direction: column; gap: 12px; }
-    .option-item { display: flex; align-items: flex-start; gap: 15px; padding: 16px 20px; background: var(--bg-body); border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: var(--transition); }
-    .option-item:hover { background: var(--bg-card); border-color: var(--border); transform: translateY(-2px); box-shadow: var(--shadow-sm);}
-    
-    .option-item input { appearance: none; background: var(--bg-card); margin: 0; width: 22px; height: 22px; border: 2px solid var(--border); border-radius: 50%; display: grid; place-content: center; cursor: pointer; transition: var(--transition); flex-shrink: 0; margin-top: 2px;}
-    .option-item input::before { content: ""; width: 10px; height: 10px; border-radius: 50%; transform: scale(0); transition: 0.2s transform ease-in-out; box-shadow: inset 1em 1em var(--primary); }
-    .option-item input:checked { border-color: var(--primary); }
-    .option-item input:checked::before { transform: scale(1); }
-
-    .option-letter { font-weight: 800; color: var(--primary); }
-    .option-text { font-size: 1rem; line-height: 1.5; font-weight: 500;}
-
-    .option-correct { background-color: var(--success-light) !important; border-color: var(--success) !important; }
-    .option-selected-wrong { background-color: var(--error-light) !important; border-color: var(--error) !important; }
-
-    /* DRAG AND DROP */
-    .dnd-container { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
-    .dnd-bank { display: flex; flex-wrap: wrap; gap: 10px; padding: 20px; background: var(--secondary); border: 2px dashed var(--border); border-radius: 12px; min-height: 80px; }
-    .dnd-item { background: var(--bg-card); border: 1px solid var(--border); border-left: 4px solid var(--primary); padding: 12px 16px; border-radius: 8px; cursor: grab; font-weight: 600; font-size: 0.95rem; user-select: none; box-shadow: var(--shadow-sm); transition: var(--transition); touch-action: none;}
-    .dnd-item:active { cursor: grabbing; transform: scale(1.05) rotate(-1deg); box-shadow: var(--shadow-md); z-index: 10;}
-    .dnd-item.dragging { opacity: 0.4; }
-    
-    .dnd-target-list { display: flex; flex-direction: column; gap: 12px; }
-    .dnd-row { display: flex; align-items: stretch; background: var(--bg-body); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-    .dnd-definition { flex: 1; padding: 16px; font-size: 0.95rem; font-weight: 500; border-right: 1px solid var(--border); line-height: 1.5;}
-    .dnd-dropzone { flex: 0 0 240px; background: rgba(0,0,0,0.015); display: flex; align-items: center; justify-content: center; padding: 12px; transition: var(--transition); position: relative; }
-    .dnd-dropzone.drag-over { background: var(--success-light); border: 2px dashed var(--success); }
-    .dnd-dropzone.has-item { background: transparent; padding: 8px; }
-    .dnd-dropzone .dnd-item { width: 100%; text-align: center; margin: 0; }
-    
-    .dnd-dropzone.correct .dnd-item { border-color: var(--success); border-left-color: var(--success); background: var(--success-light); }
-    .dnd-dropzone.incorrect .dnd-item { border-color: var(--error); border-left-color: var(--error); background: var(--error-light); }
-    .dnd-correct-answer { display: block; font-size: 0.85rem; color: var(--success); font-weight: 800; margin-top: 8px; text-align: center; width: 100%; }
-
-    /* JUSTIFICAÇÃO E TEXTO LIVRE */
-    .justification-box { margin-top: 25px; padding: 20px; background: var(--secondary); border-radius: 12px; font-size: 0.95rem; border: 1px solid var(--border);}
-    .feedback-status { font-weight: 800; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;}
-
-    .question-footer { display: flex; justify-content: space-between; gap: 15px; margin-top: 20px;}
-
-    /* =========================================================
-       BARRA LATERAL & ESTATÍSTICAS
-       ========================================================= */
-    .sidebar-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 24px; box-shadow: var(--shadow-md); overflow: hidden; transition: var(--transition);}
-    .sidebar-card__header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;}
-    .sidebar-card__title { margin: 0; font-size: 1rem; font-weight: 800; color: var(--text-main); }
-    .sidebar-card__body { padding: 20px; }
-
-    .status-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
-    .status-box { background: var(--secondary); padding: 12px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--border);}
-    .status-box__label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px;}
-    .status-box__value { font-size: 1.4rem; color: var(--text-main); font-weight: 800; line-height: 1.2;}
-    #timer { color: var(--primary); }
-
-    .question-navigator { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; }
-    .question-nav-item { aspect-ratio: 1; border: 2px solid var(--border); background: var(--bg-body); color: var(--text-main); border-radius: 50%; cursor: pointer; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; transition: var(--transition);}
-    .question-nav-item:hover { border-color: var(--primary); transform: scale(1.1);}
-    .question-nav-item.is-answered { background: var(--border); }
-    .question-nav-item.is-active { border-color: var(--primary); background: var(--primary); color: white; box-shadow: 0 4px 10px rgba(159, 18, 57, 0.3);}
-    .question-nav-item.is-correct { background: var(--success); color: white; border-color: var(--success); }
-    .question-nav-item.is-partial { background: var(--warning); color: white; border-color: var(--warning); } /* Novo estado: Meia Cotação */
-    .question-nav-item.is-incorrect { background: var(--error); color: white; border-color: var(--error); }
-
-    .finish-link { display: block; padding: 12px; background: var(--secondary); border-radius: 8px; color: var(--primary); text-align: center; cursor: pointer; font-weight: 700; font-size: 0.9rem; transition: var(--transition);}
-    .finish-link:hover { background: var(--error-light); }
-
-    .progress-wrap { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;}
-    .progress-bar { width: 100%; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-    .progress-bar__fill { height: 100%; width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
-    .progress-bar__fill--global { background: var(--primary-gradient); }
-
-    /* =========================================================
-       RESULTADOS E FOOTER
-       ========================================================= */
-    .quiz-final-summary { background: var(--primary-gradient); color: white; padding: 40px 20px; border-radius: var(--radius); text-align: center; margin-bottom: 24px; box-shadow: var(--shadow-hover);}
-    .quiz-final-summary h2 { color: white; font-size: 2rem; margin-bottom: 10px;}
-    
-    .footer { text-align: center; padding: 30px 20px; color: var(--text-muted); font-size: 0.85rem; font-weight: 500;}
-    .scroll-top-btn { position: fixed; bottom: 25px; right: 25px; width: 50px; height: 50px; border-radius: 50%; background: var(--text-main); color: var(--bg-card); display: none; justify-content: center; align-items: center; box-shadow: var(--shadow-hover); z-index: 50; font-size: 1.2rem; border: none; cursor: pointer; transition: var(--transition);}
-    .scroll-top-btn.show { display: flex; }
-    .scroll-top-btn:hover { transform: translateY(-5px); }
-
-    /* =========================================================
-       MOBILE OPTIMIZATIONS
-       ========================================================= */
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; margin: 15px auto; gap: 20px;}
-      .moodle-card, .question-card, .sidebar-card__body { padding: 20px; }
-      
-      .exam-header__actions { flex-direction: column; width: 100%; }
-      .btn { width: 100%; padding: 16px; font-size: 1.05rem;}
-      
-      .dnd-row { flex-direction: column; gap: 0;}
-      .dnd-definition { border-right: none; border-bottom: 1px solid var(--border); padding: 12px;}
-      .dnd-dropzone { min-height: 80px; flex: auto; }
-      
-      .status-grid { grid-template-columns: repeat(4, 1fr); gap: 8px;}
-      .status-box { padding: 10px 5px; }
-      .status-box__value { font-size: 1.1rem; }
-      .status-box__label { font-size: 0.6rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <div id="security-layer" style="position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg-body); z-index:9999; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; transition: opacity 0.4s ease, visibility 0.4s;">
-    <div style="background:var(--bg-card); padding:40px 30px; border-radius:var(--radius); box-shadow:var(--shadow-hover); text-align:center; max-width: 400px; width: 100%; border: 1px solid var(--border);">
-      <div style="font-size: 3.5rem; margin-bottom: 15px;">🔒</div>
-      <h2 style="color:var(--text-main); margin-bottom:10px; font-weight:800;">Acesso Restrito</h2>
-      <p style="color:var(--text-muted); margin-bottom:25px; font-size: 0.95rem;">Insere a palavra-passe para aceder à plataforma de estudo.</p>
+  <div id="security-layer" style="position:fixed; inset:0; background:var(--bg-body); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; transition: opacity 0.5s;">
+    <div class="glass-panel" style="max-width: 420px; width: 100%; text-align: center; border-top: 4px solid var(--primary);">
+      <img src="image/iscap-logo.png" alt="ISCAP" style="height: 60px; filter: grayscale(1) invert(1) contrast(1.5); margin-bottom: 20px; opacity: 0.8;">
       
-      <input type="password" id="app-password" class="form-select" style="margin-bottom:20px; text-align: center; font-size: 1.1rem;" placeholder="Palavra-passe">
-      <button id="btn-unlock" class="btn btn--primary" style="width:100%; padding: 16px; font-size: 1.05rem;">Desbloquear App</button>
+      <h2 style="margin-bottom:5px; font-weight:800;">Portal de Estudante</h2>
+      <p style="color:var(--text-muted); margin-bottom:30px; font-size: 0.95rem;">Mestrado em Business Intelligence & Analytics.</p>
       
-      <p id="pwd-error" style="color:var(--error); margin-top:15px; font-weight:700; display:none; font-size:0.9rem;">❌ Palavra-passe incorreta.</p>
+      <input type="password" id="app-password" class="form-input" style="text-align: center; margin-bottom:20px; letter-spacing: 5px;" placeholder="CHAVE DE ACESSO">
+      <button id="btn-unlock" class="btn btn--primary" style="width:100%;">Entrar no Moodle</button>
+      
+      <p id="pwd-error" style="color:var(--error); margin-top:15px; font-weight:700; display:none; font-size:0.85rem;">ACESSO NEGADO: CHAVE INVÁLIDA</p>
     </div>
   </div>
 
   <div class="app">
     
     <header class="app-header">
-      <h1 class="app-brand"><span>BIA</span> Master</h1>
-      <div class="app-header__right">
-        <button id="themeToggle" class="icon-btn" type="button" aria-label="Alternar tema">🌙</button>
-        <div class="user-profile">
+      <div class="app-brand">
+        <img src="image/iscap-logo.png" alt="ISCAP" class="iscap-logo">
+        <div class="brand-text">
+          <span class="moodle-title">Moodle <b>BIA</b></span>
+          <span class="moodle-subtitle">Inteligência de Negócio e Análise de Dados</span>
+        </div>
+      </div>
+      
+      <div class="header-controls">
+        <button id="themeToggle" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px;">🌗 Ambiente</button>
+        
+        <div class="student-id-card">
           <div class="user-avatar">JF</div>
+          <div class="student-info">
+            <strong class="student-name">João Fernandes</strong>
+            <span class="student-course">Mestrando BIA</span>
+          </div>
         </div>
       </div>
     </header>
 
     <main class="layout">
+      
       <section class="exam-area">
         
-        <div class="moodle-card">
-          <div class="exam-header">
-            <select id="disciplina" name="disciplina" class="form-select" required>
-              <option value="BIA_BIAT" selected>Business Intelligence & Analytics Tools</option>
-              <option value="BIA_SP">Segurança e Privacidade</option>
-              <option value="BIA_STP">Série Temporal e Previsão</option>
-            </select>
-            
-            <div class="exam-header__actions">
-              <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">
-                📘 Ler Resumo
-              </a>
-              <button id="carregarFraquezas" class="btn btn--ghost" type="button">
-                🎯 Treinar Fraquezas
-              </button>
-              <button id="carregarQuiz" class="btn btn--primary" type="button">
-                ⚡ Iniciar Teste Aleatório
-              </button>
-              <button id="submeterQuiz" class="btn btn--secondary hidden" type="button" disabled>
-                Submeter Exame
-              </button>
-            </div>
+        <div class="glass-panel" style="margin-bottom: 24px; border-top: 4px solid var(--primary);">
+          <div class="widget-header" style="margin-bottom: 15px; border: none; padding: 0;">
+            <h3 class="widget-title" style="color: var(--primary);">Unidade Curricular</h3>
+          </div>
+
+          <select id="disciplina" class="form-input" style="font-size: 1.15rem; padding: 18px; border-radius: var(--radius-sm);">
+            <option value="BIA_BIAT" selected>Business Intelligence & Analytics Tools</option>
+            <option value="BIA_SP">Segurança e Privacidade</option>
+            <option value="BIA_STP">Série Temporal e Previsão</option>
+          </select>
+          
+          <div class="control-group">
+            <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Sebenta Digital</a>
+            <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Gravação da Aula</a>
+            <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão de Falhas</button>
+            <button id="carregarQuiz" class="btn btn--primary" style="flex-grow: 1;">⚡ Iniciar Simulação</button>
+            <button id="submeterQuiz" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);" disabled>Submeter Avaliação</button>
           </div>
         </div>
 
-        <section class="question-stage">
-          <div id="quiz-container" class="question-container">
-             <article class="question-card" style="text-align: center; padding: 60px 20px;">
-               <div style="font-size: 3rem; margin-bottom: 15px;">🚀</div>
-               <h2 style="color: var(--text-main); margin-bottom: 10px;">Pronto para esmagar a matéria?</h2>
-               <p style="color: var(--text-muted); max-width: 400px; margin: 0 auto;">Clica num dos botões acima. As perguntas que errares serão guardadas na secção de Fraquezas para repetição espaçada.</p>
-             </article>
-          </div>
+        <div id="resultado-final-box"></div>
 
-          <div class="question-footer">
-            <button id="prevQuestionBtn" class="btn btn--ghost" style="width: 48%;" type="button" disabled>◄ Anterior</button>
-            <button id="nextQuestionBtn" class="btn btn--secondary" style="width: 48%;" type="button" disabled>Próxima ►</button>
-          </div>
+        <section id="quiz-container">
+           <div class="glass-panel" style="text-align: center; padding: 80px 20px;">
+             <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.8;">🎓</div>
+             <h2 style="font-size: 1.8rem;">Área de Avaliação em Standby</h2>
+             <p style="color: var(--text-muted); max-width: 450px; margin: 0 auto;">Seleciona o material de estudo acima ou inicia uma nova simulação de exame para testares os teus conhecimentos.</p>
+           </div>
         </section>
 
-        <div class="moodle-card" style="margin-top: 40px; border-top: 4px solid var(--primary);">
-          <h3 style="color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-            📚 Dicionário e Cábula Rápida
-          </h3>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">Pesquisa de forma instantânea em toda a base de dados da disciplina selecionada.</p>
-          <input type="text" id="dictSearchInput" class="form-select" placeholder="Pesquisar conceitos...">
+        <div style="display: flex; justify-content: space-between; gap: 15px; margin-top: 24px;">
+          <button id="prevQuestionBtn" class="btn btn--ghost" style="width: 50%;" disabled>◄ Voltar à Pergunta</button>
+          <button id="nextQuestionBtn" class="btn btn--ghost" style="width: 50%; border-color: var(--primary);" disabled>Próxima Pergunta ►</button>
+        </div>
+
+        <div class="glass-panel" style="margin-top: 40px;">
+          <div class="widget-header">
+            <h3 class="widget-title">Glossário da U.C.</h3>
+          </div>
+          <input type="text" id="dictSearchInput" class="form-input" placeholder="Procurar termos técnicos e conceitos...">
           <div id="dictResultsContainer" style="margin-top: 20px;"></div>
         </div>
 
@@ -375,65 +110,71 @@
 
       <aside class="sidebar">
         
-        <section class="sidebar-card">
-          <header class="sidebar-card__header">
-            <h3 class="sidebar-card__title">Sessão Atual</h3>
-            <span id="quizStateText" style="font-size: 0.75rem; font-weight: 700; color: var(--primary); background: var(--primary-light); padding: 4px 8px; border-radius: 6px;">Em espera</span>
-          </header>
-          <div class="sidebar-card__body">
-            <div class="status-grid">
-              <article class="status-box">
-                <span class="status-box__label">Perg</span>
-                <strong id="currentQuestionIndicator" class="status-box__value">0</strong>
-              </article>
-              <article class="status-box">
-                <span class="status-box__label">Feito</span>
-                <strong id="answeredCount" class="status-box__value">0</strong>
-              </article>
-              <article class="status-box">
-                <span class="status-box__label">Falta</span>
-                <strong id="remainingCount" class="status-box__value">0</strong>
-              </article>
-              <article class="status-box">
-                <span class="status-box__label">Tempo</span>
-                <strong id="timer" class="status-box__value">--:--</strong>
-              </article>
-            </div>
-            
-            <div id="questionNavigator" class="question-navigator"></div>
-            <a href="#" onclick="document.getElementById('submeterQuiz').click(); return false;" class="finish-link hidden" id="finishLink">Encerrar e Ver Nota</a>
+        <section class="glass-panel" style="margin-bottom: 24px;">
+          <div class="widget-header">
+            <h3 class="widget-title">Estatísticas da Tentativa</h3>
+            <span id="quizStateText" style="font-size: 0.7rem; font-weight: 800; color: var(--primary); text-transform: uppercase;">Inativo</span>
           </div>
+          
+          <div class="hud-grid">
+            <div class="hud-box">
+              <span class="hud-label">Cronómetro</span>
+              <strong id="timer" class="hud-value mono-data" style="animation: pulse-glow 2s infinite;">--:--</strong>
+            </div>
+            <div class="hud-box">
+              <span class="hud-label">Questão</span>
+              <strong id="currentQuestionIndicator" class="hud-value mono-data">0</strong>
+            </div>
+            <div class="hud-box">
+              <span class="hud-label">Respondidas</span>
+              <strong id="answeredCount" class="hud-value mono-data">0</strong>
+            </div>
+            <div class="hud-box">
+              <span class="hud-label">Em Falta</span>
+              <strong id="remainingCount" class="hud-value mono-data">0</strong>
+            </div>
+          </div>
+          
+          <div id="questionNavigator" class="nav-map"></div>
         </section>
         
-        <section class="sidebar-card">
-          <header class="sidebar-card__header">
-            <h3 class="sidebar-card__title">Domínio da Matéria</h3>
-          </header>
-          <div class="sidebar-card__body">
-            <div class="progress-wrap">
-                <strong id="globalProgressText" style="font-size: 1.4rem; font-weight: 800;">0 / 0</strong>
-                <strong id="globalProgressPercent" style="color: var(--primary); font-size: 1.2rem; font-weight: 800;">0%</strong>
-            </div>
-            <div class="progress-bar">
-              <div id="globalProgressBarFill" class="progress-bar__fill progress-bar__fill--global"></div>
-            </div>
-            
-            <div id="themeAnalyticsContainer" style="margin-top: 25px;"></div>
-            
-            <button id="resetProgressBtn" class="btn btn--ghost" style="margin-top: 20px; font-size: 0.8rem; padding: 10px;">Resetar Memória</button>
+        <section class="glass-panel">
+          <div class="widget-header">
+            <h3 class="widget-title">Progresso no Semestre</h3>
           </div>
+          
+          <div style="display:flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5px;">
+              <strong id="globalProgressText" class="mono-data" style="font-size: 1.2rem; color: var(--text-muted);">0 / 0</strong>
+              <strong id="globalProgressPercent" class="mono-data" style="color: var(--primary); font-size: 1.5rem;">0%</strong>
+          </div>
+          <div class="neon-progress-bg">
+            <div id="globalProgressBarFill" class="neon-progress-fill"></div>
+          </div>
+          
+          <div id="themeAnalyticsContainer" style="margin-top: 30px;"></div>
+          
+          <button id="resetProgressBtn" class="btn btn--ghost" style="width: 100%; margin-top: 20px; font-size: 0.75rem;">Limpar Histórico de Avaliação</button>
         </section>
 
       </aside>
 
     </main>
 
-    <footer class="footer">
-      João Fernandes © 2026 • Ferramenta Pessoal BIA
-    </footer>
-    <button id="scrollTopBtn" class="scroll-top-btn" type="button" aria-label="Topo">↑</button>
+    <button id="scrollTopBtn" class="btn btn--primary" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; padding:0; display: none; z-index: 50;">↑</button>
   </div>
 
-  <script src="js/script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => console.log('ServiceWorker registado com sucesso'))
+          .catch(err => console.log('Falha no registo do ServiceWorker:', err));
+      });
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
