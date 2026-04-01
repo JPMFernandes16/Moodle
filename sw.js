@@ -4,13 +4,14 @@ const CACHE_NAME = 'bia-moodle-cache-v2'; // Mudámos para v2 para ele forçar a
 const urlsToCache = [
   './',
   './index.html',
-  './manifest.json',  // <--- OLHA ELE AQUI! O culpado dos erros.
+  './manifest.json',
   './css/style.css',
   './js/main.js',
   './js/audio.js',
   './js/auth.js',
   './js/utils.js',
-  './image/iscap-logo.png',
+  './image/logo.png',            // <--- Logo novo adicionado
+  './image/logo-semfundo.png',   // <--- Logo novo adicionado
   './data/BIA_BIAT.json',
   './data/BIA_SP.json',
   './data/BIA_STP.json'

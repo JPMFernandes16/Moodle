@@ -5,7 +5,9 @@ import { initAuth } from './auth.js';
 document.addEventListener("DOMContentLoaded", () => {
   initAuth();
 
-  // Elementos do DOM
+  // ======================================================
+  // ELEMENTOS DO DOM
+  // ======================================================
   const disciplinaSelect = document.getElementById("disciplina");
   const carregarQuizBtn = document.getElementById("carregarQuiz");
   const carregarFraquezasBtn = document.getElementById("carregarFraquezas");
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextQuestionBtn = document.getElementById("nextQuestionBtn");
   const themeToggle = document.getElementById("themeToggle");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
+  const installAppBtn = document.getElementById("installAppBtn"); // Novo botão PWA
 
   const globalProgressText = document.getElementById("globalProgressText");
   const globalProgressBarFill = document.getElementById("globalProgressBarFill");
@@ -31,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const dictSearchInput = document.getElementById("dictSearchInput");
   const dictResultsContainer = document.getElementById("dictResultsContainer");
 
-  // Estado do Sistema
+  // ======================================================
+  // ESTADO DO SISTEMA
+  // ======================================================
   let fullDatabase = []; 
   let configDatabase = {}; 
   let quizData = [];
@@ -41,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizSubmitted = false;
   let timerInterval = null;
   let currentDisciplina = "";
-  let radarChartInstance = null; // Variável para o Gráfico Chart.js
+  let radarChartInstance = null; // Gráfico Chart.js
 
   let quizDurationSeconds = 40 * 60;
   let penalizacaoPorErro = 0;
@@ -94,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
       let testeFinal = [];
 
       if (mode === "mistakes") {
-          // ALGORITMO: Puxa os erros e baralha-os para garantir que não treinas na mesma ordem
           const wrongIds = globalStorage[currentDisciplina]?.wrong || [];
           testeFinal = todasPerguntas.filter(p => wrongIds.includes(p.id));
           if (testeFinal.length === 0) return []; 
@@ -163,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // PROGRESSO & ANALYTICS COM CHART.JS (Fase 4)
+  // PROGRESSO & ANALYTICS COM CHART.JS
   // ======================================================
   function updateGlobalProgressUI() {
     if (!globalProgressText || !fullDatabase || !fullDatabase.length) return;
@@ -188,11 +192,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const labels = Object.keys(temasEstatisticas).map(t => t.replace(/_/g, ' '));
         const dataValues = Object.values(temasEstatisticas).map(s => Math.round((s.certos / s.total) * 100));
 
-        // Limpa o contentor para injetar o Canvas do Chart.js
         themeAnalyticsContainer.innerHTML = '<canvas id="radarChart"></canvas>';
         const ctx = document.getElementById('radarChart').getContext('2d');
 
-        if (radarChartInstance) radarChartInstance.destroy(); // Destrói o gráfico anterior ao mudar de disciplina
+        if (radarChartInstance) radarChartInstance.destroy(); 
 
         radarChartInstance = new Chart(ctx, {
             type: 'radar',
@@ -201,9 +204,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 datasets: [{
                     label: 'Domínio do Tema (%)',
                     data: dataValues,
-                    backgroundColor: 'rgba(225, 29, 72, 0.3)', // Cyber Red transparente
+                    backgroundColor: 'rgba(225, 29, 72, 0.3)', 
                     borderColor: '#e11d48',
-                    pointBackgroundColor: '#10b981', // Verde no ponto
+                    pointBackgroundColor: '#10b981', 
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: '#10b981',
@@ -220,7 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             color: '#94a3b8',
                             font: { family: "'Outfit', sans-serif", size: 10, weight: '600' }
                         },
-                        ticks: { display: false, min: 0, max: 100 } // Esconde os números do eixo
+                        ticks: { display: false, min: 0, max: 100 } 
                     }
                 },
                 plugins: {
@@ -244,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const isCorrect = isQuestionCorrect(q, i);
           if (isCorrect) {
               if (!subjData.correct.includes(q.id)) subjData.correct.push(q.id);
-              subjData.wrong = subjData.wrong.filter(id => id !== q.id); // Se acertou agora, sai das fraquezas
+              subjData.wrong = subjData.wrong.filter(id => id !== q.id); 
           } else {
               todosCertos = false;
               if (!subjData.wrong.includes(q.id) && !subjData.correct.includes(q.id)) subjData.wrong.push(q.id);
@@ -338,7 +341,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (themeToggle) {
       themeToggle.addEventListener("click", () => {
         applyTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
-        // Força a atualização do gráfico para as cores certas se o tema mudar
         if(radarChartInstance) updateGlobalProgressUI();
       });
     }
@@ -718,6 +720,69 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+
+  // ======================================================
+  // 📱 PWA: BOTÃO DE INSTALAÇÃO CUSTOMIZADO
+  // ======================================================
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (installAppBtn) installAppBtn.classList.remove('hidden');
+  });
+
+  if (installAppBtn) {
+      installAppBtn.addEventListener('click', async () => {
+          if (deferredPrompt) {
+              deferredPrompt.prompt();
+              const { outcome } = await deferredPrompt.userChoice;
+              if (outcome === 'accepted') {
+                  console.log('Utilizador instalou a App!');
+                  installAppBtn.classList.add('hidden');
+              }
+              deferredPrompt = null;
+          }
+      });
+  }
+
+  // ======================================================
+  // ⌨️ NAVEGAÇÃO POWER USER (ATALHOS DE TECLADO)
+  // ======================================================
+  document.addEventListener('keydown', (e) => {
+      // Ignora os atalhos se o utilizador estiver a escrever
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (!quizLoaded || quizSubmitted) return;
+
+      // [ ← ] e [ → ] : Navegação
+      if (e.key === 'ArrowLeft') { 
+          e.preventDefault(); 
+          if(prevQuestionBtn && !prevQuestionBtn.disabled) goToPreviousQuestion(); 
+      }
+      if (e.key === 'ArrowRight') { 
+          e.preventDefault(); 
+          if(nextQuestionBtn && !nextQuestionBtn.disabled) goToNextQuestion(); 
+      }
+
+      // [ ENTER ] : Submeter
+      if (e.key === 'Enter') {
+          e.preventDefault();
+          if (submeterQuizBtn && !submeterQuizBtn.classList.contains('hidden') && !submeterQuizBtn.disabled) {
+              submeterQuizBtn.click();
+          }
+      }
+
+      // [ 1, 2, 3, 4 ] ou [ A, B, C, D ] : Escolha Múltipla
+      const keyMap = { '1': 0, 'a': 0, '2': 1, 'b': 1, '3': 2, 'c': 2, '4': 3, 'd': 3 };
+      const optionIndex = keyMap[e.key.toLowerCase()];
+      
+      if (optionIndex !== undefined) {
+          const currentQ = quizData[currentQuestionIndex];
+          if (currentQ && currentQ.tipo !== 'drag_and_drop' && currentQ.tipo !== 'open_ended') {
+              const options = quizContainer.querySelectorAll('input[type="radio"]');
+              if (options[optionIndex]) options[optionIndex].click();
+          }
+      }
+  });
 
   initTheme();
   initScrollTopButton();

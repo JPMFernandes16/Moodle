@@ -1,5 +1,5 @@
 /* =========================================================
-   VARIABLES & THEME (CYBER/FUTURISTIC UI 2026)
+   VARIABLES & THEME (PREMIUM UI 2026)
    ========================================================= */
 :root {
   /* Modo Claro (Clean Tech) */
@@ -33,7 +33,7 @@
 }
 
 [data-theme="dark"] {
-  /* Modo Escuro (Cybernetic) */
+  /* Modo Escuro (Elegante) */
   --bg-body: #050505;
   --bg-surface: rgba(15, 23, 42, 0.6);
   --bg-card: rgba(20, 25, 35, 0.7);
@@ -73,7 +73,6 @@ a { color: var(--primary); text-decoration: none; }
 h1, h2, h3, p { margin-top: 0; }
 .hidden { display: none !important; }
 
-/* Font monospace para números e dados do HUD */
 .mono-data { font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: -0.5px;}
 
 /* =========================================================
@@ -97,7 +96,7 @@ h1, h2, h3, p { margin-top: 0; }
 .confetti { position: fixed; top: -10px; width: 8px; height: 16px; z-index: 9999; animation: fall linear forwards; border-radius: 4px; }
 
 /* =========================================================
-   GLASSMORPHISM PANELS
+   GLASSMORPHISM PANELS (CLEAN)
    ========================================================= */
 .glass-panel {
   background: var(--bg-card);
@@ -129,10 +128,8 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .app-brand { display: flex; align-items: center; gap: 15px;}
+.iscap-logo { height: 42px; object-fit: contain; transition: var(--transition);}
 
-/* Estilo Dinâmico do Logo ISCAP */
-.iscap-logo { height: 42px; object-fit: contain; filter: grayscale(1) invert(1) contrast(1.5); opacity: 0.9; transition: var(--transition);}
-[data-theme="light"] .iscap-logo { filter: grayscale(1) contrast(1.2); }
 
 .brand-text { display: flex; flex-direction: column; border-left: 1px solid var(--border); padding-left: 15px; }
 .moodle-title { font-size: 1.3rem; font-weight: 300; letter-spacing: -0.5px; }
@@ -141,11 +138,8 @@ h1, h2, h3, p { margin-top: 0; }
 
 .header-controls { display: flex; align-items: center; }
 
-/* O Cartão de Estudante */
 .student-id-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: flex; align-items: center; gap: 12px;
   background: var(--bg-card);
   padding: 6px 16px 6px 6px;
   border: 1px solid var(--border);
@@ -187,36 +181,24 @@ h1, h2, h3, p { margin-top: 0; }
   font-family: inherit; 
   font-size: 1rem; 
   font-weight: 600;
-  outline: none; 
-  transition: var(--transition);
+  outline: none; transition: var(--transition);
   appearance: none;
 }
 .form-input:focus { border-color: var(--primary); box-shadow: var(--shadow-neon); background: var(--bg-card);}
 
 .btn { 
-  padding: 14px 24px; 
-  border-radius: var(--radius-pill); 
-  font-size: 0.95rem; 
-  font-weight: 800; 
-  cursor: pointer; 
-  border: 1px solid transparent; 
-  transition: var(--transition); 
-  display: inline-flex; 
-  justify-content: center; 
-  align-items: center;
-  gap: 10px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-size: 0.85rem;
+  padding: 14px 24px; border-radius: var(--radius-pill); 
+  font-size: 0.95rem; font-weight: 800; cursor: pointer; 
+  border: 1px solid transparent; transition: var(--transition); 
+  display: inline-flex; justify-content: center; align-items: center;
+  gap: 10px; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.85rem;
 }
 .btn:active:not(:disabled) { transform: scale(0.95); }
 .btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(1); }
 
 .btn--primary { 
-    background: var(--primary-gradient); 
-    color: white; 
-    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); 
-    border: none;
+    background: var(--primary-gradient); color: white; 
+    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); border: none;
 }
 .btn--primary:hover:not(:disabled) { box-shadow: var(--shadow-neon); transform: translateY(-2px);}
 
@@ -227,9 +209,7 @@ h1, h2, h3, p { margin-top: 0; }
    QUESTIONS AREA
    ========================================================= */
 .question-card { 
-    position: relative; 
-    overflow: hidden;
-    border-left: 4px solid transparent;
+    position: relative; overflow: hidden; border-left: 4px solid transparent;
 }
 .question-card.correct { border-left-color: var(--success); }
 .question-card.incorrect { border-left-color: var(--error); }
@@ -244,20 +224,16 @@ h1, h2, h3, p { margin-top: 0; }
 .options-group { display: flex; flex-direction: column; gap: 12px; }
 .option-item { 
     display: flex; align-items: center; gap: 15px; 
-    padding: 16px 20px; 
-    background: var(--secondary); 
-    border: 1px solid var(--border); 
-    border-radius: var(--radius-sm); 
+    padding: 16px 20px; background: var(--secondary); 
+    border: 1px solid var(--border); border-radius: var(--radius-sm); 
     cursor: pointer; transition: var(--transition); 
 }
 .option-item:hover { border-color: var(--primary); background: var(--bg-surface); }
 
 .option-item input[type="radio"] { display: none; }
 .custom-radio {
-    width: 24px; height: 24px; 
-    border: 2px solid var(--text-muted); 
-    border-radius: 50%; 
-    display: flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border: 2px solid var(--text-muted); 
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
     transition: var(--transition);
 }
 .custom-radio::after {
@@ -277,11 +253,9 @@ h1, h2, h3, p { margin-top: 0; }
 .widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;}
 .widget-title { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin:0;}
 
-/* HUD Status Grid */
 .hud-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
 .hud-box { 
-    background: var(--secondary); 
-    border: 1px solid var(--border); 
+    background: var(--secondary); border: 1px solid var(--border); 
     padding: 15px; border-radius: var(--radius-sm); 
     display: flex; flex-direction: column; align-items: center; 
 }
@@ -289,7 +263,6 @@ h1, h2, h3, p { margin-top: 0; }
 .hud-value { font-size: 1.8rem; color: var(--text-main); }
 #timer { color: var(--primary); text-shadow: var(--shadow-neon); }
 
-/* Navigator Map */
 .nav-map { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; }
 .nav-node { 
     aspect-ratio: 1; background: var(--secondary); border: 1px solid var(--border); 
@@ -304,7 +277,6 @@ h1, h2, h3, p { margin-top: 0; }
 .nav-node.is-partial { background: var(--warning); border-color: var(--warning); color: white;}
 .nav-node.is-incorrect { background: var(--error); border-color: var(--error); color: white;}
 
-/* Progress Bar Neon */
 .neon-progress-bg { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 10px;}
 .neon-progress-fill { height: 100%; width: 0%; background: var(--primary-gradient); box-shadow: var(--shadow-neon); transition: width 1s ease-out;}
 
@@ -313,15 +285,10 @@ h1, h2, h3, p { margin-top: 0; }
    ========================================================= */
 #resultado-final-box { display: none; margin-bottom: 24px; }
 .hologram-result {
-    background: var(--bg-surface);
-    border: 2px solid var(--primary);
-    border-radius: var(--radius-lg);
-    padding: 40px;
-    text-align: center;
+    background: var(--bg-surface); border: 2px solid var(--primary);
+    border-radius: var(--radius-lg); padding: 40px; text-align: center;
     box-shadow: inset 0 0 50px rgba(225, 29, 72, 0.1), var(--shadow-neon);
-    animation: fadeSlideUp 0.8s ease;
-    position: relative;
-    overflow: hidden;
+    animation: fadeSlideUp 0.8s ease; position: relative; overflow: hidden;
 }
 .hologram-result::before {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
@@ -329,12 +296,9 @@ h1, h2, h3, p { margin-top: 0; }
     transform: skewX(-20deg); animation: shine 3s infinite;
 }
 .score-display { 
-    font-size: 5rem; font-weight: 900; 
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1; margin: 20px 0;
-    filter: drop-shadow(0 0 10px var(--primary-glow));
+    font-size: 5rem; font-weight: 900; background: var(--primary-gradient);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1; margin: 20px 0; filter: drop-shadow(0 0 10px var(--primary-glow));
 }
 
 /* =========================================================

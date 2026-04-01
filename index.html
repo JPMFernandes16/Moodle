@@ -10,8 +10,8 @@
   
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#e11d48" />
-  <link rel="apple-touch-icon" href="image/iscap-logo.png">
-  <link rel="icon" href="image/iscap-logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="image/logo.png">
+  <link rel="icon" href="image/logo-semfundo.png" type="image/png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,7 +23,7 @@
 
   <div id="security-layer" style="position:fixed; inset:0; background:var(--bg-body); z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; transition: opacity 0.5s;">
     <div class="glass-panel" style="max-width: 420px; width: 100%; text-align: center; border-top: 4px solid var(--primary);">
-      <img src="image/iscap-logo.png" alt="ISCAP" style="height: 60px; filter: grayscale(1) invert(1) contrast(1.5); margin-bottom: 20px; opacity: 0.8;">
+      <img src="image/logo-semfundo.png" alt="Logo" style="height: 60px; margin-bottom: 20px;">
       
       <h2 style="margin-bottom:5px; font-weight:800;">Portal de Estudante</h2>
       <p style="color:var(--text-muted); margin-bottom:30px; font-size: 0.95rem;">Mestrado em Business Intelligence & Analytics.</p>
@@ -39,21 +39,23 @@
     
     <header class="app-header">
       <div class="app-brand">
-        <img src="image/iscap-logo.png" alt="ISCAP" class="iscap-logo">
+        <img src="image/logo-semfundo.png" alt="Logo" class="iscap-logo">
         <div class="brand-text">
           <span class="moodle-title">Moodle <b>BIA</b></span>
-          <span class="moodle-subtitle">Inteligência de Negócio e Análise de Dados</span>
+          <span class="moodle-subtitle">Business Intelligence & Analytics</span>
         </div>
       </div>
       
       <div class="header-controls">
+        <button id="installAppBtn" class="btn btn--primary hidden" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; font-size: 0.75rem; box-shadow: 0 0 10px var(--primary-glow);">📱 Instalar</button>
+
         <button id="themeToggle" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px;">🌗 Ambiente</button>
         
         <div class="student-id-card">
           <div class="user-avatar">JF</div>
           <div class="student-info">
             <strong class="student-name">João Fernandes</strong>
-            <span class="student-course">Mestrando BIA</span>
+            <span class="student-course">Mestrado BIA</span>
           </div>
         </div>
       </div>
@@ -75,7 +77,7 @@
           </select>
           
           <div class="control-group">
-            <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Sebenta Digital</a>
+            <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Resumo Digital</a>
             <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Gravação da Aula</a>
             <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão de Falhas</button>
             <button id="carregarQuiz" class="btn btn--primary" style="flex-grow: 1;">⚡ Iniciar Simulação</button>
