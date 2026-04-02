@@ -1,20 +1,12 @@
 /* =========================================================
-   VARIABLES & THEME (PREMIUM UI 2026)
+   VARIABLES & THEME (JF ANALYTICS NAVY THEME)
    ========================================================= */
 :root {
-  /* Modo Claro (Clean Tech) */
-  --bg-body: #f0f4f8;
-  --bg-surface: rgba(255, 255, 255, 0.7);
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border: rgba(148, 163, 184, 0.2);
-  
-  --primary: #e11d48; 
-  --primary-glow: rgba(225, 29, 72, 0.4);
-  --primary-gradient: linear-gradient(135deg, #f43f5e, #9f1239);
-  
-  --secondary: rgba(241, 245, 249, 0.8);
+  /* Cores da Marca e Base */
+  --brand-navy: #1a3051; 
+  --primary: #0ea5e9;    /* Ciano Técnico */
+  --primary-glow: rgba(14, 165, 233, 0.4);
+  --primary-gradient: linear-gradient(135deg, #38bdf8, #0284c7);
   
   --success: #059669;
   --success-light: rgba(16, 185, 129, 0.15);
@@ -25,32 +17,30 @@
   --radius-sm: 12px;
   --radius-lg: 24px;
   --radius-pill: 99px;
-  
-  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  --shadow-neon: 0 0 15px var(--primary-glow);
-  
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Modo Claro (Clean Blue) */
+  --bg-body: #f0f4f8;
+  --bg-surface: #e2e8f0; 
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: rgba(27, 46, 75, 0.15);
+  --secondary: rgba(241, 245, 249, 0.8);
+  --shadow-glass: 0 8px 32px 0 rgba(27, 46, 75, 0.08);
+  --shadow-neon: 0 0 15px var(--primary-glow);
 }
 
 [data-theme="dark"] {
-  /* Modo Escuro (Elegante) */
-  --bg-body: #050505;
-  --bg-surface: rgba(15, 23, 42, 0.6);
-  --bg-card: rgba(20, 25, 35, 0.7);
+  /* Modo Escuro (Deep Navy) */
+  --bg-body: #0b1320;
+  --bg-surface: #1e293b;
+  --bg-card: #142238;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --border: rgba(255, 255, 255, 0.08);
-  
-  --primary: #f43f5e;
-  --primary-glow: rgba(244, 63, 94, 0.6);
-  --primary-gradient: linear-gradient(135deg, #ff1b6b, #45caff);
-  
-  --secondary: rgba(30, 41, 59, 0.6);
-  
-  --success: #10b981;
-  --error: #ef4444;
-  
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --secondary: rgba(27, 46, 75, 0.4);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   --shadow-neon: 0 0 20px var(--primary-glow);
 }
 
@@ -84,12 +74,6 @@ h1, h2, h3, p { margin-top: 0; }
 }
 .question-card, .glass-panel { animation: fadeSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 0 0 var(--primary-glow); }
-  70% { box-shadow: 0 0 0 10px rgba(0,0,0,0); }
-  100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
-}
-
 @keyframes shine { 100% { left: 200%; } }
 
 @keyframes fall { to { transform: translateY(105vh) rotate(720deg); } }
@@ -108,16 +92,14 @@ h1, h2, h3, p { margin-top: 0; }
   box-shadow: var(--shadow-glass);
   transition: var(--transition);
 }
-.glass-panel:hover { border-color: rgba(255,255,255,0.15); transform: translateY(-2px); }
+.glass-panel:hover { border-color: rgba(14, 165, 233, 0.3); transform: translateY(-2px); }
 
 /* =========================================================
-   HEADER & STUDENT ID CARD
+   HEADER & STUDENT ID CARD (FUNDO SÓLIDO PARA O LOGO)
    ========================================================= */
 .app-header { 
-  background: var(--bg-surface);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
+  background: var(--brand-navy); /* Cor sólida que funde com o logo */
+  border-bottom: 2px solid var(--primary);
   padding: 12px 32px; 
   display: flex; 
   justify-content: space-between; 
@@ -125,26 +107,29 @@ h1, h2, h3, p { margin-top: 0; }
   position: sticky; 
   top: 0; 
   z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-.app-brand { display: flex; align-items: center; gap: 15px;}
-.iscap-logo { height: 42px; object-fit: contain; transition: var(--transition);}
+.app-brand { display: flex; align-items: center; gap: 15px; cursor: pointer;}
+.iscap-logo { height: 60px; width: auto; object-fit: contain; margin-left: -5px; transition: var(--transition); }
 
-
-.brand-text { display: flex; flex-direction: column; border-left: 1px solid var(--border); padding-left: 15px; }
-.moodle-title { font-size: 1.3rem; font-weight: 300; letter-spacing: -0.5px; }
-.moodle-title b { font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.moodle-subtitle { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; }
+.brand-text { display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px; }
+.moodle-title { font-size: 1.3rem; font-weight: 300; letter-spacing: -0.5px; color: #ffffff; }
+.moodle-title b { font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.moodle-subtitle { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px; }
 
 .header-controls { display: flex; align-items: center; }
 
+/* Ajuste dos botões no cabeçalho para ficarem visíveis no fundo escuro */
+.app-header .btn--ghost { color: #f8fafc; border-color: rgba(255,255,255,0.2); }
+.app-header .btn--ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); }
+
 .student-id-card {
   display: flex; align-items: center; gap: 12px;
-  background: var(--bg-card);
+  background: rgba(0, 0, 0, 0.2);
   padding: 6px 16px 6px 6px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-glass);
 }
 
 .user-avatar { 
@@ -158,7 +143,7 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .student-info { display: flex; flex-direction: column; }
-.student-name { font-size: 0.9rem; font-weight: 700; line-height: 1.2; color: var(--text-main); }
+.student-name { font-size: 0.9rem; font-weight: 700; line-height: 1.2; color: #ffffff; }
 .student-course { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px; }
 
 /* =========================================================
@@ -198,7 +183,7 @@ h1, h2, h3, p { margin-top: 0; }
 
 .btn--primary { 
     background: var(--primary-gradient); color: white; 
-    box-shadow: 0 4px 15px rgba(225, 29, 72, 0.3); border: none;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); border: none;
 }
 .btn--primary:hover:not(:disabled) { box-shadow: var(--shadow-neon); transform: translateY(-2px);}
 
@@ -285,19 +270,19 @@ h1, h2, h3, p { margin-top: 0; }
    ========================================================= */
 #resultado-final-box { display: none; margin-bottom: 24px; }
 .hologram-result {
-    background: var(--bg-surface); border: 2px solid var(--primary);
+    background: var(--bg-card); border: 2px solid var(--primary);
     border-radius: var(--radius-lg); padding: 40px; text-align: center;
-    box-shadow: inset 0 0 50px rgba(225, 29, 72, 0.1), var(--shadow-neon);
+    box-shadow: inset 0 0 50px rgba(14, 165, 233, 0.05), var(--shadow-neon);
     animation: fadeSlideUp 0.8s ease; position: relative; overflow: hidden;
 }
 .hologram-result::before {
     content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.05), transparent);
     transform: skewX(-20deg); animation: shine 3s infinite;
 }
 .score-display { 
     font-size: 5rem; font-weight: 900; background: var(--primary-gradient);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     line-height: 1; margin: 20px 0; filter: drop-shadow(0 0 10px var(--primary-glow));
 }
 
@@ -310,4 +295,37 @@ h1, h2, h3, p { margin-top: 0; }
   .app-header { padding: 12px 20px; flex-direction: column; gap: 15px; }
   .score-display { font-size: 3.5rem; }
   .header-controls { width: 100%; justify-content: space-between; }
+  .iscap-logo { height: 50px; }
 }
+
+/* =========================================================
+   CUSTOM CONFIRM POPUP
+   ========================================================= */
+.confirm-overlay {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(11, 19, 32, 0.85); /* Fundo escuro transparente */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.confirm-overlay.show { opacity: 1; pointer-events: all; }
+
+.confirm-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 30px; max-width: 400px; width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-glass), var(--shadow-neon);
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.confirm-overlay.show .confirm-box { transform: scale(1) translateY(0); }
+
+.confirm-icon { font-size: 3rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); }

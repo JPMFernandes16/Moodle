@@ -10,8 +10,7 @@ const urlsToCache = [
   './js/audio.js',
   './js/auth.js',
   './js/utils.js',
-  './image/logo.png',            // <--- Logo novo adicionado
-  './image/logo-semfundo.png',   // <--- Logo novo adicionado
+  './image/logo.png',           
   './data/BIA_BIAT.json',
   './data/BIA_SP.json',
   './data/BIA_STP.json'

@@ -699,21 +699,54 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
+  // 💬 POPUP CUSTOMIZADO (PROMISE)
+  // ======================================================
+  function showCustomConfirm(message) {
+      return new Promise((resolve) => {
+          const overlay = document.getElementById('customConfirmOverlay');
+          const msgEl = document.getElementById('customConfirmMsg');
+          const btnYes = document.getElementById('customConfirmYes');
+          const btnNo = document.getElementById('customConfirmNo');
+
+          msgEl.textContent = message;
+          overlay.style.display = 'flex';
+          
+          // Pequeno truque para o CSS ler a transição
+          setTimeout(() => overlay.classList.add('show'), 10);
+
+          const cleanup = () => {
+              overlay.classList.remove('show');
+              setTimeout(() => overlay.style.display = 'none', 300);
+              btnYes.removeEventListener('click', onYes);
+              btnNo.removeEventListener('click', onNo);
+          };
+
+          const onYes = () => { cleanup(); playClick(); resolve(true); };
+          const onNo = () => { cleanup(); resolve(false); };
+
+          btnYes.addEventListener('click', onYes);
+          btnNo.addEventListener('click', onNo);
+      });
+  }
+
+  // ======================================================
   // EVENT LISTENERS GLOBAIS
   // ======================================================
   if (disciplinaSelect) disciplinaSelect.addEventListener("change", carregarDisciplinaBase);
   if (carregarQuizBtn) carregarQuizBtn.addEventListener("click", () => iniciarTeste("normal"));
   if (carregarFraquezasBtn) carregarFraquezasBtn.addEventListener("click", () => iniciarTeste("mistakes"));
-  if (submeterQuizBtn) submeterQuizBtn.addEventListener("click", () => {
-      if(confirm("Iniciar processamento final de respostas?")) verificarRespostas(false);
+  if (submeterQuizBtn) submeterQuizBtn.addEventListener("click", async () => {
+      const confirmado = await showCustomConfirm("Iniciar processamento final de respostas?");
+      if(confirmado) verificarRespostas(false);
   });
   if (prevQuestionBtn) prevQuestionBtn.addEventListener("click", goToPreviousQuestion);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", goToNextQuestion);
   if (dictSearchInput) dictSearchInput.addEventListener("input", procurarNoDicionario);
 
   if (resetProgressBtn) {
-    resetProgressBtn.addEventListener("click", () => {
-      if (confirm(`Atenção: Queres apagar a cache neural de erros em ${currentDisciplina}?`)) {
+    resetProgressBtn.addEventListener("click", async () => {
+      const confirmado = await showCustomConfirm(`Atenção: Queres apagar a cache neural de erros em ${currentDisciplina}?`);
+      if (confirmado) {
         globalStorage[currentDisciplina] = { correct: [], wrong: [] };
         localStorage.setItem("moodle-iscap-storage", JSON.stringify(globalStorage));
         updateGlobalProgressUI();
