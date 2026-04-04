@@ -13,6 +13,7 @@ const urlsToCache = [
   './image/logo.png',           
   './data/BIA_BIAT.json',
   './data/BIA_SP.json',
+  './data/GM_MR.json',
   './data/BIA_STP.json'
 ];
 

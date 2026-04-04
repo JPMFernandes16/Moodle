@@ -1,0 +1,639 @@
+{
+  "opcoes_exame": {
+    "duracao_minutos": 20,
+    "desconto_erro": 0.0
+  },
+  "configuracao_teste": {
+    "Fundamentos_Marketing_Relacional": 11,
+    "Caso_Pratico_wtvision_TheFloor": 9
+  },
+  "perguntas": [
+    {
+      "id": "MR_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "evolucao_marketing",
+      "pergunta": "Qual das opções distingue melhor o Marketing 4.0 do Marketing 5.0?",
+      "opcoes": [
+        "O Marketing 4.0 valoriza a conectividade e a participação em tempo real; o Marketing 5.0 acrescenta personalização individual em escala com recurso a dados e IA.",
+        "O Marketing 4.0 centra-se no produto; o Marketing 5.0 centra-se no preço.",
+        "O Marketing 4.0 elimina o CRM; o Marketing 5.0 substitui o CRM por publicidade massiva.",
+        "O Marketing 4.0 trata apenas de vendas presenciais; o Marketing 5.0 trata apenas de vendas online."
+      ],
+      "resposta_correta": "O Marketing 4.0 valoriza a conectividade e a participação em tempo real; o Marketing 5.0 acrescenta personalização individual em escala com recurso a dados e IA.",
+      "justificacao": "No resumo, o 4.0 surge associado à tecnologia, conectividade e comunicação bidirecional, enquanto o 5.0 acrescenta CRM analítico, big data, automação e marketing one-to-one. fileciteturn0file0"
+    },
+    {
+      "id": "MR_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "evolucao_marketing",
+      "pergunta": "Qual destas formulações descreve de forma mais correta o Marketing 6.0?",
+      "opcoes": [
+        "Gestão da jornada omnicanal com experiência multidimensional, integrando físico e digital.",
+        "Conversão de processos manuais em ficheiros digitais e automatização administrativa.",
+        "Foco exclusivo na venda isolada e na quota de mercado de curto prazo.",
+        "Segmentação apenas demográfica suportada por campanhas massificadas."
+      ],
+      "resposta_correta": "Gestão da jornada omnicanal com experiência multidimensional, integrando físico e digital.",
+      "justificacao": "O resumo caracteriza o Marketing 6.0 como era imersiva, integrando físico e digital e valorizando a experiência total ao longo dos pontos de contacto. fileciteturn0file0"
+    },
+    {
+      "id": "MR_003",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "evolucao_marketing",
+      "pergunta": "No marketing relacional, a empresa procura sobretudo maximizar resultados imediatos, mesmo que isso prejudique a continuidade da relação com o cliente.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "O mundo relacional privilegia longo prazo, continuidade, retenção e cocriação de valor, em contraste com a venda isolada do paradigma transacional. fileciteturn0file0"
+    },
+    {
+      "id": "MR_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "valor_percebido",
+      "pergunta": "Qual das seguintes opções representa melhor o valor social no ecossistema do valor percebido?",
+      "opcoes": [
+        "A utilidade prática e a fiabilidade do produto.",
+        "O status, o reconhecimento e o sentimento de pertença a uma comunidade.",
+        "A relação entre preço pago e esforço despendido.",
+        "A eficiência operacional do atendimento."
+      ],
+      "resposta_correta": "O status, o reconhecimento e o sentimento de pertença a uma comunidade.",
+      "justificacao": "No resumo, o valor social está ligado a status, identidade, simbolismo e pertença a um grupo. fileciteturn0file0"
+    },
+    {
+      "id": "MR_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "valor_percebido",
+      "pergunta": "Qual destas opções parece próxima da correta, mas descreve na verdade o valor epistémico e não o valor emocional?",
+      "opcoes": [
+        "Satisfação da curiosidade e desejo de novidade.",
+        "Sentimentos, prazer e experiências hedónicas geradas pela marca.",
+        "Confiança e ligação afetiva construída em várias interações.",
+        "Experiência memorável que faz o cliente gostar da marca."
+      ],
+      "resposta_correta": "Satisfação da curiosidade e desejo de novidade.",
+      "justificacao": "O valor epistémico está ligado à novidade e curiosidade; o emocional refere-se a sentimentos, prazer e experiências hedónicas. fileciteturn0file0"
+    },
+    {
+      "id": "MR_006",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "valor_percebido",
+      "pergunta": "O valor funcional/económico tende a ser mais fácil de imitar pela concorrência do que o valor emocional/social.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "O resumo assinala que a utilidade prática, preço e desempenho são facilmente imitáveis, enquanto as camadas emocional, social e epistémica criam diferenciação e identidade. fileciteturn0file0"
+    },
+    {
+      "id": "MR_007",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "valor_percebido",
+      "pergunta": "Associa cada dimensão do valor percebido à respetiva descrição.",
+      "pares": [
+        {
+          "conceito": "Valor Funcional",
+          "definicao": "Utilidade prática, qualidade e fiabilidade do produto."
+        },
+        {
+          "conceito": "Valor Emocional",
+          "definicao": "Sentimentos, prazer e experiências geradas pela marca."
+        },
+        {
+          "conceito": "Valor Epistémico",
+          "definicao": "Satisfação da curiosidade e desejo de novidade."
+        }
+      ],
+      "justificacao": "O resumo apresenta várias dimensões do valor percebido, mostrando que o cliente compra muito mais do que preço ou desempenho. fileciteturn0file0"
+    },
+    {
+      "id": "MR_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "transacional_vs_relacional",
+      "pergunta": "Qual das seguintes métricas é mais coerente com uma lógica relacional e não com uma lógica transacional?",
+      "opcoes": [
+        "Quota de mercado no trimestre.",
+        "Volume de vendas por campanha.",
+        "Customer Lifetime Value e qualidade da relação.",
+        "Número de transações isoladas numa semana."
+      ],
+      "resposta_correta": "Customer Lifetime Value e qualidade da relação.",
+      "justificacao": "Na matriz de contraste, o mundo relacional mede sucesso por CLV e qualidade da relação, não apenas por volume ou quota de mercado. fileciteturn0file0"
+    },
+    {
+      "id": "MR_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "marketing_mix_reconfigurado",
+      "pergunta": "Qual destas situações traduz melhor marketing de permissão e não marketing one-to-one?",
+      "opcoes": [
+        "A marca só comunica depois de o cliente autorizar o contacto.",
+        "A marca adapta a oferta com base no histórico individual do cliente.",
+        "A marca prevê preferências futuras através de modelos analíticos.",
+        "A marca cria uma experiência sensorial memorável em loja."
+      ],
+      "resposta_correta": "A marca só comunica depois de o cliente autorizar o contacto.",
+      "justificacao": "Marketing de permissão significa diálogo autorizado; marketing one-to-one refere-se à personalização baseada na aprendizagem acumulada nas interações. fileciteturn0file0"
+    },
+    {
+      "id": "MR_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "marketing_mix_reconfigurado",
+      "pergunta": "Qual destas opções descreve melhor marketing tribal e viral?",
+      "opcoes": [
+        "Comunidades unidas por valores partilhados, em que os próprios clientes atuam como agentes de comunicação.",
+        "Envio automático de e-mails segmentados com base em datas especiais.",
+        "Definição do preço mais baixo possível para aumentar a captação.",
+        "Aumento do investimento em anúncios para substituir o passa-a-palavra."
+      ],
+      "resposta_correta": "Comunidades unidas por valores partilhados, em que os próprios clientes atuam como agentes de comunicação.",
+      "justificacao": "O resumo refere que, quando a tribo gosta, a própria comunidade torna a marca viral e passa a comunicar por ela. fileciteturn0file0"
+    },
+    {
+      "id": "MR_011",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "clv",
+      "pergunta": "No início da relação, o CLV pode estar abaixo de zero devido aos custos de aquisição.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "A curva do CLV começa com custos de aquisição, podendo colocar a rentabilidade abaixo de zero até ao ponto de equilíbrio. fileciteturn0file0"
+    },
+    {
+      "id": "MR_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "clv",
+      "pergunta": "Porque razão um cliente fiel tende a aumentar o CLV ao longo do tempo?",
+      "opcoes": [
+        "Porque deixa de existir qualquer custo de retenção.",
+        "Porque passa a comprar sempre produtos mais baratos.",
+        "Porque apresenta menor sensibilidade ao preço e continua a gerar receitas futuras esperadas.",
+        "Porque elimina a necessidade de prestação de serviço."
+      ],
+      "resposta_correta": "Porque apresenta menor sensibilidade ao preço e continua a gerar receitas futuras esperadas.",
+      "justificacao": "No resumo, após o ponto de equilíbrio, o cliente fiel aceita pagar um pouco mais pela conveniência e confiança, aumentando a rentabilidade ao longo do tempo. fileciteturn0file0"
+    },
+    {
+      "id": "MR_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "personalizacao",
+      "pergunta": "Qual destas opções descreve melhor a passagem de segmentos para mercados de um?",
+      "opcoes": [
+        "Da segmentação por preço para a eliminação total da segmentação.",
+        "Da segmentação demográfica para ofertas únicas construídas a partir do histórico individual e das interações do cliente.",
+        "Da comunicação personalizada para a comunicação massificada.",
+        "Da retenção de clientes para a aquisição exclusiva de novos públicos."
+      ],
+      "resposta_correta": "Da segmentação demográfica para ofertas únicas construídas a partir do histórico individual e das interações do cliente.",
+      "justificacao": "O funil da personalização vai de agrupamentos superficiais até à personalização extrema, em que a empresa cria uma oferta única para cada cliente. fileciteturn0file0"
+    },
+    {
+      "id": "MR_014",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "personalizacao",
+      "pergunta": "Personalização extrema significa apenas tratar o cliente pelo nome numa mensagem automática.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "O resumo define personalização como construção de uma arquitetura de relação forte, baseada em histórico, interações e conveniência, e não como mera personalização superficial. fileciteturn0file0"
+    },
+    {
+      "id": "MR_015",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "anatomia_relacao",
+      "pergunta": "Associa cada fase da anatomia da relação à sua caracterização principal.",
+      "pares": [
+        {
+          "conceito": "Consciência",
+          "definicao": "O cliente conhece a marca, mas ainda não existe relação."
+        },
+        {
+          "conceito": "Exploração",
+          "definicao": "Primeiras interações, com elevado risco percebido."
+        },
+        {
+          "conceito": "Compromisso",
+          "definicao": "Relação duradoura, madura e com cocriação."
+        }
+      ],
+      "justificacao": "A anatomia da relação mostra uma progressão desde a simples consciência até ao compromisso, procurando adiar a dissolução. fileciteturn0file0"
+    },
+    {
+      "id": "MR_016",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "lealdade_oliver",
+      "pergunta": "Em que fase da lealdade, segundo Oliver, o cliente continua a comprar e rejeita ativamente ofertas da concorrência por intenção firme de permanência?",
+      "opcoes": [
+        "Lealdade Cognitiva",
+        "Lealdade Afetiva",
+        "Lealdade Conativa",
+        "Lealdade Comportamental"
+      ],
+      "resposta_correta": "Lealdade Conativa",
+      "justificacao": "A lealdade conativa corresponde ao compromisso declarado e à intenção firme de continuar a comprar, rejeitando alternativas. fileciteturn0file0"
+    },
+    {
+      "id": "MR_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "lealdade_oliver",
+      "pergunta": "Qual destas opções parece correta, mas descreve lealdade comportamental e não lealdade afetiva?",
+      "opcoes": [
+        "O cliente já gosta da marca após experiências positivas.",
+        "A preferência tornou-se sentimental e começa a criar raízes.",
+        "Comprar a marca tornou-se um hábito tão forte que o cliente está blindado.",
+        "A relação deixa de ser apenas lógica e passa a incluir envolvimento emocional."
+      ],
+      "resposta_correta": "Comprar a marca tornou-se um hábito tão forte que o cliente está blindado.",
+      "justificacao": "Na lealdade afetiva há gosto e ligação emocional; na comportamental o comportamento já está consolidado e resistente a pressões externas. fileciteturn0file0"
+    },
+    {
+      "id": "MR_018",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "fidelizacao_vs_lealdade",
+      "pergunta": "Fidelização e lealdade são equivalentes, porque em ambos os casos o cliente fica essencialmente por descontos e recompensas.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "O resumo distingue fidelização racional baseada em incentivos de lealdade baseada em relação, confiança e menor dependência do preço. fileciteturn0file0"
+    },
+    {
+      "id": "MR_019",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "dick_basu",
+      "pergunta": "Qual destas situações corresponde a lealdade espúria no modelo de Dick & Basu?",
+      "opcoes": [
+        "O cliente gosta muito da marca mas enfrenta barreiras externas à compra.",
+        "O cliente compra repetidamente por hábito ou conveniência, mas sem ligação emocional.",
+        "O cliente apresenta baixa atitude e baixa repetição de compra.",
+        "O cliente revela confiança profunda e compras consistentes mesmo perante concorrência."
+      ],
+      "resposta_correta": "O cliente compra repetidamente por hábito ou conveniência, mas sem ligação emocional.",
+      "justificacao": "A lealdade espúria ou falsa representa repetição de compra sem verdadeira ligação emocional, com risco elevado de abandono. fileciteturn0file0"
+    },
+    {
+      "id": "MR_020",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "jornada_cliente",
+      "pergunta": "Associa cada fase da jornada clássica do cliente ao respetivo momento.",
+      "pares": [
+        {
+          "conceito": "Consciência",
+          "definicao": "Descoberta do problema e pesquisa inicial."
+        },
+        {
+          "conceito": "Compra",
+          "definicao": "Decisão de compra e transação."
+        },
+        {
+          "conceito": "Lealdade",
+          "definicao": "Recompra e recomendação."
+        }
+      ],
+      "justificacao": "A jornada clássica progride de consciência e consideração até compra, serviço e lealdade. fileciteturn0file0"
+    },
+    {
+      "id": "MR_021",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "processo_decisao_compra",
+      "pergunta": "No processo de decisão de compra, em que etapa o consumidor compara marcas e opções antes de escolher?",
+      "opcoes": [
+        "Reconhecer a necessidade",
+        "Procura da informação",
+        "Avaliar as alternativas",
+        "Serviço pós-compra"
+      ],
+      "resposta_correta": "Avaliar as alternativas",
+      "justificacao": "O resumo apresenta cinco passos: reconhecer necessidade, procurar informação, avaliar alternativas, decidir a compra e serviço pós-compra. fileciteturn0file0"
+    },
+    {
+      "id": "MR_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "crm",
+      "pergunta": "Qual destas opções representa melhor CRM Analítico e não CRM Operacional?",
+      "opcoes": [
+        "Automatizar o envio de uma mensagem de aniversário.",
+        "Gerir a força de vendas e padronizar o atendimento.",
+        "Transformar dados brutos em conhecimento estratégico através de modelos preditivos e segmentação profunda.",
+        "Integrar Instagram, telefone e suporte numa só experiência."
+      ],
+      "resposta_correta": "Transformar dados brutos em conhecimento estratégico através de modelos preditivos e segmentação profunda.",
+      "justificacao": "O CRM Analítico é o 'cérebro': trata dados, cria modelos preditivos e faz segmentação profunda. fileciteturn0file0"
+    },
+    {
+      "id": "MR_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "tema": "crm",
+      "pergunta": "Qual destas descrições corresponde mais diretamente ao CRM Colaborativo?",
+      "opcoes": [
+        "Integra canais para que a empresa fale a uma só voz, independentemente do ponto de contacto.",
+        "Automatiza campanhas e acelera processos de venda e atendimento.",
+        "Estima a próxima compra provável com base em big data.",
+        "Reduz o preço para compensar falhas de serviço."
+      ],
+      "resposta_correta": "Integra canais para que a empresa fale a uma só voz, independentemente do ponto de contacto.",
+      "justificacao": "O CRM Colaborativo é a 'voz': integra canais, gere omnicanalidade e cria uma experiência fluida. fileciteturn0file0"
+    },
+    {
+      "id": "WT_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "interpretacao_caso",
+      "pergunta": "Considerando um caso em que a wtvision desenvolve tecnologia que torna um programa televisivo mais interativo e visualmente envolvente, qual é o tipo de valor mais diretamente reforçado para o espectador?",
+      "opcoes": [
+        "Valor emocional/experiencial",
+        "Valor económico",
+        "Valor funcional apenas",
+        "Valor jurídico"
+      ],
+      "resposta_correta": "Valor emocional/experiencial",
+      "justificacao": "Quando a tecnologia melhora a vivência, o envolvimento e a memorabilidade da experiência, o valor reforçado é sobretudo emocional/experiencial, em linha com a lógica do marketing relacional. fileciteturn0file0"
+    },
+    {
+      "id": "WT_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "interpretacao_caso",
+      "pergunta": "Se essa experiência também fizer o espectador sentir que pertence a uma comunidade que comenta e acompanha o programa, que dimensão adicional do valor percebido ganha força?",
+      "opcoes": [
+        "Valor funcional",
+        "Valor social",
+        "Valor económico",
+        "Valor operacional"
+      ],
+      "resposta_correta": "Valor social",
+      "justificacao": "O resumo associa valor social a status, reconhecimento, identidade e pertença a uma comunidade. fileciteturn0file0"
+    },
+    {
+      "id": "WT_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "interpretacao_caso",
+      "pergunta": "Num cenário em que o público comenta o programa em tempo real nas redes sociais e influencia a perceção de outros espectadores, estamos perante qual fenómeno mais compatível com a matéria?",
+      "opcoes": [
+        "Marketing tribal e viral",
+        "Marketing de interrupção",
+        "Marketing exclusivamente transacional",
+        "Fidelização puramente económica"
+      ],
+      "resposta_correta": "Marketing tribal e viral",
+      "justificacao": "Quando comunidades partilham valores e os clientes passam a comunicar pela marca, o enquadramento mais correto é tribal e viral. fileciteturn0file0"
+    },
+    {
+      "id": "WT_004",
+      "tipo": "true_false",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "interpretacao_caso",
+      "pergunta": "Num caso como o da wtvision, seria redutor analisar a tecnologia apenas como produto, ignorando a experiência e a relação construída com a audiência.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "A lógica relacional não se limita ao produto; considera experiência, envolvimento, relação e valor cocriado no uso. fileciteturn0file0"
+    },
+    {
+      "id": "WT_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "crm_no_caso",
+      "pergunta": "Se a equipa usar dados de comportamento da audiência para prever preferências e ajustar futuros formatos ou interações, que componente do CRM está mais diretamente envolvida?",
+      "opcoes": [
+        "CRM Colaborativo",
+        "CRM Operacional",
+        "CRM Analítico",
+        "Marketing de Permissão"
+      ],
+      "resposta_correta": "CRM Analítico",
+      "justificacao": "Prever comportamentos e trabalhar dados históricos corresponde ao papel analítico do CRM. fileciteturn0file0"
+    },
+    {
+      "id": "WT_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "crm_no_caso",
+      "pergunta": "Se o objetivo for garantir que uma interação iniciada nas redes sociais seja conhecida pela equipa de apoio noutro canal, que componente está mais diretamente em ação?",
+      "opcoes": [
+        "CRM Analítico",
+        "CRM Colaborativo",
+        "CRM Operacional",
+        "Lealdade Conativa"
+      ],
+      "resposta_correta": "CRM Colaborativo",
+      "justificacao": "A integração entre canais e a criação de uma experiência fluida pertencem ao CRM Colaborativo. fileciteturn0file0"
+    },
+    {
+      "id": "WT_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "crm_no_caso",
+      "pergunta": "Se um sistema enviar automaticamente convites, notificações ou mensagens personalizadas com base em regras previamente definidas, isso aproxima-se mais de:",
+      "opcoes": [
+        "CRM Analítico",
+        "CRM Operacional",
+        "CRM Colaborativo",
+        "Lealdade Verdadeira"
+      ],
+      "resposta_correta": "CRM Operacional",
+      "justificacao": "Automatização de marketing e execução de processos pertencem ao CRM Operacional. fileciteturn0file0"
+    },
+    {
+      "id": "WT_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "lealdade_no_caso",
+      "pergunta": "Um espectador acompanha sempre o programa porque o horário lhe convém, mas mudaria facilmente para outro formato semelhante se lhe fosse mais conveniente. Esta situação sugere:",
+      "opcoes": [
+        "Lealdade verdadeira",
+        "Lealdade espúria",
+        "Lealdade latente",
+        "Lealdade afetiva"
+      ],
+      "resposta_correta": "Lealdade espúria",
+      "justificacao": "Há repetição do consumo, mas sem vínculo emocional sólido; por isso, trata-se de lealdade espúria. fileciteturn0file0"
+    },
+    {
+      "id": "WT_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "lealdade_no_caso",
+      "pergunta": "Se outro espectador continua a acompanhar o programa mesmo quando surgem alternativas mais baratas, mais acessíveis ou fortemente promovidas, a leitura mais correta é:",
+      "opcoes": [
+        "Fidelização por incentivos",
+        "Lealdade verdadeira",
+        "Lealdade latente",
+        "Não lealdade"
+      ],
+      "resposta_correta": "Lealdade verdadeira",
+      "justificacao": "A resistência à concorrência e a confiança profunda caracterizam a lealdade verdadeira. fileciteturn0file0"
+    },
+    {
+      "id": "WT_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "evolucao_marketing_no_caso",
+      "pergunta": "Qual destas combinações está mais correta para um caso em que tecnologia, interação em tempo real e experiência integrada transformam a forma como o público vive o programa?",
+      "opcoes": [
+        "Marketing 4.0 + valor funcional",
+        "Marketing 5.0 + valor económico",
+        "Marketing 6.0 + valor experiencial",
+        "Marketing 2.0 + valor transacional"
+      ],
+      "resposta_correta": "Marketing 6.0 + valor experiencial",
+      "justificacao": "Experiência imersiva, integração de pontos de contacto e vivência da marca aproximam-se da lógica do Marketing 6.0. fileciteturn0file0"
+    },
+    {
+      "id": "WT_011",
+      "tipo": "true_false",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "clv_no_caso",
+      "pergunta": "Se a experiência criada levar o público a regressar, recomendar o programa e aceitar uma relação continuada com a marca/conteúdo, isso pode contribuir para aumentar o CLV.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "Recompra, recomendação, retenção e menor sensibilidade ao preço ou à concorrência são coerentes com o aumento do valor do cliente ao longo do tempo. fileciteturn0file0"
+    },
+    {
+      "id": "WT_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "segmentacao_no_caso",
+      "pergunta": "Se a wtvision ou a marca associada ao programa adaptar conteúdos ou interações com base no histórico individual de cada utilizador, isso aproxima-se mais de:",
+      "opcoes": [
+        "Segmentação demográfica",
+        "Segmentação por lealdade",
+        "Personalização extrema / mercados de um",
+        "Comunicação massificada"
+      ],
+      "resposta_correta": "Personalização extrema / mercados de um",
+      "justificacao": "Quando a oferta é construída a partir do histórico individual, a lógica é de mercados de um. fileciteturn0file0"
+    },
+    {
+      "id": "WT_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "jornada_no_caso",
+      "pergunta": "Em termos de jornada do cliente, quando um potencial espectador compara esse programa com outros formatos antes de decidir acompanhar, ele está sobretudo na fase de:",
+      "opcoes": [
+        "Consciência",
+        "Consideração",
+        "Serviço",
+        "Lealdade"
+      ],
+      "resposta_correta": "Consideração",
+      "justificacao": "A fase de consideração inclui comparação de opções e leitura de avaliações antes da decisão. fileciteturn0file0"
+    },
+    {
+      "id": "WT_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "jornada_no_caso",
+      "pergunta": "Quando o público já acompanha regularmente o formato e o recomenda a amigos ou nas redes sociais, a fase mais adequada da jornada é:",
+      "opcoes": [
+        "Compra",
+        "Serviço",
+        "Lealdade",
+        "Exploração"
+      ],
+      "resposta_correta": "Lealdade",
+      "justificacao": "Na jornada clássica, lealdade inclui recompra, continuidade e recomendação. fileciteturn0file0"
+    },
+    {
+      "id": "WT_015",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "crm_no_caso",
+      "pergunta": "Associa cada componente do CRM a um exemplo aplicável a um caso mediático como o da wtvision.",
+      "pares": [
+        {
+          "conceito": "CRM Analítico",
+          "definicao": "Analisar dados de audiência para prever preferências e comportamentos futuros."
+        },
+        {
+          "conceito": "CRM Operacional",
+          "definicao": "Automatizar comunicações, notificações e processos de contacto."
+        },
+        {
+          "conceito": "CRM Colaborativo",
+          "definicao": "Unificar a informação de diferentes canais para garantir uma experiência consistente."
+        }
+      ],
+      "justificacao": "As três engrenagens do CRM devem rodar juntas: pensar, agir e comunicar de forma integrada. fileciteturn0file0"
+    },
+    {
+      "id": "WT_016",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "perguntas_armadilha",
+      "pergunta": "Qual destas leituras é mais completa para um professor que valoriza interpretação e não apenas definição isolada?",
+      "opcoes": [
+        "A tecnologia da wtvision cria apenas valor funcional, porque sem tecnologia o programa não existe.",
+        "A tecnologia da wtvision cria valor funcional, mas pode também ampliar valor emocional, experiencial e social dependendo da forma como o público vive a experiência.",
+        "A tecnologia da wtvision elimina a importância da relação com o público, porque o foco passa a ser exclusivamente o sistema técnico.",
+        "A tecnologia da wtvision substitui a jornada do cliente por uma lógica puramente operacional."
+      ],
+      "resposta_correta": "A tecnologia da wtvision cria valor funcional, mas pode também ampliar valor emocional, experiencial e social dependendo da forma como o público vive a experiência.",
+      "justificacao": "A interpretação mais forte reconhece que a tecnologia pode ter utilidade prática, mas o marketing relacional valoriza sobretudo a experiência, a emoção e a cocriação de valor no uso. fileciteturn0file0"
+    },
+    {
+      "id": "WT_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "perguntas_armadilha",
+      "pergunta": "Num caso prático, qual destas opções está mais alinhada com a frase 'o valor é cocriado no uso'?",
+      "opcoes": [
+        "O valor fica totalmente definido no momento em que a solução técnica é entregue ao cliente.",
+        "O valor real emerge quando a audiência utiliza, interpreta, sente e partilha a experiência criada.",
+        "O valor depende apenas do preço pago pela produção do programa.",
+        "O valor é exclusivamente medido pelo número de features tecnológicas disponíveis."
+      ],
+      "resposta_correta": "O valor real emerge quando a audiência utiliza, interpreta, sente e partilha a experiência criada.",
+      "justificacao": "O resumo afirma que o valor é cocriado no uso, não entregue pronto na fábrica; a experiência concretiza o valor. fileciteturn0file0"
+    },
+    {
+      "id": "WT_018",
+      "tipo": "true_false",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "tema": "perguntas_armadilha",
+      "pergunta": "Se uma empresa se concentrar apenas na venda pontual de uma solução tecnológica para televisão, sem pensar em continuidade, experiência e relação, a lógica aproxima-se mais do mundo transacional do que do relacional.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "Venda isolada, curto prazo e foco no produto aproximam-se do mundo transacional; continuidade e retenção pertencem ao mundo relacional. fileciteturn0file0"
+    }
+  ]
+}
