@@ -1,7 +1,7 @@
 // js/auth.js
 import { playClick, playSadSound } from './audio.js';
 import { auth } from './firebase-config.js';
-import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js"; // <-- Adicionámos o signOut
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
 export function initAuth() {
     const securityLayer = document.getElementById("security-layer");
@@ -9,7 +9,7 @@ export function initAuth() {
     const pwdInput = document.getElementById("app-password");
     const btnUnlock = document.getElementById("btn-unlock");
     const pwdError = document.getElementById("pwd-error");
-    const btnLogout = document.getElementById("btnLogout"); // <-- O novo botão de sair
+    const btnLogout = document.getElementById("btnLogout");
 
     if (!securityLayer || !btnUnlock) return;
 
@@ -25,11 +25,22 @@ export function initAuth() {
             securityLayer.style.opacity = "1";
             securityLayer.style.visibility = "visible";
             
-            // Limpar dados sensíveis por precaução
+            // Limpar dados sensíveis por precaução (Segurança Extra para partilha de dispositivo)
+            emailInput.value = ""; 
             pwdInput.value = "";
+            emailInput.disabled = false;
+            pwdInput.disabled = false;
             btnUnlock.textContent = "Entrar no Moodle";
             btnUnlock.disabled = false;
             pwdError.style.display = "none";
+        }
+    });
+
+    // 1.5 UX Extra: Permitir fazer login carregando no "Enter" no teclado
+    pwdInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault(); // Evita recarregar a página acidentalmente
+            btnUnlock.click();
         }
     });
 
@@ -39,14 +50,17 @@ export function initAuth() {
         const password = pwdInput.value;
         
         if (!email || !password) {
-            pwdError.textContent = "Preenche o email e a palavra-passe.";
+            pwdError.textContent = "Preenche o e-mail e a palavra-passe.";
             pwdError.style.display = "block";
             return;
         }
 
         try {
+            // Estado de carregamento: trancar interface
             btnUnlock.textContent = "A verificar...";
             btnUnlock.disabled = true;
+            emailInput.disabled = true;
+            pwdInput.disabled = true;
 
             // Pedido ao Firebase
             await signInWithEmailAndPassword(auth, email, password);
@@ -56,13 +70,29 @@ export function initAuth() {
             pwdError.style.display = "none";
             securityLayer.style.opacity = "0";
             securityLayer.style.visibility = "hidden";
-            setTimeout(() => securityLayer.style.display = "none", 500);
+            
+            // Reativar os campos silenciosamente no fundo após a animação (0.5s)
+            setTimeout(() => {
+                securityLayer.style.display = "none";
+                emailInput.disabled = false;
+                pwdInput.disabled = false;
+            }, 500);
             
         } catch (error) {
             console.error("Erro no login:", error.code);
             pwdError.style.display = "block";
-            pwdError.textContent = "ACESSO NEGADO: CREDENCIAIS INVÁLIDAS";
+            
+            // Tradução inteligente de erros
+            if (error.code === 'auth/network-request-failed') {
+                pwdError.textContent = "ERRO DE REDE: VERIFICA A TUA LIGAÇÃO";
+            } else {
+                pwdError.textContent = "ACESSO NEGADO: CREDENCIAIS INVÁLIDAS";
+            }
+
+            // Repor estado do formulário
             pwdInput.value = "";
+            emailInput.disabled = false;
+            pwdInput.disabled = false;
             btnUnlock.textContent = "Entrar no Moodle";
             btnUnlock.disabled = false;
             playSadSound();
@@ -75,8 +105,6 @@ export function initAuth() {
             try {
                 await signOut(auth); // Pede à Cloud para invalidar a sessão
                 playClick();
-                // NOTA: Não precisamos de esconder nada manualmente aqui. 
-                // O `onAuthStateChanged` lá em cima deteta o logout automaticamente e mostra o ecrã!
             } catch (error) {
                 console.error("Erro ao terminar sessão:", error);
             }

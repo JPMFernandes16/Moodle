@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bia-moodle-cache-v3'; // <-- MUDA ISTO PARA v3/ Mudámos para v2 para ele forçar a atualização!
+const CACHE_NAME = 'bia-moodle-cache-v4'; // Versão 4: Correção de paths e ficheiros
 
 // Lista de todos os ficheiros que a app precisa para funcionar offline
 const urlsToCache = [
@@ -12,14 +12,18 @@ const urlsToCache = [
   './js/auth.js',
   './js/utils.js',
   './image/logo.png',    
-  './pdf/BIA_BIAT.pdf',
-  './pdf/BIA_SP.pdf',
-  './pdf/GM_MR.pdf',
-  './pdf/BIA_STP.pdf',
-  './video/BIA_BIAT.mp4',
-  './video/BIA_SP.mp4',
-  './video/GM_MR.mp4',
-  './video/BIA_STP.mp4',       
+  
+  // Caminhos corrigidos para o plural (pdfs e videos)
+  './pdfs/BIA_BIAT.pdf',
+  './pdfs/BIA_SP.pdf',
+  './pdfs/GM_MR.pdf',
+  // './pdfs/BIA_STP.pdf',  <-- ATENÇÃO: Comentado porque não está na tua pasta! Descomenta quando adicionares.
+
+  './videos/BIA_BIAT.mp4',
+  './videos/BIA_SP.mp4',
+  './videos/GM_MR.mp4',
+  // './videos/BIA_STP.mp4', <-- ATENÇÃO: Comentado porque não está na tua pasta! Descomenta quando adicionares.
+
   './data/BIA_BIAT.json',
   './data/BIA_SP.json',
   './data/GM_MR.json',
@@ -31,8 +35,11 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Cache aberta com sucesso!');
+        console.log('Cache v4 aberta com sucesso!');
         return cache.addAll(urlsToCache);
+      })
+      .catch(error => {
+        console.error('Erro fatal ao instalar a cache! Algum ficheiro da lista não existe:', error);
       })
   );
 });
@@ -42,19 +49,19 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Se encontrou na cache (offline), devolve. Se não, vai à internet buscar.
         return response || fetch(event.request);
       })
   );
 });
 
-// 3. Limpeza: Apaga caches antigas quando atualizas o nome da CACHE_NAME (ex: para v2)
+// 3. Limpeza: Apaga caches antigas quando atualizas o nome da CACHE_NAME
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheName !== CACHE_NAME) {
+            console.log('A apagar cache antiga:', cacheName);
             return caches.delete(cacheName);
           }
         })

@@ -1,5 +1,5 @@
-import { playDing, playClick, playSadSound, playHappySound, playPartySound, fireConfetti } from './audio.js';
-import { escapeHtml, normalizeText, removeAcentos, formatTime, shuffleArray } from './utils.js';
+import { playDing, playClick, playSadSound, playHappySound, playPartySound, fireConfetti, playWarningSound } from './audio.js';
+import { escapeHtml, normalizeText, removeAcentos, formatTime, shuffleArray, timeAgo, debounce } from './utils.js';
 import { initAuth } from './auth.js';
 
 // --- INTEGRAÇÃO FIREBASE CLOUD ---
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const disciplinaSelect = document.getElementById("disciplina");
   const carregarQuizBtn = document.getElementById("carregarQuiz");
   const carregarFraquezasBtn = document.getElementById("carregarFraquezas");
-  const retomarQuizBtn = document.getElementById("retomarQuizBtn"); // <-- NOVO
+  const retomarQuizBtn = document.getElementById("retomarQuizBtn"); 
   const submeterQuizBtn = document.getElementById("submeterQuiz");
   const timerElement = document.getElementById("timer");
   const currentQuestionIndicator = document.getElementById("currentQuestionIndicator");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
   const scrollTopBtn = document.getElementById("scrollTopBtn");
   const installAppBtn = document.getElementById("installAppBtn");
-  const lastUpdateText = document.getElementById("lastUpdateText"); // <-- NOVO
+  const lastUpdateText = document.getElementById("lastUpdateText"); 
 
   const globalProgressText = document.getElementById("globalProgressText");
   const globalProgressBarFill = document.getElementById("globalProgressBarFill");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentDisciplina = "";
   let radarChartInstance = null;
   let currentUser = null; 
-  let unsubscribeSnapshot = null; // Para parar de ouvir a BD quando mudas de cadeira
+  let unsubscribeSnapshot = null; 
 
   let quizDurationSeconds = 40 * 60;
   let penalizacaoPorErro = 0;
@@ -89,12 +89,11 @@ document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, async (user) => {
       if (user) {
           currentUser = user;
-          await carregarTemaDaCloud(user); // Aplica o tema que guardaste
+          await carregarTemaDaCloud(user);
           configurarUniverso(user.email);
           carregarProgressoDaCloud(user);
           carregarDisciplinaBase();
       } else {
-          // Segurança: Bloquear e limpar tudo se não houver sessão
           currentUser = null;
           quizData = [];
           fullDatabase = [];
@@ -156,11 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
               const data = docSnap.data();
               globalStorage[currentDisciplina] = data;
               
-              // Atualizar Timestamp
+              // Atualizar Timestamp usando o utilitário UX (timeAgo)
               if (lastUpdateText) {
                   if (data.lastUpdate) {
-                      const date = new Date(data.lastUpdate);
-                      lastUpdateText.textContent = `Última revisão: ${date.toLocaleDateString('pt-PT')} às ${date.toLocaleTimeString('pt-PT', {hour: '2-digit', minute:'2-digit'})}`;
+                      lastUpdateText.textContent = `Última revisão: ${timeAgo(data.lastUpdate)}`;
                   } else {
                       lastUpdateText.textContent = "Ainda não há dados de revisão.";
                   }
@@ -484,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
     stopTimer();
     timerInterval = setInterval(() => {
       timeLeft -= 1;
-      if (timeLeft % 15 === 0) guardarEstadoAmeio(); // Guarda progresso silenciosamente a cada 15 segs
+      if (timeLeft % 15 === 0) guardarEstadoAmeio(); 
 
       if (timeLeft <= 0) {
         timeLeft = 0; updateTimerUI(); stopTimer();
@@ -515,7 +513,7 @@ document.addEventListener("DOMContentLoaded", () => {
       themeToggle.addEventListener("click", () => {
         const novoTema = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
         applyTheme(novoTema);
-        guardarTemaNaCloud(novoTema); // Salva na cloud ao clicar
+        guardarTemaNaCloud(novoTema); 
         if(radarChartInstance) updateGlobalProgressUI();
       });
     }
@@ -535,7 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderCurrentQuestion();
     updateNavButtonsState();
     renderQuestionNavigator();
-    guardarEstadoAmeio(); // Salva em que aba ficou
+    guardarEstadoAmeio(); 
   }
   function goToPreviousQuestion() { if (currentQuestionIndex > 0) goToQuestion(currentQuestionIndex - 1); }
   function goToNextQuestion() { if (currentQuestionIndex < quizData.length - 1) goToQuestion(currentQuestionIndex + 1); }
@@ -890,6 +888,8 @@ document.addEventListener("DOMContentLoaded", () => {
           msgEl.textContent = message;
           overlay.style.display = 'flex';
           
+          playWarningSound(); // Som sonoro para avisar o utilizador
+
           setTimeout(() => overlay.classList.add('show'), 10);
 
           const cleanup = () => {
@@ -957,7 +957,9 @@ document.addEventListener("DOMContentLoaded", () => {
   
   if (prevQuestionBtn) prevQuestionBtn.addEventListener("click", goToPreviousQuestion);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", goToNextQuestion);
-  if (dictSearchInput) dictSearchInput.addEventListener("input", procurarNoDicionario);
+  
+  // Utiliza o Debounce (300ms) para poupar bateria e processamento na pesquisa
+  if (dictSearchInput) dictSearchInput.addEventListener("input", debounce(procurarNoDicionario, 300));
 
   if (resetProgressBtn) {
     resetProgressBtn.addEventListener("click", async () => {
