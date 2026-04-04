@@ -1017,34 +1017,6 @@
       "justificacao": "Clustering (Agrupamento) e Regras de Associação são modelos descritivos de analytics: servem para descobrir padrões ocultos em dados sem rótulos. A Classificação e a Regressão são preditivos (tentam prever um resultado específico)."
     },
     {
-      "id": "SP_053",
-      "tipo": "multiple_choice",
-      "macro_tema": "business_analytics",
-      "pergunta": "Qual das seguintes é uma característica das variáveis contínuas?",
-      "opcoes": [
-        "São qualitativas.",
-        "São números reais.",
-        "São discretas.",
-        "São categóricas."
-      ],
-      "resposta_correta": "São números reais.",
-      "justificacao": "Variáveis contínuas podem assumir um número infinito de valores dentro de um intervalo (números reais, com casas decimais), ao contrário de variáveis discretas (números inteiros) ou categóricas (qualitativas)."
-    },
-    {
-      "id": "SP_054",
-      "tipo": "multiple_choice",
-      "macro_tema": "business_analytics",
-      "pergunta": "Quais são as características das variáveis ordinais?",
-      "opcoes": [
-        "São categóricas e acomodam operações aritméticas básicas.",
-        "A diferença entre os seus valores é matematicamente importante e mensurável.",
-        "São categóricas e as suas categorias possuem uma ordem lógica.",
-        "Acomodam operações aritméticas básicas e as categorias são ordenadas."
-      ],
-      "resposta_correta": "São categóricas e as suas categorias possuem uma ordem lógica.",
-      "justificacao": "As variáveis ordinais representam categorias qualitativas que têm uma progressão ou hierarquia inerente (ex: Baixo, Médio, Alto), mas a distância exata entre elas não é matematicamente quantificável."
-    },
-    {
       "id": "SP_057",
       "tipo": "multiple_choice",
       "macro_tema": "business_analytics",
@@ -1071,34 +1043,6 @@
       ],
       "resposta_correta": "Integrar dados (Integrate data) e Limpar dados (Clean data)",
       "justificacao": "A fase de Data Preparation foca-se em formatar os dados para modelação, envolvendo tarefas como Limpar, Construir, Integrar e Formatar dados. O design de teste e avaliação da situação pertencem a outras fases (Avaliação e Compreensão do Negócio, respetivamente)."
-    },
-    {
-      "id": "SP_062",
-      "tipo": "multiple_choice",
-      "macro_tema": "business_analytics",
-      "pergunta": "O que tentas alcançar ao construir um modelo robusto?",
-      "opcoes": [
-        "Nenhum erro de treino com alto erro de teste (No training error with high-test error).",
-        "Alto erro de treino com baixo erro de teste (High training error with low-test error).",
-        "Baixo erro de treino com baixo erro de teste (Low training error with low-test error).",
-        "Baixo erro de treino com alto erro de teste (Low training error with high-test error)."
-      ],
-      "resposta_correta": "Baixo erro de treino com baixo erro de teste (Low training error with low-test error).",
-      "justificacao": "Um modelo ideal e robusto deve aprender bem os padrões (apresentando um baixo erro de treino) e generalizar bem para novos dados que nunca viu (apresentando também um baixo erro de teste), evitando tanto o underfitting como o overfitting."
-    },
-    {
-      "id": "SP_081",
-      "tipo": "multiple_choice",
-      "macro_tema": "business_analytics",
-      "pergunta": "Qual é o nome da estatística da matriz de confusão que representa os erros do Tipo 1 (Type 1 errors)?",
-      "opcoes": [
-        "Verdadeiro positivo (True positive)",
-        "Verdadeiro negativo (True negative)",
-        "Falso positivo (False positive)",
-        "Falso negativo (False negative)"
-      ],
-      "resposta_correta": "Falso positivo (False positive)",
-      "justificacao": "Um erro do Tipo 1 ocorre quando o modelo prevê incorretamente a classe positiva (rejeita a hipótese nula quando ela é na verdade verdadeira). Na matriz de confusão, isto corresponde diretamente a um Falso Positivo."
     },
     {
       "id": "SP_084",

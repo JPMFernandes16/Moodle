@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bia-moodle-cache-v5'; // Versão 4: Correção de paths e ficheiros
+const CACHE_NAME = 'bia-moodle-cache-v6'; // Versão 4: Correção de paths e ficheiros
 
 // Lista de todos os ficheiros que a app precisa para funcionar offline
 const urlsToCache = [
