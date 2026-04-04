@@ -28,10 +28,13 @@
       <h2 style="margin-bottom:5px; font-weight:800;">Portal de Estudante</h2>
       <p style="color:var(--text-muted); margin-bottom:30px; font-size: 0.95rem;">Mestrado em Business Intelligence & Analytics.</p>
       
-      <input type="password" id="app-password" class="form-input" style="text-align: center; margin-bottom:20px; letter-spacing: 5px;" placeholder="CHAVE DE ACESSO">
+      <input type="email" id="app-email" class="form-input" style="text-align: center; margin-bottom:10px;" placeholder="EMAIL INSTITUCIONAL">
+      
+      <input type="password" id="app-password" class="form-input" style="text-align: center; margin-bottom:20px; letter-spacing: 5px;" placeholder="PALAVRA-PASSE">
+      
       <button id="btn-unlock" class="btn btn--primary" style="width:100%;">Entrar no Moodle</button>
       
-      <p id="pwd-error" style="color:var(--error); margin-top:15px; font-weight:700; display:none; font-size:0.85rem;">ACESSO NEGADO: CHAVE INVÁLIDA</p>
+      <p id="pwd-error" style="color:var(--error); margin-top:15px; font-weight:700; display:none; font-size:0.85rem;">ACESSO NEGADO: CREDENCIAIS INVÁLIDAS</p>
     </div>
   </div>
 
@@ -50,6 +53,8 @@
         <button id="installAppBtn" class="btn btn--primary hidden" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; font-size: 0.75rem; box-shadow: 0 0 10px var(--primary-glow);">📱 Instalar</button>
 
         <button id="themeToggle" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px;">🌗 Ambiente</button>
+        
+        <button id="btnLogout" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; color: var(--error); border-color: rgba(220, 38, 38, 0.3);">🚪 Sair</button>
         
         <div class="student-id-card">
           <div class="user-avatar">JF</div>
@@ -77,10 +82,15 @@
             <option value="BIA_STP">Série Temporal e Previsão</option>
           </select>
           
+          <p id="lastUpdateText" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; text-align: right; font-style: italic;"></p>
+          
           <div class="control-group">
             <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Resumo </a>
             <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Vídeo</a>
             <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão</button>
+            
+            <button id="retomarQuizBtn" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--warning); box-shadow: 0 0 15px rgba(217,119,6,0.3);">Continuar</button>
+            
             <button id="carregarQuiz" class="btn btn--primary" style="flex-grow: 1;">⚡ Iniciar</button>
             <button id="submeterQuiz" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);" disabled>Submeter</button>
           </div>
@@ -92,7 +102,7 @@
            <div class="glass-panel" style="text-align: center; padding: 80px 20px;">
              <div style="font-size: 4rem; margin-bottom: 20px; opacity: 0.8;">🎓</div>
              <h2 style="font-size: 1.8rem;">Avaliação</h2>
-             <p style="color: var(--text-muted); max-width: 450px; margin: 0 auto;">Seleciona a discplina e começa o teste</p>
+             <p style="color: var(--text-muted); max-width: 450px; margin: 0 auto;">Seleciona a disciplina e começa o teste</p>
            </div>
         </section>
 
