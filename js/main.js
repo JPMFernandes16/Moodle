@@ -397,17 +397,25 @@ document.addEventListener("DOMContentLoaded", () => {
     
     quizData.forEach((q, i) => {
         const isCorrect = isQuestionCorrect(q, i);
+        // Proteção: Se a pergunta não tiver ID no JSON, cria um provisório baseado no texto
+        const pId = q.id || `q_${btoa(q.pergunta).substring(0,10)}`; 
+
         if (isCorrect) {
-            if (!subjData.correct.includes(q.id)) subjData.correct.push(q.id);
-            subjData.wrong = subjData.wrong.filter(id => id !== q.id); 
+            if (!subjData.correct.includes(pId)) subjData.correct.push(pId);
+            subjData.wrong = subjData.wrong.filter(id => id !== pId); 
         } else {
             todosCertos = false;
-            if (!subjData.wrong.includes(q.id) && !subjData.correct.includes(q.id)) subjData.wrong.push(q.id);
+            if (!subjData.wrong.includes(pId) && !subjData.correct.includes(pId)) subjData.wrong.push(pId);
         }
     });
       
+    // 1. Guarda localmente para ser super rápido
     localStorage.setItem("moodle-iscap-storage", JSON.stringify(globalStorage));
+    
+    // 2. FORÇA A ATUALIZAÇÃO IMEDIATA DO GRÁFICO (Aqui estava o bug!)
+    updateGlobalProgressUI();
       
+    // 3. Envia para a Cloud silenciosamente em background
     if (currentUser) {
         try {
             const docRef = doc(db, "users", currentUser.uid, "progress", currentDisciplina);
@@ -419,7 +427,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 lastUpdate: new Date().toISOString(),
                 activeQuiz: null // APAGA O CHECKPOINT QUANDO TERMINA
             }, { merge: true });
-        } catch (error) { console.error(error); }
+        } catch (error) { 
+            console.error("❌ Erro ao guardar no Firebase:", error); 
+        }
     }
     return todosCertos;
   }
