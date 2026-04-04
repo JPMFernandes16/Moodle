@@ -45,9 +45,21 @@
 }
 
 /* =========================================================
-   BASE & TYPOGRAPHY
+   BASE & TYPOGRAPHY & SCROLLBAR
    ========================================================= */
 * { box-sizing: border-box; }
+
+::selection {
+  background: var(--primary-glow);
+  color: #ffffff;
+}
+
+/* Scrollbar Premium */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-body); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-pill); }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
 body { 
     margin: 0; 
     font-family: 'Outfit', sans-serif; 
@@ -57,16 +69,17 @@ body {
     color: var(--text-main); 
     line-height: 1.6; 
     -webkit-tap-highlight-color: transparent; 
-    transition: var(--transition);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-a { color: var(--primary); text-decoration: none; }
+a { color: var(--primary); text-decoration: none; transition: var(--transition); }
+a:hover { filter: brightness(1.2); }
 h1, h2, h3, p { margin-top: 0; }
 .hidden { display: none !important; }
 
 .mono-data { font-family: 'JetBrains Mono', monospace; font-weight: 700; letter-spacing: -0.5px;}
 
 /* =========================================================
-   ANIMATIONS
+   ANIMATIONS (COMPLETAS)
    ========================================================= */
 @keyframes fadeSlideUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -79,6 +92,21 @@ h1, h2, h3, p { margin-top: 0; }
 @keyframes fall { to { transform: translateY(105vh) rotate(720deg); } }
 .confetti { position: fixed; top: -10px; width: 8px; height: 16px; z-index: 9999; animation: fall linear forwards; border-radius: 4px; }
 
+/* NOVO: Animação do Relógio a acabar */
+@keyframes pulse-glow {
+  0% { text-shadow: 0 0 5px var(--primary-glow); transform: scale(1); }
+  50% { text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); transform: scale(1.05); }
+  100% { text-shadow: 0 0 5px var(--primary-glow); transform: scale(1); }
+}
+
+/* NOVO: Animação de erro no cartão */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+.shake { animation: shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; border-left-color: var(--error) !important; }
+
 /* =========================================================
    GLASSMORPHISM PANELS (CLEAN)
    ========================================================= */
@@ -90,15 +118,15 @@ h1, h2, h3, p { margin-top: 0; }
   border-radius: var(--radius-lg);
   padding: 24px;
   box-shadow: var(--shadow-glass);
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .glass-panel:hover { border-color: rgba(14, 165, 233, 0.3); transform: translateY(-2px); }
 
 /* =========================================================
-   HEADER & STUDENT ID CARD (FUNDO SÓLIDO PARA O LOGO)
+   HEADER & STUDENT ID CARD
    ========================================================= */
 .app-header { 
-  background: var(--brand-navy); /* Cor sólida que funde com o logo */
+  background: var(--brand-navy); 
   border-bottom: 2px solid var(--primary);
   padding: 12px 32px; 
   display: flex; 
@@ -111,7 +139,8 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 .app-brand { display: flex; align-items: center; gap: 15px; cursor: pointer;}
-.iscap-logo { height: 60px; width: auto; object-fit: contain; margin-left: -5px; transition: var(--transition); }
+.iscap-logo { height: 60px; width: auto; object-fit: contain; margin-left: -5px; transition: transform 0.3s ease; }
+.app-brand:hover .iscap-logo { transform: scale(1.05); }
 
 .brand-text { display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 15px; }
 .moodle-title { font-size: 1.3rem; font-weight: 300; letter-spacing: -0.5px; color: #ffffff; }
@@ -120,7 +149,6 @@ h1, h2, h3, p { margin-top: 0; }
 
 .header-controls { display: flex; align-items: center; }
 
-/* Ajuste dos botões no cabeçalho para ficarem visíveis no fundo escuro */
 .app-header .btn--ghost { color: #f8fafc; border-color: rgba(255,255,255,0.2); }
 .app-header .btn--ghost:hover { background: rgba(255,255,255,0.1); border-color: var(--primary); }
 
@@ -169,7 +197,11 @@ h1, h2, h3, p { margin-top: 0; }
   outline: none; transition: var(--transition);
   appearance: none;
 }
-.form-input:focus { border-color: var(--primary); box-shadow: var(--shadow-neon); background: var(--bg-card);}
+.form-input:focus, .form-input:focus-visible { 
+    border-color: var(--primary); 
+    box-shadow: var(--shadow-neon); 
+    background: var(--bg-card);
+}
 
 .btn { 
   padding: 14px 24px; border-radius: var(--radius-pill); 
@@ -178,8 +210,9 @@ h1, h2, h3, p { margin-top: 0; }
   display: inline-flex; justify-content: center; align-items: center;
   gap: 10px; letter-spacing: 0.5px; text-transform: uppercase; font-size: 0.85rem;
 }
+.btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .btn:active:not(:disabled) { transform: scale(0.95); }
-.btn:disabled { opacity: 0.4; cursor: not-allowed; filter: grayscale(1); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); pointer-events: none; }
 
 .btn--primary { 
     background: var(--primary-gradient); color: white; 
@@ -213,7 +246,9 @@ h1, h2, h3, p { margin-top: 0; }
     border: 1px solid var(--border); border-radius: var(--radius-sm); 
     cursor: pointer; transition: var(--transition); 
 }
-.option-item:hover { border-color: var(--primary); background: var(--bg-surface); }
+.option-item:hover:not(.option-correct):not(.option-selected-wrong) { 
+    border-color: var(--primary); background: var(--bg-surface); 
+}
 
 .option-item input[type="radio"] { display: none; }
 .custom-radio {
@@ -229,8 +264,15 @@ h1, h2, h3, p { margin-top: 0; }
 .option-item input[type="radio"]:checked + .custom-radio { border-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow);}
 .option-item input[type="radio"]:checked + .custom-radio::after { transform: scale(1); }
 
-.option-item.option-correct { background: var(--success-light); border-color: var(--success); }
-.option-item.option-selected-wrong { background: var(--error-light); border-color: var(--error); }
+.option-item.option-correct { background: var(--success-light); border-color: var(--success); pointer-events: none;}
+.option-item.option-selected-wrong { background: var(--error-light); border-color: var(--error); pointer-events: none;}
+
+/* =========================================================
+   DRAG AND DROP TWEAKS
+   ========================================================= */
+.dnd-item { transition: box-shadow 0.2s ease, transform 0.2s ease; }
+.dnd-item:active { transform: scale(0.98); cursor: grabbing !important; }
+.dnd-dropzone { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
 
 /* =========================================================
    SIDEBAR & WIDGETS
@@ -255,7 +297,7 @@ h1, h2, h3, p { margin-top: 0; }
     display: flex; align-items: center; justify-content: center; transition: var(--transition);
     font-family: 'JetBrains Mono', monospace;
 }
-.nav-node:hover { border-color: var(--primary); background: var(--bg-surface);}
+.nav-node:hover:not(.is-active) { border-color: var(--primary); background: var(--bg-surface); transform: translateY(-2px);}
 .nav-node.is-answered { background: var(--border); }
 .nav-node.is-active { border-color: var(--primary); background: var(--primary-gradient); color: white; box-shadow: var(--shadow-neon); transform: scale(1.1);}
 .nav-node.is-correct { background: var(--success); border-color: var(--success); color: white;}
@@ -287,23 +329,11 @@ h1, h2, h3, p { margin-top: 0; }
 }
 
 /* =========================================================
-   MOBILE RESPONSIVE
-   ========================================================= */
-@media (max-width: 1024px) {
-  .layout { grid-template-columns: 1fr; margin: 20px auto; padding: 0 15px;}
-  .sidebar { order: -1; }
-  .app-header { padding: 12px 20px; flex-direction: column; gap: 15px; }
-  .score-display { font-size: 3.5rem; }
-  .header-controls { width: 100%; justify-content: space-between; }
-  .iscap-logo { height: 50px; }
-}
-
-/* =========================================================
    CUSTOM CONFIRM POPUP
    ========================================================= */
 .confirm-overlay {
   position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(11, 19, 32, 0.85); /* Fundo escuro transparente */
+  background: rgba(11, 19, 32, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 9999;
@@ -329,3 +359,15 @@ h1, h2, h3, p { margin-top: 0; }
 .confirm-overlay.show .confirm-box { transform: scale(1) translateY(0); }
 
 .confirm-icon { font-size: 3rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); }
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+@media (max-width: 1024px) {
+  .layout { grid-template-columns: 1fr; margin: 20px auto; padding: 0 15px;}
+  .sidebar { order: -1; }
+  .app-header { padding: 12px 20px; flex-direction: column; gap: 15px; }
+  .score-display { font-size: 3.5rem; }
+  .header-controls { width: 100%; justify-content: space-between; }
+  .iscap-logo { height: 50px; }
+}
