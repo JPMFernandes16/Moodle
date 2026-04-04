@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let globalStorage = JSON.parse(localStorage.getItem("moodle-iscap-storage")) || {};
 
-  // 🌍 CONFIGURAÇÃO DE PERFIS
+  // 🌍 CONFIGURAÇÃO DE PERFIS (Atenção aos emails corretos de Login!)
   const PERFIS_ESTUDO = {
       "joao@iscap.pt": {
           nome: "João F.",
@@ -90,9 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if (user) {
           currentUser = user;
           await carregarTemaDaCloud(user);
+          
           configurarUniverso(user.email);
+          currentDisciplina = disciplinaSelect.value;
+          
+          await carregarDisciplinaBase();
           carregarProgressoDaCloud(user);
-          carregarDisciplinaBase();
       } else {
           currentUser = null;
           quizData = [];
@@ -104,14 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
-  // TEMA NA CLOUD
   async function carregarTemaDaCloud(user) {
       const prefsRef = doc(db, "users", user.uid, "settings", "preferences");
       const snap = await getDoc(prefsRef);
       let theme = "dark";
-      if (snap.exists() && snap.data().theme) {
-          theme = snap.data().theme;
-      }
+      if (snap.exists() && snap.data().theme) theme = snap.data().theme;
       applyTheme(theme);
   }
 
@@ -134,10 +134,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (disciplinaSelect) {
           disciplinaSelect.innerHTML = "";
-          perfil.disciplinas.forEach(d => {
+          perfil.disciplinas.forEach((d, index) => {
               const opt = document.createElement('option');
               opt.value = d.value;
               opt.textContent = d.text;
+              if(index === 0) opt.selected = true;
               disciplinaSelect.appendChild(opt);
           });
       }
@@ -155,7 +156,6 @@ document.addEventListener("DOMContentLoaded", () => {
               const data = docSnap.data();
               globalStorage[currentDisciplina] = data;
               
-              // Atualizar Timestamp usando o utilitário UX (timeAgo)
               if (lastUpdateText) {
                   if (data.lastUpdate) {
                       lastUpdateText.textContent = `Última revisão: ${timeAgo(data.lastUpdate)}`;
@@ -164,7 +164,6 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
               }
 
-              // Mostrar botão de Retomar se houver exame a meio
               if (data.activeQuiz && data.activeQuiz.quizData && data.activeQuiz.quizData.length > 0 && !quizLoaded) {
                   if (retomarQuizBtn) retomarQuizBtn.classList.remove("hidden");
               } else {
@@ -181,9 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // ======================================================
-  // GRAVAÇÃO DE ESTADO CONTÍNUO (RECOVERY)
-  // ======================================================
   async function guardarEstadoAmeio() {
       if (!currentUser || !quizLoaded || quizSubmitted) return;
       const docRef = doc(db, "users", currentUser.uid, "progress", currentDisciplina);
@@ -226,13 +222,23 @@ document.addEventListener("DOMContentLoaded", () => {
               dictSearchInput.placeholder = `Pesquisar em ${nomeCadeira}...`;
           }
 
+          // CORREÇÃO CRÍTICA PWA: Downloads dos ficheiros em vez de nova janela
           const btnLerResumo = document.getElementById("btnLerResumo");
-          if (btnLerResumo) btnLerResumo.href = `pdfs/${currentDisciplina}.pdf`;
+          if (btnLerResumo) {
+              btnLerResumo.href = `pdfs/${currentDisciplina}.pdf`;
+              btnLerResumo.setAttribute("download", `${currentDisciplina}_Resumo.pdf`);
+              btnLerResumo.removeAttribute("target"); 
+          }
           
           const btnVerVideo = document.getElementById("btnVerVideo");
-          if (btnVerVideo) btnVerVideo.href = `videos/${currentDisciplina}.mp4`;
+          if (btnVerVideo) {
+              btnVerVideo.href = `videos/${currentDisciplina}.mp4`;
+              btnVerVideo.setAttribute("download", `${currentDisciplina}_Video.mp4`);
+              btnVerVideo.removeAttribute("target");
+          }
 
           if(dictSearchInput) procurarNoDicionario();
+          updateGlobalProgressUI();
 
       } catch (e) {
           console.error("Erro a carregar o JSON:", e);
@@ -316,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // PROGRESSO & ANALYTICS COM CHART.JS E FIRESTORE
+  // PROGRESSO & ANALYTICS
   // ======================================================
   function updateGlobalProgressUI() {
     if (!globalProgressText || !fullDatabase || !fullDatabase.length) return;
@@ -375,14 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ticks: { display: false, min: 0, max: 100 } 
                     }
                 },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                        titleFont: { family: "'Outfit', sans-serif" },
-                        bodyFont: { family: "'JetBrains Mono', monospace" }
-                    }
-                }
+                plugins: { legend: { display: false }, tooltip: { backgroundColor: 'rgba(15, 23, 42, 0.9)', titleFont: { family: "'Outfit', sans-serif" }, bodyFont: { family: "'JetBrains Mono', monospace" } } }
             }
         });
     }
@@ -420,11 +419,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 lastUpdate: new Date().toISOString(),
                 activeQuiz: null // APAGA O CHECKPOINT QUANDO TERMINA
             }, { merge: true });
-        } catch (error) {
-            console.error("❌ Erro ao guardar no Firebase:", error);
-        }
+        } catch (error) { console.error(error); }
     }
-
     return todosCertos;
   }
 
@@ -654,6 +650,15 @@ document.addEventListener("DOMContentLoaded", () => {
       html += `</div>`;
       quizContainer.innerHTML = html;
 
+      // Smart Scroll UX - Focar suavemente na pergunta atual
+      const cardEl = document.getElementById(`q-card-${currentQuestionIndex}`);
+      if (cardEl && window.scrollY > 300) {
+          setTimeout(() => {
+              const y = cardEl.getBoundingClientRect().top + window.scrollY - 120;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 50);
+      }
+
       if (question.tipo === "drag_and_drop") {
           if (!quizSubmitted) setupDragAndDropEvents();
       } 
@@ -661,6 +666,8 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!quizSubmitted) {
               const textarea = quizContainer.querySelector(`#open-ended-${currentQuestionIndex}`);
               if (textarea) {
+                  // Auto-focus UX
+                  setTimeout(() => textarea.focus(), 100);
                   textarea.addEventListener("input", (e) => {
                       userAnswers[currentQuestionIndex] = e.target.value;
                       updateTopIndicators(); renderQuestionNavigator(); updateQuestionStateLabel();
@@ -888,7 +895,7 @@ document.addEventListener("DOMContentLoaded", () => {
           msgEl.textContent = message;
           overlay.style.display = 'flex';
           
-          playWarningSound(); // Som sonoro para avisar o utilizador
+          playWarningSound(); 
 
           setTimeout(() => overlay.classList.add('show'), 10);
 
@@ -913,7 +920,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (disciplinaSelect) {
       disciplinaSelect.addEventListener("change", () => {
           carregarDisciplinaBase();
-          if (currentUser) carregarProgressoDaCloud(currentUser); // Recarrega os dados on-change
+          if (currentUser) carregarProgressoDaCloud(currentUser); 
       });
   }
   
@@ -958,7 +965,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (prevQuestionBtn) prevQuestionBtn.addEventListener("click", goToPreviousQuestion);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", goToNextQuestion);
   
-  // Utiliza o Debounce (300ms) para poupar bateria e processamento na pesquisa
   if (dictSearchInput) dictSearchInput.addEventListener("input", debounce(procurarNoDicionario, 300));
 
   if (resetProgressBtn) {
@@ -978,8 +984,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // 📱 PWA: BOTÃO DE INSTALAÇÃO CUSTOMIZADO
+  // 📱 PWA E PROTEÇÃO DE PERDA DE DADOS (NOVO)
   // ======================================================
+  
+  // Aviso se tentares fechar a página a meio de um exame!
+  window.addEventListener('beforeunload', (e) => {
+      if (quizLoaded && !quizSubmitted) {
+          e.preventDefault();
+          e.returnValue = ''; // Exige confirmação do browser
+      }
+  });
+
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
