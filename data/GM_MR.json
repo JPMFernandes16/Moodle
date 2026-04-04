@@ -634,6 +634,167 @@
       ],
       "resposta_correta": "Verdadeiro",
       "justificacao": "Venda isolada, curto prazo e foco no produto aproximam-se do mundo transacional; continuidade e retenção pertencem ao mundo relacional. fileciteturn0file0"
+    },
+    {
+      "id": "MR_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Qual destas opções parece correta, mas descreve melhor marketing one-to-one do que marketing de permissão?",
+      "opcoes": [
+        "A marca adapta a comunicação com base no histórico individual do cliente.",
+        "A marca só comunica após consentimento explícito do cliente.",
+        "A marca respeita a privacidade e evita contacto não autorizado.",
+        "A marca reduz a frequência de comunicação para evitar saturação."
+      ],
+      "resposta_correta": "A marca adapta a comunicação com base no histórico individual do cliente.",
+      "justificacao": "One-to-one foca-se na personalização baseada em dados; marketing de permissão baseia-se em consentimento."
+    },
+
+    {
+      "id": "MR_025",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Qual destas opções distingue melhor valor emocional de valor social?",
+      "opcoes": [
+        "O valor emocional está ligado a sentimentos individuais; o valor social à perceção dos outros e pertença.",
+        "O valor emocional depende do preço; o valor social depende da qualidade.",
+        "O valor emocional é racional; o valor social é funcional.",
+        "O valor emocional depende do tempo; o valor social depende da frequência de compra."
+      ],
+      "resposta_correta": "O valor emocional está ligado a sentimentos individuais; o valor social à perceção dos outros e pertença.",
+      "justificacao": "Emocional → sentimento interno; social → reconhecimento externo e pertença."
+    },
+
+    {
+      "id": "MR_026",
+      "tipo": "true_false",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Uma elevada repetição de compra garante automaticamente lealdade verdadeira.",
+      "opcoes": ["Verdadeiro", "Falso"],
+      "resposta_correta": "Falso",
+      "justificacao": "Pode ser lealdade espúria (hábito/conveniência sem ligação emocional)."
+    },
+
+    {
+      "id": "MR_027",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Qual destas opções está mais próxima de CRM Operacional, mas pode ser confundida com CRM Analítico?",
+      "opcoes": [
+        "Automatizar campanhas com base em regras predefinidas.",
+        "Prever comportamento futuro com modelos estatísticos.",
+        "Segmentar clientes com base em clustering avançado.",
+        "Extrair insights de big data."
+      ],
+      "resposta_correta": "Automatizar campanhas com base em regras predefinidas.",
+      "justificacao": "Automação → operacional; previsão e análise → analítico."
+    },
+
+    {
+      "id": "MR_028",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Qual destas opções parece correta, mas descreve lealdade afetiva e não conativa?",
+      "opcoes": [
+        "O cliente gosta da marca após experiências positivas.",
+        "O cliente declara intenção firme de continuar a comprar.",
+        "O cliente rejeita explicitamente alternativas.",
+        "O cliente assume compromisso ativo com a marca."
+      ],
+      "resposta_correta": "O cliente gosta da marca após experiências positivas.",
+      "justificacao": "Afetiva = gosto; conativa = intenção firme e compromisso."
+    },
+
+    {
+      "id": "MR_029",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Fundamentos_Marketing_Relacional",
+      "pergunta": "Associa corretamente cada conceito à sua distinção mais crítica.",
+      "pares": [
+        {
+          "conceito": "Fidelização",
+          "definicao": "Baseada em incentivos, descontos e recompensas."
+        },
+        {
+          "conceito": "Lealdade",
+          "definicao": "Baseada em relação, confiança e menor sensibilidade ao preço."
+        },
+        {
+          "conceito": "Lealdade Espúria",
+          "definicao": "Repetição de compra sem ligação emocional."
+        }
+      ],
+      "justificacao": "Nem toda repetição implica lealdade verdadeira."
+    },
+
+    {
+      "id": "WT_019",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "pergunta": "Num caso wtvision, qual destas opções parece correta, mas é incompleta?",
+      "opcoes": [
+        "A tecnologia cria valor funcional porque melhora o desempenho do programa.",
+        "A tecnologia pode criar valor funcional, emocional e social simultaneamente.",
+        "A tecnologia melhora a experiência e o envolvimento do público.",
+        "A tecnologia contribui para a relação com a audiência."
+      ],
+      "resposta_correta": "A tecnologia cria valor funcional porque melhora o desempenho do programa.",
+      "justificacao": "É verdade, mas incompleta — ignora dimensões emocionais e sociais."
+    },
+
+    {
+      "id": "WT_020",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "pergunta": "Se os espectadores interagem em tempo real e comentam o programa, qual destas leituras é mais completa?",
+      "opcoes": [
+        "Valor funcional + CRM operacional",
+        "Valor social + marketing tribal/viral",
+        "Valor económico + marketing transacional",
+        "Valor logístico + CRM técnico"
+      ],
+      "resposta_correta": "Valor social + marketing tribal/viral",
+      "justificacao": "Interação + comunidade → social + tribal."
+    },
+
+    {
+      "id": "WT_021",
+      "tipo": "true_false",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "pergunta": "Num caso como o da wtvision, analisar apenas tecnologia sem considerar experiência do utilizador é suficiente para uma análise de marketing relacional.",
+      "opcoes": ["Verdadeiro", "Falso"],
+      "resposta_correta": "Falso",
+      "justificacao": "Marketing relacional exige análise da experiência e relação."
+    },
+
+    {
+      "id": "WT_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "pergunta": "Qual destas opções parece correta, mas descreve apenas CRM Operacional e não a visão completa do CRM no caso?",
+      "opcoes": [
+        "Enviar notificações automáticas ao público.",
+        "Integrar canais e analisar dados para melhorar a experiência.",
+        "Prever comportamento e ajustar conteúdos.",
+        "Criar experiência omnicanal consistente."
+      ],
+      "resposta_correta": "Enviar notificações automáticas ao público.",
+      "justificacao": "Isso é apenas execução; CRM completo envolve análise + integração."
+    },
+
+    {
+      "id": "WT_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Caso_Pratico_wtvision_TheFloor",
+      "pergunta": "Qual destas interpretações está mais alinhada com Marketing 6.0?",
+      "opcoes": [
+        "Uso de tecnologia para vender mais rápido.",
+        "Integração de experiência física e digital com envolvimento do utilizador.",
+        "Automatização de campanhas.",
+        "Redução de custos operacionais."
+      ],
+      "resposta_correta": "Integração de experiência física e digital com envolvimento do utilizador.",
+      "justificacao": "Marketing 6.0 = experiência imersiva e integrada."
     }
   ]
 }
