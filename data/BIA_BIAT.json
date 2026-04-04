@@ -488,7 +488,7 @@
         "pergunta": "Na transição entre Business Intelligence (BI) e Business Analytics (BA), qual é a mudança fundamental de foco operacional?",
         "opcoes": [
         "O BI é utilizado apenas por gestores de topo, enquanto o BA é uma ferramenta para colaboradores de linha da frente.",
-        "O BI lida apenas com dados não estruturados, enquanto o BA foca-se exclusivamente em tabelas SQL estrutূপadas.",
+        "O BI lida apenas com dados não estruturados, enquanto o BA foca-se exclusivamente em tabelas SQL estruturadas.",
         "Não existe diferença fundamental, sendo o BA apenas um novo nome comercial para as ferramentas tradicionais de BI.",
         "O BI foca-se no resumo de dados históricos (o que aconteceu), enquanto o BA foca-se na previsão e prescrição de ações futuras."
         ],
@@ -1127,6 +1127,924 @@
       ],
       "resposta_correta": "Avaliar os resultados (Evaluate results), Rever o processo (Review the process) e Determinar os próximos passos (Determine next steps).",
       "justificacao": "Estas são exatamente as três tarefas oficiais que compõem a fase de Avaliação. 'Planear a implementação' pertence à fase final de Deployment (Implementação), e 'Avaliar a situação' pertence à fase inicial de Business Understanding (Compreensão do Negócio)."
+    },
+
+    {
+      "id": "ADV_001",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas NÃO define corretamente uma organização Data-Driven?",
+      "opcoes": [
+        "Empresa que toma decisões com base em dados e evidência.",
+        "Empresa que possui dashboards e relatórios em grande quantidade.",
+        "Empresa que segue o princípio Measure, Analyse, Decide.",
+        "Empresa que reduz a dependência da intuição nas decisões."
+      ],
+      "resposta_correta": "Empresa que possui dashboards e relatórios em grande quantidade.",
+      "justificacao": "Ter dashboards não significa usar dados para decidir — erro clássico de exame."
+    },
+
+    {
+      "id": "ADV_002",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve MAL a cadeia de valor da analítica?",
+      "opcoes": [
+        "Data → Information → Analysis → Action → Value",
+        "Data → Analysis → Action → Value",
+        "Data → Reporting → Analysis → Action → Value",
+        "Data → Information → Action → Value"
+      ],
+      "resposta_correta": "Data → Information → Action → Value",
+      "justificacao": "Falta o passo de Analysis — sem análise não há decisão informada."
+    },
+
+    {
+      "id": "ADV_003",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve 'Data Aware' e não 'Data Informed'?",
+      "opcoes": [
+        "A empresa recolhe dados mas ainda não os usa para decisões.",
+        "Os dados influenciam decisões juntamente com intuição.",
+        "Os dados suportam decisões estratégicas.",
+        "Existe uso ativo de dados no negócio."
+      ],
+      "resposta_correta": "A empresa recolhe dados mas ainda não os usa para decisões.",
+      "justificacao": "Data Aware = recolhe mas não usa; Data Informed = já influencia decisões."
+    },
+
+    {
+      "id": "ADV_004",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas afirmações parece correta, mas está ERRADA sobre cultura Data-Driven?",
+      "opcoes": [
+        "Os dados devem substituir completamente o julgamento humano.",
+        "Os dados devem orientar decisões.",
+        "A experimentação é essencial.",
+        "A partilha de dados é importante."
+      ],
+      "resposta_correta": "Os dados devem substituir completamente o julgamento humano.",
+      "justificacao": "O prof disse claramente: não é 'fé cega nos dados'."
+    },
+
+    {
+      "id": "ADV_005",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve melhor um Data Warehouse do que um Data Lake?",
+      "opcoes": [
+        "Armazena dados estruturados e limpos.",
+        "Guarda dados brutos em qualquer formato.",
+        "Permite explorar padrões em dados não estruturados.",
+        "Tem custo mais baixo de armazenamento."
+      ],
+      "resposta_correta": "Armazena dados estruturados e limpos.",
+      "justificacao": "Isso é Data Warehouse, não Data Lake."
+    },
+
+    {
+      "id": "ADV_006",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve MAL a zona Silver?",
+      "opcoes": [
+        "Dados limpos e preparados.",
+        "Dados filtrados e enriquecidos.",
+        "Dados agregados prontos para BI.",
+        "Dados estruturados para análise."
+      ],
+      "resposta_correta": "Dados agregados prontos para BI.",
+      "justificacao": "Isso é zona Gold, não Silver."
+    },
+
+    {
+      "id": "ADV_007",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve análise preditiva em vez de prescritiva?",
+      "opcoes": [
+        "Prever probabilidades futuras.",
+        "Recomendar ações ótimas.",
+        "Simular cenários e decisões.",
+        "Sugerir decisões estratégicas."
+      ],
+      "resposta_correta": "Prever probabilidades futuras.",
+      "justificacao": "Preditiva = prever; Prescritiva = recomendar."
+    },
+
+    {
+      "id": "ADV_008",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas NÃO é um KRI?",
+      "opcoes": [
+        "Taxa de churn de clientes",
+        "Dias de vendas pendentes (DSO)",
+        "Taxa de incidentes de segurança",
+        "Margem de lucro"
+      ],
+      "resposta_correta": "Margem de lucro",
+      "justificacao": "Margem de lucro é KBI, não KRI."
+    },
+
+    {
+      "id": "ADV_009",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas descreve BI e não BA?",
+      "opcoes": [
+        "Usa dashboards para analisar o passado.",
+        "Prevê resultados futuros.",
+        "Usa machine learning.",
+        "Recomenda ações."
+      ],
+      "resposta_correta": "Usa dashboards para analisar o passado.",
+      "justificacao": "Isso é BI (passado), não BA."
+    },
+
+    {
+      "id": "ADV_010",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas pertence à fase errada do CRISP-DM?",
+      "opcoes": [
+        "Limpar dados → Data Preparation",
+        "Selecionar algoritmo → Modeling",
+        "Avaliar impacto no negócio → Evaluation",
+        "Criar dataset → Data Understanding"
+      ],
+      "resposta_correta": "Criar dataset → Data Understanding",
+      "justificacao": "Criar dataset é Data Preparation."
+    },
+
+    {
+      "id": "ADV_011",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas é um erro comum sobre CRISP-DM?",
+      "opcoes": [
+        "É um processo iterativo.",
+        "É independente de ferramentas.",
+        "Segue sempre ordem linear sem voltar atrás.",
+        "Liga negócio e técnica."
+      ],
+      "resposta_correta": "Segue sempre ordem linear sem voltar atrás.",
+      "justificacao": "CRISP-DM é iterativo, não linear."
+    },
+
+    {
+      "id": "ADV_012",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções parece correta, mas está ERRADA sobre análise diagnóstica?",
+      "opcoes": [
+        "Procura causas.",
+        "Usa correlações.",
+        "Explica o passado.",
+        "Prova causalidade."
+      ],
+      "resposta_correta": "Prova causalidade.",
+      "justificacao": "Correlação ≠ causalidade (clássica rasteira)."
+    },
+
+    {
+      "id": "EXAME_001",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual das seguintes afirmações descreve corretamente uma organização Data-Driven?",
+      "opcoes": [
+        "Empresa que possui dashboards e relatórios avançados",
+        "Empresa que substitui completamente a intuição por dados",
+        "Empresa que toma decisões baseadas em dados e evidência",
+        "Empresa que utiliza apenas Big Data"
+      ],
+      "resposta_correta": "Empresa que toma decisões baseadas em dados e evidência",
+      "justificacao": "Ser Data-Driven implica decisões baseadas em evidência, não apenas ferramentas ou eliminação total da intuição."
+    },
+    {
+      "id": "EXAME_002",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_select",
+      "pergunta": "Quais dos seguintes são pilares de uma cultura Data-Driven?",
+      "opcoes": [
+        "Goals First",
+        "Data Isolation",
+        "Data Literacy",
+        "Open / Sharing",
+        "Dependência de um único especialista"
+      ],
+      "resposta_correta": [
+        "Goals First",
+        "Data Literacy",
+        "Open / Sharing"
+      ],
+      "justificacao": "Os pilares incluem objetivos claros, literacia de dados e partilha aberta, evitando silos e dependências."
+    },
+    {
+      "id": "EXAME_003",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual é o principal objetivo da análise prescritiva?",
+      "opcoes": [
+        "Explicar o passado",
+        "Prever probabilidades futuras",
+        "Recomendar ações ótimas",
+        "Visualizar dados"
+      ],
+      "resposta_correta": "Recomendar ações ótimas",
+      "justificacao": "A análise prescritiva recomenda decisões com base em simulações e otimização."
+    },
+    {
+      "id": "EXAME_004",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes afirmações são verdadeiras sobre Big Data?",
+      "opcoes": [
+        "Volume refere-se à quantidade de dados",
+        "Veracidade refere-se à qualidade dos dados",
+        "Velocidade refere-se ao custo dos dados",
+        "Variedade inclui diferentes formatos de dados",
+        "Valor é opcional"
+      ],
+      "resposta_correta": [
+        "Volume refere-se à quantidade de dados",
+        "Veracidade refere-se à qualidade dos dados",
+        "Variedade inclui diferentes formatos de dados"
+      ],
+      "justificacao": "Os 5 V's incluem Volume, Velocidade, Variedade, Veracidade e Valor."
+    },
+    {
+      "id": "EXAME_005",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa recolhe dados, mas não os usa para decisões estratégicas. Em que estágio está?",
+      "opcoes": [
+        "Data Driven",
+        "Data Informed",
+        "Data Aware",
+        "Data Denial"
+      ],
+      "resposta_correta": "Data Aware",
+      "justificacao": "Data Aware significa que a empresa recolhe dados mas ainda não os usa para decisões."
+    },
+    {
+      "id": "EXAME_006",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes tarefas pertencem à fase Data Preparation (CRISP-DM)?",
+      "opcoes": [
+        "Clean data",
+        "Integrate data",
+        "Select algorithm",
+        "Construct data",
+        "Evaluate results"
+      ],
+      "resposta_correta": [
+        "Clean data",
+        "Integrate data",
+        "Construct data"
+      ],
+      "justificacao": "Data Preparation envolve limpeza, integração e construção de dados."
+    },
+    {
+      "id": "EXAME_007",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "Qual destas opções descreve corretamente um Data Lake?",
+      "opcoes": [
+        "Armazena dados estruturados e limpos",
+        "Armazena dados brutos em vários formatos",
+        "Tem custo elevado",
+        "Apenas suporta dados tabulares"
+      ],
+      "resposta_correta": "Armazena dados brutos em vários formatos",
+      "justificacao": "Data Lakes armazenam dados raw em múltiplos formatos."
+    },
+    {
+      "id": "EXAME_008",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes afirmações são verdadeiras sobre CRISP-DM?",
+      "opcoes": [
+        "É iterativo",
+        "É independente de ferramentas",
+        "É linear e rígido",
+        "Integra negócio e técnica",
+        "Tem 5 fases"
+      ],
+      "resposta_correta": [
+        "É iterativo",
+        "É independente de ferramentas",
+        "Integra negócio e técnica"
+      ],
+      "justificacao": "CRISP-DM é iterativo, independente e liga negócio à técnica."
+    },
+    {
+      "id": "EXAME_009",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_choice",
+      "pergunta": "Um modelo tem 95% de precisão técnica mas não resolve o problema de negócio. O que fazer?",
+      "opcoes": [
+        "Implementar na mesma",
+        "Melhorar algoritmo diretamente",
+        "Voltar a Business Understanding",
+        "Recolher mais dados automaticamente"
+      ],
+      "resposta_correta": "Voltar a Business Understanding",
+      "justificacao": "Se não resolve o problema de negócio, o problema está na definição inicial."
+    },
+    {
+      "id": "EXAME_010",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes são características de um Data Warehouse?",
+      "opcoes": [
+        "Dados estruturados",
+        "Dados brutos",
+        "Alto custo",
+        "Otimizado para BI",
+        "Armazena vídeo e áudio sem processamento"
+      ],
+      "resposta_correta": [
+        "Dados estruturados",
+        "Alto custo",
+        "Otimizado para BI"
+      ],
+      "justificacao": "Data Warehouses são estruturados, caros e otimizados para BI."
+    },
+    {
+      "id": "EXAME_011",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que significa HIPPO?",
+      "opcoes": [
+        "Modelo de Machine Learning",
+        "Opinião da pessoa mais bem paga",
+        "Técnica de BI",
+        "Tipo de Data Lake"
+      ],
+      "resposta_correta": "Opinião da pessoa mais bem paga",
+      "justificacao": "HIPPO representa decisões baseadas em autoridade e não em dados."
+    },
+    {
+      "id": "EXAME_012",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são exemplos de KRI?",
+      "opcoes": [
+        "Employee turnover",
+        "DSO",
+        "Profit margin",
+        "Cybersecurity incidents",
+        "Market share"
+      ],
+      "resposta_correta": [
+        "Employee turnover",
+        "DSO",
+        "Cybersecurity incidents"
+      ],
+      "justificacao": "KRIs medem riscos, não desempenho ou rentabilidade."
+    },
+
+    {
+      "id": "HARD_001",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes afirmações são verdadeiras sobre organizações Data-Driven?",
+      "opcoes": [
+        "Tomam decisões baseadas em dados e evidência",
+        "Eliminam totalmente a intuição humana",
+        "Promovem pensamento crítico sobre os dados",
+        "Dependem da opinião da pessoa mais bem paga",
+        "Utilizam dados para suportar decisões estratégicas"
+      ],
+      "resposta_correta": [
+        "Tomam decisões baseadas em dados e evidência",
+        "Promovem pensamento crítico sobre os dados",
+        "Utilizam dados para suportar decisões estratégicas"
+      ]
+    },
+
+    {
+      "id": "HARD_002",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_select",
+      "pergunta": "Na cadeia de valor da analítica, quais etapas são indispensáveis para gerar valor?",
+      "opcoes": [
+        "Data",
+        "Analysis",
+        "Action",
+        "Value",
+        "Visualization"
+      ],
+      "resposta_correta": [
+        "Data",
+        "Analysis",
+        "Action",
+        "Value"
+      ]
+    },
+
+    {
+      "id": "HARD_003",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_select",
+      "pergunta": "Quais características distinguem o estágio Data Driven?",
+      "opcoes": [
+        "Decisões totalmente baseadas em dados",
+        "Dados usados apenas como suporte",
+        "Cultura transversal baseada em dados",
+        "Automação de decisões baseada em dados",
+        "Recolha de dados sem aplicação prática"
+      ],
+      "resposta_correta": [
+        "Decisões totalmente baseadas em dados",
+        "Cultura transversal baseada em dados",
+        "Automação de decisões baseada em dados"
+      ]
+    },
+
+    {
+      "id": "HARD_004",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são características de um Data Lakehouse?",
+      "opcoes": [
+        "Combina Data Lake e Data Warehouse",
+        "Suporta dados estruturados e não estruturados",
+        "Exige apenas dados limpos",
+        "Permite integração com Machine Learning",
+        "Aplica governança sobre dados"
+      ],
+      "resposta_correta": [
+        "Combina Data Lake e Data Warehouse",
+        "Suporta dados estruturados e não estruturados",
+        "Permite integração com Machine Learning",
+        "Aplica governança sobre dados"
+      ]
+    },
+
+    {
+      "id": "HARD_005",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são funções da zona Silver num Lakehouse?",
+      "opcoes": [
+        "Armazenar dados brutos",
+        "Limpar dados",
+        "Filtrar dados",
+        "Enriquecer dados",
+        "Agregação final para BI"
+      ],
+      "resposta_correta": [
+        "Limpar dados",
+        "Filtrar dados",
+        "Enriquecer dados"
+      ]
+    },
+
+    {
+      "id": "HARD_006",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são características da análise diagnóstica?",
+      "opcoes": [
+        "Explica o que aconteceu",
+        "Identifica causas",
+        "Utiliza correlações",
+        "Prevê o futuro",
+        "Prova causalidade"
+      ],
+      "resposta_correta": [
+        "Explica o que aconteceu",
+        "Identifica causas",
+        "Utiliza correlações"
+      ]
+    },
+
+    {
+      "id": "HARD_007",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais das seguintes são verdadeiras sobre análise preditiva?",
+      "opcoes": [
+        "Prevê probabilidades futuras",
+        "Garante resultados exatos",
+        "Utiliza modelos estatísticos",
+        "Baseia-se em dados históricos",
+        "Recomenda ações ótimas"
+      ],
+      "resposta_correta": [
+        "Prevê probabilidades futuras",
+        "Utiliza modelos estatísticos",
+        "Baseia-se em dados históricos"
+      ]
+    },
+
+    {
+      "id": "HARD_008",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são exemplos de KPI?",
+      "opcoes": [
+        "Market share",
+        "Revenue growth",
+        "DSO",
+        "Customer satisfaction",
+        "Cybersecurity incidents"
+      ],
+      "resposta_correta": [
+        "Market share",
+        "Revenue growth",
+        "Customer satisfaction"
+      ]
+    },
+
+    {
+      "id": "HARD_009",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_select",
+      "pergunta": "Quais tarefas pertencem à fase Modeling?",
+      "opcoes": [
+        "Selecionar algoritmo",
+        "Dividir dados treino/teste",
+        "Avaliar modelo tecnicamente",
+        "Limpar dados",
+        "Criar novos atributos"
+      ],
+      "resposta_correta": [
+        "Selecionar algoritmo",
+        "Dividir dados treino/teste",
+        "Avaliar modelo tecnicamente"
+      ]
+    },
+
+    {
+      "id": "HARD_010",
+      "macro_tema": "crisp_dm",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são objetivos da fase Evaluation?",
+      "opcoes": [
+        "Verificar alinhamento com objetivos de negócio",
+        "Rever processo",
+        "Decidir próximos passos",
+        "Limpar dados",
+        "Selecionar algoritmo"
+      ],
+      "resposta_correta": [
+        "Verificar alinhamento com objetivos de negócio",
+        "Rever processo",
+        "Decidir próximos passos"
+      ]
+    },
+
+    {
+      "id": "HARD_011",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_select",
+      "pergunta": "Quais práticas ajudam a eliminar silos de dados?",
+      "opcoes": [
+        "Partilha de dados entre departamentos",
+        "Integração de sistemas",
+        "Restrição de acesso a dados",
+        "Centralização de informação",
+        "Isolamento de equipas"
+      ],
+      "resposta_correta": [
+        "Partilha de dados entre departamentos",
+        "Integração de sistemas",
+        "Centralização de informação"
+      ]
+    },
+
+    {
+      "id": "HARD_012",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_select",
+      "pergunta": "Quais são características de Business Analytics (BA)?",
+      "opcoes": [
+        "Foco no futuro",
+        "Uso de machine learning",
+        "Previsão de resultados",
+        "Apenas dashboards históricos",
+        "Recomendação de ações"
+      ],
+      "resposta_correta": [
+        "Foco no futuro",
+        "Uso de machine learning",
+        "Previsão de resultados",
+        "Recomendação de ações"
+      ]
+    },
+
+    {
+      "id": "TERM_001",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que significa o termo HIPPO no contexto de Data-Driven?",
+      "opcoes": [
+        "Sistema de análise de dados automatizado",
+        "Opinião da pessoa mais bem paga da sala",
+        "Modelo de Machine Learning",
+        "Estrutura de armazenamento de dados"
+      ],
+      "resposta_correta": "Opinião da pessoa mais bem paga da sala"
+    },
+
+    {
+      "id": "TERM_002",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que representa o princípio MAD?",
+      "opcoes": [
+        "Measure, Analyse, Decide",
+        "Manage, Act, Deliver",
+        "Monitor, Automate, Deploy",
+        "Measure, Apply, Design"
+      ],
+      "resposta_correta": "Measure, Analyse, Decide"
+    },
+
+    {
+      "id": "TERM_003",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "O que é um Data Lakehouse?",
+      "opcoes": [
+        "Um sistema que apenas armazena dados estruturados",
+        "Uma base de dados tradicional",
+        "Uma arquitetura que combina Data Lake e Data Warehouse",
+        "Um tipo de dashboard"
+      ],
+      "resposta_correta": "Uma arquitetura que combina Data Lake e Data Warehouse"
+    },
+
+    {
+      "id": "TERM_004",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que significa Data Literacy?",
+      "opcoes": [
+        "Saber programar em Python",
+        "Capacidade de ler, compreender e comunicar dados",
+        "Armazenar dados corretamente",
+        "Criar dashboards automaticamente"
+      ],
+      "resposta_correta": "Capacidade de ler, compreender e comunicar dados"
+    },
+
+    {
+      "id": "TERM_005",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "O que é um Silo de Dados?",
+      "opcoes": [
+        "Base de dados altamente segura",
+        "Informação isolada num departamento",
+        "Sistema de backup",
+        "Tipo de Data Lake"
+      ],
+      "resposta_correta": "Informação isolada num departamento"
+    },
+
+    {
+      "id": "TERM_006",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que caracteriza um analista 'Business Savvy'?",
+      "opcoes": [
+        "Domina apenas programação",
+        "Foca-se apenas em dados técnicos",
+        "Traduz dados em decisões de negócio",
+        "Trabalha apenas com dashboards"
+      ],
+      "resposta_correta": "Traduz dados em decisões de negócio"
+    },
+
+    {
+      "id": "TERM_007",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "O que define a análise prescritiva?",
+      "opcoes": [
+        "Explicar o passado",
+        "Prever o futuro",
+        "Recomendar ações",
+        "Visualizar dados"
+      ],
+      "resposta_correta": "Recomendar ações"
+    },
+
+    {
+      "id": "TERM_008",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "No contexto de Big Data, o que significa 'Veracity'?",
+      "opcoes": [
+        "Velocidade dos dados",
+        "Quantidade de dados",
+        "Qualidade e fiabilidade dos dados",
+        "Formato dos dados"
+      ],
+      "resposta_correta": "Qualidade e fiabilidade dos dados"
+    },
+
+    {
+      "id": "TERM_009",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que significa o princípio 'Goals First'?",
+      "opcoes": [
+        "Recolher dados primeiro",
+        "Definir objetivos antes de usar dados",
+        "Criar dashboards primeiro",
+        "Implementar IA primeiro"
+      ],
+      "resposta_correta": "Definir objetivos antes de usar dados"
+    },
+
+    {
+      "id": "TERM_010",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "O que representa a 'Analytics Value Chain'?",
+      "opcoes": [
+        "Processo de armazenar dados",
+        "Fluxo desde dados até geração de valor",
+        "Modelo de Machine Learning",
+        "Sistema de BI"
+      ],
+      "resposta_correta": "Fluxo desde dados até geração de valor"
+    },
+
+    {
+      "id": "TRAP_001",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Numa reunião, os dados indicam que a estratégia A é melhor, mas o diretor decide seguir a estratégia B com base na sua experiência. Qual conceito está presente?",
+      "opcoes": [
+        "Data Literacy insuficiente",
+        "Análise diagnóstica incompleta",
+        "Efeito HIPPO",
+        "Cultura Data Aware"
+      ],
+      "resposta_correta": "Efeito HIPPO"
+    },
+
+    {
+      "id": "TRAP_002",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa recolhe muitos dados, analisa-os, mas nunca altera decisões com base nesses resultados. Onde está a falha principal?",
+      "opcoes": [
+        "Falta de Data Collection",
+        "Falta de Action na cadeia de valor",
+        "Falta de Reporting",
+        "Falta de Storage"
+      ],
+      "resposta_correta": "Falta de Action na cadeia de valor"
+    },
+
+    {
+      "id": "TRAP_003",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa usa dados para apoiar decisões, mas ainda mistura fortemente com intuição. Em que estágio está?",
+      "opcoes": [
+        "Data Driven",
+        "Data Aware",
+        "Data Informed",
+        "Data Indifference"
+      ],
+      "resposta_correta": "Data Informed"
+    },
+
+    {
+      "id": "TRAP_004",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa investe em dashboards avançados, mas os gestores continuam a decidir sem os consultar. Como deve ser classificada?",
+      "opcoes": [
+        "Data Driven",
+        "Data Aware",
+        "Data Informed",
+        "Data Indifference"
+      ],
+      "resposta_correta": "Data Indifference"
+    },
+
+    {
+      "id": "TRAP_005",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa quer armazenar dados brutos (logs, vídeos, sensores) sem estrutura definida e com baixo custo. Qual solução é mais adequada?",
+      "opcoes": [
+        "Data Warehouse",
+        "Data Lake",
+        "Zona Gold",
+        "Base de dados relacional"
+      ],
+      "resposta_correta": "Data Lake"
+    },
+
+    {
+      "id": "TRAP_006",
+      "macro_tema": "data_driven_infrastructure",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa precisa de dados altamente limpos, estruturados e prontos para relatórios financeiros. Qual solução é mais adequada?",
+      "opcoes": [
+        "Data Lake",
+        "Zona Bronze",
+        "Data Warehouse",
+        "Zona Silver"
+      ],
+      "resposta_correta": "Data Warehouse"
+    },
+
+    {
+      "id": "TRAP_007",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Um analista identifica que vendas e temperatura aumentam simultaneamente e conclui que uma causa a outra. Que erro está presente?",
+      "opcoes": [
+        "Erro de previsão",
+        "Erro de causalidade",
+        "Erro de modelação",
+        "Erro de prescrição"
+      ],
+      "resposta_correta": "Erro de causalidade"
+    },
+
+    {
+      "id": "TRAP_008",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Um modelo prevê que há 80% de probabilidade de churn. Como deve ser interpretado?",
+      "opcoes": [
+        "O cliente vai sair com certeza",
+        "O cliente provavelmente sairá, mas não é garantido",
+        "O modelo está errado",
+        "O churn já aconteceu"
+      ],
+      "resposta_correta": "O cliente provavelmente sairá, mas não é garantido"
+    },
+
+    {
+      "id": "TRAP_009",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa começa por recolher todos os dados possíveis e só depois tenta encontrar um problema para resolver. Que princípio está a ser violado?",
+      "opcoes": [
+        "Data Literacy",
+        "Goals First",
+        "Open Data",
+        "Testing"
+      ],
+      "resposta_correta": "Goals First"
+    },
+
+    {
+      "id": "TRAP_010",
+      "macro_tema": "data_driven_transformation",
+      "tipo": "multiple_choice",
+      "pergunta": "Uma empresa tem dados separados por departamentos que não comunicam entre si. Qual é o principal problema?",
+      "opcoes": [
+        "Falta de Machine Learning",
+        "Silos de dados",
+        "Falta de dashboards",
+        "Baixa velocidade de dados"
+      ],
+      "resposta_correta": "Silos de dados"
+    },
+
+    {
+      "id": "TRAP_011",
+      "macro_tema": "business_analytics",
+      "tipo": "multiple_choice",
+      "pergunta": "Um sistema não só prevê tráfego, como sugere rotas alternativas em tempo real. Que tipo de análise está presente?",
+      "opcoes": [
+        "Descritiva",
+        "Diagnóstica",
+        "Preditiva",
+        "Prescritiva"
+      ],
+      "resposta_correta": "Prescritiva"
+    },
+
+    {
+      "id": "TRAP_012",
+      "macro_tema": "organizacao_orientada_dados",
+      "tipo": "multiple_choice",
+      "pergunta": "Um colaborador consegue interpretar dashboards, questionar dados e explicar insights. Que conceito melhor o descreve?",
+      "opcoes": [
+        "Data Storage",
+        "Data Literacy",
+        "Data Engineering",
+        "Big Data"
+      ],
+      "resposta_correta": "Data Literacy"
     }
   ]
 }
