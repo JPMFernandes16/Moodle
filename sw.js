@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bia-moodle-cache-v2'; // Mudámos para v2 para ele forçar a atualização!
+const CACHE_NAME = 'bia-moodle-cache-v3'; // <-- MUDA ISTO PARA v3/ Mudámos para v2 para ele forçar a atualização!
 
 // Lista de todos os ficheiros que a app precisa para funcionar offline
 const urlsToCache = [
