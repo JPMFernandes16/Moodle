@@ -1,6 +1,6 @@
 // js/main.js
 import { playDing, playClick, playSadSound, playHappySound, playPartySound, fireConfetti, playWarningSound } from './audio.js';
-import { normalizeText, removeAcentos, formatTime, timeAgo, debounce } from './utils.js';
+import { escapeHtml, normalizeText, removeAcentos, formatTime, timeAgo, debounce } from './utils.js';
 import { initAuth } from './auth.js';
 
 // --- FIREBASE IMPORTS ---
