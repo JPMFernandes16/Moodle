@@ -73,9 +73,9 @@
       
       <section class="exam-area">
         
-        <div class="glass-panel" style="margin-bottom: 24px; border-top: 4px solid var(--primary);">
+        <div id="configPanel" class="glass-panel" style="margin-bottom: 24px; border-top: 4px solid var(--primary);">
           <div class="widget-header" style="margin-bottom: 15px; border: none; padding: 0;">
-            <h3 class="widget-title" style="color: var(--primary);">Unidade Curricular</h3>
+            <h3 class="widget-title" style="color: var(--primary);">Configuração de Estudo</h3>
           </div>
 
           <select id="disciplina" class="form-input" style="font-size: 1.15rem; padding: 18px; border-radius: var(--radius-sm);">
@@ -98,18 +98,24 @@
           <div class="control-group" style="margin-top: 15px; align-items: stretch;">
             <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Resumo </a>
             <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Vídeo</a>
-            <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão</button>
-            
-            <button id="retomarQuizBtn" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--warning); box-shadow: 0 0 15px rgba(217,119,6,0.3);">Continuar</button>
-            
+            <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão de Erros</button>
+            <button id="retomarQuizBtn" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--warning); box-shadow: 0 0 15px rgba(217,119,6,0.3);">Continuar Último Teste</button>
+          </div>
+
+          <div class="control-group" style="margin-top: 15px; align-items: stretch;">
             <select id="modoEstudo" class="form-input" style="flex-grow: 1; min-width: 180px; padding: 14px; cursor: pointer;">
-                <option value="exame" selected>⏳ Modo Exame</option>
+                <option value="exame" selected>⏳ Modo Exame (Teste Simulado)</option>
                 <option value="treino">🧘 Modo Treino (Feedback Imediato)</option>
             </select>
-
             <button id="carregarQuiz" class="btn btn--primary" style="flex-grow: 1;">⚡ Iniciar</button>
-            <button id="submeterQuiz" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);" disabled>Submeter</button>
           </div>
+        </div>
+
+        <div id="activeExamPanel" class="glass-panel hidden" style="display: none; margin-bottom: 24px; border-top: 4px solid var(--warning); padding: 15px 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <strong style="color: var(--text-main); font-size: 1.1rem; font-weight: 800;">📝 Avaliação em Curso</strong>
+                <button id="submeterQuiz" class="btn btn--primary" style="background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);">Submeter Teste ✅</button>
+            </div>
         </div>
 
         <div id="resultado-final-box"></div>
@@ -137,7 +143,7 @@
 
       </section>
 
-      <aside class="sidebar">
+      <aside class="sidebar" style="position: sticky; top: 90px; align-self: start;">
         
         <section class="glass-panel" style="margin-bottom: 24px;">
           <div class="widget-header">

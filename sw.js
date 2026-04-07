@@ -1,5 +1,5 @@
 // 🚨 REGRA DE OURO: SEMPRE QUE FIZERES ALTERAÇÕES NO PROJETO, MUDA ESTE NÚMERO! (ex: v2, v3, v4...)
-const CACHE_NAME = 'moodle-bia-v1.2'; 
+const CACHE_NAME = 'moodle-bia-v1.3'; 
 
 const urlsToCache = [
   './',

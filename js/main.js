@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const dictSearchInput = document.getElementById("dictSearchInput");
   const dictResultsContainer = document.getElementById("dictResultsContainer");
   
+  // Elementos Novos (Filtros e Painéis)
+  const configPanel = document.getElementById("configPanel");
+  const activeExamPanel = document.getElementById("activeExamPanel");
   const btnToggleFiltros = document.getElementById("btnToggleFiltros");
   const topicosContainer = document.getElementById("topicosContainer");
   const modoEstudo = document.getElementById("modoEstudo");
@@ -217,9 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
       `).join('');
   }
 
+  // CORREÇÃO: Fazer o botão de Tópicos abrir e fechar corretamente
   if (btnToggleFiltros) {
-      btnToggleFiltros.addEventListener('click', () => {
-          topicosContainer.style.display = topicosContainer.style.display === 'none' ? 'block' : 'none';
+      btnToggleFiltros.addEventListener('click', (e) => {
+          e.preventDefault(); // Evita bugs de salto
+          const isHidden = topicosContainer.style.display === 'none' || topicosContainer.style.display === '';
+          topicosContainer.style.display = isHidden ? 'block' : 'none';
       });
   }
 
@@ -325,19 +331,18 @@ document.addEventListener("DOMContentLoaded", () => {
   // ======================================================
   // 🧹 LIMPEZA DINÂMICA DE ECRÃ (UX DE ACESSIBILIDADE)
   // ======================================================
+  // CORREÇÃO: Usar os novos IDs dos painéis do HTML
   function toggleConfigPanel(isExamActive) {
-      const elementsToHide = [
-          disciplinaSelect, btnToggleFiltros, topicosContainer, lastUpdateText, 
-          modoEstudo, carregarQuizBtn, carregarFraquezasBtn, 
-          document.getElementById("btnLerResumo"), document.getElementById("btnVerVideo")
-      ];
-      
-      elementsToHide.forEach(el => {
-          if (el) el.style.display = isExamActive ? 'none' : '';
-      });
-      
-      // Garante que o painel de tópicos fica sempre fechado quando o menu reaparece
-      if (!isExamActive && topicosContainer) topicosContainer.style.display = 'none';
+      if (configPanel) {
+          configPanel.style.display = isExamActive ? 'none' : 'block';
+      }
+      if (activeExamPanel) {
+          activeExamPanel.style.display = isExamActive ? 'block' : 'none';
+          activeExamPanel.classList.remove('hidden'); 
+      }
+      if (!isExamActive && topicosContainer) {
+          topicosContainer.style.display = 'none';
+      }
   }
 
   async function iniciarTeste(mode = "normal") {
@@ -363,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
           
           if (retomarQuizBtn) retomarQuizBtn.classList.add("hidden");
 
-          // 🔥 MAGIA DO ESPAÇO: Esconder configurações irrelevantes no teste!
+          // 🔥 MAGIA DO ESPAÇO: Esconder o configPanel e mostrar o activeExamPanel
           toggleConfigPanel(true);
 
           renderQuestionNavigator();
@@ -378,10 +383,6 @@ document.addEventListener("DOMContentLoaded", () => {
           guardarEstadoAmeio();
           playClick(); 
 
-          if (submeterQuizBtn) {
-            submeterQuizBtn.classList.remove("hidden");
-            submeterQuizBtn.disabled = false;
-          }
           if (quizContainer) quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } catch (err) { console.error(err); }
   }
@@ -652,12 +653,15 @@ document.addEventListener("DOMContentLoaded", () => {
           });
       }
 
+      // CORREÇÃO: Modo Treino (Verificar resposta a meio do teste)
       const btnVerificar = document.getElementById("btnVerificarTreino");
       if (btnVerificar) {
           btnVerificar.addEventListener("click", () => {
               if (!getAnsweredCountForIndex(currentQuestionIndex)) { showCustomConfirm("Por favor, seleciona uma resposta antes de verificar."); return; }
-              verifiedQuestions[currentQuestionIndex] = true;
-              playClick(); renderCurrentQuestion(); renderQuestionNavigator();
+              verifiedQuestions[currentQuestionIndex] = true; // Marca como validada
+              playClick(); 
+              renderCurrentQuestion(); 
+              renderQuestionNavigator(); // Para pintar o número na navegação lateral
           });
       }
 
@@ -801,8 +805,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const resultBox = document.getElementById("resultado-final-box");
       if (resultBox) { resultBox.innerHTML = htmlResultado; resultBox.style.display = "block"; }
-      if (submeterQuizBtn) submeterQuizBtn.classList.add("hidden");
-
+      
       if (!isTreinoMode && currentUser) {
           try {
               const ref = doc(db, "leaderboards", currentDisciplina, "rankings", currentUser.uid);
@@ -854,12 +857,19 @@ document.addEventListener("DOMContentLoaded", () => {
           toggleConfigPanel(true);
 
           renderQuestionNavigator(); renderCurrentQuestion(); updateTopIndicators(); updateNavButtonsState(); updateQuestionStateLabel(); startTimer();
-          retomarQuizBtn.classList.add("hidden"); if (submeterQuizBtn) { submeterQuizBtn.classList.remove("hidden"); submeterQuizBtn.disabled = false; }
+          retomarQuizBtn.classList.add("hidden"); 
           if (quizContainer) quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
   }
 
-  if (submeterQuizBtn) submeterQuizBtn.addEventListener("click", async () => { const confirmado = await showCustomConfirm("Iniciar processamento final de respostas?"); if(confirmado) verificarRespostas(false); });
+  const btnSubmeterExameGlobal = document.getElementById("submeterQuiz");
+  if (btnSubmeterExameGlobal) {
+      btnSubmeterExameGlobal.addEventListener("click", async () => { 
+          const confirmado = await showCustomConfirm("Iniciar processamento final de respostas?"); 
+          if(confirmado) verificarRespostas(false); 
+      });
+  }
+
   if (prevQuestionBtn) prevQuestionBtn.addEventListener("click", goToPreviousQuestion);
   if (nextQuestionBtn) nextQuestionBtn.addEventListener("click", goToNextQuestion);
   if (dictSearchInput) dictSearchInput.addEventListener("input", debounce(procurarNoDicionario, 300));
@@ -875,7 +885,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!quizLoaded || quizSubmitted) return;
       if (e.key === 'ArrowLeft') { e.preventDefault(); if(prevQuestionBtn && !prevQuestionBtn.disabled) goToPreviousQuestion(); }
       if (e.key === 'ArrowRight') { e.preventDefault(); if(nextQuestionBtn && !nextQuestionBtn.disabled) goToNextQuestion(); }
-      if (e.key === 'Enter') { e.preventDefault(); if (submeterQuizBtn && !submeterQuizBtn.classList.contains('hidden') && !submeterQuizBtn.disabled) { submeterQuizBtn.click(); } }
+      if (e.key === 'Enter') { e.preventDefault(); if (btnSubmeterExameGlobal && !activeExamPanel.classList.contains('hidden')) { btnSubmeterExameGlobal.click(); } }
       const keyMap = { '1': 0, 'a': 0, '2': 1, 'b': 1, '3': 2, 'c': 2, '4': 3, 'd': 3 }; const optionIndex = keyMap[e.key.toLowerCase()];
       if (optionIndex !== undefined) {
           const currentQ = quizData[currentQuestionIndex];
