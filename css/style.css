@@ -64,7 +64,7 @@
 *:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 3px;
-  border-radius: 2px; /* fallback suave */
+  border-radius: 2px;
 }
 
 body { 
@@ -238,7 +238,7 @@ h1, h2, h3, p { margin-top: 0; }
   border: 1px solid transparent; transition: var(--transition); 
   display: inline-flex; justify-content: center; align-items: center;
   gap: 10px; letter-spacing: 0.5px; text-transform: uppercase;
-  user-select: none; /* Pro touch: Impede seleção de texto duplo clique */
+  user-select: none;
 }
 .btn:active:not(:disabled) { transform: scale(0.96); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(1); pointer-events: none; }
@@ -281,15 +281,15 @@ h1, h2, h3, p { margin-top: 0; }
     padding: 16px 20px; background: var(--secondary); 
     border: 1px solid var(--border); border-radius: var(--radius-sm); 
     cursor: pointer; transition: var(--transition); 
-    user-select: none; /* Pro touch: clicar rápido não seleciona o texto da resposta */
-    min-height: 56px; /* Pro touch: Alvo tátil mínimo para mobile */
+    user-select: none;
+    min-height: 56px; 
 }
 .option-item:hover:not(.option-correct):not(.option-selected-wrong) { 
     border-color: var(--primary); background: var(--bg-surface); 
-    transform: translateX(4px); /* Pro touch: Efeito hover fluido */
+    transform: translateX(4px);
 }
 
-/* 🚨 ACESSIBILIDADE (A11y): Esconder visualmente em vez de usar display: none */
+/* ACESSIBILIDADE (A11y): Esconder visualmente */
 .option-item input[type="radio"], 
 .option-item input[type="checkbox"] { 
   position: absolute;
@@ -303,7 +303,7 @@ h1, h2, h3, p { margin-top: 0; }
   border: 0;
 }
 
-/* 🎯 ACESSIBILIDADE: Indicador de Foco para navegação por teclado */
+/* ACESSIBILIDADE: Indicador de Foco para teclado */
 .option-item input[type="radio"]:focus-visible + .custom-radio,
 .option-item input[type="checkbox"]:focus-visible + .custom-checkbox {
   outline: 2px solid var(--primary);

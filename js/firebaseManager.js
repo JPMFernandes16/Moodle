@@ -82,3 +82,26 @@ export async function saveProgressToCloud(disciplina, correctIds, wrongIds) {
         activeQuiz: null
     }, { merge: true });
 }
+
+export async function fetchUserProfile(user) {
+    // Vamos procurar o perfil do utilizador na coleção "users" usando o UID dele
+    const docRef = doc(db, "users", user.uid);
+    const snap = await getDoc(docRef);
+    
+    if (snap.exists() && snap.data().disciplinas) {
+        // Se o perfil existe na Cloud e tem disciplinas, devolvemos os dados
+        return snap.data();
+    } else {
+        // Se for o 1º login ou a pessoa não tiver perfil, criamos um Perfil Base ("Fallback")
+        const defaultProfile = {
+            nome: user.email.split('@')[0], // Usa o início do email como nome (ex: "joao")
+            curso: "Estudante",
+            disciplinas: [{ value: "BIA_BIAT", text: "Business Intelligence & Analytics Tools" }]
+        };
+        
+        // Guardamos automaticamente este perfil base na Cloud para a próxima vez
+        await setDoc(docRef, defaultProfile, { merge: true });
+        
+        return defaultProfile;
+    }
+}

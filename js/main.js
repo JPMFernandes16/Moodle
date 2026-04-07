@@ -9,8 +9,17 @@ import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/fire
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
 // --- NOVOS MÓDULOS DE ARQUITETURA ---
-import { state, PERFIS_ESTUDO } from './store.js';
-import { carregarTemaDaCloud, guardarTemaNaCloud, checkAndUpdateStreak, fetchLeaderboardData, saveScoreToLeaderboard, reportQuestionToCloud, saveProgressToCloud } from './firebaseManager.js';
+import { state } from './store.js';
+import { 
+    carregarTemaDaCloud, 
+    guardarTemaNaCloud, 
+    checkAndUpdateStreak, 
+    fetchLeaderboardData, 
+    saveScoreToLeaderboard, 
+    reportQuestionToCloud, 
+    saveProgressToCloud,
+    fetchUserProfile 
+} from './firebaseManager.js';
 import { generateQuizDataLocally, getQuestionScore, isQuestionCorrect, getAnsweredCount, getAnsweredCountForIndex } from './quizLogic.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -61,9 +70,14 @@ document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, async (user) => {
       if (user) {
           state.currentUser = user;
+          
           const theme = await carregarTemaDaCloud(user);
           applyTheme(theme);
-          configurarUniverso(user.email);
+          
+          // 🔥 Vai buscar o perfil à Cloud (Firebase) e guarda no state
+          state.userProfile = await fetchUserProfile(user);
+          configurarUniverso(); 
+          
           state.currentDisciplina = disciplinaSelect.value;
           
           const streakInfo = await checkAndUpdateStreak(false);
@@ -74,6 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
           carregarProgressoDaCloud(user);
       } else {
           state.currentUser = null;
+          state.userProfile = null;
           state.quizData = []; state.fullDatabase = []; state.globalStorage = {};
           if (state.unsubscribeSnapshot) state.unsubscribeSnapshot();
           if (quizContainer) quizContainer.innerHTML = "";
@@ -81,17 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
-  function configurarUniverso(email) {
-      const perfil = PERFIS_ESTUDO[email] || { nome: email.split('@')[0], curso: "Estudante", disciplinas: [{ value: "BIA_BIAT", text: "Business Intelligence & Analytics Tools" }] };
+  function configurarUniverso() {
+      // Usa o perfil dinâmico da base de dados
+      const perfil = state.userProfile; 
+      if (!perfil) return;
+      
       const nameEl = document.querySelector('.student-name');
       const courseEl = document.querySelector('.student-course');
       const avatarEl = document.querySelector('.user-avatar');
       
-      if(nameEl) nameEl.textContent = perfil.nome;
-      if(courseEl) courseEl.textContent = perfil.curso;
-      if(avatarEl) avatarEl.textContent = perfil.nome.charAt(0).toUpperCase();
+      if(nameEl) nameEl.textContent = perfil.nome || "Estudante";
+      if(courseEl) courseEl.textContent = perfil.curso || "Curso BIA";
+      if(avatarEl && perfil.nome) avatarEl.textContent = perfil.nome.charAt(0).toUpperCase();
 
-      if (disciplinaSelect) {
+      if (disciplinaSelect && perfil.disciplinas) {
           disciplinaSelect.innerHTML = "";
           perfil.disciplinas.forEach((d, index) => {
               const opt = document.createElement('option');
