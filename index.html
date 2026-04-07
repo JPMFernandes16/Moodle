@@ -57,6 +57,9 @@
         <button id="btnLogout" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; color: var(--error); border-color: rgba(220, 38, 38, 0.3);" aria-label="Terminar Sessão">🚪 Sair</button>
         
         <div class="student-id-card">
+          <div id="streakCounter" style="display: flex; align-items: center; gap: 5px; color: #f97316; font-weight: 800; margin-right: 5px;" title="Dias consecutivos de estudo">
+            🔥 <span id="streakDays">0</span>
+          </div>
           <div class="user-avatar">JF</div>
           <div class="student-info">
             <strong class="student-name">João Fernandes</strong>
@@ -81,16 +84,29 @@
             <option value="GM_MR">Marketing Relacional</option>
             <option value="BIA_STP">Série Temporal e Previsão</option>
           </select>
+
+          <button id="btnToggleFiltros" class="btn btn--ghost" style="width: 100%; margin-top: 10px; font-size: 0.8rem;">⚙️ Personalizar Tópicos de Estudo</button>
+          
+          <div id="topicosContainer" style="margin-top: 15px; padding: 15px; background: var(--bg-body); border-radius: var(--radius-sm); border: 1px solid var(--border); display: none;">
+              <h4 style="margin: 0 0 10px 0; font-size: 0.85rem; color: var(--primary); text-transform: uppercase;">Incluir no Quiz:</h4>
+              <div id="topicosList" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                  </div>
+          </div>
           
           <p id="lastUpdateText" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; margin-bottom: 0; text-align: right; font-style: italic;"></p>
           
-          <div class="control-group" style="margin-top: 15px;">
+          <div class="control-group" style="margin-top: 15px; align-items: stretch;">
             <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Resumo </a>
             <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Vídeo</a>
             <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão</button>
             
             <button id="retomarQuizBtn" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--warning); box-shadow: 0 0 15px rgba(217,119,6,0.3);">Continuar</button>
             
+            <select id="modoEstudo" class="form-input" style="flex-grow: 1; min-width: 180px; padding: 14px; cursor: pointer;">
+                <option value="exame" selected>⏳ Modo Exame</option>
+                <option value="treino">🧘 Modo Treino (Feedback Imediato)</option>
+            </select>
+
             <button id="carregarQuiz" class="btn btn--primary" style="flex-grow: 1;">⚡ Iniciar</button>
             <button id="submeterQuiz" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);" disabled>Submeter</button>
           </div>
@@ -151,7 +167,7 @@
           <div id="questionNavigator" class="nav-map"></div>
         </section>
         
-        <section class="glass-panel">
+        <section class="glass-panel" style="margin-bottom: 24px;">
           <div class="widget-header">
             <h3 class="widget-title">Progresso no Semestre</h3>
           </div>
@@ -167,6 +183,15 @@
           <div id="themeAnalyticsContainer" style="margin-top: 30px;"></div>
           
           <button id="resetProgressBtn" class="btn btn--ghost" style="width: 100%; margin-top: 20px; font-size: 0.75rem;">Limpar Histórico de Avaliação</button>
+        </section>
+
+        <section class="glass-panel">
+          <div class="widget-header">
+            <h3 class="widget-title">🏆 Leaderboard Global</h3>
+          </div>
+          <div id="leaderboardContainer" style="display: flex; flex-direction: column; gap: 8px;">
+            <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 10px;">A carregar ranking do servidor...</p>
+          </div>
         </section>
 
       </aside>
