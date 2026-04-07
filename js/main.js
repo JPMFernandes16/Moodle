@@ -222,19 +222,19 @@ document.addEventListener("DOMContentLoaded", () => {
               dictSearchInput.placeholder = `Pesquisar em ${nomeCadeira}...`;
           }
 
-          // CORREÇÃO CRÍTICA PWA: Downloads dos ficheiros em vez de nova janela
+          // CORREÇÃO: Voltar a abrir num separador novo em vez de forçar download
           const btnLerResumo = document.getElementById("btnLerResumo");
           if (btnLerResumo) {
               btnLerResumo.href = `pdfs/${currentDisciplina}.pdf`;
-              btnLerResumo.setAttribute("download", `${currentDisciplina}_Resumo.pdf`);
-              btnLerResumo.removeAttribute("target"); 
+              btnLerResumo.removeAttribute("download");
+              btnLerResumo.setAttribute("target", "_blank"); 
           }
           
           const btnVerVideo = document.getElementById("btnVerVideo");
           if (btnVerVideo) {
               btnVerVideo.href = `videos/${currentDisciplina}.mp4`;
-              btnVerVideo.setAttribute("download", `${currentDisciplina}_Video.mp4`);
-              btnVerVideo.removeAttribute("target");
+              btnVerVideo.removeAttribute("download");
+              btnVerVideo.setAttribute("target", "_blank");
           }
 
           if(dictSearchInput) procurarNoDicionario();
@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       testeFinal.forEach(p => {
-          if (p.tipo === "multiple_choice" && p.opcoes) p.opcoes = shuffleArray([...p.opcoes]);
+          if ((p.tipo === "multiple_choice" || p.tipo === "multiple_select") && p.opcoes) p.opcoes = shuffleArray([...p.opcoes]);
           else if (p.tipo === "drag_and_drop" && p.pares) p.pares = shuffleArray([...p.pares]);
       });
       return testeFinal;
@@ -412,7 +412,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 1. Guarda localmente para ser super rápido
     localStorage.setItem("moodle-iscap-storage", JSON.stringify(globalStorage));
     
-    // 2. FORÇA A ATUALIZAÇÃO IMEDIATA DO GRÁFICO (Aqui estava o bug!)
+    // 2. FORÇA A ATUALIZAÇÃO IMEDIATA DO GRÁFICO
     updateGlobalProgressUI();
       
     // 3. Envia para a Cloud silenciosamente em background
@@ -454,12 +454,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let htmlResultados = "";
       resultados.slice(0, 10).forEach((res) => {
+          let respostaTexto = res.resposta_correta || res.resposta_referencia || "Questão Estrutural (Drag & Drop)";
+          if (Array.isArray(res.resposta_correta)) respostaTexto = res.resposta_correta.join(" | ");
+
           htmlResultados += `
               <div class="glass-panel" style="margin-bottom: 12px; padding: 15px; border-left: 4px solid var(--primary);">
                   <strong style="color:var(--text-main); display:block; margin-bottom:4px; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">${escapeHtml((res.macro_tema || "TEMA").replace(/_/g, ' '))}</strong>
                   <i style="color:var(--text-muted); display:block; margin-bottom:8px; font-size:0.9rem;">${escapeHtml(res.pergunta)}</i>
                   <div style="background: var(--bg-body); padding: 10px; border-radius: 6px; border: 1px solid var(--border);">
-                      <p style="margin: 0 0 8px 0; color: var(--success); font-weight:700;">✅ ${escapeHtml(res.resposta_correta || res.resposta_referencia || "Questão Estrutural (Drag & Drop)")}</p>
+                      <p style="margin: 0 0 8px 0; color: var(--success); font-weight:700;">✅ ${escapeHtml(respostaTexto)}</p>
                       <p style="margin: 0; font-size: 0.85rem; line-height: 1.4;">${escapeHtml(res.justificacao)}</p>
                   </div>
               </div>
@@ -476,7 +479,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getAnsweredCount() {
     return Object.values(userAnswers).filter((answer) => {
-      if (typeof answer === 'object' && answer !== null) return Object.keys(answer).length > 0;
+      if (typeof answer === 'object' && answer !== null && !Array.isArray(answer)) return Object.keys(answer).length > 0;
+      if (Array.isArray(answer)) return answer.length > 0;
       return normalizeText(answer) !== "";
     }).length;
   }
@@ -578,16 +582,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function getAnsweredCountForIndex(index) {
       const ans = userAnswers[index];
-      if (!ans) return false;
+      if (ans === undefined || ans === null) return false;
+      if (Array.isArray(ans)) return ans.length > 0;
       if (typeof ans === 'object') return Object.keys(ans).length > 0;
       return normalizeText(ans) !== "";
   }
 
+  // ======================================================
+  // VALIDAÇÃO & PONTUAÇÃO
+  // ======================================================
   function getQuestionScore(question, index) {
       const selectedAnswer = userAnswers[index];
       if (selectedAnswer === undefined || selectedAnswer === null) return 0;
+      
       if (question.tipo === "drag_and_drop") {
-          if (typeof selectedAnswer !== 'object') return 0;
+          if (typeof selectedAnswer !== 'object' || Array.isArray(selectedAnswer)) return 0;
           for (let p of question.pares) { if (selectedAnswer[p.definicao] !== p.conceito) return 0; }
           return 1;
       } 
@@ -603,6 +612,18 @@ document.addEventListener("DOMContentLoaded", () => {
           if (gruposAtingidos >= 2) return 0.5;  
           return 0;                              
       } 
+      else if (question.tipo === "multiple_select") {
+          // CORREÇÃO: Validação de Múltipla Seleção
+          const userArr = Array.isArray(selectedAnswer) ? selectedAnswer : [];
+          const correctArr = Array.isArray(question.resposta_correta) ? question.resposta_correta : [];
+          
+          if (userArr.length === 0 || userArr.length !== correctArr.length) return 0;
+          
+          const isAllCorrect = userArr.every(ans => 
+              correctArr.map(normalizeText).includes(normalizeText(ans))
+          );
+          return isAllCorrect ? 1 : 0;
+      }
       else {
           return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta) ? 1 : 0;
       }
@@ -641,16 +662,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (question.tipo === "drag_and_drop") html += renderDragAndDrop(question, selectedAnswer);
       else if (question.tipo === "open_ended") html += renderOpenEnded(question, selectedAnswer);
-      else html += renderMultipleChoice(question, selectedAnswer || "");
+      else html += renderMultipleChoice(question, selectedAnswer);
 
       if (quizSubmitted) {
           let statusColor = isCorrect ? 'var(--success)' : (isPartial ? 'var(--warning)' : 'var(--error)');
           let statusText = isCorrect ? '✅ Resposta Validada' : (isPartial ? '⚠️ Resposta Incompleta' : '❌ Anomalia Detetada');
+          
+          let correctTextHtml = '';
+          if (question.tipo === "open_ended") {
+             correctTextHtml = `<p><strong>Referência:</strong> ${escapeHtml(question.resposta_referencia)}</p>`;
+          } else if (question.tipo === "multiple_choice" || question.tipo === "multiple_select" || question.tipo === "true_false") {
+             const cText = Array.isArray(question.resposta_correta) ? question.resposta_correta.join(" | ") : question.resposta_correta;
+             correctTextHtml = `<p><strong>Certa(s):</strong> ${escapeHtml(cText)}</p>`;
+          }
+
           html += `
             <div style="margin-top: 25px; padding: 20px; background: var(--bg-body); border-radius: var(--radius-sm); border: 1px solid ${statusColor}; border-left: 4px solid ${statusColor};">
               <p style="color: ${statusColor}; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">${statusText}</p>
-              ${question.tipo === "open_ended" ? `<p><strong>Referência:</strong> ${escapeHtml(question.resposta_referencia)}</p>` : ''}
-              ${question.tipo === "multiple_choice" ? `<p><strong>Certa:</strong> ${escapeHtml(question.resposta_correta)}</p>` : ''}
+              ${correctTextHtml}
               <div style="margin-top: 15px; border-top: 1px dashed var(--border); padding-top: 15px;">
                   <p style="margin:0; font-size: 0.95rem;"><strong>Justificação Técnica:</strong> ${escapeHtml(question.justificacao)}</p>
               </div>
@@ -694,21 +723,38 @@ document.addEventListener("DOMContentLoaded", () => {
           }
       } 
       else {
+          // Lida com Radios e Checkboxes
           if (quizSubmitted) {
               const card = document.getElementById(`q-card-${currentQuestionIndex}`);
               if(card) {
                   card.classList.add(isCorrect ? "correct" : "incorrect");
+                  
+                  const isMulti = question.tipo === "multiple_select";
+                  const correctArr = isMulti ? (Array.isArray(question.resposta_correta) ? question.resposta_correta : []) : [question.resposta_correta];
+                  const userArr = isMulti ? (Array.isArray(selectedAnswer) ? selectedAnswer : []) : (selectedAnswer ? [selectedAnswer] : []);
+
                   card.querySelectorAll(".option-item").forEach(label => {
-                      const radioVal = normalizeText(label.querySelector('input').value);
-                      if (radioVal === normalizeText(question.resposta_correta)) label.classList.add("option-correct");
-                      else if (radioVal === normalizeText(selectedAnswer) && !isCorrect) label.classList.add("option-selected-wrong");
+                      const inputVal = normalizeText(label.querySelector('input').value);
+                      const isCorrectOption = correctArr.map(normalizeText).includes(inputVal);
+                      const isSelectedByUser = userArr.map(normalizeText).includes(inputVal);
+
+                      if (isCorrectOption) {
+                          label.classList.add("option-correct");
+                      } else if (isSelectedByUser && !isCorrectOption) {
+                          label.classList.add("option-selected-wrong");
+                      }
                   });
               }
           } else {
-              quizContainer.querySelectorAll(`input[type="radio"]`).forEach(radio => {
-                  radio.addEventListener("change", (e) => {
+              quizContainer.querySelectorAll(`input[type="radio"], input[type="checkbox"]`).forEach(input => {
+                  input.addEventListener("change", (e) => {
                       playClick(); 
-                      userAnswers[currentQuestionIndex] = e.target.value;
+                      if (question.tipo === "multiple_select") {
+                          const checkedBoxes = Array.from(quizContainer.querySelectorAll(`input[type="checkbox"]:checked`));
+                          userAnswers[currentQuestionIndex] = checkedBoxes.map(cb => cb.value);
+                      } else {
+                          userAnswers[currentQuestionIndex] = e.target.value;
+                      }
                       updateTopIndicators(); renderQuestionNavigator(); updateQuestionStateLabel();
                       guardarEstadoAmeio();
                   });
@@ -723,13 +769,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderMultipleChoice(question, selectedAnswer) {
       const options = Array.isArray(question.opcoes) ? question.opcoes : [];
+      const isMulti = question.tipo === "multiple_select"; // CORREÇÃO: Verificação de tipo
+      const userAnsArray = Array.isArray(selectedAnswer) ? selectedAnswer : (selectedAnswer ? [selectedAnswer] : []);
+
       return `
         <div class="options-group">
           ${options.map((option, idx) => {
-            const isChecked = normalizeText(selectedAnswer) === normalizeText(option);
+            const isChecked = userAnsArray.map(normalizeText).includes(normalizeText(option));
             return `
               <label class="option-item ${isChecked ? 'selected' : ''}">
-                <input type="radio" name="question-${currentQuestionIndex}" value="${escapeHtml(option)}" ${isChecked ? "checked" : ""} ${quizSubmitted ? "disabled" : ""}/>
+                <input type="${isMulti ? 'checkbox' : 'radio'}" name="question-${currentQuestionIndex}" value="${escapeHtml(option)}" ${isChecked ? "checked" : ""} ${quizSubmitted ? "disabled" : ""}/>
                 <div class="custom-radio"></div>
                 <span style="font-weight: 800; color: var(--text-muted); margin-right: 10px; font-family: 'JetBrains Mono', monospace;">${String.fromCharCode(65 + idx)}.</span>
                 <span style="font-size: 1rem; font-weight: 500;">${escapeHtml(option)}</span>
@@ -848,7 +897,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       quizData.forEach((q, i) => { 
           const ans = userAnswers[i];
-          const hasAnswer = ans !== undefined && ans !== null && ans !== "" && (typeof ans !== 'object' || Object.keys(ans).length > 0);
+          let hasAnswer = false;
+          
+          if (ans !== undefined && ans !== null && ans !== "") {
+              if (Array.isArray(ans)) {
+                  hasAnswer = ans.length > 0;
+              } else if (typeof ans === 'object') {
+                  hasAnswer = Object.keys(ans).length > 0;
+              } else {
+                  hasAnswer = true;
+              }
+          }
 
           if (hasAnswer) {
               respondidas++;
@@ -994,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // 📱 PWA E PROTEÇÃO DE PERDA DE DADOS (NOVO)
+  // 📱 PWA E PROTEÇÃO DE PERDA DE DADOS
   // ======================================================
   
   // Aviso se tentares fechar a página a meio de um exame!
@@ -1055,7 +1114,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (optionIndex !== undefined) {
           const currentQ = quizData[currentQuestionIndex];
           if (currentQ && currentQ.tipo !== 'drag_and_drop' && currentQ.tipo !== 'open_ended') {
-              const options = quizContainer.querySelectorAll('input[type="radio"]');
+              // Correção extra: nos atalhos de teclado agora também funciona para os checkboxes da múltipla escolha
+              const options = quizContainer.querySelectorAll('input[type="radio"], input[type="checkbox"]');
               if (options[optionIndex]) options[optionIndex].click();
           }
       }
