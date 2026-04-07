@@ -267,6 +267,26 @@ h1, h2, h3, p { margin-top: 0; }
 .option-item.option-correct { background: var(--success-light); border-color: var(--success); pointer-events: none;}
 .option-item.option-selected-wrong { background: var(--error-light); border-color: var(--error); pointer-events: none;}
 
+/* ESCOLHA MÚLTIPLA AVANÇADA (CHECKBOXES) */
+.option-item input[type="checkbox"] { display: none; }
+.custom-checkbox {
+    width: 24px; height: 24px; border: 2px solid var(--text-muted); 
+    border-radius: 6px; /* Quadrado com cantos arredondados */
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+}
+.custom-checkbox::after {
+    content: ''; width: 14px; height: 14px; 
+    background: var(--primary); border-radius: 3px; 
+    transform: scale(0); transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.option-item input[type="checkbox"]:checked + .custom-checkbox { 
+    border-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow);
+}
+.option-item input[type="checkbox"]:checked + .custom-checkbox::after { 
+    transform: scale(1); 
+}
+
 /* =========================================================
    DRAG AND DROP TWEAKS
    ========================================================= */
