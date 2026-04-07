@@ -837,3 +837,28 @@ h1, h2, h3, p { margin-top: 0; }
   .header-controls { width: 100%; justify-content: space-between; }
   .iscap-logo { height: 50px; }
 }
+
+/* =========================================================
+   CORREÇÕES DE ACESSIBILIDADE E LAYOUT (UX)
+   ========================================================= */
+
+/* 1. Tornar a Barra Lateral Pegajosa (Acompanha o Scroll do rato) */
+.sidebar {
+    position: sticky;
+    top: 90px; /* Fica colada confortavelmente abaixo do header */
+    height: fit-content;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* 2. Ocultar scrollbar dentro da sidebar para um design limpo */
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+/* 3. Melhorar a grelha de botões no topo para não ficarem amontoados */
+.control-group { 
+    display: grid !important; 
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+    gap: 12px; 
+}
