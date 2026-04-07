@@ -67,6 +67,7 @@
   border-radius: 2px;
 }
 
+/* Impede o browser de fazer aquele elástico branco ao fazer scroll nos limites (App-like feel) */
 body { 
     margin: 0; 
     font-family: 'Outfit', sans-serif; 
@@ -77,6 +78,7 @@ body {
     line-height: 1.6; 
     -webkit-tap-highlight-color: transparent; 
     transition: background-color 0.3s ease, color 0.3s ease;
+    overscroll-behavior-y: none;
 }
 
 a { color: var(--primary); text-decoration: none; transition: var(--transition); }
@@ -113,7 +115,6 @@ h1, h2, h3, p { margin-top: 0; }
 }
 .shake { animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; border-left-color: var(--error) !important; }
 
-/* Animação do Fogo (Streaks) */
 @keyframes flicker {
   0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px #f97316); }
   50% { transform: scale(1.15); opacity: 0.85; filter: drop-shadow(0 0 8px #ea580c); }
@@ -461,23 +462,14 @@ h1, h2, h3, p { margin-top: 0; }
 .confirm-icon { font-size: 3rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); }
 
 /* =========================================================
-   10. MOBILE RESPONSIVE
+   10. TABLET RESPONSIVE
    ========================================================= */
 @media (max-width: 1024px) {
-  .layout { grid-template-columns: 1fr; margin: 20px auto; padding: 0 15px;}
-  .sidebar { 
-      order: -1; 
-      position: relative; 
-      top: 0;
-      max-height: none;
-      overflow-y: visible;
-  }
-  .app-header { padding: 12px 20px; flex-direction: column; gap: 15px; }
+  .layout { grid-template-columns: 1fr; margin: 20px auto; padding: 0 15px; gap: 20px;}
+  .app-header { padding: 15px 20px; flex-direction: column; gap: 15px; }
   .score-display { font-size: 3.5rem; }
-  .header-controls { width: 100%; justify-content: space-between; }
+  .header-controls { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 10px;}
   .iscap-logo { height: 50px; }
-  
-  /* UX Tátil Extra para Mobile */
   .btn { padding: 16px 24px; }
   .option-item { padding: 18px 20px; }
 }
@@ -493,7 +485,7 @@ h1, h2, h3, p { margin-top: 0; }
   display: flex; 
   flex-direction: column; 
   gap: 12px; 
-  pointer-events: none; /* Para não bloquear cliques na página */
+  pointer-events: none;
 }
 
 .toast { 
@@ -517,3 +509,102 @@ h1, h2, h3, p { margin-top: 0; }
 .toast.success { border-left-color: var(--success); }
 .toast.error { border-left-color: var(--error); }
 .toast.warning { border-left-color: var(--warning); }
+
+/* =========================================================
+   12. MENU LATERAL MOBILE (OFF-CANVAS DRAWER)
+   ========================================================= */
+.hidden-desktop { display: none !important; }
+
+@media (max-width: 1024px) {
+  .hidden-desktop { display: inline-flex !important; }
+
+  .sidebar-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(11, 19, 32, 0.85); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+    z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .sidebar-overlay.show { opacity: 1; pointer-events: all; }
+
+  .sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important; /* Escondido fora do ecrã */
+    width: 85vw !important;
+    max-width: 400px;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    background: var(--bg-body) !important;
+    z-index: 1001 !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    overflow-y: auto !important;
+    transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: -10px 0 40px rgba(0,0,0,0.6) !important;
+  }
+
+  .sidebar.is-open { right: 0 !important; }
+}
+
+/* =========================================================
+   13. SMARTPHONES & NATIVE APP TWEAKS (< 600px)
+   ========================================================= */
+@media (max-width: 600px) {
+  /* Ajustes Gerais do Cabeçalho e Botões */
+  .app-brand { width: 100%; justify-content: center; margin-bottom: 5px; }
+  .brand-text { padding-left: 10px; }
+  .moodle-title { font-size: 1.1rem; }
+  .header-controls { flex-direction: column; gap: 12px; }
+  .student-id-card { width: 100%; justify-content: space-between; padding: 8px 12px; }
+  .app-header .btn--ghost { width: 100%; justify-content: center; }
+
+  /* 🔥 CORREÇÃO: Drag & Drop em Coluna */
+  .dnd-row { flex-direction: column !important; }
+  .dnd-definition { border-right: none !important; border-bottom: 1px solid var(--border); padding: 12px !important; font-size: 0.9rem !important; }
+  .dnd-dropzone { flex: 1 1 auto !important; width: 100% !important; min-height: 70px; padding: 15px !important; }
+  .dnd-bank { padding: 10px !important; justify-content: center; }
+  .dnd-item { font-size: 0.85rem !important; padding: 8px 12px !important; }
+
+  /* Grelhas e Botões a ocuparem 100% da largura */
+  .control-group { grid-template-columns: 1fr !important; gap: 10px; }
+  .btn { width: 100%; justify-content: center; padding: 16px 20px; }
+  
+  .hud-grid { grid-template-columns: 1fr; gap: 10px; margin-bottom: 15px; }
+  .nav-map { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .nav-node { font-size: 0.75rem; border-radius: 6px; }
+
+  /* Textos da Pergunta e Respostas */
+  .q-title { font-size: 1.15rem; margin-bottom: 20px; }
+  .q-meta { flex-direction: column; align-items: flex-start !important; gap: 12px; }
+  #btnReportQ { position: absolute; right: 15px; top: 15px; margin: 0; }
+  .option-item { padding: 14px 15px; align-items: flex-start; }
+  .custom-radio, .custom-checkbox { margin-top: 2px; }
+
+  .toast-container { left: 16px; right: 16px; bottom: 16px; }
+  .toast { width: 100%; font-size: 0.85rem; padding: 12px 16px; }
+
+  /* Previne o Auto-Zoom no iPhone ao focar em inputs */
+  input, textarea, select { font-size: 16px !important; }
+}
+
+/* 🛑 Desativa os efeitos Hover em ecrãs táteis (Resolve botões "colados") */
+@media (hover: none) {
+  .btn:hover:not(:active), .glass-panel:hover, .option-item:hover:not(.selected), .nav-node:hover:not(.is-active) {
+    transform: none !important;
+    box-shadow: none !important;
+    border-color: var(--border) !important;
+  }
+  .option-item.selected { border-color: var(--primary) !important; }
+  .nav-node.is-active { transform: scale(1.1) !important; box-shadow: var(--shadow-neon) !important; }
+}
+
+/* 🛡️ Proteção contra as margens da Notch do iPhone (Safe Areas) */
+@supports (padding: max(0px)) {
+  .layout {
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    padding-left: max(15px, env(safe-area-inset-left));
+    padding-right: max(15px, env(safe-area-inset-right));
+  }
+  .toast-container {
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}

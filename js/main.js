@@ -62,6 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const topicosContainer = document.getElementById("topicosContainer");
   const modoEstudo = document.getElementById("modoEstudo");
 
+  // Elementos do Menu Lateral Mobile (Drawer)
+  const btnMobileSidebar = document.getElementById('btnMobileSidebar');
+  const btnCloseSidebar = document.getElementById('btnCloseSidebar');
+  const mobileSidebar = document.querySelector('.sidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
   let radarChartInstance = null;
 
   // ======================================================
@@ -306,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // PROCESSAMENTO E RENDERIZAÇÃO DO RESULTADO (100% DOM)
+  // PROCESSAMENTO E RENDERIZAÇÃO DO RESULTADO
   // ======================================================
   async function verificarRespostas(submissaoAutomatica = false) {
       if (!state.quizLoaded || state.quizSubmitted) return;
@@ -459,7 +465,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
-  // CONSTRUÇÃO BLINDADA DO QUIZ (SEM XSS / INNER_HTML)
+  // CONSTRUÇÃO BLINDADA DO QUIZ (SEM XSS)
   // ======================================================
   function renderCurrentQuestion() {
       if (!state.quizData.length || !quizContainer) return;
@@ -660,6 +666,28 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // ======================================================
+  // MENU LATERAL MOBILE (DRAWER)
+  // ======================================================
+  function toggleSidebar() {
+      if (!mobileSidebar) return;
+      const isOpen = mobileSidebar.classList.contains('is-open');
+      if (isOpen) {
+          mobileSidebar.classList.remove('is-open');
+          if(sidebarOverlay) sidebarOverlay.classList.remove('show');
+          document.body.style.overflow = ''; // Devolve o scroll normal ao fundo
+      } else {
+          mobileSidebar.classList.add('is-open');
+          if(sidebarOverlay) sidebarOverlay.classList.add('show');
+          document.body.style.overflow = 'hidden'; // Tranca o ecrã de trás para não mexer
+      }
+  }
+
+  if (btnMobileSidebar) btnMobileSidebar.addEventListener('click', toggleSidebar);
+  if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', toggleSidebar);
+  if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+
+  // Restantes Eventos da UI
   if (disciplinaSelect) disciplinaSelect.addEventListener("change", () => { carregarDisciplinaBase(); if (state.currentUser) carregarProgressoDaCloud(state.currentUser); });
   if (carregarQuizBtn) carregarQuizBtn.addEventListener("click", () => iniciarTeste("normal"));
   if (carregarFraquezasBtn) carregarFraquezasBtn.addEventListener("click", () => iniciarTeste("mistakes"));

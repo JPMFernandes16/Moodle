@@ -1,7 +1,7 @@
 {
   "id": "/",
   "name": "Moodle BIA | João Fernandes",
-  "short_name": "BIA OS.26",
+  "short_name": "BIA MOODLE",
   "description": "Dashboard premium de estudo preditivo do ISCAP.",
   "start_url": "./index.html",
   "scope": ".",

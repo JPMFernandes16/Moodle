@@ -2,14 +2,17 @@
 <html lang="pt-PT" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="robots" content="noindex, nofollow" />
   
   <title>Moodle BIA | João Fernandes</title>
   <meta name="description" content="Moodle SCAP 2026." />
   
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#e11d48" />
+  
+  <meta name="theme-color" content="#1a3051" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1320" media="(prefers-color-scheme: dark)">
+  
   <link rel="apple-touch-icon" href="image/logo.png">
   <link rel="icon" href="image/logo.png" type="image/png">
   
@@ -50,11 +53,11 @@
       </div>
       
       <div class="header-controls">
-        <button id="installAppBtn" class="btn btn--primary hidden" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; font-size: 0.75rem; box-shadow: 0 0 10px var(--primary-glow);" aria-label="Instalar Aplicação">📱 Instalar</button>
+        <button id="installAppBtn" class="btn btn--primary hidden" style="padding: 8px 16px; border-radius: var(--radius-pill); font-size: 0.75rem; box-shadow: 0 0 10px var(--primary-glow);" aria-label="Instalar Aplicação">📱 Instalar</button>
 
-        <button id="themeToggle" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px;" aria-label="Alternar Tema">🌗 Ambiente</button>
+        <button id="themeToggle" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill);" aria-label="Alternar Tema">🌗 Ambiente</button>
         
-        <button id="btnLogout" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); margin-right: 15px; color: var(--error); border-color: rgba(220, 38, 38, 0.3);" aria-label="Terminar Sessão">🚪 Sair</button>
+        <button id="btnLogout" class="btn btn--ghost" style="padding: 8px 16px; border-radius: var(--radius-pill); color: var(--error); border-color: rgba(220, 38, 38, 0.3);" aria-label="Terminar Sessão">🚪 Sair</button>
         
         <div class="student-id-card">
           <div id="streakCounter" style="display: flex; align-items: center; gap: 5px; color: #f97316; font-weight: 800; margin-right: 5px;" title="Dias consecutivos de estudo">
@@ -72,6 +75,8 @@
     <main class="layout">
       
       <section class="exam-area">
+        
+        <button id="btnMobileSidebar" class="btn btn--primary hidden-desktop" style="width: 100%; margin-bottom: 24px; box-shadow: var(--shadow-neon);">📊 Ver Estatísticas e Navegação</button>
         
         <div id="configPanel" class="glass-panel" style="margin-bottom: 24px; border-top: 4px solid var(--primary);">
           <div class="widget-header" style="margin-bottom: 15px; border: none; padding: 0;">
@@ -112,7 +117,7 @@
         </div>
 
         <div id="activeExamPanel" class="glass-panel hidden" style="display: none; margin-bottom: 24px; border-top: 4px solid var(--warning); padding: 15px 24px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
                 <strong style="color: var(--text-main); font-size: 1.1rem; font-weight: 800;">📝 Avaliação em Curso</strong>
                 <button id="submeterQuiz" class="btn btn--primary" style="background: var(--success); box-shadow: 0 0 15px rgba(16,185,129,0.3);">Submeter Teste ✅</button>
             </div>
@@ -144,6 +149,8 @@
       </section>
 
       <aside class="sidebar" style="position: sticky; top: 90px; align-self: start;">
+        
+        <button id="btnCloseSidebar" class="btn btn--ghost hidden-desktop" style="width: 100%; margin-bottom: 20px; border-color: var(--error); color: var(--error);">❌ Fechar Menu</button>
         
         <section class="glass-panel" style="margin-bottom: 24px;">
           <div class="widget-header">
@@ -231,6 +238,8 @@
     </div>
   </div>
 
+  <div id="sidebarOverlay" class="sidebar-overlay"></div>
+  
   <div id="toast-container" class="toast-container"></div>
   
 </body>
