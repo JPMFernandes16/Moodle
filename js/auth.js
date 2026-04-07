@@ -16,16 +16,22 @@ export function initAuth() {
     // 1. GUARDIÃO DE ESTADO (Verificar se a sessão está ativa)
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // Sessão ativa! Esconder o ecrã de bloqueio
-            securityLayer.style.display = "none";
-            console.log("Sessão ativa com:", user.email);
+            // Sessão ativa: Desvanecer o ecrã de bloqueio suavemente
+            securityLayer.style.opacity = "0";
+            securityLayer.style.visibility = "hidden";
+            setTimeout(() => {
+                securityLayer.style.display = "none";
+            }, 500);
         } else {
-            // REGRAS DE SEGURANÇA FRONTEND: Sem sessão. Trancar tudo!
+            // Sem sessão: Mostrar ecrã de bloqueio
             securityLayer.style.display = "flex";
-            securityLayer.style.opacity = "1";
-            securityLayer.style.visibility = "visible";
+            // Um pequeno atraso para permitir que o display: flex seja aplicado antes de animar a opacidade
+            setTimeout(() => {
+                securityLayer.style.opacity = "1";
+                securityLayer.style.visibility = "visible";
+            }, 10);
             
-            // Limpar dados sensíveis por precaução (Segurança Extra para partilha de dispositivo)
+            // Limpar dados sensíveis
             emailInput.value = ""; 
             pwdInput.value = "";
             emailInput.disabled = false;
@@ -39,7 +45,7 @@ export function initAuth() {
     // 1.5 UX Extra: Permitir fazer login carregando no "Enter" no teclado
     pwdInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
-            e.preventDefault(); // Evita recarregar a página acidentalmente
+            e.preventDefault(); 
             btnUnlock.click();
         }
     });
@@ -65,18 +71,9 @@ export function initAuth() {
             // Pedido ao Firebase
             await signInWithEmailAndPassword(auth, email, password);
             
-            // Sucesso!
             playClick();
             pwdError.style.display = "none";
-            securityLayer.style.opacity = "0";
-            securityLayer.style.visibility = "hidden";
-            
-            // Reativar os campos silenciosamente no fundo após a animação (0.5s)
-            setTimeout(() => {
-                securityLayer.style.display = "none";
-                emailInput.disabled = false;
-                pwdInput.disabled = false;
-            }, 500);
+            // A animação de saída agora é tratada automaticamente pelo onAuthStateChanged!
             
         } catch (error) {
             console.error("Erro no login:", error.code);
@@ -103,7 +100,7 @@ export function initAuth() {
     if (btnLogout) {
         btnLogout.addEventListener("click", async () => {
             try {
-                await signOut(auth); // Pede à Cloud para invalidar a sessão
+                await signOut(auth); 
                 playClick();
             } catch (error) {
                 console.error("Erro ao terminar sessão:", error);
