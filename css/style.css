@@ -481,3 +481,39 @@ h1, h2, h3, p { margin-top: 0; }
   .btn { padding: 16px 24px; }
   .option-item { padding: 18px 20px; }
 }
+
+/* =========================================================
+   11. TOAST NOTIFICATIONS (NOTIFICAÇÕES PREMIUM)
+   ========================================================= */
+.toast-container { 
+  position: fixed; 
+  bottom: 24px; 
+  right: 24px; 
+  z-index: 10000; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px; 
+  pointer-events: none; /* Para não bloquear cliques na página */
+}
+
+.toast { 
+  background: var(--bg-card); 
+  color: var(--text-main); 
+  padding: 16px 24px; 
+  border-radius: var(--radius-sm); 
+  border-left: 4px solid var(--primary); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  transform: translateX(120%); 
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+  font-weight: 600; 
+  font-size: 0.95rem; 
+  pointer-events: all; 
+}
+
+.toast.show { transform: translateX(0); }
+.toast.success { border-left-color: var(--success); }
+.toast.error { border-left-color: var(--error); }
+.toast.warning { border-left-color: var(--warning); }
