@@ -1,7 +1,7 @@
 // js/firebaseManager.js
 import { db } from './firebase-config.js';
 import { doc, getDoc, setDoc, collection, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-import { state, PERFIS_ESTUDO } from './store.js';
+import { state } from './store.js'; // 🔥 CORREÇÃO: Removido o PERFIS_ESTUDO daqui!
 
 export async function carregarTemaDaCloud(user) {
     const prefsRef = doc(db, "users", user.uid, "settings", "preferences");
@@ -57,7 +57,8 @@ export async function saveScoreToLeaderboard(disciplina, score) {
     const snap = await getDoc(ref);
     if(!snap.exists() || snap.data().score < parseFloat(score)) {
         await setDoc(ref, {
-            nome: PERFIS_ESTUDO[state.currentUser.email]?.nome || state.currentUser.email.split('@')[0],
+            // 🔥 CORREÇÃO: Agora usa o nome dinâmico da base de dados!
+            nome: state.userProfile?.nome || state.currentUser.email.split('@')[0],
             score: parseFloat(score),
             date: new Date().toISOString()
         });
@@ -84,24 +85,18 @@ export async function saveProgressToCloud(disciplina, correctIds, wrongIds) {
 }
 
 export async function fetchUserProfile(user) {
-    // Vamos procurar o perfil do utilizador na coleção "users" usando o UID dele
     const docRef = doc(db, "users", user.uid);
     const snap = await getDoc(docRef);
     
     if (snap.exists() && snap.data().disciplinas) {
-        // Se o perfil existe na Cloud e tem disciplinas, devolvemos os dados
         return snap.data();
     } else {
-        // Se for o 1º login ou a pessoa não tiver perfil, criamos um Perfil Base ("Fallback")
         const defaultProfile = {
-            nome: user.email.split('@')[0], // Usa o início do email como nome (ex: "joao")
+            nome: user.email.split('@')[0], 
             curso: "Estudante",
             disciplinas: [{ value: "BIA_BIAT", text: "Business Intelligence & Analytics Tools" }]
         };
-        
-        // Guardamos automaticamente este perfil base na Cloud para a próxima vez
         await setDoc(docRef, defaultProfile, { merge: true });
-        
         return defaultProfile;
     }
 }
