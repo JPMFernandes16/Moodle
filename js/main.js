@@ -668,18 +668,18 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaContainer.style.flexDirection = "column";
       
       if (type === 'pdf') {
-          mediaModalTitle.textContent = "📄 Resumo da Disciplina";
+          mediaModalTitle.textContent = "Resumo da Disciplina";
           mediaContainer.innerHTML = `
             <div style="padding: 15px; text-align: center; background: var(--secondary); border-bottom: 1px solid var(--border);">
                 <p style="margin: 0 0 10px 0; font-size: 0.8rem; color: var(--text-muted);">No telemóvel o PDF pode não carregar corretamente.</p>
                 <a href="pdfs/${state.currentDisciplina}.pdf" target="_blank" class="btn btn--primary" style="padding: 10px 20px; font-size: 0.85rem; width: 100%; border-radius: 8px;">
-                    📥 Abrir no Visualizador do Telemóvel
+                    Abrir no Visualizador
                 </a>
             </div>
             <iframe src="pdfs/${state.currentDisciplina}.pdf" width="100%" style="border: none; flex: 1; min-height: 50vh;"></iframe>
           `;
       } else if (type === 'video') {
-          mediaModalTitle.textContent = "🎬 Vídeo da Disciplina";
+          mediaModalTitle.textContent = "Vídeo da Disciplina";
           mediaContainer.innerHTML = `
             <video controls autoplay width="100%" height="100%" style="background: black; outline: none; flex: 1;">
                 <source src="videos/${state.currentDisciplina}.mp4" type="video/mp4">
