@@ -101,8 +101,8 @@
           <p id="lastUpdateText" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; margin-bottom: 0; text-align: right; font-style: italic;"></p>
           
           <div class="control-group" style="margin-top: 15px; align-items: stretch;">
-            <a id="btnLerResumo" href="#" target="_blank" class="btn btn--ghost">📄 Resumo </a>
-            <a id="btnVerVideo" href="#" target="_blank" class="btn btn--ghost">🎬 Vídeo</a>
+            <button id="btnLerResumo" class="btn btn--ghost">📄 Resumo</button>
+            <button id="btnVerVideo" class="btn btn--ghost">🎬 Vídeo</button>
             <button id="carregarFraquezas" class="btn btn--ghost">🎯 Revisão de Erros</button>
             <button id="retomarQuizBtn" class="btn btn--primary hidden" style="flex-grow: 1; background: var(--warning); box-shadow: 0 0 15px rgba(217,119,6,0.3);">Continuar Último Teste</button>
           </div>
@@ -214,17 +214,16 @@
     <button id="scrollTopBtn" class="btn btn--primary" style="position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; padding:0; display: none; z-index: 50;" aria-label="Voltar ao topo">↑</button>
   </div>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-          .then(registration => console.log('ServiceWorker registado com sucesso'))
-          .catch(err => console.log('Falha no registo do ServiceWorker:', err));
-      });
-    }
-  </script>
-
-  <script type="module" src="js/main.js"></script>
+  <div id="mediaModal" class="confirm-overlay" style="display: none;">
+    <div class="confirm-box" style="max-width: 1000px; width: 95%; height: 85vh; display: flex; flex-direction: column; padding: 15px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+        <h3 id="mediaModalTitle" style="margin: 0; color: var(--primary);">Visualizador</h3>
+        <button id="closeMediaModal" class="btn btn--ghost" style="padding: 6px 16px; font-size: 0.8rem;">❌ Fechar</button>
+      </div>
+      <div id="mediaContainer" style="flex: 1; border-radius: var(--radius-sm); overflow: hidden; background: var(--bg-body); position: relative;">
+        </div>
+    </div>
+  </div>
 
   <div id="customConfirmOverlay" class="confirm-overlay">
     <div class="confirm-box">
@@ -241,6 +240,18 @@
   <div id="sidebarOverlay" class="sidebar-overlay"></div>
   
   <div id="toast-container" class="toast-container"></div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => console.log('ServiceWorker registado com sucesso'))
+          .catch(err => console.log('Falha no registo do ServiceWorker:', err));
+      });
+    }
+  </script>
+
+  <script type="module" src="js/main.js"></script>
   
 </body>
 </html>

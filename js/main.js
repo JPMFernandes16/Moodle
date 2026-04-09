@@ -62,6 +62,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const topicosContainer = document.getElementById("topicosContainer");
   const modoEstudo = document.getElementById("modoEstudo");
 
+  // Botões de Mídia
+  const btnLerResumo = document.getElementById("btnLerResumo");
+  const btnVerVideo = document.getElementById("btnVerVideo");
+
+  // Modal de Mídia
+  const mediaModal = document.getElementById("mediaModal");
+  const closeMediaModal = document.getElementById("closeMediaModal");
+  const mediaContainer = document.getElementById("mediaContainer");
+  const mediaModalTitle = document.getElementById("mediaModalTitle");
+
   // Elementos do Menu Lateral Mobile (Drawer)
   const btnMobileSidebar = document.getElementById('btnMobileSidebar');
   const btnCloseSidebar = document.getElementById('btnCloseSidebar');
@@ -183,8 +193,9 @@ document.addEventListener("DOMContentLoaded", () => {
           
           if (dictSearchInput && disciplinaSelect) dictSearchInput.placeholder = `Pesquisar em ${disciplinaSelect.options[disciplinaSelect.selectedIndex].text}...`;
 
-          const btnLerResumo = document.getElementById("btnLerResumo");
-          if (btnLerResumo) { btnLerResumo.href = `pdfs/${state.currentDisciplina}.pdf`; btnLerResumo.removeAttribute("download"); btnLerResumo.setAttribute("target", "_blank"); }
+          // Limpar atributos antigos para garantir que a lógica do modal assume o controlo
+          if (btnLerResumo) { btnLerResumo.removeAttribute("href"); btnLerResumo.removeAttribute("target"); }
+          if (btnVerVideo) { btnVerVideo.removeAttribute("href"); btnVerVideo.removeAttribute("target"); }
           
           if(dictSearchInput) procurarNoDicionario();
           updateGlobalProgressUI();
@@ -644,6 +655,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ======================================================
+  // VISUALIZADOR MULTIMÉDIA (PDF & VÍDEO)
+  // ======================================================
+  function openMediaModal(type) {
+      if (!mediaModal || !state.currentDisciplina) return;
+      
+      mediaContainer.innerHTML = ""; // Limpa memória
+      mediaModal.style.display = 'flex';
+      
+      if (type === 'pdf') {
+          mediaModalTitle.textContent = "📄 Resumo da Disciplina";
+          mediaContainer.innerHTML = `<iframe src="pdfs/${state.currentDisciplina}.pdf" width="100%" height="100%" style="border: none;"></iframe>`;
+      } else if (type === 'video') {
+          mediaModalTitle.textContent = "🎬 Vídeo da Disciplina";
+          mediaContainer.innerHTML = `
+            <video controls autoplay width="100%" height="100%" style="background: black; outline: none;">
+                <source src="videos/${state.currentDisciplina}.mp4" type="video/mp4">
+                O teu browser não suporta a reprodução de vídeo.
+            </video>`;
+      }
+
+      setTimeout(() => mediaModal.classList.add('show'), 10);
+      document.body.style.overflow = "hidden";
+  }
+
+  if (closeMediaModal) {
+      closeMediaModal.addEventListener("click", () => {
+          mediaModal.classList.remove('show');
+          setTimeout(() => {
+              mediaModal.style.display = 'none';
+              mediaContainer.innerHTML = ""; 
+              document.body.style.overflow = ""; 
+          }, 300);
+      });
+  }
+
+  // ======================================================
   // EVENTOS E LÓGICA DE INTERFACE EXTRA
   // ======================================================
   function applyTheme(theme) { document.documentElement.setAttribute("data-theme", theme); localStorage.setItem("iscap-theme", theme); }
@@ -675,11 +722,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isOpen) {
           mobileSidebar.classList.remove('is-open');
           if(sidebarOverlay) sidebarOverlay.classList.remove('show');
-          document.body.style.overflow = ''; // Devolve o scroll normal ao fundo
+          document.body.style.overflow = ''; 
       } else {
           mobileSidebar.classList.add('is-open');
           if(sidebarOverlay) sidebarOverlay.classList.add('show');
-          document.body.style.overflow = 'hidden'; // Tranca o ecrã de trás para não mexer
+          document.body.style.overflow = 'hidden'; 
       }
   }
 
@@ -692,6 +739,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (carregarQuizBtn) carregarQuizBtn.addEventListener("click", () => iniciarTeste("normal"));
   if (carregarFraquezasBtn) carregarFraquezasBtn.addEventListener("click", () => iniciarTeste("mistakes"));
   if (btnToggleFiltros) btnToggleFiltros.addEventListener('click', (e) => { e.preventDefault(); const isHidden = topicosContainer.style.display === 'none' || topicosContainer.style.display === ''; topicosContainer.style.display = isHidden ? 'block' : 'none'; });
+
+  // Eventos de Mídia (Modal)
+  if (btnLerResumo) btnLerResumo.addEventListener("click", (e) => { e.preventDefault(); openMediaModal('pdf'); });
+  if (btnVerVideo) btnVerVideo.addEventListener("click", (e) => { e.preventDefault(); openMediaModal('video'); });
 
   if (retomarQuizBtn) {
       retomarQuizBtn.addEventListener("click", () => {
