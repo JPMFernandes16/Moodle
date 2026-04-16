@@ -4,605 +4,772 @@
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "Evolucao_Digital_e_Ameacas": 10,
-    "Fundamentos_e_Triade_CIA": 5,
-    "Frameworks_NIST_e_ISO27001": 15,
-    "Privacidade_e_RGPD": 10
+    "Evolucao_Digital_e_Ameacas": 4,
+    "Fundamentos_e_Triade_CIA": 4,
+    "Frameworks_NIST_e_ISO27001": 5,
+    "Privacidade_e_RGPD": 5
   },
   "perguntas": [
     {
       "id": "SP_001",
       "tipo": "true_false",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "A 'Digital Transformation' (Transformação Digital) e a 'Digitization' (Conversão de Dados) referem-se ao mesmo processo, consistindo ambas na passagem de documentos de papel para o formato digital, como o PDF.",
+      "pergunta": "A 'Digital Transformation' (Transformação Digital) e a 'Digitization' (Conversão de Dados) referem-se ao mesmo processo, consistindo ambas na passagem de documentos de papel para o formato digital, como PDF.",
       "opcoes": [
         "Verdadeiro",
         "Falso"
       ],
       "resposta_correta": "Falso",
-      "justificacao": "A passagem de papel para formato digital é apenas a 'Digitization'. A 'Digital Transformation' é o nível mais avançado, envolvendo uma mudança estratégica e cultural profunda em toda a organização."
+      "justificacao": "A passagem de papel para formato digital é apenas a Digitization. A Digital Transformation envolve mudança estratégica e cultural em toda a organização."
     },
     {
       "id": "SP_002",
-      "tipo": "drag_and_drop",
+      "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Os cibercriminosos utilizam diferentes abordagens dependendo do seu objetivo. Associa o tipo de ameaça à sua descrição correta.",
-      "pares": [
-        {
-          "conceito": "Advanced Persistent Threats (APTs)",
-          "definicao": "Ataque prolongado e altamente direcionado, onde o invasor permanece indetetável para roubar informações contínuas sem causar danos imediatos."
-        },
-        {
-          "conceito": "Supply Chain Attacks",
-          "definicao": "Ataque que não atinge o alvo diretamente, mas explora vulnerabilidades num fornecedor terceiro para aceder à empresa principal."
-        },
-        {
-          "conceito": "Zero-Day Exploit",
-          "definicao": "Ataque que aproveita uma falha de segurança num software que ainda é desconhecida pelos próprios criadores do programa."
-        }
+      "pergunta": "Uma empresa começa por digitalizar faturas em papel e depois cria um fluxo automático em que o sistema valida e aprova faturas sem intervenção humana. Como se chama esta segunda fase?",
+      "opcoes": [
+        "Digitization",
+        "Digitalization",
+        "Digital Transformation",
+        "Forensics"
       ],
-      "justificacao": "APTs são furtivos e focados em espionagem. Supply Chain ataca os fornecedores (o elo mais fraco). Zero-Day foca-se no aproveitamento de vulnerabilidades sem correção disponível."
+      "resposta_correta": "Digitalization",
+      "justificacao": "A Digitalization corresponde ao uso de informação digital e tecnologia para melhorar ou automatizar processos."
     },
     {
       "id": "SP_003",
       "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Numa segunda-feira de manhã, todos os computadores de uma empresa apresentam um ecrã vermelho a exigir o pagamento de 50.000 euros em Bitcoin para devolver o acesso aos ficheiros de faturação encriptados. Que tipo de ameaça ocorreu?",
+      "pergunta": "Quando os sistemas da empresa passam a comunicar em tempo real com os sistemas dos fornecedores, alterando profundamente a forma como o negócio funciona, estamos perante:",
       "opcoes": [
-        "Data Breaches",
-        "Ransomware Attacks",
-        "Insider Threats",
-        "Social Engineering"
+        "Digitization",
+        "Digitalization",
+        "Digital Transformation",
+        "Phishing"
       ],
-      "resposta_correta": "Ransomware Attacks",
-      "justificacao": "O Ransomware é um malware que sequestra e bloqueia o acesso aos ficheiros da vítima até que um resgate seja pago."
+      "resposta_correta": "Digital Transformation",
+      "justificacao": "A transformação digital implica mudança cultural, estratégica e operacional na organização."
     },
     {
       "id": "SP_004",
       "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Um colaborador recebe um SMS a informar que a sua conta bancária foi bloqueada por motivos de segurança, contendo um link para um site visualmente idêntico ao do seu banco onde lhe pedem a password. Qual é o nome específico desta técnica?",
+      "pergunta": "Qual destas opções traduz melhor a definição de cibersegurança apresentada na aula?",
       "opcoes": [
-        "Advanced Phishing Techniques",
-        "AI Misuse",
-        "IoT Vulnerability",
-        "Supply Chain Attacks"
+        "Conjunto de técnicas para aumentar vendas online.",
+        "Prática de proteger redes, dispositivos, aplicações, sistemas e dados contra ameaças cibernéticas.",
+        "Método para armazenar toda a informação em cloud.",
+        "Conjunto de regras apenas para programadores."
       ],
-      "resposta_correta": "Advanced Phishing Techniques",
-      "justificacao": "A criação de sistemas falsos (como um site igual ao do banco) enviados por SMS ou email para enganar a vítima e obter credenciais é um caso clássico de Phishing."
+      "resposta_correta": "Prática de proteger redes, dispositivos, aplicações, sistemas e dados contra ameaças cibernéticas.",
+      "justificacao": "Essa é a definição central apresentada nos slides."
     },
     {
       "id": "SP_005",
-      "tipo": "true_false",
+      "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "A implementação de câmaras de vigilância conectadas à internet nos escritórios de uma empresa, mantendo as passwords que vêm de fábrica (ex: admin/admin), é um exemplo prático de uma 'IoT Vulnerability'.",
+      "pergunta": "Numa segunda-feira de manhã, todos os computadores de uma empresa apresentam um ecrã a exigir pagamento em Bitcoin para recuperar os ficheiros encriptados. Que tipo de ameaça ocorreu?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Data Breach",
+        "Ransomware Attack",
+        "Insider Threat",
+        "SOAR"
       ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "Dispositivos da Internet das Coisas (IoT) frequentemente possuem redes ou senhas inseguras de fábrica, representando um risco elevado de invasão se não forem alteradas."
+      "resposta_correta": "Ransomware Attack",
+      "justificacao": "O ransomware sequestra dados e exige um resgate para restaurar o acesso."
     },
     {
       "id": "SP_006",
       "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "O Diretor Financeiro, insatisfeito com a empresa, decide descarregar propositadamente a base de dados de clientes para uma PEN Drive e vendê-la à concorrência antes de se despedir. Como se categoriza esta ameaça?",
+      "pergunta": "Um colaborador recebe uma mensagem com um link para um site falso, visualmente igual ao do banco, onde lhe pedem a password. Isto é um exemplo de:",
       "opcoes": [
-        "Nation-State Cyber Attacks",
-        "Cloud Security Risks",
-        "Insider Threats",
-        "Zero-Day Exploit"
+        "Advanced Phishing Techniques",
+        "IoT Vulnerability",
+        "Physical Attack",
+        "Power BI Row-Level Security"
       ],
-      "resposta_correta": "Insider Threats",
-      "justificacao": "Insider Threats (Ameaças Internas) ocorrem quando o ataque ou o dano parte de dentro da própria organização, constituindo uma quebra de confiança."
+      "resposta_correta": "Advanced Phishing Techniques",
+      "justificacao": "O uso de páginas falsas para obter credenciais é um caso típico de phishing avançado."
     },
     {
       "id": "SP_007",
-      "tipo": "drag_and_drop",
+      "tipo": "true_false",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Faz corresponder os seguintes conceitos de ciberataques modernos às suas respetivas descrições táticas.",
-      "pares": [
-        {
-          "conceito": "AI-Powered Cyber Threats",
-          "definicao": "Utilização de ferramentas de Inteligência Artificial para automatizar e acelerar ataques, tornando-os mais sofisticados e difíceis de detetar."
-        },
-        {
-          "conceito": "Data Breaches and Privacy Violations",
-          "definicao": "Acesso e roubo de informações confidenciais ou dados pessoais de clientes partilhados sem autorização."
-        },
-        {
-          "conceito": "Mobile Malware and Vulnerabilities",
-          "definicao": "Programas criados especificamente para atacar sistemas Android e iOS, roubando dados ou acedendo a contas bancárias nos smartphones."
-        }
+      "pergunta": "A utilização de câmaras IP ligadas à internet com passwords de fábrica, como admin/admin, representa uma vulnerabilidade IoT.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
       ],
-      "justificacao": "A IA é usada para escalar ataques. Data Breaches referem-se à fuga de dados em si. Ameaças mobile têm como alvo direto os dispositivos móveis."
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "Dispositivos IoT com credenciais fracas ou inseguras representam risco elevado."
     },
     {
       "id": "SP_008",
       "tipo": "multiple_choice",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "O departamento de contabilidade passou a usar faturas digitais para criar um fluxo de trabalho automatizado, onde o sistema aprova pagamentos até 100€ sem qualquer intervenção humana. Qual é o conceito que descreve esta automatização de processos?",
+      "pergunta": "O diretor financeiro, insatisfeito com a empresa, descarrega a base de dados de clientes para uma PEN e vende-a à concorrência. Como se classifica esta ameaça?",
       "opcoes": [
-        "Digitization",
-        "Digitalization",
-        "Digital Transformation",
-        "Behavioral Analytics"
+        "Nation-State Cyber Attack",
+        "Cloud Security Risk",
+        "Insider Threat",
+        "Zero-Day Exploit"
       ],
-      "resposta_correta": "Digitalization",
-      "justificacao": "A 'Digitalization' (Transformação de Processos) é o uso de informações e dados digitais para melhorar e automatizar processos de negócio."
+      "resposta_correta": "Insider Threat",
+      "justificacao": "A ameaça vem de dentro da organização, por parte de alguém com acesso interno."
     },
     {
       "id": "SP_009",
-      "tipo": "multiple_choice",
+      "tipo": "drag_and_drop",
       "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "O ataque cibernético 'NotPetya' causou o caos nos terminais e portos de carga mundiais da gigante marítima Maersk, obrigando a empresa a reinstalar milhares de servidores. Este é um exemplo clássico dos impactos devastadores de que tipo de incidente?",
-      "opcoes": [
-        "Falha de refrigeração no datacenter.",
-        "Ataque destrutivo em larga escala a infraestruturas de negócio.",
-        "Roubo exclusivo de criptomoedas.",
-        "Phishing direcionado apenas a um colaborador isolado."
+      "pergunta": "Associa o tipo de ameaça à sua descrição correta.",
+      "pares": [
+        {
+          "conceito": "Advanced Persistent Threats (APTs)",
+          "definicao": "Ataque prolongado e altamente direcionado, onde o invasor permanece indetetável para roubar informações de forma contínua."
+        },
+        {
+          "conceito": "Supply Chain Attacks",
+          "definicao": "Ataque que compromete um fornecedor ou parceiro para chegar ao alvo principal."
+        },
+        {
+          "conceito": "Zero-Day Exploit",
+          "definicao": "Exploração de uma falha de segurança ainda desconhecida pelos criadores ou sem correção disponível."
+        }
       ],
-      "resposta_correta": "Ataque destrutivo em larga escala a infraestruturas de negócio.",
-      "justificacao": "O ataque NotPetya foi um malware altamente destrutivo que paralisou operações globais de multinacionais, ilustrando os danos massivos de ciberataques modernos."
+      "justificacao": "Estas três ameaças distinguem-se pela duração, vetor de entrada e estado da vulnerabilidade explorada."
     },
     {
       "id": "SP_010",
       "tipo": "multiple_choice",
-      "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Um ciberataque que utiliza esquemas para comprometer carteiras virtuais ou explorar vulnerabilidades em redes blockchain e plataformas de câmbio é categorizado como:",
+      "macro_tema": "Fundamentos_e_Triade_CIA",
+      "pergunta": "Permitir que apenas funcionários de RH tenham acesso a salários e dados pessoais dos trabalhadores protege diretamente que princípio da tríade CIA?",
       "opcoes": [
-        "Cryptocurrency-Related Threats",
-        "AI Misuse",
-        "Social Engineering",
-        "IoT Vulnerability"
+        "Confidencialidade",
+        "Integridade",
+        "Disponibilidade",
+        "Escalabilidade"
       ],
-      "resposta_correta": "Cryptocurrency-Related Threats",
-      "justificacao": "Estas ameaças são direcionadas especificamente ao ecossistema de ativos digitais, como a Bitcoin e respetivas plataformas."
+      "resposta_correta": "Confidencialidade",
+      "justificacao": "A confidencialidade garante que apenas quem necessita da informação para a sua função pode aceder a ela."
     },
     {
       "id": "SP_011",
       "tipo": "multiple_choice",
       "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "Para garantir que o ficheiro de cálculo de bónus anuais dos funcionários não sofre qualquer alteração não autorizada (seja por um erro do sistema ou por um colaborador mal-intencionado), um gestor de TI deve focar-se em que princípio de segurança?",
+      "pergunta": "Garantir que um documento importante só pode ser alterado por utilizadores autorizados e que as alterações ficam registadas está mais relacionado com:",
       "opcoes": [
         "Confidencialidade",
         "Integridade",
         "Disponibilidade",
-        "Autenticidade"
+        "Anonimização"
       ],
       "resposta_correta": "Integridade",
-      "justificacao": "A Integridade garante a precisão e consistência da informação, assegurando que esta não é alterada indevidamente."
+      "justificacao": "A integridade assegura precisão e consistência da informação, evitando alterações indevidas."
     },
     {
       "id": "SP_012",
-      "tipo": "true_false",
+      "tipo": "multiple_choice",
       "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "De forma a promover a transparência empresarial, o princípio da Confidencialidade dita que os relatórios financeiros do conselho de administração devem estar numa pasta pública acessível a todos os estagiários da empresa.",
+      "pergunta": "Uma loja online reforça a infraestrutura para continuar funcional durante uma grande promoção. Que pilar da tríade CIA está a ser reforçado?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Confidencialidade",
+        "Integridade",
+        "Disponibilidade",
+        "Finalidade"
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "A Confidencialidade garante exatamente o oposto: os utilizadores devem ter acesso apenas à informação estritamente necessária para executar a sua função."
+      "resposta_correta": "Disponibilidade",
+      "justificacao": "Disponibilidade significa garantir que sistemas e informação estão acessíveis quando necessário."
     },
     {
       "id": "SP_013",
-      "tipo": "drag_and_drop",
+      "tipo": "true_false",
       "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "Associa o pilar da Tríade CIA ao cenário corporativo que melhor o representa em ação.",
-      "pares": [
-        {
-          "conceito": "Confidencialidade",
-          "definicao": "Um analista de marketing tenta abrir a folha de salários da direção, mas o sistema exige uma password que ele não possui, bloqueando o acesso."
-        },
-        {
-          "conceito": "Integridade",
-          "definicao": "O sistema de transações bancárias impede que uma transferência de 100€ seja alterada no caminho e chegue ao destino com o valor de 1000€."
-        },
-        {
-          "conceito": "Disponibilidade",
-          "definicao": "A arquitetura de servidores de uma loja online garante que o site não vai abaixo e continua a vender mesmo com um pico de milhões de acessos na Black Friday."
-        }
+      "pergunta": "Um ataque DoS que bloqueia o acesso ao site da empresa é uma ameaça direta à Disponibilidade.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
       ],
-      "justificacao": "A Confidencialidade barra os acessos indevidos. A Integridade impede modificações não autorizadas. A Disponibilidade garante que o serviço funciona de forma contínua."
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "O objetivo do DoS é tornar o serviço inacessível para utilizadores legítimos."
     },
     {
       "id": "SP_014",
-      "tipo": "multiple_choice",
-      "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "A implementação de sistemas redundantes (servidores de backup) para garantir que as operações do armazém não param no caso de uma falha elétrica protege diretamente que princípio de segurança?",
-      "opcoes": [
-        "Confidencialidade",
-        "Auditoria",
-        "Disponibilidade",
-        "Privacidade"
-      ],
-      "resposta_correta": "Disponibilidade",
-      "justificacao": "Assegurar que a infraestrutura e os dados estão acessíveis sempre que os processos de negócio precisam deles é a definição prática de Disponibilidade."
-    },
-    {
-      "id": "SP_015",
       "tipo": "true_false",
       "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "Um ataque de negação de serviço (DoS) que envia tráfego massivo para o site da empresa até este bloquear e ficar inacessível para os clientes legítimos é uma ameaça direta à Integridade dos dados.",
+      "pergunta": "Um vírus que modifica relatórios financeiros afeta sobretudo a Confidencialidade.",
       "opcoes": [
         "Verdadeiro",
         "Falso"
       ],
       "resposta_correta": "Falso",
-      "justificacao": "Um ataque DoS foca-se em sobrecarregar recursos e derrubar o acesso, constituindo uma ameaça direta à Disponibilidade, e não à Integridade (os dados não estão a ser modificados, apenas inacessíveis)."
+      "justificacao": "Quando a informação é alterada ou corrompida, a principal dimensão afetada é a Integridade."
+    },
+    {
+      "id": "SP_015",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Fundamentos_e_Triade_CIA",
+      "pergunta": "Associa o pilar da tríade CIA ao cenário correto.",
+      "pares": [
+        {
+          "conceito": "Confidencialidade",
+          "definicao": "Um analista sem autorização não consegue abrir a folha de salários."
+        },
+        {
+          "conceito": "Integridade",
+          "definicao": "O sistema impede que uma transferência de 100€ seja alterada para 1000€."
+        },
+        {
+          "conceito": "Disponibilidade",
+          "definicao": "O website continua operacional apesar de um pico muito elevado de tráfego."
+        }
+      ],
+      "justificacao": "São exemplos clássicos da aplicação prática da tríade CIA em contexto empresarial."
     },
     {
       "id": "SP_016",
       "tipo": "multiple_choice",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Após concluir que os funcionários clicam frequentemente em links suspeitos, o departamento de TI organiza sessões obrigatórias de formação para os ensinar a reconhecer tentativas de Phishing. No framework de cibersegurança NIST, esta ação enquadra-se em que fase?",
+      "macro_tema": "Fundamentos_e_Triade_CIA",
+      "pergunta": "Qual destas situações representa melhor uma quebra de Confidencialidade?",
       "opcoes": [
-        "Identificar (Identify)",
-        "Proteger (Protect)",
-        "Detetar (Detect)",
-        "Recuperar (Recover)"
+        "Um intruso lê dados salariais sem permissão.",
+        "Um malware altera números num relatório.",
+        "O site fica indisponível durante duas horas.",
+        "O backup é restaurado com sucesso."
       ],
-      "resposta_correta": "Proteger (Protect)",
-      "justificacao": "A fase de Proteção engloba a implementação de medidas preventivas, como políticas de segurança e a sensibilização e formação ativa dos colaboradores."
+      "resposta_correta": "Um intruso lê dados salariais sem permissão.",
+      "justificacao": "Acesso indevido a informação sensível é uma quebra de confidencialidade."
     },
     {
       "id": "SP_017",
-      "tipo": "true_false",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "No modelo NIST, a fase de 'Responder' (Respond) lida com a elaboração de planos de recuperação a longo prazo e backups offline, enquanto a fase de 'Recuperar' foca-se apenas na comunicação urgente à polícia durante o ataque.",
+      "tipo": "multiple_choice",
+      "macro_tema": "Fundamentos_e_Triade_CIA",
+      "pergunta": "Qual destas medidas reforça mais diretamente a Integridade da informação?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Controlo de versões e registo de alterações.",
+        "Servidores redundantes.",
+        "Aumento do espaço em disco.",
+        "Campanha de marketing por email."
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "É exatamente o inverso. A fase de 'Responder' trata das ações imediatas face a um incidente (comunicação, contenção). 'Recuperar' trata de restaurar os serviços normais pós-incidente e aplicar melhorias estruturais."
+      "resposta_correta": "Controlo de versões e registo de alterações.",
+      "justificacao": "Essas medidas ajudam a garantir consistência, precisão e rastreabilidade das alterações."
     },
     {
       "id": "SP_018",
-      "tipo": "drag_and_drop",
+      "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Associa o cenário prático vivido pela equipa de segurança à fase correta do framework NIST.",
-      "pares": [
-        {
-          "conceito": "Identificar (Identify)",
-          "definicao": "A equipa passa duas semanas a fazer o mapeamento exato e inventário de todos os servidores vitais para o funcionamento da empresa."
-        },
-        {
-          "conceito": "Detetar (Detect)",
-          "definicao": "O sistema de monitorização lança um alarme vermelho às 3h da manhã porque uma conta tentou fazer login 500 vezes num minuto."
-        },
-        {
-          "conceito": "Recuperar (Recover)",
-          "definicao": "A equipa de TI utiliza os discos de backup guardados num cofre de um edifício externo para restaurar a base de dados após um ataque de ransomware."
-        }
+      "pergunta": "No framework NIST, a fase 'Identify' está principalmente associada a:",
+      "opcoes": [
+        "Restaurar serviços após um ataque.",
+        "Mapear ativos, sistemas, pessoas e processos críticos.",
+        "Treinar funcionários em phishing.",
+        "Criptografar backups."
       ],
-      "justificacao": "Identificar é conhecer o que se tem. Detetar é estar atento a anomalias. Recuperar é o processo final de restauro para as operações voltarem à normalidade."
+      "resposta_correta": "Mapear ativos, sistemas, pessoas e processos críticos.",
+      "justificacao": "A função Identify foca-se em conhecer e documentar os ativos e riscos da organização."
     },
     {
       "id": "SP_019",
       "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Para demonstrar a clientes internacionais que a empresa trata a segurança dos dados com rigor, a administração decide implementar um Sistema de Gestão de Segurança da Informação (SGSI) certificado. Qual é a norma internacional apropriada para este efeito?",
+      "pergunta": "Sessões de formação para ensinar colaboradores a reconhecer phishing enquadram-se em que fase do NIST?",
       "opcoes": [
-        "Regulamento RGPD",
-        "Norma ISO/IEC 27001",
-        "Modelo OSI",
-        "Norma IEEE 802.11"
+        "Identify",
+        "Protect",
+        "Detect",
+        "Recover"
       ],
-      "resposta_correta": "Norma ISO/IEC 27001",
-      "justificacao": "A ISO/IEC 27001 é a norma internacional mais conhecida e utilizada para a certificação de Sistemas de Gestão de Segurança da Informação (SGSI)."
+      "resposta_correta": "Protect",
+      "justificacao": "Protect inclui medidas preventivas, políticas, sensibilização e formação."
     },
     {
       "id": "SP_020",
-      "tipo": "true_false",
+      "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Um auditor verifica fisicamente se as câmaras de vigilância do perímetro da empresa estão ligadas e a gravar o servidor. Na estrutura da ISO 27001, esta ação é um exemplo prático da fase de 'Performance evaluation (Avaliação)'.",
+      "pergunta": "Um sistema gera alertas automáticos ao detetar comportamentos anormais de login. Em que função do NIST isto se enquadra?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Identify",
+        "Protect",
+        "Detect",
+        "Recover"
       ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "A fase de Avaliação (Performance evaluation) serve precisamente para monitorizar, medir e avaliar no terreno se os controlos e políticas estão efetivamente a funcionar."
+      "resposta_correta": "Detect",
+      "justificacao": "Detect refere-se à identificação rápida de incidentes ou atividades suspeitas."
     },
     {
       "id": "SP_021",
-      "tipo": "drag_and_drop",
+      "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "A ISO 27001 divide os seus controlos em 4 grandes categorias operacionais (A05 a A08). Relaciona a medida de segurança com a categoria de controlo correspondente.",
-      "pares": [
-        {
-          "conceito": "A06 - Controlos de Pessoas (People controls)",
-          "definicao": "Obrigatoriedade de assinatura de um Acordo de Confidencialidade (NDA) durante o processo de contratação de novos funcionários."
-        },
-        {
-          "conceito": "A07 - Controlos Físicos (Physical controls)",
-          "definicao": "Instalação de portas corta-fogo, extintores de CO2 e sistemas de controlo de acessos por cartão na entrada do datacenter."
-        },
-        {
-          "conceito": "A08 - Controlos Tecnológicos (Technological controls)",
-          "definicao": "Implementação de autenticação multifator (MFA) e ferramentas de prevenção de fuga de dados (DLP) nos portáteis da empresa."
-        }
+      "pergunta": "A ativação de um plano de resposta a incidentes pertence à função:",
+      "opcoes": [
+        "Respond",
+        "Recover",
+        "Identify",
+        "Planning"
       ],
-      "justificacao": "A06 lida com recursos humanos e regras de trabalho. A07 protege o espaço físico contra roubo e desastres. A08 engloba as ferramentas tecnológicas de cibersegurança."
+      "resposta_correta": "Respond",
+      "justificacao": "Respond trata das ações imediatas tomadas em resposta a um incidente."
     },
     {
       "id": "SP_022",
       "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Após um colaborador ter perdido a sua chave de acesso à sala dos servidores, a chefia de operações decide trocar todas as fechaduras do edifício de imediato para garantir a segurança. Esta ação corretiva enquadra-se em que fase da estrutura da ISO 27001?",
+      "pergunta": "Restaurar serviços através de backups offline após ransomware está mais ligado a que função do NIST?",
       "opcoes": [
-        "Context of the organization",
-        "Improvement (Melhoria)",
-        "Planning (Planeamento)",
-        "Support (Suporte)"
+        "Detect",
+        "Respond",
+        "Recover",
+        "Identify"
       ],
-      "resposta_correta": "Improvement (Melhoria)",
-      "justificacao": "A resolução de incidentes e a aplicação de ações corretivas face a não-conformidades fazem parte do ciclo de 'Improvement' (Melhoria contínua)."
+      "resposta_correta": "Recover",
+      "justificacao": "Recover trata da recuperação dos serviços normais após um incidente."
     },
     {
       "id": "SP_023",
-      "tipo": "multiple_choice",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Qual destas tarefas é responsabilidade primária da fase de 'Liderança' (Leadership) num Sistema de Gestão ISO 27001?",
-      "opcoes": [
-        "Configurar os routers da empresa para bloquear acesso a redes sociais.",
-        "O dono/direção aprovar as regras, políticas e atribuir o orçamento necessário para a segurança da informação.",
-        "Fazer a auditoria técnica ao código-fonte do website da empresa.",
-        "Verificar se o extintor do corredor está dentro da validade."
-      ],
-      "resposta_correta": "O dono/direção aprovar as regras, políticas e atribuir o orçamento necessário para a segurança da informação.",
-      "justificacao": "A Liderança assegura o compromisso da gestão de topo, definindo papéis, responsabilidades e aprovando formalmente as políticas a seguir."
-    },
-    {
-      "id": "SP_024",
       "tipo": "true_false",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "A norma ISO 27001 promove uma abordagem à segurança focada estritamente na compra de firewalls de última geração, ignorando as políticas internas e o comportamento das pessoas na organização.",
+      "pergunta": "A ordem lógica das cinco grandes funções do NIST é: Identify, Protect, Detect, Respond, Recover.",
       "opcoes": [
         "Verdadeiro",
         "Falso"
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "A norma promove uma abordagem holística, o que significa que obriga a organização a avaliar e equilibrar a segurança em três vetores: pessoas, políticas organizacionais e tecnologia."
+      "resposta_correta": "Verdadeiro",
+      "justificacao": "Essa é a sequência apresentada na matéria."
+    },
+    {
+      "id": "SP_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "A ISO/IEC 27001 é mais conhecida por ser:",
+      "opcoes": [
+        "Um antivírus empresarial.",
+        "Uma norma para Sistemas de Gestão de Segurança da Informação.",
+        "Um regulamento europeu para dados pessoais.",
+        "Uma firewall."
+      ],
+      "resposta_correta": "Uma norma para Sistemas de Gestão de Segurança da Informação.",
+      "justificacao": "A ISO/IEC 27001 é a norma internacional de referência para SGSI."
     },
     {
       "id": "SP_025",
       "tipo": "multiple_choice",
       "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "A fase de 'Planning' (Planeamento) na ISO 27001 é o momento em que a organização:",
+      "pergunta": "Quando a gestão de topo aprova a política de segurança e define responsabilidades, está a atuar em que requisito da ISO 27001?",
       "opcoes": [
-        "Despede os funcionários que não cumpriram regras no ano anterior.",
-        "Identifica quem são as entidades reguladoras do seu setor.",
-        "Avalia os riscos de segurança da informação, define os objetivos e planeia ações para os mitigar.",
-        "Mede a temperatura média do ar condicionado da sala de servidores."
+        "Support",
+        "Leadership",
+        "Operation",
+        "Improvement"
       ],
-      "resposta_correta": "Avalia os riscos de segurança da informação, define os objetivos e planeia ações para os mitigar.",
-      "justificacao": "O Planeamento (Planning) foca-se na identificação proativa das ameaças (Risk assessment) e na definição de estratégias (Risk treatment) e objetivos para lidar com elas antes que se tornem problemas operacionais."
+      "resposta_correta": "Leadership",
+      "justificacao": "Leadership cobre compromisso da gestão, política e responsabilidades organizacionais."
     },
     {
       "id": "SP_026",
       "tipo": "multiple_choice",
-      "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "Um cidadão utiliza o seu telemóvel pessoal para guardar os números de telefone de familiares e amigos e criar um grupo de WhatsApp para combinar um jantar de aniversário. A aplicação do RGPD é obrigatória para este cidadão na gestão desta lista de contactos?",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "Na ISO 27001, a fase de 'Planning' envolve sobretudo:",
       "opcoes": [
-        "Sim, desde que os amigos vivam na União Europeia.",
-        "Sim, porque o telemóvel está ligado à internet.",
-        "Não, existe uma exceção expressa para o tratamento de dados no âmbito de atividades estritamente domésticas ou pessoais.",
-        "Não, porque números de telefone de familiares não são considerados dados pessoais."
+        "Avaliação de riscos, definição de objetivos e planeamento de ações.",
+        "Instalação de portas corta-fogo.",
+        "Apenas auditorias externas.",
+        "Eliminar emails antigos."
       ],
-      "resposta_correta": "Não, existe uma exceção expressa para o tratamento de dados no âmbito de atividades estritamente domésticas ou pessoais.",
-      "justificacao": "O RGPD não se aplica a tratamentos de dados efetuados por uma pessoa singular para o exercício de atividades exclusivamente pessoais ou domésticas."
+      "resposta_correta": "Avaliação de riscos, definição de objetivos e planeamento de ações.",
+      "justificacao": "Planning foca-se nos riscos, oportunidades e objetivos de segurança."
     },
     {
       "id": "SP_027",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "Associa os cenários práticos vivenciados por uma empresa aos Princípios do RGPD que estão a ser cumpridos ou violados.",
-      "pares": [
-        {
-          "conceito": "Limitação da conservação",
-          "definicao": "O departamento de RH mantém um processo automático que elimina os currículos dos candidatos não selecionados passados exatos 12 meses."
-        },
-        {
-          "conceito": "Finalidade",
-          "definicao": "Uma loja de roupa usou o email fornecido pelo cliente para lhe enviar o recibo eletrónico, mas decide depois usá-lo sem aviso para enviar campanhas agressivas de marketing."
-        },
-        {
-          "conceito": "Exatidão",
-          "definicao": "Um banco exige que o cliente faça prova de morada anual para garantir que o seu ficheiro de cliente não possui informações desatualizadas."
-        }
+      "tipo": "multiple_choice",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "Recursos, competências, awareness, comunicação e informação documentada pertencem a que parte da ISO 27001?",
+      "opcoes": [
+        "Support",
+        "Operation",
+        "Context of the organization",
+        "Improvement"
       ],
-      "justificacao": "A conservação limita o tempo máximo de retenção. A finalidade impede que dados recolhidos para um motivo sejam usados noutro sem consentimento. A exatidão exige dados corretos."
+      "resposta_correta": "Support",
+      "justificacao": "Esses elementos fazem parte do requisito Support."
     },
     {
       "id": "SP_028",
-      "tipo": "true_false",
-      "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "Uma sapataria online que apenas necessita do email e da morada para enviar a encomenda, decide adicionar campos obrigatórios no seu formulário para recolher o estado civil, filiação política e número de filhos do cliente, apenas para 'análises futuras de mercado'. Esta prática respeita o princípio da Minimização de Dados.",
+      "tipo": "multiple_choice",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "A monitorização, medição, auditoria interna e revisão pela gestão pertencem a:",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Operation",
+        "Performance evaluation",
+        "Planning",
+        "Leadership"
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "O princípio da Minimização de Dados obriga a que só seja recolhida a informação estritamente adequada, pertinente e limitada ao que é necessário para a finalidade da compra."
+      "resposta_correta": "Performance evaluation",
+      "justificacao": "É nessa fase que se avalia se o SGSI está a funcionar adequadamente."
     },
     {
       "id": "SP_029",
       "tipo": "multiple_choice",
-      "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "No contexto da gestão empresarial, qual é um dos maiores desafios práticos enfrentados pelas organizações na implementação do RGPD?",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "A resolução de não conformidades e a aplicação de ações corretivas pertencem a que fase da ISO 27001?",
       "opcoes": [
-        "A extinção total do departamento de Recursos Humanos.",
-        "O custo de adquirir discos rígidos maiores para guardar dados infinitamente.",
-        "A necessidade de uma mudança cultural profunda nas equipas e os custos associados à conformidade (como a nomeação de um DPO).",
-        "A proibição total da utilização de serviços Cloud fornecidos por empresas americanas."
+        "Improvement",
+        "Support",
+        "Context of the organization",
+        "Operation"
       ],
-      "resposta_correta": "A necessidade de uma mudança cultural profunda nas equipas e os custos associados à conformidade (como a nomeação de um DPO).",
-      "justificacao": "O RGPD obriga a novos hábitos de trabalho (exigindo formação constante), criação de novos cargos operacionais (como o DPO) e custos substanciais de adaptação e auditoria."
+      "resposta_correta": "Improvement",
+      "justificacao": "Improvement inclui melhoria contínua, não conformidades e ações corretivas."
     },
     {
       "id": "SP_030",
-      "tipo": "multiple_choice",
-      "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "O Princípio da 'Responsabilidade' (Accountability) no RGPD traz uma obrigação vital para a organização que efetua o tratamento de dados. Qual é essa obrigação?",
-      "opcoes": [
-        "Garantir lucros anuais estáveis.",
-        "O responsável tem não apenas de cumprir as regras, mas ter a capacidade de provar documentalmente às autoridades que as cumpre.",
-        "Apenas comunicar incidentes de segurança se estes se tornarem públicos nas notícias.",
-        "A empresa deve responsabilizar financeiramente os clientes caso estes se esqueçam da password."
+      "tipo": "drag_and_drop",
+      "macro_tema": "Frameworks_NIST_e_ISO27001",
+      "pergunta": "Relaciona a categoria de controlo da ISO 27001 com a medida correspondente.",
+      "pares": [
+        {
+          "conceito": "A05 - Organizational controls",
+          "definicao": "Políticas de segurança, responsabilidades da gestão e regras de uso de serviços cloud."
+        },
+        {
+          "conceito": "A06 - People controls",
+          "definicao": "NDAs, regras de trabalho remoto, onboarding/offboarding e reporte de incidentes."
+        },
+        {
+          "conceito": "A07 - Physical controls",
+          "definicao": "Segurança das instalações, armazenamento físico, proteção contra roubo e desastres."
+        },
+        {
+          "conceito": "A08 - Technological controls",
+          "definicao": "Autenticação, encriptação, prevenção de fuga de dados e data masking."
+        }
       ],
-      "resposta_correta": "O responsável tem não apenas de cumprir as regras, mas ter a capacidade de provar documentalmente às autoridades que as cumpre.",
-      "justificacao": "A Accountability inverte o ónus da prova: a organização tem de conseguir demonstrar a conformidade das suas ações, documentando processos, fluxos e medidas técnicas tomadas."
+      "justificacao": "As quatro categorias A05 a A08 organizam os controlos por natureza organizacional, humana, física e tecnológica."
     },
     {
       "id": "SP_031",
-      "tipo": "true_false",
+      "tipo": "multiple_choice",
       "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "A nomeação e designação formal de um Encarregado de Proteção de Dados (DPO) não é considerada uma ação relevante para a implementação prática do RGPD em empresas que lidam com tratamento sistemático de dados.",
+      "pergunta": "Um cidadão guarda números de familiares e amigos no seu telemóvel e cria um grupo de WhatsApp para organizar um jantar. O RGPD aplica-se obrigatoriamente a essa situação?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Sim, sempre que exista internet.",
+        "Sim, porque números de telefone são dados pessoais.",
+        "Não, por se tratar de atividade doméstica ou pessoal.",
+        "Não, porque o WhatsApp não conta como tratamento de dados."
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "A designação de um DPO é, muitas vezes, não só uma recomendação prática crucial para auditar processos, como também uma obrigatoriedade legal consoante a natureza e o volume dos dados tratados pela empresa."
+      "resposta_correta": "Não, por se tratar de atividade doméstica ou pessoal.",
+      "justificacao": "O RGPD prevê uma exceção para atividades estritamente pessoais ou domésticas."
     },
     {
       "id": "SP_032",
       "tipo": "multiple_choice",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "A categoria 'A05 - Controlos Organizacionais' da norma ISO 27001 abrange especificamente:",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Uma empresa da UE presta serviços de viagens a clientes de países bálticos e trata os seus dados pessoais. O RGPD aplica-se?",
       "opcoes": [
-        "A instalação de câmaras CCTV e biometria nas catracas do edifício sede.",
-        "A criação de políticas de segurança de informação, responsabilidades da gestão e regras de uso de serviços cloud.",
-        "As regras de despedimento por justa causa na empresa.",
-        "As ferramentas de encriptação instaladas nos discos rígidos e portáteis corporativos."
+        "Não, porque viagens não contam como dados pessoais.",
+        "Sim, porque existe tratamento de dados pessoais por uma organização no contexto da UE.",
+        "Não, porque só se aplica a hospitais e bancos.",
+        "Só se aplica se os clientes forem portugueses."
       ],
-      "resposta_correta": "A criação de políticas de segurança de informação, responsabilidades da gestão e regras de uso de serviços cloud.",
-      "justificacao": "Os controlos organizacionais (A05) tratam das fundações de governação, políticas, responsabilidades e regras institucionais em vez das componentes estritamente físicas ou tecnológicas."
+      "resposta_correta": "Sim, porque existe tratamento de dados pessoais por uma organização no contexto da UE.",
+      "justificacao": "Esse é precisamente um dos exemplos de aplicação do RGPD."
     },
     {
       "id": "SP_033",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "Identifica a que tipo de controlo da norma ISO 27001 corresponde cada medida tecnológica.",
-      "pares": [
-        {
-          "conceito": "Anonimização de dados num ambiente de teste",
-          "definicao": "Ato de substituir dados de clientes por valores fictícios antes de permitir que os programadores testem uma nova aplicação."
-        },
-        {
-          "conceito": "Prevenção de Fuga de Dados (DLP)",
-          "definicao": "Sistema que impede os colaboradores de anexarem folhas de cálculo marcadas como confidenciais em emails pessoais."
-        },
-        {
-          "conceito": "Autenticação",
-          "definicao": "Obrigatoriedade de usar um código gerado no telemóvel em conjunto com a password para aceder à VPN corporativa."
-        }
+      "tipo": "multiple_choice",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Qual destes é um dos princípios do RGPD?",
+      "opcoes": [
+        "Máxima recolha de dados",
+        "Minimização dos dados",
+        "Partilha obrigatória com parceiros",
+        "Retenção ilimitada"
       ],
-      "justificacao": "Todas estas medidas fazem parte do controlo Tecnológico (A08), abordando Data Masking, DLP (Data Leakage Prevention) e autenticação forte."
+      "resposta_correta": "Minimização dos dados",
+      "justificacao": "A minimização dos dados é um dos princípios fundamentais do RGPD."
     },
     {
       "id": "SP_034",
       "tipo": "multiple_choice",
-      "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Como se denomina a ameaça quando uma organização não atualiza (patch) atempadamente o software dos seus servidores para corrigir uma falha publicamente documentada, sendo posteriormente explorada por atacantes?",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Uma loja recolhe o email do cliente para enviar o recibo eletrónico e depois usa esse email para campanhas de marketing não comunicadas. Que princípio do RGPD está mais diretamente em causa?",
       "opcoes": [
-        "Zero-Day Exploit",
-        "Vulnerabilidade conhecida e não mitigada",
-        "Social Engineering",
-        "Nation-State Cyber Attack"
+        "Exatidão",
+        "Finalidade",
+        "Limitação da conservação",
+        "Disponibilidade"
       ],
-      "resposta_correta": "Vulnerabilidade conhecida e não mitigada",
-      "justificacao": "Ao contrário de um Zero-Day (que é desconhecido pelos criadores e comunidade), se o software tinha correção disponível e a empresa falhou em instalá-la, trata-se de exploração de vulnerabilidades devido a falha na atualização."
+      "resposta_correta": "Finalidade",
+      "justificacao": "Os dados devem ser recolhidos para finalidades determinadas, explícitas e legítimas."
     },
     {
       "id": "SP_035",
       "tipo": "true_false",
-      "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "Um ataque onde um cibercriminoso telefona à recepcionista da empresa fazendo-se passar por um técnico de suporte de TI da NOS para lhe pedir a senha do Wi-Fi insere-se na categoria de Engenharia Social (Social Engineering).",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "O princípio da Exatidão exige que os dados pessoais se mantenham corretos e atualizados sempre que necessário.",
       "opcoes": [
         "Verdadeiro",
         "Falso"
       ],
       "resposta_correta": "Verdadeiro",
-      "justificacao": "A Engenharia Social consiste na manipulação psicológica de pessoas para que estas realizem ações ou divulguem informações confidenciais."
+      "justificacao": "Dados inexatos devem ser apagados ou retificados."
     },
     {
       "id": "SP_036",
-      "tipo": "multiple_choice",
+      "tipo": "true_false",
       "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "Qual das seguintes finalidades EXCECIONAIS permite a conservação prolongada de dados pessoais ao abrigo do RGPD, superando a regra de limitação de conservação?",
+      "pergunta": "O princípio da Limitação da Conservação permite guardar dados pessoais para sempre, desde que a empresa tenha espaço de armazenamento suficiente.",
       "opcoes": [
-        "Otimização de campanhas de remarketing na internet.",
-        "Venda futura da base de dados a outras entidades bancárias.",
-        "Fins de investigação científica, histórica ou estatística.",
-        "Melhoria do algoritmo de recomendação de produtos de e-commerce."
+        "Verdadeiro",
+        "Falso"
       ],
-      "resposta_correta": "Fins de investigação científica, histórica ou estatística.",
-      "justificacao": "O RGPD permite a conservação para lá do estritamente necessário apenas em casos excecionais de interesse público, criminal ou investigação histórica/científica e fins estatísticos."
+      "resposta_correta": "Falso",
+      "justificacao": "Os dados só devem ser conservados durante o período estritamente necessário, salvo exceções previstas."
     },
     {
       "id": "SP_037",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Fundamentos_e_Triade_CIA",
-      "pergunta": "Relaciona as ameaças e respetivas contramedidas baseadas no pilar da Tríade CIA que suportam.",
-      "pares": [
-        {
-          "conceito": "Ataque à Confidencialidade",
-          "definicao": "Tentativa de roubo da pasta com faturas de clientes. Mitigado através da implementação de senhas e limitação de acessos."
-        },
-        {
-          "conceito": "Ataque à Integridade",
-          "definicao": "Infeção por vírus informático que altera nomes e corrompe relatórios trimestrais. Mitigado através de antivírus e controlo de versões."
-        },
-        {
-          "conceito": "Ataque à Disponibilidade",
-          "definicao": "Sobrecarga de tráfego que deita o servidor da empresa abaixo. Mitigado através de Firewalls e serviços proteção contra ataques DDoS."
-        }
+      "tipo": "multiple_choice",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Uma sapataria online pede email e morada para entregar uma encomenda, mas também exige estado civil e número de filhos para 'análises futuras'. Que princípio está a ser violado?",
+      "opcoes": [
+        "Minimização dos dados",
+        "Disponibilidade",
+        "Auditoria",
+        "Recover"
       ],
-      "justificacao": "Confidencialidade resolve-se limitando acesso. Integridade resolve-se impedindo corrupção ou alteração. Disponibilidade protege a manutenção do serviço perante picos ou ataques DoS."
+      "resposta_correta": "Minimização dos dados",
+      "justificacao": "Só deve ser recolhida a informação adequada, pertinente e limitada ao necessário."
     },
     {
       "id": "SP_038",
       "tipo": "multiple_choice",
       "macro_tema": "Privacidade_e_RGPD",
-      "pergunta": "Um paciente preenche os seus dados clínicos numa clínica no Porto. O princípio da Licitude, lealdade e transparência do RGPD garante a esse paciente o direito a:",
+      "pergunta": "O princípio da Responsabilidade (Accountability) significa que a organização deve:",
       "opcoes": [
-        "Escolher livremente as cores da interface da aplicação da clínica.",
-        "Não pagar taxas adicionais em consultas de especialidade.",
-        "Ser clara e inequivocamente informado do motivo e fim da recolha dos seus dados de saúde no momento de preencher o papel.",
-        "Ter os seus exames guardados na clínica infinitamente."
+        "Cumprir as regras, mas sem necessidade de prova documental.",
+        "Cumprir as regras e ser capaz de demonstrar documentalmente esse cumprimento.",
+        "Apenas reagir quando houver denúncia pública.",
+        "Delegar toda a responsabilidade no fornecedor cloud."
       ],
-      "resposta_correta": "Ser clara e inequivocamente informado do motivo e fim da recolha dos seus dados de saúde no momento de preencher o papel.",
-      "justificacao": "O princípio da transparência determina que o titular dos dados tem de perceber de forma clara, simples e leal porque estão a ser solicitados os seus dados e para onde irão."
+      "resposta_correta": "Cumprir as regras e ser capaz de demonstrar documentalmente esse cumprimento.",
+      "justificacao": "O responsável pelo tratamento tem de poder comprovar que cumpre os princípios do RGPD."
     },
     {
       "id": "SP_039",
-      "tipo": "true_false",
-      "macro_tema": "Evolucao_Digital_e_Ameacas",
-      "pergunta": "Uma empresa portuguesa de confeção têxtil adquire tecidos a fornecedores estrangeiros e partilha o seu sistema de encomendas com esses fornecedores. Um cibercriminoso invade o sistema de um fornecedor de linhas, e através dessa porta aberta, infiltra a empresa portuguesa. Estamos perante um ataque à Cadeia de Abastecimento (Supply Chain Attack).",
+      "tipo": "multiple_choice",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Qual destes é referido na aula como elemento prático da implementação do RGPD?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "Avaliação de dados e mapeamento de fluxos",
+        "Eliminação de todos os sistemas cloud",
+        "Fim dos acessos por password",
+        "Substituição do departamento jurídico por IA"
       ],
-      "resposta_correta": "Verdadeiro",
-      "justificacao": "Ataques de Supply Chain têm como alvo infraestruturas terciárias associadas ao negócio (os fornecedores, o elo mais fraco da cadeia), utilizando-as como vetor de entrada para o alvo principal."
+      "resposta_correta": "Avaliação de dados e mapeamento de fluxos",
+      "justificacao": "A implementação prática do RGPD inclui avaliação de dados e mapeamento de fluxos."
     },
     {
       "id": "SP_040",
       "tipo": "multiple_choice",
-      "macro_tema": "Frameworks_NIST_e_ISO27001",
-      "pergunta": "O framework do NIST descreve a cibersegurança e o ciclo de vida da gestão de risco como uma série contínua de atividades. Qual das seguintes opções apresenta a correta ordem lógica das 5 grandes funções do NIST?",
+      "macro_tema": "Privacidade_e_RGPD",
+      "pergunta": "Qual destes é um desafio prático da implementação do RGPD nas organizações?",
       "opcoes": [
-        "Recuperar, Proteger, Identificar, Detetar, Responder",
-        "Identificar, Proteger, Detetar, Responder, Recuperar",
-        "Detetar, Responder, Recuperar, Proteger, Identificar",
-        "Proteger, Identificar, Responder, Detetar, Recuperar"
+        "Mudança cultural e custos de conformidade",
+        "Proibição total do uso de dados",
+        "Eliminar toda a análise de negócio",
+        "Fim do trabalho remoto"
       ],
-      "resposta_correta": "Identificar, Proteger, Detetar, Responder, Recuperar",
-      "justificacao": "O ciclo lógico do NIST determina que 1º identificas o que tens, 2º proteges, 3º detetas anomalias, 4º respondes a eventuais incidentes, e 5º recuperas para restaurar a normalidade."
-    }
-  ]
+      "resposta_correta": "Mudança cultural e custos de conformidade",
+      "justificacao": "Os slides referem mudança cultural, custos e necessidade de formação."
+    },
+      {
+    "id": "SP_041",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Uma empresa começou por digitalizar contratos antigos em papel para ficheiros PDF. Esta ação corresponde a que conceito?",
+    "opcoes": [
+      "Digitization",
+      "Digitalization",
+      "Digital Transformation",
+      "Behavioral Analytics"
+    ],
+    "resposta_correta": "Digitization",
+    "justificacao": "Digitization é a conversão de informação em suporte físico para formato digital."
+  },
+  {
+    "id": "SP_042",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Qual das seguintes situações representa melhor um caso de 'Digital Transformation'?",
+    "opcoes": [
+      "Guardar uma fatura em PDF num servidor interno.",
+      "Substituir passwords antigas por passwords mais fortes.",
+      "Integrar os sistemas da empresa com os dos fornecedores em tempo real, alterando processos e forma de operar.",
+      "Instalar um antivírus novo em todos os computadores."
+    ],
+    "resposta_correta": "Integrar os sistemas da empresa com os dos fornecedores em tempo real, alterando processos e forma de operar.",
+    "justificacao": "A transformação digital implica mudança organizacional e estratégica, e não apenas digitalização de ficheiros ou pequenas melhorias técnicas."
+  },
+  {
+    "id": "SP_043",
+    "tipo": "true_false",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Um ataque 'Supply Chain' ocorre quando o atacante compromete um fornecedor ou parceiro para atingir a empresa principal.",
+    "opcoes": [
+      "Verdadeiro",
+      "Falso"
+    ],
+    "resposta_correta": "Verdadeiro",
+    "justificacao": "Nos ataques à cadeia de abastecimento, o alvo é muitas vezes atingido de forma indireta, através de terceiros."
+  },
+  {
+    "id": "SP_044",
+    "tipo": "multiple_choice",
+    "macro_tema": "Fundamentos_e_Triade_CIA",
+    "pergunta": "Qual destas situações representa melhor uma falha de Confidencialidade?",
+    "opcoes": [
+      "Um site de vendas fica em baixo durante 3 horas.",
+      "Um colaborador sem autorização consegue ver salários de outros funcionários.",
+      "Um ficheiro é alterado indevidamente por malware.",
+      "Um backup é restaurado após um incidente."
+    ],
+    "resposta_correta": "Um colaborador sem autorização consegue ver salários de outros funcionários.",
+    "justificacao": "Confidencialidade refere-se ao acesso à informação apenas por quem tem autorização e necessidade funcional."
+  },
+  {
+    "id": "SP_045",
+    "tipo": "multiple_choice",
+    "macro_tema": "Fundamentos_e_Triade_CIA",
+    "pergunta": "Quando uma transferência bancária de 100€ não pode ser alterada para 1000€ durante o processamento, o princípio mais diretamente protegido é:",
+    "opcoes": [
+      "Confidencialidade",
+      "Integridade",
+      "Disponibilidade",
+      "Privacidade"
+    ],
+    "resposta_correta": "Integridade",
+    "justificacao": "A integridade garante que a informação permanece correta, precisa e não é alterada de forma não autorizada."
+  },
+  {
+    "id": "SP_046",
+    "tipo": "true_false",
+    "macro_tema": "Fundamentos_e_Triade_CIA",
+    "pergunta": "A Disponibilidade assegura que a informação e os sistemas estão acessíveis quando necessários para suportar os processos de negócio.",
+    "opcoes": [
+      "Verdadeiro",
+      "Falso"
+    ],
+    "resposta_correta": "Verdadeiro",
+    "justificacao": "Esse é precisamente o objetivo da disponibilidade dentro da tríade CIA."
+  },
+  {
+    "id": "SP_047",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "No framework NIST, a função 'Identify' inclui sobretudo:",
+    "opcoes": [
+      "Restaurar backups depois de um ransomware.",
+      "Mapear ativos, sistemas, pessoas e processos críticos da organização.",
+      "Criar campanhas de marketing com base em dados.",
+      "Remover todos os acessos físicos ao edifício."
+    ],
+    "resposta_correta": "Mapear ativos, sistemas, pessoas e processos críticos da organização.",
+    "justificacao": "A função Identify centra-se no inventário, contexto, ativos e avaliação inicial dos riscos."
+  },
+  {
+    "id": "SP_048",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "No NIST, a função 'Detect' está relacionada com:",
+    "opcoes": [
+      "Formação de colaboradores para evitar phishing.",
+      "Resposta legal após condenação em tribunal.",
+      "Identificação rápida de comportamentos anómalos e possíveis incidentes.",
+      "Eliminação de dados pessoais desatualizados."
+    ],
+    "resposta_correta": "Identificação rápida de comportamentos anómalos e possíveis incidentes.",
+    "justificacao": "Detect procura encontrar incidentes ou sinais de ameaça o mais cedo possível."
+  },
+  {
+    "id": "SP_049",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "Na ISO 27001, qual das seguintes opções pertence à dimensão 'Support'?",
+    "opcoes": [
+      "Competência, awareness, comunicação e informação documentada.",
+      "Planos de recuperação após incidentes e restauro de backups.",
+      "Definição da legislação europeia sobre proteção de dados.",
+      "Ataques de phishing e malware mobile."
+    ],
+    "resposta_correta": "Competência, awareness, comunicação e informação documentada.",
+    "justificacao": "A secção Support inclui recursos, competências, consciencialização, comunicação e documentação."
+  },
+  {
+    "id": "SP_050",
+    "tipo": "true_false",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "A ISO 27001 promove uma abordagem holística à segurança da informação, envolvendo pessoas, políticas e tecnologia.",
+    "opcoes": [
+      "Verdadeiro",
+      "Falso"
+    ],
+    "resposta_correta": "Verdadeiro",
+    "justificacao": "A norma não se limita à tecnologia; também abrange estrutura organizacional, processos e pessoas."
+  },
+  {
+    "id": "SP_051",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "Qual das seguintes situações mostra melhor o princípio da 'Limitação da conservação' no RGPD?",
+    "opcoes": [
+      "Guardar todos os dados para sempre, porque podem ser úteis no futuro.",
+      "Eliminar dados pessoais quando deixam de ser necessários para a finalidade definida.",
+      "Partilhar dados com qualquer parceiro comercial mediante acordo verbal.",
+      "Pedir o máximo de dados possível num formulário online."
+    ],
+    "resposta_correta": "Eliminar dados pessoais quando deixam de ser necessários para a finalidade definida.",
+    "justificacao": "O RGPD exige que os dados sejam conservados apenas durante o tempo necessário."
+  },
+  {
+    "id": "SP_052",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "Uma empresa recolhe a morada do cliente para entregar uma encomenda e depois usa essa morada para campanhas não relacionadas, sem informar o titular. Que princípio está a ser violado?",
+    "opcoes": [
+      "Finalidade",
+      "Exatidão",
+      "Disponibilidade",
+      "Leadership"
+    ],
+    "resposta_correta": "Finalidade",
+    "justificacao": "Os dados devem ser recolhidos para fins específicos, explícitos e legítimos, não podendo ser reutilizados para outros fins incompatíveis."
+  },
+  {
+    "id": "SP_053",
+    "tipo": "true_false",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "O princípio da Minimização dos Dados exige que a empresa recolha apenas os dados adequados, pertinentes e limitados ao necessário.",
+    "opcoes": [
+      "Verdadeiro",
+      "Falso"
+    ],
+    "resposta_correta": "Verdadeiro",
+    "justificacao": "Esse é um dos princípios centrais do RGPD."
+  },
+  {
+    "id": "SP_054",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "Uma empresa pede aos clientes informação excessiva e irrelevante para concluir uma compra simples online. Que princípio do RGPD está mais diretamente em causa?",
+    "opcoes": [
+      "Minimização dos dados",
+      "Recover",
+      "Integridade física",
+      "Deteção"
+    ],
+    "resposta_correta": "Minimização dos dados",
+    "justificacao": "A empresa só deve recolher o que é necessário para a finalidade em causa."
+  }
+]
 }
+
+     
