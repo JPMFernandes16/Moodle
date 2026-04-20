@@ -1,6 +1,6 @@
 {
   "opcoes_exame": {
-    "duracao_minutos": 20,
+    "duracao_minutos": 10,
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
@@ -768,8 +768,148 @@
     ],
     "resposta_correta": "Minimização dos dados",
     "justificacao": "A empresa só deve recolher o que é necessário para a finalidade em causa."
+  },
+  {
+    "id": "SP_055",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Em 2017, a Maersk sofreu uma perda total de acesso aos seus terminais globais devido a um malware destrutivo disfarçado de ransomware[cite: 26, 27, 28, 29]. A que incidente cibernético nos referimos?",
+    "opcoes": [
+      "Stuxnet",
+      "NotPetya",
+      "Advanced Persistent Threat (APT)",
+      "Phishing Avançado"
+    ],
+    "resposta_correta": "NotPetya",
+    "justificacao": "O NotPetya foi um ataque devastador (Wiper) focado na destruição e caos logístico da Maersk[cite: 26, 27, 28, 29]."
+  },
+  {
+    "id": "SP_056",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "O Continente recolhe ativamente dados de clientes para alimentar o seu programa de fidelização[cite: 145]. Simultaneamente, contrata uma plataforma externa apenas para enviar as newsletters com os descontos[cite: 151]. Segundo o RGPD, qual é o papel do Continente?",
+    "opcoes": [
+      "Subcontratante (Data Processor)",
+      "Responsável pelo Tratamento (Data Controller)",
+      "Encarregado de Proteção de Dados (DPO)",
+      "Titular dos Dados"
+    ],
+    "resposta_correta": "Responsável pelo Tratamento (Data Controller)",
+    "justificacao": "O Continente atua como o 'Dono do Negócio', decidindo os fins (programa de fidelização) e os meios do processamento dos dados[cite: 143, 144, 145]."
+  },
+  {
+    "id": "SP_057",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "A Farfetch obriga ao uso de Autenticação Multifator (MFA) nos acessos, enquanto a EDP monitoriza anomalias de logins fora de horas[cite: 90, 91]. Estas ações representam, respetivamente, que funções do ciclo de cibersegurança do NIST?",
+    "opcoes": [
+      "Identify e Respond",
+      "Detect e Recover",
+      "Protect e Detect",
+      "Protect e Recover"
+    ],
+    "resposta_correta": "Protect e Detect",
+    "justificacao": "A implementação de barreiras como o MFA é 'Protect' [cite: 91], e a monitorização contínua para encontrar anomalias é 'Detect'[cite: 90]."
+  },
+  {
+    "id": "SP_058",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "A OutSystems exige a assinatura de Acordos de Confidencialidade (NDAs) na entrada de novos colaboradores [cite: 109], e a Sonae obriga à encriptação dos discos rígidos dos portáteis[cite: 114]. A que categorias de controlos da ISO 27001 pertencem, respetivamente, estas medidas?",
+    "opcoes": [
+      "A05 (Organizacionais) e A07 (Físicos)",
+      "A06 (Pessoas) e A08 (Tecnológicos)",
+      "A07 (Físicos) e A08 (Tecnológicos)",
+      "A06 (Pessoas) e A05 (Organizacionais)"
+    ],
+    "resposta_correta": "A06 (Pessoas) e A08 (Tecnológicos)",
+    "justificacao": "A gestão do ciclo de vida humano e NDAs são controlos de Pessoas (A06) [cite: 108, 109], enquanto mecanismos lógicos como a encriptação são controlos Tecnológicos (A08)[cite: 113, 114]."
+  },
+  {
+    "id": "SP_059",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Uma empresa recebe 500 emails suspeitos reportados diariamente. Em vez de analisar manualmente, um sistema extrai links, verifica domínios maliciosos e apaga as ameaças automaticamente de forma inteligente[cite: 396]. Como se designa esta plataforma?",
+    "opcoes": [
+      "Forense Digital",
+      "SOAR (Security Orchestration, Automation and Response)",
+      "Row-Level Security (RLS)",
+      "Network Analysis"
+    ],
+    "resposta_correta": "SOAR (Security Orchestration, Automation and Response)",
+    "justificacao": "O SOAR automatiza tarefas repetitivas, centraliza inteligência contra ameaças e garante respostas mais rápidas com menor intervenção humana[cite: 393, 394, 395, 396]."
+  },
+  {
+    "id": "SP_060",
+    "tipo": "multiple_choice",
+    "macro_tema": "Fundamentos_e_Triade_CIA",
+    "pergunta": "Após um ataque informático que bloqueou processos clínicos, a equipa de investigação não liga os computadores infetados, optando por criar cópias exatas dos discos rígidos para analisar logs e tráfego de rede[cite: 417, 418]. Este procedimento é conhecido como:",
+    "opcoes": [
+      "Threat Intelligence",
+      "Data Masking",
+      "Forense Digital (Digital Forensics)",
+      "Behavioral Analytics"
+    ],
+    "resposta_correta": "Forense Digital (Digital Forensics)",
+    "justificacao": "A Forense Digital baseia-se na recolha, análise e preservação segura de provas digitais (como imagens de discos) após um incidente, para determinar a sua origem sem destruir evidências[cite: 415, 416, 418]."
+  },
+  {
+    "id": "SP_061",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "Para garantir a segurança numa dashboard partilhada em Power BI, um programador aplica restrições para que o gerente da região Norte apenas consiga visualizar os dados de vendas da sua própria área[cite: 476]. Que tipo de técnica está a ser aplicada?",
+    "opcoes": [
+      "Row-Level Security (RLS)",
+      "Object-Level Security (OLS)",
+      "Anonimização (Shuffling)",
+      "Advanced Persistent Threat"
+    ],
+    "resposta_correta": "Row-Level Security (RLS)",
+    "justificacao": "A Row-Level Security (RLS) permite filtrar e restringir o acesso a linhas específicas de dados consoante o perfil e permissões do utilizador logado[cite: 476]."
+  },
+  {
+    "id": "SP_069",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "A Jerónimo Martins está a realizar a avaliação de ciberameaças para o próximo ano. Para priorizar os problemas, a equipa utiliza um gráfico onde o eixo Y representa o 'Impacto' (gravidade para o negócio) e o eixo X representa a 'Probabilidade' (hipótese de acontecer). Como se designa normalmente esta ferramenta analítica utilizada no planeamento da ISO 27001?",
+    "opcoes": [
+      "Plataforma SOAR",
+      "Matriz de Risco (Risk Matrix)",
+      "Sistema de Deteção de Intrusões (IDS)",
+      "Gráfico de Minimização de Dados"
+    ],
+    "resposta_correta": "Matriz de Risco (Risk Matrix)",
+    "justificacao": "A Matriz de Risco cruza a Probabilidade de uma ameaça ocorrer (eixo X) com o Impacto que terá na organização (eixo Y) para ajudar a priorizar o tratamento dos riscos."
+  },
+  {
+    "id": "SP_070",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "Uma empresa multinacional como a Toyota procura certificar as suas operações. A administração decide implementar a ISO 9001 na linha de montagem de veículos e a ISO/IEC 27001 no departamento de TI e Data Analytics. Qual é o foco principal destas duas normas, respetivamente?",
+    "opcoes": [
+      "Sustentabilidade Ambiental e Proteção de Dados",
+      "Gestão Financeira e Cibersegurança",
+      "Gestão da Qualidade e Sistema de Gestão de Segurança da Informação (SGSI)",
+      "Transformação Digital (Digitalization) e Gestão da Qualidade"
+    ],
+    "resposta_correta": "Gestão da Qualidade e Sistema de Gestão de Segurança da Informação (SGSI)",
+    "justificacao": "A ISO 9001 é a norma internacional para a Gestão da Qualidade dos processos ou produtos, enquanto a ISO/IEC 27001 foca-se exclusivamente na Gestão da Segurança da Informação."
+  },
+  {
+    "id": "SP_071",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "Ao mapear riscos no seu gráfico (Matriz de Risco), a Caixa Geral de Depósitos colocou a ameaça de um 'Ataque de Ransomware Avançado' no quadrante correspondente a 'Alta Probabilidade' (eixo X) e 'Alto Impacto' (eixo Y). Perante este posicionamento, que atitude tática deve a equipa de segurança adotar?",
+    "opcoes": [
+      "Aceitar o risco sem ações extra, visto que a probabilidade faz parte das operações bancárias.",
+      "Ignorar a ameaça e focar-se em eventos de 'Baixo Impacto'.",
+      "Tratar o risco com prioridade máxima, alocando recursos para implementar controlos de mitigação imediatos (Protect e Detect).",
+      "Transferir todos os dados para o formato físico (Digitization) para evitar a ameaça."
+    ],
+    "resposta_correta": "Tratar o risco com prioridade máxima, alocando recursos para implementar controlos de mitigação imediatos (Protect e Detect).",
+    "justificacao": "Riscos mapeados com Alto Impacto e Alta Probabilidade são os mais críticos numa Matriz de Risco e exigem tratamento imediato e prioritário para proteger o negócio."
   }
-]
+ ]
 }
 
      

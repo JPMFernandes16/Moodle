@@ -81,6 +81,41 @@ document.addEventListener("DOMContentLoaded", () => {
   let radarChartInstance = null;
 
   // ======================================================
+  // CATÁLOGO DE FICHEIROS (MULTIMÉDIA)
+  // ======================================================
+  const mediaCatalog = {
+      "BIA_BIAT": {
+          pdfs: [
+              { name: "Resumo BIA BIAT", file: "pdfs/BIA_BIAT.pdf" }
+          ],
+          videos: []
+      },
+      "BIA_SP": {
+          pdfs: [
+              { name: "Conceitos Gerais sobre Segurança da Informação", file: "pdfs/BIA_SP_01.pdf" },
+              { name: "Normativos em Segurança e Privacidade", file: "pdfs/BIA_SP_02.pdf" },
+              { name: "Resumo Geral", file: "pdfs/BIA_SP_03.pdf" }
+          ],
+          videos: [
+              { name: "Conceitos Gerais sobre Segurança da Informação", file: "videos/BIA_SP_01.mp4" },
+              { name: "Normativos em Segurança e Privacidade", file: "videos/BIA_SP_02.mp4" }
+          ]
+      },
+      "GM_MR": {
+          pdfs: [
+              { name: "Resumo Marketing Relacional", file: "pdfs/GM_MR.pdf" }
+          ],
+          videos: []
+      },
+      "BIA_STP": {
+          pdfs: [
+              { name: "Resumo Séries Temporais", file: "pdfs/BIA_STP.pdf" }
+          ],
+          videos: []
+      }
+  };
+
+  // ======================================================
   // SISTEMA DE NOTIFICAÇÕES (TOASTS)
   // ======================================================
   function showToast(message, type = 'info') {
@@ -315,6 +350,10 @@ document.addEventListener("DOMContentLoaded", () => {
           if (retomarQuizBtn) retomarQuizBtn.classList.add("hidden");
 
           toggleConfigPanel(true); renderQuestionNavigator(); renderCurrentQuestion(); updateTopIndicators(); updateNavButtonsState(); updateQuestionStateLabel();
+          
+          // 🔥 CORREÇÃO: Fazer reset ao temporizador sempre que se inicia um teste NOVO
+          resetTimer(); 
+          
           if (!state.isTreinoMode) { startTimer(); } else { stopTimer(); updateTimerUI(); }
           
           guardarEstadoAmeio(); playClick(); showToast(`Sessão iniciada. Boa sorte!`, 'info');
@@ -663,32 +702,72 @@ document.addEventListener("DOMContentLoaded", () => {
       mediaContainer.innerHTML = ""; // Limpa memória
       mediaModal.style.display = 'flex';
       
-      // Garantir que o container usa flexbox para organizar o botão e o iframe
+      // Garantir que o container usa flexbox para organizar o conteúdo
       mediaContainer.style.display = "flex";
       mediaContainer.style.flexDirection = "column";
-      
-      if (type === 'pdf') {
-          mediaModalTitle.textContent = "Resumo da Disciplina";
-          mediaContainer.innerHTML = `
-            <div style="padding: 15px; text-align: center; background: var(--secondary); border-bottom: 1px solid var(--border);">
-                <p style="margin: 0 0 10px 0; font-size: 0.8rem; color: var(--text-muted);">No telemóvel o PDF pode não carregar corretamente.</p>
-                <a href="pdfs/${state.currentDisciplina}.pdf" target="_blank" class="btn btn--primary" style="padding: 10px 20px; font-size: 0.85rem; width: 100%; border-radius: 8px;">
-                    Abrir no Visualizador
-                </a>
-            </div>
-            <iframe src="pdfs/${state.currentDisciplina}.pdf" width="100%" style="border: none; flex: 1; min-height: 50vh;"></iframe>
-          `;
-      } else if (type === 'video') {
-          mediaModalTitle.textContent = "Vídeo da Disciplina";
-          mediaContainer.innerHTML = `
-            <video controls autoplay width="100%" height="100%" style="background: black; outline: none; flex: 1;">
-                <source src="videos/${state.currentDisciplina}.mp4" type="video/mp4">
-                O teu browser não suporta a reprodução de vídeo.
-            </video>`;
+
+      // Obter os ficheiros para a disciplina atual a partir do catálogo
+      const discMedia = mediaCatalog[state.currentDisciplina] || { pdfs: [], videos: [] };
+      const items = type === 'pdf' ? discMedia.pdfs : discMedia.videos;
+
+      mediaModalTitle.textContent = type === 'pdf' ? "Escolher Resumo" : "Escolher Vídeo";
+
+      if (items.length === 0) {
+          mediaContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--text-muted);">Nenhum ficheiro disponível para esta disciplina.</div>`;
+      } else if (items.length === 1) {
+          // Se só existir 1 ficheiro, abre diretamente para manter a rapidez
+          renderMediaContent(type, items[0].file, items[0].name);
+      } else {
+          // Se existirem múltiplos ficheiros, mostra um menu com botões
+          let html = `<div style="padding: 20px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto;">`;
+          html += `<p style="text-align: center; color: var(--text-main); margin-bottom: 10px;">Seleciona o ficheiro que pretendes abrir:</p>`;
+          
+          items.forEach(item => {
+              const icone = type === 'pdf' ? '📄' : '🎥';
+              html += `<button class="btn btn--ghost media-select-btn" data-type="${type}" data-file="${item.file}" data-name="${item.name}" style="justify-content: flex-start; padding: 15px; border-color: var(--primary);">
+                          ${icone} ${item.name}
+                       </button>`;
+          });
+          html += `</div>`;
+          mediaContainer.innerHTML = html;
+
+          // Adicionar ação aos novos botões gerados
+          document.querySelectorAll('.media-select-btn').forEach(btn => {
+              btn.addEventListener('click', (e) => {
+                  const fType = e.currentTarget.getAttribute('data-type');
+                  const fPath = e.currentTarget.getAttribute('data-file');
+                  const fName = e.currentTarget.getAttribute('data-name');
+                  renderMediaContent(fType, fPath, fName);
+              });
+          });
       }
 
       setTimeout(() => mediaModal.classList.add('show'), 10);
       document.body.style.overflow = "hidden";
+  }
+
+  // Função auxiliar para desenhar o leitor no ecrã após a escolha
+  function renderMediaContent(type, filePath, fileName) {
+      mediaContainer.innerHTML = ""; // Limpa os botões de seleção
+      mediaModalTitle.textContent = fileName || (type === 'pdf' ? "Visualizador PDF" : "Visualizador de Vídeo");
+      
+      if (type === 'pdf') {
+          mediaContainer.innerHTML = `
+            <div style="padding: 15px; text-align: center; background: var(--secondary); border-bottom: 1px solid var(--border);">
+                <p style="margin: 0 0 10px 0; font-size: 0.8rem; color: var(--text-muted);">No telemóvel o PDF pode não carregar corretamente.</p>
+                <a href="${filePath}" target="_blank" class="btn btn--primary" style="padding: 10px 20px; font-size: 0.85rem; width: 100%; border-radius: 8px;">
+                    Abrir no Visualizador Externo
+                </a>
+            </div>
+            <iframe src="${filePath}" width="100%" style="border: none; flex: 1; min-height: 50vh;"></iframe>
+          `;
+      } else if (type === 'video') {
+          mediaContainer.innerHTML = `
+            <video controls autoplay width="100%" height="100%" style="background: black; outline: none; flex: 1;">
+                <source src="${filePath}" type="video/mp4">
+                O teu browser não suporta a reprodução de vídeo.
+            </video>`;
+      }
   }
 
   if (closeMediaModal) {

@@ -1,46 +1,49 @@
 /* =========================================================
-   1. VARIABLES & THEME (JF ANALYTICS NAVY THEME)
+   1. VARIABLES & THEME (JF PREMIUM AMBER/NAVY THEME)
    ========================================================= */
 :root {
   /* Cores da Marca e Base */
+  /* Mantivemos o Azul Navy do teu logótipo para o cabeçalho se fundir na perfeição */
   --brand-navy: #1a3051; 
-  --primary: #0ea5e9;    /* Ciano Técnico */
-  --primary-glow: rgba(14, 165, 233, 0.4);
-  --primary-gradient: linear-gradient(135deg, #38bdf8, #0284c7);
   
-  --success: #059669;
+  /* Nova Cor Primária: Laranja/Âmbar Vibrante (Contraste premium com o Navy) */
+  --primary: #f97316;    
+  --primary-glow: rgba(249, 115, 22, 0.4);
+  --primary-gradient: linear-gradient(135deg, #fb923c, #ea580c);
+  
+  --success: #10b981;
   --success-light: rgba(16, 185, 129, 0.15);
-  --error: #dc2626;
+  --error: #ef4444;
   --error-light: rgba(239, 68, 68, 0.15);
-  --warning: #d97706;
+  --warning: #f59e0b;
   
   --radius-sm: 12px;
   --radius-lg: 24px;
   --radius-pill: 99px;
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-  /* Modo Claro (Clean Blue) */
-  --bg-body: #f0f4f8;
+  /* Modo Claro (Slate & Amber) */
+  --bg-body: #f8fafc;
   --bg-surface: #e2e8f0; 
   --bg-card: #ffffff;
   --text-main: #0f172a;
   --text-muted: #64748b;
-  --border: rgba(27, 46, 75, 0.15);
+  --border: rgba(27, 46, 75, 0.12);
   --secondary: rgba(241, 245, 249, 0.8);
-  --shadow-glass: 0 8px 32px 0 rgba(27, 46, 75, 0.08);
+  --shadow-glass: 0 8px 32px 0 rgba(27, 46, 75, 0.06);
   --shadow-neon: 0 0 15px var(--primary-glow);
 }
 
 [data-theme="dark"] {
-  /* Modo Escuro (Deep Navy) */
-  --bg-body: #0b1320;
+  /* Modo Escuro (Deep Navy & Amber) */
+  --bg-body: #090e17;
   --bg-surface: #1e293b;
-  --bg-card: #142238;
+  --bg-card: #111c2e;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --border: rgba(255, 255, 255, 0.08);
-  --secondary: rgba(27, 46, 75, 0.4);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --border: rgba(255, 255, 255, 0.06);
+  --secondary: rgba(26, 48, 81, 0.3);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   --shadow-neon: 0 0 20px var(--primary-glow);
 }
 
@@ -116,8 +119,8 @@ h1, h2, h3, p { margin-top: 0; }
 .shake { animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; border-left-color: var(--error) !important; }
 
 @keyframes flicker {
-  0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px #f97316); }
-  50% { transform: scale(1.15); opacity: 0.85; filter: drop-shadow(0 0 8px #ea580c); }
+  0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px var(--primary)); }
+  50% { transform: scale(1.15); opacity: 0.85; filter: drop-shadow(0 0 8px var(--warning)); }
 }
 
 /* =========================================================
@@ -144,7 +147,7 @@ h1, h2, h3, p { margin-top: 0; }
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 .glass-panel:hover { 
-  border-color: rgba(14, 165, 233, 0.3); 
+  border-color: rgba(249, 115, 22, 0.3); 
   transform: translateY(-3px); 
   box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15); 
 }
@@ -246,10 +249,10 @@ h1, h2, h3, p { margin-top: 0; }
 
 .btn--primary { 
     background: var(--primary-gradient); color: white; 
-    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3); border: none;
+    box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3); border: none;
 }
 .btn--primary:hover:not(:disabled) { 
-    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5); 
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5); 
     transform: translateY(-2px);
 }
 
@@ -417,7 +420,7 @@ h1, h2, h3, p { margin-top: 0; }
 #leaderboardContainer > div:hover {
   transform: translateX(6px);
   border-color: var(--primary) !important;
-  box-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.15);
 }
 #leaderboardContainer > div:nth-child(1) { border-left: 4px solid #fbbf24 !important; } /* Ouro */
 #leaderboardContainer > div:nth-child(2) { border-left: 4px solid #9ca3af !important; } /* Prata */
@@ -430,7 +433,7 @@ h1, h2, h3, p { margin-top: 0; }
 .hologram-result {
     background: var(--bg-card); border: 2px solid var(--primary);
     border-radius: var(--radius-lg); padding: 40px; text-align: center;
-    box-shadow: inset 0 0 50px rgba(14, 165, 233, 0.05), var(--shadow-neon);
+    box-shadow: inset 0 0 50px rgba(249, 115, 22, 0.05), var(--shadow-neon);
     animation: fadeSlideUp 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative; overflow: hidden;
 }
 .hologram-result::before {
