@@ -112,6 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
               { name: "Resumo Séries Temporais", file: "pdfs/BIA_STP.pdf" }
           ],
           videos: []
+      },
+      "BIA_ABD": {
+          pdfs: [
+              { name: "Resumo Analítica para Big Data", file: "pdfs/BIA_ABD.pdf" }
+          ],
+          videos: []
       }
   };
 
