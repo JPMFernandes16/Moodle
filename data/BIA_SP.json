@@ -773,7 +773,7 @@
     "id": "SP_055",
     "tipo": "multiple_choice",
     "macro_tema": "Evolucao_Digital_e_Ameacas",
-    "pergunta": "Em 2017, a Maersk sofreu uma perda total de acesso aos seus terminais globais devido a um malware destrutivo disfarçado de ransomware[cite: 26, 27, 28, 29]. A que incidente cibernético nos referimos?",
+    "pergunta": "Em 2017, a Maersk sofreu uma perda total de acesso aos seus terminais globais devido a um malware destrutivo disfarçado de ransomware. A que incidente cibernético nos referimos?",
     "opcoes": [
       "Stuxnet",
       "NotPetya",
@@ -781,13 +781,13 @@
       "Phishing Avançado"
     ],
     "resposta_correta": "NotPetya",
-    "justificacao": "O NotPetya foi um ataque devastador (Wiper) focado na destruição e caos logístico da Maersk[cite: 26, 27, 28, 29]."
+    "justificacao": "O NotPetya foi um ataque devastador (Wiper) focado na destruição e caos logístico da Maersk."
   },
   {
     "id": "SP_056",
     "tipo": "multiple_choice",
     "macro_tema": "Privacidade_e_RGPD",
-    "pergunta": "O Continente recolhe ativamente dados de clientes para alimentar o seu programa de fidelização[cite: 145]. Simultaneamente, contrata uma plataforma externa apenas para enviar as newsletters com os descontos[cite: 151]. Segundo o RGPD, qual é o papel do Continente?",
+    "pergunta": "O Continente recolhe ativamente dados de clientes para alimentar o seu programa de fidelização. Simultaneamente, contrata uma plataforma externa apenas para enviar as newsletters com os descontos. Segundo o RGPD, qual é o papel do Continente?",
     "opcoes": [
       "Subcontratante (Data Processor)",
       "Responsável pelo Tratamento (Data Controller)",
@@ -795,13 +795,13 @@
       "Titular dos Dados"
     ],
     "resposta_correta": "Responsável pelo Tratamento (Data Controller)",
-    "justificacao": "O Continente atua como o 'Dono do Negócio', decidindo os fins (programa de fidelização) e os meios do processamento dos dados[cite: 143, 144, 145]."
+    "justificacao": "O Continente atua como o 'Dono do Negócio', decidindo os fins (programa de fidelização) e os meios do processamento dos dados."
   },
   {
     "id": "SP_057",
     "tipo": "multiple_choice",
     "macro_tema": "Frameworks_NIST_e_ISO27001",
-    "pergunta": "A Farfetch obriga ao uso de Autenticação Multifator (MFA) nos acessos, enquanto a EDP monitoriza anomalias de logins fora de horas[cite: 90, 91]. Estas ações representam, respetivamente, que funções do ciclo de cibersegurança do NIST?",
+    "pergunta": "A Farfetch obriga ao uso de Autenticação Multifator (MFA) nos acessos, enquanto a EDP monitoriza anomalias de logins fora de horas. Estas ações representam, respetivamente, que funções do ciclo de cibersegurança do NIST?",
     "opcoes": [
       "Identify e Respond",
       "Detect e Recover",
@@ -809,13 +809,13 @@
       "Protect e Recover"
     ],
     "resposta_correta": "Protect e Detect",
-    "justificacao": "A implementação de barreiras como o MFA é 'Protect' [cite: 91], e a monitorização contínua para encontrar anomalias é 'Detect'[cite: 90]."
+    "justificacao": "A implementação de barreiras como o MFA é 'Protect', e a monitorização contínua para encontrar anomalias é 'Detect'[cite: 90]."
   },
   {
     "id": "SP_058",
     "tipo": "multiple_choice",
     "macro_tema": "Frameworks_NIST_e_ISO27001",
-    "pergunta": "A OutSystems exige a assinatura de Acordos de Confidencialidade (NDAs) na entrada de novos colaboradores [cite: 109], e a Sonae obriga à encriptação dos discos rígidos dos portáteis[cite: 114]. A que categorias de controlos da ISO 27001 pertencem, respetivamente, estas medidas?",
+    "pergunta": "A OutSystems exige a assinatura de Acordos de Confidencialidade (NDAs) na entrada de novos colaboradores, e a Sonae obriga à encriptação dos discos rígidos dos portáteis. A que categorias de controlos da ISO 27001 pertencem, respetivamente, estas medidas?",
     "opcoes": [
       "A05 (Organizacionais) e A07 (Físicos)",
       "A06 (Pessoas) e A08 (Tecnológicos)",
@@ -823,13 +823,13 @@
       "A06 (Pessoas) e A05 (Organizacionais)"
     ],
     "resposta_correta": "A06 (Pessoas) e A08 (Tecnológicos)",
-    "justificacao": "A gestão do ciclo de vida humano e NDAs são controlos de Pessoas (A06) [cite: 108, 109], enquanto mecanismos lógicos como a encriptação são controlos Tecnológicos (A08)[cite: 113, 114]."
+    "justificacao": "A gestão do ciclo de vida humano e NDAs são controlos de Pessoas (A06), enquanto mecanismos lógicos como a encriptação são controlos Tecnológicos (A08)."
   },
   {
     "id": "SP_059",
     "tipo": "multiple_choice",
     "macro_tema": "Evolucao_Digital_e_Ameacas",
-    "pergunta": "Uma empresa recebe 500 emails suspeitos reportados diariamente. Em vez de analisar manualmente, um sistema extrai links, verifica domínios maliciosos e apaga as ameaças automaticamente de forma inteligente[cite: 396]. Como se designa esta plataforma?",
+    "pergunta": "Uma empresa recebe 500 emails suspeitos reportados diariamente. Em vez de analisar manualmente, um sistema extrai links, verifica domínios maliciosos e apaga as ameaças automaticamente de forma inteligente. Como se designa esta plataforma?",
     "opcoes": [
       "Forense Digital",
       "SOAR (Security Orchestration, Automation and Response)",
@@ -837,13 +837,13 @@
       "Network Analysis"
     ],
     "resposta_correta": "SOAR (Security Orchestration, Automation and Response)",
-    "justificacao": "O SOAR automatiza tarefas repetitivas, centraliza inteligência contra ameaças e garante respostas mais rápidas com menor intervenção humana[cite: 393, 394, 395, 396]."
+    "justificacao": "O SOAR automatiza tarefas repetitivas, centraliza inteligência contra ameaças e garante respostas mais rápidas com menor intervenção humana."
   },
   {
     "id": "SP_060",
     "tipo": "multiple_choice",
     "macro_tema": "Fundamentos_e_Triade_CIA",
-    "pergunta": "Após um ataque informático que bloqueou processos clínicos, a equipa de investigação não liga os computadores infetados, optando por criar cópias exatas dos discos rígidos para analisar logs e tráfego de rede[cite: 417, 418]. Este procedimento é conhecido como:",
+    "pergunta": "Após um ataque informático que bloqueou processos clínicos, a equipa de investigação não liga os computadores infetados, optando por criar cópias exatas dos discos rígidos para analisar logs e tráfego de rede. Este procedimento é conhecido como:",
     "opcoes": [
       "Threat Intelligence",
       "Data Masking",
@@ -851,13 +851,13 @@
       "Behavioral Analytics"
     ],
     "resposta_correta": "Forense Digital (Digital Forensics)",
-    "justificacao": "A Forense Digital baseia-se na recolha, análise e preservação segura de provas digitais (como imagens de discos) após um incidente, para determinar a sua origem sem destruir evidências[cite: 415, 416, 418]."
+    "justificacao": "A Forense Digital baseia-se na recolha, análise e preservação segura de provas digitais (como imagens de discos) após um incidente, para determinar a sua origem sem destruir evidências."
   },
   {
     "id": "SP_061",
     "tipo": "multiple_choice",
     "macro_tema": "Privacidade_e_RGPD",
-    "pergunta": "Para garantir a segurança numa dashboard partilhada em Power BI, um programador aplica restrições para que o gerente da região Norte apenas consiga visualizar os dados de vendas da sua própria área[cite: 476]. Que tipo de técnica está a ser aplicada?",
+    "pergunta": "Para garantir a segurança numa dashboard partilhada em Power BI, um programador aplica restrições para que o gerente da região Norte apenas consiga visualizar os dados de vendas da sua própria área. Que tipo de técnica está a ser aplicada?",
     "opcoes": [
       "Row-Level Security (RLS)",
       "Object-Level Security (OLS)",
@@ -865,7 +865,7 @@
       "Advanced Persistent Threat"
     ],
     "resposta_correta": "Row-Level Security (RLS)",
-    "justificacao": "A Row-Level Security (RLS) permite filtrar e restringir o acesso a linhas específicas de dados consoante o perfil e permissões do utilizador logado[cite: 476]."
+    "justificacao": "A Row-Level Security (RLS) permite filtrar e restringir o acesso a linhas específicas de dados consoante o perfil e permissões do utilizador logado."
   },
   {
     "id": "SP_069",
@@ -908,6 +908,62 @@
     ],
     "resposta_correta": "Tratar o risco com prioridade máxima, alocando recursos para implementar controlos de mitigação imediatos (Protect e Detect).",
     "justificacao": "Riscos mapeados com Alto Impacto e Alta Probabilidade são os mais críticos numa Matriz de Risco e exigem tratamento imediato e prioritário para proteger o negócio."
+  },
+  {
+    "id": "SP_072",
+    "tipo": "multiple_choice",
+    "macro_tema": "Privacidade_e_RGPD",
+    "pergunta": "Uma equipa de Data Analytics está a fazer a limpeza de uma base de dados. Segundo o RGPD, qual das seguintes opções é considerada um 'Dado Pessoal' e obriga ao cumprimento do regulamento?",
+    "opcoes": [
+      "O Número de Identificação Fiscal (NIF) da empresa Jerónimo Martins.",
+      "O endereço de email genérico 'info@sonae.pt'.",
+      "O endereço IP de um utilizador que navegou no website da empresa.",
+      "Dados de vendas irreversivelmente anonimizados usados para treinar um algoritmo."
+    ],
+    "resposta_correta": "O endereço IP de um utilizador que navegou no website da empresa.",
+    "justificacao": "O endereço IP é considerado um dado pessoal. NIFs de empresas (pessoas coletivas), emails genéricos e dados irreversivelmente anonimizados não são classificados como dados pessoais ao abrigo do RGPD."
+  },
+  {
+    "id": "SP_073",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Numa fábrica, sensores de temperatura (dispositivos IoT) estão ligados à rede para monitorizar as máquinas. O sistema de segurança dispara um alerta porque um desses sensores tentou estabelecer ligação com o servidor de bases de dados dos Recursos Humanos (RH). Que tipo de análise detetou esta anomalia?",
+    "opcoes": [
+      "Behavioral Analytics (Análise Comportamental)",
+      "Network Analysis and Visibility",
+      "Digital Forensics (Forense Digital)",
+      "Object-Level Security (OLS)"
+    ],
+    "resposta_correta": "Network Analysis and Visibility",
+    "justificacao": "A Análise de Rede (Network Analysis) atua passivamente no tráfego para descobrir relações entre ativos. Como um sensor de temperatura não tem motivos lógicos para 'falar' com o servidor de RH, o sistema deteta a ameaça."
+  },
+  {
+    "id": "SP_074",
+    "tipo": "multiple_choice",
+    "macro_tema": "Frameworks_NIST_e_ISO27001",
+    "pergunta": "A TAP Air Portugal tem políticas rigorosas de uso aceitável de serviços Cloud e computadores corporativos. Já a NOS protege o espaço físico do seu Data Center com controlo de acessos estritamente biométrico. Que categorias de controlos do Anexo A da ISO 27001 estão aqui representadas, respetivamente?",
+    "opcoes": [
+      "A06 (Pessoas) e A08 (Tecnológicos)",
+      "A08 (Tecnológicos) e A05 (Organizacionais)",
+      "A05 (Organizacionais) e A07 (Físicos)",
+      "A07 (Físicos) e A06 (Pessoas)"
+    ],
+    "resposta_correta": "A05 (Organizacionais) e A07 (Físicos)",
+    "justificacao": "As diretrizes e políticas da TAP são Controlos Organizacionais (A05). A proteção física com biometria no Data Center da NOS enquadra-se nos Controlos Físicos (A07)."
+  },
+  {
+    "id": "SP_075",
+    "tipo": "multiple_choice",
+    "macro_tema": "Evolucao_Digital_e_Ameacas",
+    "pergunta": "Um hospital sofre um ataque de Ransomware que bloqueia o acesso aos processos clínicos. A equipa de Forense Digital (Digital Forensics) é chamada para investigar e descobrir o 'paciente zero'. Qual é o procedimento correto para garantir a preservação das provas?",
+    "opcoes": [
+      "Ligar imediatamente os computadores infetados para analisar a mensagem de extorsão no ecrã.",
+      "Pagar o resgate rapidamente para passar à fase de 'Recover' do NIST.",
+      "Apagar os logs da rede para evitar que o malware se replique para outros servidores.",
+      "Não ligar os computadores infetados e criar cópias/imagens exatas dos discos rígidos para análise."
+    ],
+    "resposta_correta": "Não ligar os computadores infetados e criar cópias/imagens exatas dos discos rígidos para análise.",
+    "justificacao": "A Forense Digital foca-se na recolha e preservação segura das provas. Ligar os computadores pode destruir evidências, pelo que se devem criar cópias exatas dos discos (drives) para determinar a origem e identificar o 'paciente zero' em segurança."
   }
  ]
 }
