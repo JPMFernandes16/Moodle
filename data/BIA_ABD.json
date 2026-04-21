@@ -1,14 +1,14 @@
 {
   "opcoes_exame": {
-    "duracao_minutos": 90,
+    "duracao_minutos": 20,
     "desconto_erro": 0.25
   },
   "configuracao_teste": {
-    "RDBMS_e_NoSQL": 2,
+    "RDBMS_e_NoSQL": 4,
     "Cloud_Computing": 2,
-    "Taxonomia_dos_Dados": 2,
+    "Taxonomia_dos_Dados": 4,
     "Hadoop_e_Data_Lakes": 2,
-    "Apache_Spark": 2
+    "Apache_Spark": 3
   },
   "perguntas": [
     {
