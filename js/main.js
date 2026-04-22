@@ -107,6 +107,14 @@ document.addEventListener("DOMContentLoaded", () => {
           ],
           videos: []
       },
+      "CV_JOAO": {
+          pdfs: [
+              { name: "Get to Know João Fernandes", file: "pdfs/CV_JOAO.pdf" }
+          ],
+          videos: [
+              { name: "Vídeo de Apresentação", file: "videos/CV_JOAO.mp4" }
+          ]
+      },
       "BIA_STP": {
           pdfs: [
               { name: "Resumo Séries Temporais", file: "pdfs/BIA_STP.pdf" }

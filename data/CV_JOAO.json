@@ -1,0 +1,80 @@
+{
+  "disciplina": "Get to Know João Fernandes",
+  "opcoes_exame": {
+    "duracao_minutos": 5,
+    "desconto_erro": 0
+  },
+  "configuracao_teste": {
+    "Experiencia_Profissional": 2,
+    "Projetos_e_Tecnologia": 2,
+    "Educacao_e_Perfil": 1
+  },
+  "perguntas": [
+    {
+      "id": "CV_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Experiencia_Profissional",
+      "pergunta": "Durante o seu estágio na Shortcut, qual foi o principal desafio resolvido pelo João no que toca à automação de dados?",
+      "opcoes": [
+        "Criou uma loja online de venda de energia usando WordPress.",
+        "Desenvolveu uma pipeline em Node.js para a extração e integração diária de dados do mercado ibérico de energia (OMIE).",
+        "Apenas otimizou queries numa base de dados MySQL local.",
+        "Fez a gestão de redes sociais da empresa."
+      ],
+      "resposta_correta": "Desenvolveu uma pipeline em Node.js para a extração e integração diária de dados do mercado ibérico de energia (OMIE).",
+      "justificacao": "O João criou um processo automatizado e autónomo em produção, lidando com a complexidade de ficheiros plain text e fusos horários diferentes da plataforma OMIE."
+    },
+    {
+      "id": "CV_002",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Projetos_e_Tecnologia",
+      "pergunta": "Associe os projetos desenvolvidos pelo João às tecnologias e objetivos principais correspondentes.",
+      "pares": [
+        { "definicao": "Dashboard interativo com filtros pop-up dinâmicos para análise de lucros, unidades vendidas e geografia.", "conceito": "Adidas Sales US (Power BI & SQL)" },
+        { "definicao": "Progressive Web App com Firebase, gamificação e suporte offline para ajudar estudantes universitários.", "conceito": "Gamified Study Portal (PWA)" },
+        { "definicao": "Processo de ingestão de ficheiros de texto brutos, normalização de dados e transações seguras em base de dados.", "conceito": "OMIE Market Data (Node.js & SQL Server)" }
+      ],
+      "justificacao": "O portfólio do João demonstra versatilidade: desde engenharia de dados (Node.js/SQL), passando por análise de negócio (Power BI), até ao desenvolvimento de produtos completos (PWA)."
+    },
+    {
+      "id": "CV_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Educacao_e_Perfil",
+      "pergunta": "Qual é a principal vantagem competitiva do perfil académico e profissional do João?",
+      "opcoes": [
+        "Tem um perfil híbrido: possui as fundações técnicas da Engenharia de Software (Licenciatura) e a visão analítica de negócio (Mestrado em BI).",
+        "Sabe programar em Java, mas não entende de bases de dados relacionais.",
+        "É especialista exclusivamente em Marketing Digital e criação de campanhas.",
+        "Tem formação em Medicina, mas decidiu mudar de área recentemente."
+      ],
+      "resposta_correta": "Tem um perfil híbrido: possui as fundações técnicas da Engenharia de Software (Licenciatura) e a visão analítica de negócio (Mestrado em BI).",
+      "justificacao": "A Licenciatura em Ciência de Computadores garante bases sólidas de arquitetura de software, enquanto o Mestrado em Business Analytics no ISCAP foca na extração de insights de negócio."
+    },
+    {
+      "id": "CV_004",
+      "tipo": "true_false",
+      "macro_tema": "Experiencia_Profissional",
+      "pergunta": "O João limitou-se a escrever código na Shortcut, não tendo qualquer contacto com a criação de Dashboards ou análise de negócio.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Além do código (Node.js/SQL Server), o João desenhou e implementou um dashboard de gestão interna em Power BI para monitorizar KPIs e carteiras de clientes."
+    },
+    {
+      "id": "CV_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Projetos_e_Tecnologia",
+      "pergunta": "Nas suas horas livres, o João demonstrou ter um hobby que destaca a sua capacidade de raciocínio estruturado e resolução de problemas. Qual é esse hobby?",
+      "opcoes": [
+        "Participar em torneios de videojogos online.",
+        "Desenhar e produzir um jogo físico baseado em puzzles, enigmas e narrativa lógica (Puzzle-Based Game Design).",
+        "Fazer críticas de filmes em fóruns da internet.",
+        "Colecionar material informático antigo."
+      ],
+      "resposta_correta": "Desenhar e produzir um jogo físico baseado em puzzles, enigmas e narrativa lógica (Puzzle-Based Game Design).",
+      "justificacao": "Este projeto reflete o gosto do João por criar sistemas envolventes a partir do zero, usando pensamento lógico e estruturado."
+    }
+  ]
+}
