@@ -15,7 +15,8 @@
   --success-light: rgba(16, 185, 129, 0.15);
   --error: #ef4444;
   --error-light: rgba(239, 68, 68, 0.15);
-  --warning: #f59e0b;
+  /* Ajuste: Amarelo mais puro para destacar claramente do laranja primário */
+  --warning: #eab308; 
   
   --radius-sm: 12px;
   --radius-lg: 24px;
@@ -121,6 +122,12 @@ h1, h2, h3, p { margin-top: 0; }
 @keyframes flicker {
   0%, 100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 2px var(--primary)); }
   50% { transform: scale(1.15); opacity: 0.85; filter: drop-shadow(0 0 8px var(--warning)); }
+}
+
+/* Nova animação contínua para a barra de progresso (Barber Pole) */
+@keyframes progress-stripes {
+  from { background-position: 40px 0; }
+  to { background-position: 0 0; }
 }
 
 /* =========================================================
@@ -351,7 +358,25 @@ h1, h2, h3, p { margin-top: 0; }
 .option-item.option-selected-wrong { background: var(--error-light); border-color: var(--error); pointer-events: none;}
 
 /* DRAG AND DROP */
-.dnd-item { transition: box-shadow 0.2s ease, transform 0.2s ease; user-select: none; touch-action: none; }
+.dnd-item { 
+    transition: box-shadow 0.2s ease, transform 0.2s ease; 
+    user-select: none; 
+    touch-action: none; 
+    display: flex; /* Novo: Alinhar o grip visualmente */
+    align-items: center;
+    gap: 10px; /* Novo: Espaço entre o ícone e o texto */
+}
+
+/* Novo: Ícone de Affordance para o utilizador perceber que pode agarrar */
+.dnd-item::before {
+    content: '⋮⋮'; 
+    opacity: 0.4;
+    font-weight: 900;
+    font-size: 1.1rem;
+    cursor: grab;
+    letter-spacing: -2px;
+}
+
 .dnd-item:active { transform: scale(0.96); cursor: grabbing !important; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
 .dnd-dropzone { transition: background-color 0.3s ease, box-shadow 0.3s ease; }
 
@@ -391,7 +416,13 @@ h1, h2, h3, p { margin-top: 0; }
 .hud-box:hover { transform: translateY(-2px); border-color: var(--primary); }
 .hud-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px;}
 .hud-value { font-size: 1.8rem; color: var(--text-main); }
-#timer { color: var(--primary); text-shadow: var(--shadow-neon); font-family: 'JetBrains Mono', monospace;}
+
+/* Ajuste: Reduzido o blur do text-shadow para melhorar a legibilidade de utilizadores com astigmatismo */
+#timer { 
+    color: var(--primary); 
+    text-shadow: 0 0 8px var(--primary-glow); 
+    font-family: 'JetBrains Mono', monospace;
+}
 
 /* Navegação de Perguntas */
 .nav-map { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px; }
@@ -408,9 +439,19 @@ h1, h2, h3, p { margin-top: 0; }
 .nav-node.is-partial { background: var(--warning); border-color: var(--warning); color: white;}
 .nav-node.is-incorrect { background: var(--error); border-color: var(--error); color: white;}
 
-/* Barra de Progresso Semestral */
+/* Barra de Progresso Semestral com Efeito Barber Pole Animado */
 .neon-progress-bg { width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-top: 10px;}
-.neon-progress-fill { height: 100%; width: 0%; background: var(--primary-gradient); box-shadow: var(--shadow-neon); transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);}
+.neon-progress-fill { 
+    height: 100%; 
+    width: 0%; 
+    background-image: 
+        linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent),
+        var(--primary-gradient);
+    background-size: 40px 40px, auto;
+    box-shadow: var(--shadow-neon); 
+    transition: width 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation: progress-stripes 2s linear infinite;
+}
 
 /* Leaderboard Interativa */
 #leaderboardContainer > div {
