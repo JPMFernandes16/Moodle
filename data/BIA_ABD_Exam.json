@@ -1,11 +1,13 @@
 {
+  "disciplina": "Simulacao_Teste_Real",
+  "tema_foco": "Tema 1: Casos de Estudo e Respostas de Desenvolvimento",
   "opcoes_exame": {
     "duracao_minutos": 90,
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "RDBMS_e_NoSQL": 3,
-    "Caso_Pratico_wtvision_TheFloor": 9
+    "RDBMS_e_NoSQL": 1,
+    "Caso_Pratico_wtvision_TheFloor": 0
   },
   "perguntas": [
     {
@@ -15,10 +17,10 @@
       "tema": "Os_5_Vs_e_NoSQL",
       "pergunta": "Contexto: A TAP Air Portugal utiliza há décadas uma robusta base de dados relacional (RDBMS) para gerir as reservas de voos. No entanto, querem lançar um projeto de Manutenção Preditiva recolhendo dados de sensores em voo, relatórios em PDF e comentários do Instagram. Explique, recorrendo aos conceitos dos '5 V's' do Big Data, por que razão o atual sistema RDBMS não suporta este projeto, e justifique como o paradigma NoSQL resolve este bloqueio.",
       "palavras_chave": [
-        ["variedade", "estruturados", "não estruturados", "pdf", "instagram", "formatos"],
+        ["variedade", "estruturados", "não estruturados", "formatos"],
         ["volume", "velocidade", "sensores", "tempo real", "massivo"],
         ["veracidade", "ruído", "redes sociais"],
-        ["nosql", "schema-less", "flexível", "sem esquema rígido"]
+        ["nosql", "flexível", "sem esquema", "não relacional"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -26,7 +28,7 @@
         "2_grupos": 0.5,
         "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "O modelo RDBMS falha principalmente devido à Variedade, pois exige tabelas rígidas que não comportam dados não estruturados (PDFs, comentários do Instagram). Falha também face ao Volume e Velocidade massivos dos sensores. A solução NoSQL é ideal porque é 'schema-less' (sem esquema), permitindo armazenar todos estes múltiplos formatos de forma flexível e escalável para extrair Valor.",
+      "resposta_referencia": "O modelo RDBMS falha principalmente devido à Variedade, pois exige tabelas rígidas que não comportam dados não estruturados (PDFs, comentários do Instagram). Falha também face ao Volume e Velocidade massivos dos sensores. A solução NoSQL é ideal porque funciona sem esquema rígido, permitindo armazenar todos estes múltiplos formatos de forma flexível e escalável para extrair Valor.",
       "justificacao": "A resposta deve evidenciar a limitação do esquema rígido das bases relacionais face à nova variedade e velocidade dos dados do caso de estudo."
     },
     {
@@ -37,9 +39,9 @@
       "pergunta": "Contexto: A Farfetch, empresa global de luxo, opera com dados distribuídos. Durante a Black Friday, ocorre uma falha nos cabos submarinos (corte de rede) entre a Europa e os EUA, mas os clientes continuaram a navegar e a adicionar ao carrinho. Sabendo que usam Big Data em vez de bases relacionais, utilize o Teorema CAP para justificar a decisão de arquitetura do sistema face à propriedade ACID.",
       "palavras_chave": [
         ["cap", "teorema", "brewer"],
-        ["partição", "falha de rede", "inevitável", "tolerância a partições"],
-        ["disponibilidade", "availability", "online", "responder", "faturar"],
-        ["consistência", "eventual", "sacrificar", "abdicar", "acid", "bloquear"]
+        ["partição", "falha", "inevitável", "rede", "cabo"],
+        ["disponibilidade", "online", "responder", "faturar", "serviço"],
+        ["consistência", "eventual", "sacrificar", "abdicar", "bloquear"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -48,29 +50,28 @@
         "3_ou_4_grupos": 1
       },
       "resposta_referencia": "Pelo Teorema CAP, a falha dos cabos gerou uma Partição de rede inevitável (P). Ao contrário de um modelo ACID que bloquearia o sistema para garantir Consistência absoluta (C), a arquitetura da Farfetch optou pela Disponibilidade (A). O sistema aceitou uma consistência eventual momentânea entre os continentes para garantir que a aplicação permanecia online e a processar pedidos.",
-      "justificacao": "É vital demonstrar que se compreende o compromisso (trade-off) de negócio entre bloquear o sistema por segurança dos dados (ACID/C) versus mantê-lo a faturar com ligeiro atraso de sincronização (AP)."
+      "justificacao": "É vital demonstrar que se compreende o compromisso de negócio entre bloquear o sistema por segurança dos dados (Consistência) versus mantê-lo a faturar com ligeiro atraso de sincronização (Disponibilidade)."
     },
     {
-      "id": "ABD_023",
+      "id": "SIM_003",
       "tipo": "open_ended",
       "macro_tema": "Bases_de_Dados_NoSQL",
-      "tema": "Teorema_CAP_Definicao",
-      "pergunta": "Defina o Teorema CAP (Teorema de Brewer) no contexto das bases de dados distribuídas e explique as consequências para o sistema quando ocorre uma falha/partição de rede.",
+      "tema": "Teoria_CAP_Obrigatoriedade",
+      "pergunta": "Baseado no Teorema CAP, explique por que razão a Tolerância a Partições (P) é considerada uma obrigatoriedade em sistemas de Big Data distribuídos baseados em Cloud, e justifique o motivo pelo qual o sistema é forçado a escolher apenas entre Consistência (C) e Disponibilidade (A) perante essa realidade.",
       "palavras_chave": [
-        ["consistência", "consistency", "mesmo dado", "atualizado"],
-        ["disponibilidade", "availability", "resposta", "uptime"],
-        ["partição", "partition", "falha", "rede"],
-        ["sacrificar", "escolher", "abdicar", "garantir", "comprometer"],
-        ["duas", "2", "simultâneo", "impossível"]
+        ["falha", "inevitável", "física", "obrigatoriedade", "distribuído"],
+        ["consistência", "iguais", "sincronizados", "bloquear"],
+        ["disponibilidade", "responder", "online", "sempre"],
+        ["impossível", "simultâneo", "escolher", "sacrificar"]
       ],
       "criterios_avaliacao": {
-        "logica": "Contar quantos dos 5 grupos de palavras-chave estão representados na resposta do utilizador.",
+        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
         "0_ou_1_grupo": 0,
-        "2_ou_3_grupos": 0.5,
-        "4_ou_5_grupos": 1
+        "2_grupos": 0.5,
+        "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "O Teorema CAP estabelece que num sistema distribuído é impossível garantir simultaneamente as três propriedades: Consistência, Disponibilidade e Tolerância a Partição. Como as falhas de rede (Partições) são inevitáveis, o sistema é obrigado a escolher e sacrificar ou a Consistência ou a Disponibilidade.",
-      "justificacao": "É essencial perceber o trade-off inerente ao NoSQL: perante falhas de comunicação, o sistema tem de decidir se aceita responder com dados desatualizados (Garante Disponibilidade) ou se bloqueia a resposta até restabelecer sincronia (Garante Consistência)."
+      "resposta_referencia": "Num sistema distribuído fisicamente pela Cloud, uma quebra de comunicação entre servidores (Partição) é uma falha física inevitável, tornando a Tolerância a Partições (P) obrigatória. Quando essa falha ocorre, é impossível garantir as outras duas propriedades em simultâneo: o sistema tem de escolher entre bloquear o serviço para manter os dados sincronizados (Consistência) ou continuar a responder entregando dados desatualizados (Disponibilidade).",
+      "justificacao": "O professor procura especificamente a compreensão de que a Partição não é uma escolha arquitetónica, mas uma falha física da rede, forçando o compromisso entre C e A."
     }
   ]
 }

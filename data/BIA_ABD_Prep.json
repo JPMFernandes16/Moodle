@@ -1,93 +1,82 @@
 {
+  "disciplina": "Treino_Escolha_Multipla",
+  "tema_foco": "Tema 1: Introdução ao Big Data, RDBMS vs NoSQL e Teorema CAP",
   "opcoes_exame": {
     "duracao_minutos": 20,
     "desconto_erro": 0.5
   },
   "configuracao_teste": {
     "RDBMS_e_NoSQL": 3,
-    "Caso_Pratico_wtvision_TheFloor": 9
+    "Caso_Pratico_wtvision_TheFloor": 0
   },
   "perguntas": [
     {
-      "id": "BIA_001",
+      "id": "BIA_ADV_001",
       "tipo": "multiple_choice",
       "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "No contexto das propriedades ACID em Bases de Dados Relacionais (RDBMS), qual das seguintes opções descreve rigorosamente a propriedade de 'Isolamento' (Isolation)?",
+      "pergunta": "A SIBS, entidade que gere a rede Multibanco em Portugal, processa milhões de transferências MBWay diariamente. Se o servidor A debitar 10€ na conta do remetente, o servidor B tem de creditar os 10€ no destinatário. Se o servidor B falhar a meio do processo, a operação é revertida e o dinheiro volta ao remetente. Que propriedade do modelo RDBMS clássico garante este comportamento de 'tudo ou nada'?",
       "opcoes": [
-        "A garantia de que tudo numa transação se completa em pleno ou falha na totalidade.",
-        "A garantia de que transações simultâneas não interferem umas nas outras.",
-        "A garantia de que os dados gravados persistem mesmo após uma falha de energia.",
-        "A garantia de que o sistema respeita sempre todas as regras de integridade do modelo de dados."
+        "Consistência (Consistency).",
+        "Isolamento (Isolation).",
+        "Durabilidade (Durability).",
+        "Atomicidade (Atomicity)."
       ],
-      "resposta_correta": "A garantia de que transações simultâneas não interferem umas nas outras.",
-      "justificacao": "O Isolamento assegura que múltiplas transações a decorrer em paralelo são isoladas umas das outras. As outras opções descrevem a Atomicidade (tudo ou nada), Durabilidade (persistência após falha) e Consistência (regras de integridade)."
+      "resposta_correta": "Atomicidade (Atomicity).",
+      "justificacao": "A rasteira aqui é confundir Consistência com Atomicidade. A Consistência garante que as regras do banco (ex: não ter saldo negativo) são cumpridas. A Atomicidade é a regra que garante que a transação é executada na sua totalidade ou falha por completo (rollback), não deixando dinheiro 'perdido' a meio caminho."
     },
     {
-      "id": "BIA_002",
+      "id": "BIA_ADV_002",
       "tipo": "multiple_choice",
       "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "De acordo com o Teorema CAP para sistemas distribuídos (como as bases de dados NoSQL), se houver uma falha de rede (Tolerância a Partição - P), um sistema do tipo 'AP' (Availability & Partition Tolerance) foca-se em quê?",
+      "pergunta": "A EDP Distribuição recolhe dados de consumo a cada 15 minutos através de milhões de contadores inteligentes (Smart Meters). Recentemente, implementaram um algoritmo que deteta e descarta automaticamente leituras com valores absurdos geradas por contadores avariados, antes de usar a informação para prever picos de consumo de energia. Que dois 'V's' do Big Data estão diretamente representados nesta ação específica?",
       "opcoes": [
-        "Bloquear temporariamente a operação para garantir que nenhum nó lê dados errados (consistência).",
-        "Continuar a responder e fornecer dados, mesmo que isso signifique sacrificar a consistência momentânea dos mesmos.",
-        "Assegurar que todos os utilizadores veem exatamente os mesmos dados ao mesmo tempo, mesmo que o sistema fique lento.",
-        "Manter a consistência através de replicação síncrona ignorando a falha de rede."
+        "Velocidade e Volume.",
+        "Veracidade e Valor.",
+        "Variedade e Veracidade.",
+        "Volume e Valor."
       ],
-      "resposta_correta": "Continuar a responder e fornecer dados, mesmo que isso signifique sacrificar a consistência momentânea dos mesmos.",
-      "justificacao": "Num sistema AP (como CouchDB ou DynamoDB), perante uma falha de rede, o sistema continua a responder aos pedidos (Disponibilidade) sacrificando a Consistência lógica da informação."
+      "resposta_correta": "Veracidade e Valor.",
+      "justificacao": "A limpeza de dados corrompidos de contadores avariados garante a 'Veracidade' (qualidade e fiabilidade da informação). O facto de utilizarem esses dados limpos para prever picos de consumo e otimizar a rede elétrica representa a extração de 'Valor' para o negócio."
     },
     {
-      "id": "BIA_003",
-      "tipo": "drag_and_drop",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "Associa o tipo de Base de Dados NoSQL à sua descrição/caso de uso clássico.",
-      "pares": [
-        { "definicao": "Dicionário gigante ideal para carrinhos de compras ou sessões rápidas.", "conceito": "Key-Value (ex: Redis)" },
-        { "definicao": "Guarda informação flexível, permitindo mudar campos sem parar a base, formatada em JSON/XML.", "conceito": "Documentos (ex: MongoDB)" },
-        { "definicao": "Inverte a lógica ao guardar dados por atributos, muito rápido para análise.", "conceito": "Colunas (ex: Cassandra)" },
-        { "definicao": "Foca-se em relações e conexões, ideal para redes sociais e recomendações.", "conceito": "Grafos (ex: Neo4j)" }
-      ],
-      "justificacao": "A tipologia NoSQL divide-se em 4 classes fundamentais, cada uma otimizada para diferentes estruturas de dados, desde a extrema velocidade do Key-Value até à complexidade relacional dos Grafos."
-    },
-    {
-      "id": "BIA_004",
+      "id": "BIA_ADV_003",
       "tipo": "multiple_choice",
       "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "No que toca aos 5 V's do Big Data, qual a afirmação que descreve corretamente a diferença entre 'Variedade' e 'Veracidade'?",
+      "pergunta": "A Worten pretende modernizar a sua base de dados de catálogo online. Um frigorífico tem atributos como 'litragem' e 'eficiência energética', enquanto um computador tem 'memória RAM' e 'processador'. Como os atributos variam drasticamente de produto para produto, uma base de dados relacional (RDBMS) com colunas fixas deixaria milhares de espaços em branco (nulls). Qual a solução NoSQL mais indicada para este cenário?",
       "opcoes": [
-        "Variedade é a velocidade a que os dados são gerados; Veracidade é o valor extraído dos insights.",
-        "Variedade refere-se apenas a dados estruturados em bases relacionais; Veracidade refere-se à quantidade de dados.",
-        "Variedade refere-se à evolução de tabelas para formatos não estruturados (áudio, JSON, vídeo); Veracidade é a capacidade de limpar e confiar nos dados (qualidade).",
-        "Variedade é a limpeza dos dados (qualidade); Veracidade é a multiplicidade de fontes de dados (áudio, texto, vídeo)."
+        "Base de Dados Orientada a Grafos (Graph Database).",
+        "Base de Dados Chave-Valor (Key-Value Store).",
+        "Base de Dados Orientada a Documentos (Document Database).",
+        "Armazenamento em Colunas (Column-Family Store)."
       ],
-      "resposta_correta": "Variedade refere-se à evolução de tabelas para formatos não estruturados (áudio, JSON, vídeo); Veracidade é a capacidade de limpar e confiar nos dados (qualidade).",
-      "justificacao": "A Variedade (Diversity of Data) prende-se com a tipologia dos dados (texto, áudio, JSON). A Veracidade (Accuracy of Data) refere-se à fiabilidade e qualidade desses mesmos dados."
+      "resposta_correta": "Base de Dados Orientada a Documentos (Document Database).",
+      "justificacao": "As bases de dados de Documentos (como o MongoDB) guardam a informação em formatos flexíveis como JSON. Isto permite que o 'documento' do frigorífico tenha campos completamente diferentes do 'documento' do computador na mesma base de dados, resolvendo o problema dos esquemas rígidos das RDBMS."
     },
     {
-      "id": "BIA_005",
+      "id": "BIA_ADV_004",
       "tipo": "multiple_choice",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "O termo 'Consistência' figura como um pilar conceptual tanto nas arquiteturas ACID (Bases Relacionais) como no Teorema CAP (Sistemas Distribuídos NoSQL). Qual das afirmações destrinça corretamente o significado deste vocábulo em cada modelo?",
+      "macro_tema": "Bases_de_Dados_NoSQL",
+      "pergunta": "Durante a transmissão de um grande evento desportivo em direto, os servidores europeus da Netflix perdem a comunicação com os servidores centrais nos EUA. Em vez de bloquear o acesso aos utilizadores europeus para garantir que a sua lista de visualizações ficava rigorosamente igual à base de dados central, a Netflix permitiu que os utilizadores continuassem a ver filmes, atualizando o histórico mais tarde. À luz do Teorema CAP, a Netflix adotou que postura?",
       "opcoes": [
-        "No ACID reporta-se à garantia de ausência de locks ao ler tabelas longas; no CAP designa a estrita aplicação de chaves forasteiras e normalização até à 3NF.",
-        "No ACID significa que todas as transações confirmadas não perdem bytes caso ocorra downtime energético; no CAP traduz o tempo que um nó retém resposta ao longo de um timeout.",
-        "No ACID significa que a execução de uma transação transita a base de dados de um estado válido para outro estado válido sem violar as regras do schema; no CAP define que todos os nós na rede apresentam e partilham a exata mesma cópia da informação aquando de uma leitura simultânea.",
-        "Ambas garantem que o sistema recupera de um 'split brain network', revertendo todas as bases de dados para os backups logísticos gravados em paridade."
+        "Ignorou a Tolerância a Partições (P) para focar-se exclusivamente na Disponibilidade (A).",
+        "Adotou um modelo CA (Consistency e Availability), uma vez que a falha de rede era previsível.",
+        "Assumiu a ocorrência da Partição (P) e escolheu manter a Disponibilidade (A), sacrificando a Consistência imediata (C).",
+        "Assumiu a ocorrência da Partição (P) e escolheu manter a Consistência (C), sacrificando a Disponibilidade (A)."
       ],
-      "resposta_correta": "No ACID significa que a execução de uma transação transita a base de dados de um estado válido para outro estado válido sem violar as regras do schema; no CAP define que todos os nós na rede apresentam e partilham a exata mesma cópia da informação aquando de uma leitura simultânea.",
-      "justificacao": "A semântica difere estruturalmente. Em ACID (Consistency), a consistência visa a verificação das regras/chaves primárias na transição transacional de dados. Em CAP (Consistency), trata-se unicamente de sincronia e replicação exata."
+      "resposta_correta": "Assumiu a ocorrência da Partição (P) e escolheu manter a Disponibilidade (A), sacrificando a Consistência imediata (C).",
+      "justificacao": "A rasteira reside em compreender que a Tolerância a Partição (P) não é uma 'escolha', mas uma inevitabilidade tecnológica quando a rede cai. Face a essa quebra, a Netflix não bloqueou a plataforma (o que seria priorizar a Consistência/C), optando antes por manter o serviço a funcionar sem interrupções (Disponibilidade/A) mesmo com dados momentaneamente desatualizados."
     },
     {
-      "id": "BIA_006",
+      "id": "BIA_ADV_005",
       "tipo": "true_false",
       "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "A propriedade de 'Atomicidade' num sistema de Base de Dados Relacional (RDBMS) garante que, perante uma falha no meio de uma transação complexa, a base de dados apenas guarda as partes da operação que foram bem-sucedidas.",
+      "pergunta": "O conceito de 'Schema-less' nas bases de dados NoSQL significa que a informação é guardada sem qualquer tipo de estrutura organizativa interna ou lógica de acesso, operando essencialmente como um buraco negro de dados cru ('Data Dump').",
       "opcoes": [
         "Verdadeiro",
         "Falso"
       ],
       "resposta_correta": "Falso",
-      "justificacao": "A Atomicidade é a regra do 'tudo ou nada'. Garante exatamente o oposto: se uma falha ocorrer a meio, a transação falha na totalidade (faz rollback) para não deixar a base de dados num estado intermédio."
+      "justificacao": "A rasteira está na tradução literal. 'Schema-less' não significa ausência total de estrutura; significa ausência de um esquema rígido pré-definido e imutável (como as tabelas do SQL). Os dados NoSQL têm organização lógica (seja em documentos JSON, pares de chave-valor ou grafos), apenas são flexíveis e adaptáveis em tempo de execução."
     }
   ]
 }
