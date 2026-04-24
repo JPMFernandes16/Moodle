@@ -1,13 +1,11 @@
 {
-  "disciplina": "Simulacao_Teste_Real",
-  "tema_foco": "Tema 1: Casos de Estudo e Respostas de Desenvolvimento",
   "opcoes_exame": {
     "duracao_minutos": 90,
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
     "RDBMS_e_NoSQL": 1,
-    "Caso_Pratico_wtvision_TheFloor": 0
+    "Cloud_Computing": 1
   },
   "perguntas": [
     {
@@ -72,6 +70,48 @@
       },
       "resposta_referencia": "Num sistema distribuído fisicamente pela Cloud, uma quebra de comunicação entre servidores (Partição) é uma falha física inevitável, tornando a Tolerância a Partições (P) obrigatória. Quando essa falha ocorre, é impossível garantir as outras duas propriedades em simultâneo: o sistema tem de escolher entre bloquear o serviço para manter os dados sincronizados (Consistência) ou continuar a responder entregando dados desatualizados (Disponibilidade).",
       "justificacao": "O professor procura especificamente a compreensão de que a Partição não é uma escolha arquitetónica, mas uma falha física da rede, forçando o compromisso entre C e A."
+    },
+    {
+      "id": "SIM_CLD_001",
+      "tipo": "open_ended",
+      "macro_tema": "Cloud_Computing",
+      "tema": "Provisionamento_e_Elasticidade",
+      "pergunta": "Contexto: A cadeia de supermercados Continente usava, há alguns anos, o método de 'Provisionamento Estático' para o seu site online, comprando servidores baseados numa estimativa de tráfego. No entanto, no primeiro dia de confinamento da pandemia, o site bloqueou devido a um pico de 1000% nas encomendas e, nos meses de verão seguintes, tiveram servidores parados sem uso. Explique as duas grandes falhas financeiras e operacionais do Provisionamento Estático sentidas pelo Continente, e justifique como a transição para a Cloud (focando nos conceitos de 'Elasticidade' e 'Utility Computing') resolve ambos os problemas.",
+      "palavras_chave": [
+        ["subdimensionamento", "perda", "bloqueou", "clientes"],
+        ["sobredimensionamento", "desperdício", "parados", "dinheiro", "custo"],
+        ["elasticidade", "dinâmico", "adaptar", "aumentar", "diminuir"],
+        ["utility computing", "pago pelo uso", "pay-per-use", "apenas o que usa"]
+      ],
+      "criterios_avaliacao": {
+        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
+        "0_ou_1_grupo": 0,
+        "2_grupos": 0.5,
+        "3_ou_4_grupos": 1
+      },
+      "resposta_referencia": "O provisionamento estático causou subdimensionamento no pico da pandemia (perda de clientes/receita com o site em baixo) e sobredimensionamento no verão (desperdício de dinheiro com servidores ociosos). A transição para a Cloud resolve isto através da Elasticidade, permitindo o provisionamento dinâmico: os recursos aumentam e diminuem automaticamente consoante o tráfego real. Aliado ao modelo de Utility Computing, o Continente passa a pagar estritamente pelos recursos que consumiu em cada hora, eliminando investimentos inúteis em hardware físico.",
+      "justificacao": "O professor quer ver a associação entre o problema clássico (falhar as estimativas) e as duas soluções Cloud: a resposta técnica (Elasticidade) e a resposta financeira (Utility Computing)."
+    },
+    {
+      "id": "SIM_CLD_002",
+      "tipo": "open_ended",
+      "macro_tema": "Cloud_Computing",
+      "tema": "Modelos_de_Servico",
+      "pergunta": "Contexto: Uma agência de publicidade decidiu focar-se apenas na criatividade. Em vez de comprar e manter servidores de email próprios no escritório, decidiu assinar licenças do 'Microsoft Office 365' para os seus trabalhadores usarem diretamente no browser. Em contrapartida, a Farfetch necessita de treinar um modelo de Inteligência Artificial secreto e complexo, pelo que decidiu alugar servidores 'crus' na AWS (Amazon EC2), onde a sua equipa instala o seu próprio Linux e os pacotes de software de raiz. Classifique e justifique as escolhas de modelos Cloud (IaaS, PaaS, SaaS) efetuadas pela agência de publicidade e pela Farfetch.",
+      "palavras_chave": [
+        ["saas", "software", "agência", "office 365"],
+        ["pronto a usar", "utilizador final", "browser", "sem gerir"],
+        ["iaas", "infraestrutura", "farfetch", "ec2"],
+        ["controlo", "sistema operativo", "linux", "instalar"]
+      ],
+      "criterios_avaliacao": {
+        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
+        "0_ou_1_grupo": 0,
+        "2_grupos": 0.5,
+        "3_ou_4_grupos": 1
+      },
+      "resposta_referencia": "A agência de publicidade optou pelo modelo SaaS (Software as a Service), pois o Office 365 é um produto final pronto a usar no browser, libertando a empresa de qualquer gestão de código, sistemas operativos ou infraestrutura. A Farfetch optou pelo modelo IaaS (Infrastructure as a Service) com o Amazon EC2, alugando apenas os recursos computacionais fundamentais. Isto foi necessário porque o modelo de IaaS é o único que oferece controlo total à equipa de engenharia para instalar e configurar de raiz o seu próprio sistema operativo (Linux) e os softwares necessários para a sua IA.",
+      "justificacao": "É essencial destrinçar a diferença de responsabilidades: no SaaS o cliente só consome, no IaaS o cliente tem a responsabilidade máxima de gerir do sistema operativo para cima, ganhando controlo total."
     }
   ]
 }

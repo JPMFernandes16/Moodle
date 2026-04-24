@@ -1,13 +1,11 @@
 {
-  "disciplina": "Treino_Escolha_Multipla",
-  "tema_foco": "Tema 1: Introdução ao Big Data, RDBMS vs NoSQL e Teorema CAP",
   "opcoes_exame": {
     "duracao_minutos": 20,
     "desconto_erro": 0.5
   },
   "configuracao_teste": {
     "RDBMS_e_NoSQL": 3,
-    "Caso_Pratico_wtvision_TheFloor": 0
+    "Cloud_Computing": 0
   },
   "perguntas": [
     {
@@ -77,6 +75,74 @@
       ],
       "resposta_correta": "Falso",
       "justificacao": "A rasteira está na tradução literal. 'Schema-less' não significa ausência total de estrutura; significa ausência de um esquema rígido pré-definido e imutável (como as tabelas do SQL). Os dados NoSQL têm organização lógica (seja em documentos JSON, pares de chave-valor ou grafos), apenas são flexíveis e adaptáveis em tempo de execução."
+    },
+    {
+      "id": "CLD_ADV_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "A Worten prepara-se para a Black Friday. Sabendo que o tráfego vai aumentar 500%, a equipa de engenharia decide adicionar 10 novos servidores virtuais ao balanceador de carga em vez de tentar colocar mais memória RAM no servidor principal, o que exigiria desligá-lo temporariamente. Que conceito de escalabilidade foi aplicado?",
+      "opcoes": [
+        "Escalonamento Vertical (Scale Up).",
+        "Escalonamento Horizontal (Scale Out).",
+        "Provisionamento Estático.",
+        "Redundância SLA."
+      ],
+      "resposta_correta": "Escalonamento Horizontal (Scale Out).",
+      "justificacao": "A rasteira é não confundir os eixos. Adicionar 'mais máquinas' à rede é escalar horizontalmente. Adicionar 'mais recursos' (RAM/CPU) à mesma máquina já existente é escalar verticalmente."
+    },
+    {
+      "id": "CLD_ADV_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "Uma startup portuguesa de software desenvolveu uma aplicação inovadora. No entanto, não têm orçamento para contratar administradores de sistemas para gerir atualizações do Linux, firewalls ou patching de segurança dos servidores. Só querem focar-se em fazer o upload do seu código e deixar que o fornecedor Cloud gira a infraestrutura e o sistema operativo subjacente. Que modelo de Cloud devem adotar?",
+      "opcoes": [
+        "IaaS (Infrastructure as a Service).",
+        "PaaS (Platform as a Service).",
+        "SaaS (Software as a Service).",
+        "On-Premises."
+      ],
+      "resposta_correta": "PaaS (Platform as a Service).",
+      "justificacao": "Eles não querem SaaS porque são eles que desenvolvem a aplicação (não estão a comprar um produto final como o Office 365). Não querem IaaS porque o IaaS obriga o cliente a gerir o Sistema Operativo. O PaaS é o meio-termo perfeito: a Cloud fornece a plataforma de execução (OS gerido), e o cliente só gere a sua aplicação/código."
+    },
+    {
+      "id": "CLD_ADV_003",
+      "tipo": "true_false",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "O conceito de 'Utility Computing' (Computação como Serviço de Utilidade) significa que a empresa compra os servidores físicos à AWS ou à Google, instalando-os no seu próprio edifício, mas paga a manutenção através de uma fatura mensal fixa.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Utility Computing funciona exatamente como a conta da água ou da luz: tu não compras a infraestrutura física (hardware), apenas consomes o serviço através da rede e pagas estritamente pelo que usaste (pay-per-use), convertendo custos de capital (Capex) em custos operacionais (Opex)."
+    },
+    {
+      "id": "CLD_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "Um banco comercial gere duas realidades distintas: possui dados altamente confidenciais dos clientes que, por motivos legais rigorosos, têm de estar alojados nos seus próprios servidores físicos privados e fechados; simultaneamente, usa servidores da Amazon Web Services (AWS) para alojar o seu website de marketing, que lida com milhões de visitas públicas e precisa de elasticidade. As duas infraestruturas comunicam entre si de forma segura. Como se classifica esta arquitetura?",
+      "opcoes": [
+        "Cloud Pública Múltipla.",
+        "Cloud Privada Distribuída.",
+        "Cloud Híbrida.",
+        "Data Lake Architecture."
+      ],
+      "resposta_correta": "Cloud Híbrida.",
+      "justificacao": "A Cloud Híbrida é exatamente a junção orquestrada de uma infraestrutura privada (on-premises, para dados sensíveis) com uma Cloud pública (AWS/Azure, para escalabilidade web), permitindo o melhor dos dois mundos."
+    },
+    {
+      "id": "CLD_ADV_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "O que torna possível, do ponto de vista técnico, pegar num único servidor físico superpotente num Data Center da Amazon e alugá-lo simultaneamente a três clientes diferentes, permitindo que o Cliente A corra Windows, o Cliente B corra Linux Ubuntu e o Cliente C corra RedHat, tudo em isolamento e segurança?",
+      "opcoes": [
+        "Service Level Agreement (SLA).",
+        "O Hypervisor (Camada de Virtualização).",
+        "Application Programming Interface (API).",
+        "Balanceador de Carga (Load Balancer)."
+      ],
+      "resposta_correta": "O Hypervisor (Camada de Virtualização).",
+      "justificacao": "O Hypervisor (ou Virtual Machine Monitor) é o software mágico da Cloud. É a camada de abstração que se senta acima do hardware físico e divide a máquina real em múltiplas Máquinas Virtuais (VMs) independentes, permitindo a partilha do hardware e o isolamento de sistemas operativos."
     }
   ]
 }
