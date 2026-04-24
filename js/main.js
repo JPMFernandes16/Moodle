@@ -595,11 +595,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // As linhas vitais que faltavam para fechar a função e adicionar ao DOM:
       quizContainer.appendChild(card);
 
-      btnReport.addEventListener('click', () => {
-          showCustomConfirm(`Gostarias de reportar um erro na Questão ${state.currentQuestionIndex + 1}?`, () => {
-              showToast("Erro reportado! Obrigado.", "success");
-          });
-      });
+      // CORREÇÃO CRÍTICA: Chama os eventos que escutam e gravam as respostas na memória!
+      setupQuestionListeners(question, showResult);
   }
 
   function buildOpenEnded(question, selectedAnswer, disabled) {

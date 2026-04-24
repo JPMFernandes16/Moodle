@@ -3,7 +3,7 @@
   "tema_foco": "Exame Final: Cenários Globais de Arquitetura Big Data",
   "opcoes_exame": {
     "duracao_minutos": 90,
-    "desconto_erro": 0.0
+    "desconto_erro": 0
   },
   "configuracao_teste": {
     "Cloud_e_Bases_de_Dados": 1,

@@ -2,7 +2,7 @@
   "disciplina": "Big Data - Treino Consolidado Final",
   "opcoes_exame": {
     "duracao_minutos": 45,
-    "desconto_erro": 0.5
+    "desconto_erro": 0
   },
   "configuracao_teste": {
     "RDBMS_e_NoSQL": 6,
