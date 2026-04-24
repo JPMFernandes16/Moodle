@@ -6,7 +6,10 @@
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "Cenarios_Globais": 4
+    "Cloud_e_Bases_de_Dados": 1,
+    "Arquitetura_e_Formatos": 1,
+    "Processamento_Distribuido": 1,
+    "DataFrames_e_Particionamento": 1
   },
   "perguntas": [
     {
