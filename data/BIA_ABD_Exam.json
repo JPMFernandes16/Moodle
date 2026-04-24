@@ -1,25 +1,25 @@
 {
-  "disciplina": "Big Data - Teste",
+  "disciplina": "Simulacao_Teste_Real",
+  "tema_foco": "Exame Final: Cenários Globais de Arquitetura Big Data",
   "opcoes_exame": {
     "duracao_minutos": 90,
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "RDBMS_e_NoSQL": 2,
-    "Cloud_Computing": 1
+    "Cenarios_Globais": 4
   },
   "perguntas": [
     {
-      "id": "SIM_001",
+      "id": "SIM_FINAL_001",
       "tipo": "open_ended",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "tema": "Os_5_Vs_e_NoSQL",
-      "pergunta": "Contexto: A TAP Air Portugal utiliza há décadas uma robusta base de dados relacional (RDBMS) para gerir as reservas de voos. No entanto, querem lançar um projeto de Manutenção Preditiva recolhendo dados de sensores em voo, relatórios em PDF e comentários do Instagram. Explique, recorrendo aos conceitos dos '5 V's' do Big Data, por que razão o atual sistema RDBMS não suporta este projeto, e justifique como o paradigma NoSQL resolve este bloqueio.",
+      "macro_tema": "Cloud_e_Bases_de_Dados",
+      "tema": "Provisionamento_e_Teorema_CAP",
+      "pergunta": "Contexto: A plataforma de e-commerce da 'Sonae' colapsou na Black Friday do ano passado porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Este ano, migraram para a Cloud AWS e adotaram uma base de dados NoSQL. Explique como a característica de 'Elasticidade' da Cloud resolve o problema de infraestrutura, e utilize o Teorema CAP para justificar por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário de vendas massivas e globais onde a rede pode falhar.",
       "palavras_chave": [
-        ["variedade", "estruturados", "não estruturados", "formatos"],
-        ["volume", "velocidade", "sensores", "tempo real", "massivo"],
-        ["veracidade", "ruído", "redes sociais"],
-        ["nosql", "flexível", "sem esquema", "não relacional"]
+        ["estático", "elasticidade", "dinâmico", "horizontal", "aumentar"],
+        ["utility computing", "pay-per-use", "pago pelo uso"],
+        ["cap", "partição", "falha de rede", "inevitável"],
+        ["disponibilidade", "responder", "online", "sacrificar", "consistência eventual"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -27,20 +27,20 @@
         "2_grupos": 0.5,
         "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "O modelo RDBMS falha principalmente devido à Variedade, pois exige tabelas rígidas que não comportam dados não estruturados (PDFs, comentários do Instagram). Falha também face ao Volume e Velocidade massivos dos sensores. A solução NoSQL é ideal porque funciona sem esquema rígido, permitindo armazenar todos estes múltiplos formatos de forma flexível e escalável para extrair Valor.",
-      "justificacao": "A resposta deve evidenciar a limitação do esquema rígido das bases relacionais face à nova variedade e velocidade dos dados do caso de estudo."
+      "resposta_referencia": "No provisionamento estático, a Sonae estava limitada ao hardware físico, colapsando sob picos de tráfego. A Elasticidade da Cloud resolve isto permitindo escalar horizontalmente (adicionar servidores virtuais) de forma dinâmica consoante a procura, pagando apenas o que usa (Utility Computing). Ao nível de dados, perante uma quebra de rede (Partição inevitável no Teorema CAP), o modelo ACID bloquearia o sistema para garantir a Consistência. A adoção do NoSQL permite à Sonae escolher a Disponibilidade (A), mantendo a loja a faturar e a responder aos clientes, aceitando que os dados fiquem com consistência eventual temporária.",
+      "justificacao": "O aluno deve cruzar o conceito financeiro/operacional da Cloud (Elasticidade) com a decisão arquitetónica de dados (Teorema CAP)."
     },
     {
-      "id": "SIM_002",
+      "id": "SIM_FINAL_002",
       "tipo": "open_ended",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "tema": "Teorema_CAP",
-      "pergunta": "Contexto: A Farfetch, empresa global de luxo, opera com dados distribuídos. Durante a Black Friday, ocorre uma falha nos cabos submarinos (corte de rede) entre a Europa e os EUA, mas os clientes continuaram a navegar e a adicionar ao carrinho. Sabendo que usam Big Data em vez de bases relacionais, utilize o Teorema CAP para justificar a decisão de arquitetura do sistema face à propriedade ACID.",
+      "macro_tema": "Arquitetura_e_Formatos",
+      "tema": "Data_Lake_e_Medallion",
+      "pergunta": "Contexto: A seguradora 'Fidelidade' está a construir um Data Lakehouse utilizando a 'Medallion Architecture' (Bronze, Silver, Gold). Explique a diferença fundamental entre a abordagem 'Schema on Read' do Data Lake e o 'Schema on Write' do Data Warehouse clássico. Em seguida, justifique por que razão a equipa de engenharia decidiu guardar os dados na camada Bronze em formato Apache Avro ou JSON, mas exige que a camada Gold seja estritamente armazenada em Apache Parquet.",
       "palavras_chave": [
-        ["cap", "teorema", "brewer"],
-        ["partição", "falha", "inevitável", "rede", "cabo"],
-        ["disponibilidade", "online", "responder", "faturar", "serviço"],
-        ["consistência", "eventual", "sacrificar", "abdicar", "bloquear"]
+        ["schema on read", "leitura", "bruto", "lake"],
+        ["schema on write", "escrita", "etl", "warehouse", "limpos"],
+        ["bronze", "avro", "json", "evolução de esquema", "linhas"],
+        ["gold", "parquet", "colunar", "rápido", "agregados", "queries"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -48,20 +48,20 @@
         "2_grupos": 0.5,
         "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "Pelo Teorema CAP, a falha dos cabos gerou uma Partição de rede inevitável (P). Ao contrário de um modelo ACID que bloquearia o sistema para garantir Consistência absoluta (C), a arquitetura da Farfetch optou pela Disponibilidade (A). O sistema aceitou uma consistência eventual momentânea entre os continentes para garantir que a aplicação permanecia online e a processar pedidos.",
-      "justificacao": "É vital demonstrar que se compreende o compromisso de negócio entre bloquear o sistema por segurança dos dados (Consistência) versus mantê-lo a faturar com ligeiro atraso de sincronização (Disponibilidade)."
+      "resposta_referencia": "O Data Warehouse usa 'Schema on Write', obrigando a limpar e estruturar os dados antes de os gravar (ETL). O Data Lake usa 'Schema on Read', permitindo despejar os dados na camada Bronze no seu formato original e bruto, aplicando o esquema apenas quando são lidos. A camada Bronze usa Avro ou JSON porque são excelentes a lidar com dados não estruturados e permitem Evolução de Esquema à medida que a origem muda. A camada Gold, destinada a BI e Dashboards, usa Parquet porque é um formato colunar altamente comprimido, tornando as queries analíticas muito mais rápidas ao ler apenas as colunas necessárias.",
+      "justificacao": "Testa o domínio da taxonomia de armazenamento: como a flexibilidade dos dados crus (Avro/JSON) na entrada do Lake se transforma em eficiência colunar (Parquet) na saída para negócio."
     },
     {
-      "id": "SIM_003",
+      "id": "SIM_FINAL_003",
       "tipo": "open_ended",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "tema": "Teoria_CAP_Obrigatoriedade",
-      "pergunta": "Baseado no Teorema CAP, explique por que razão a Tolerância a Partições (P) é considerada uma obrigatoriedade em sistemas de Big Data distribuídos baseados em Cloud, e justifique o motivo pelo qual o sistema é forçado a escolher apenas entre Consistência (C) e Disponibilidade (A) perante essa realidade.",
+      "macro_tema": "Processamento_Distribuido",
+      "tema": "Hadoop_Spark_e_DataLocality",
+      "pergunta": "Contexto: O 'Millennium BCP' usa a plataforma Hadoop para o fecho de contas de milhões de clientes ao final do mês, mas implementou Apache Spark especificamente para o seu novo sistema de deteção de fraudes em cartões de crédito. Justifique a coexistência destas duas tecnologias focando-se no paradigma de hardware (Disco vs RAM) subjacente a cada uma. Na sua justificação sobre o Hadoop, explique obrigatoriamente como atua o princípio de 'Data Locality' para otimizar o processamento mensal pesado.",
       "palavras_chave": [
-        ["falha", "inevitável", "física", "obrigatoriedade", "distribuído"],
-        ["consistência", "iguais", "sincronizados", "bloquear"],
-        ["disponibilidade", "responder", "online", "sempre"],
-        ["impossível", "simultâneo", "escolher", "sacrificar"]
+        ["hadoop", "disco", "batch", "lote", "fecho", "lento"],
+        ["spark", "ram", "memória", "tempo real", "fraudes", "rápido"],
+        ["data locality", "código", "programa", "script"],
+        ["evitar", "transferir", "rede", "dados", "localmente"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -69,20 +69,20 @@
         "2_grupos": 0.5,
         "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "Num sistema distribuído fisicamente pela Cloud, uma quebra de comunicação entre servidores (Partição) é uma falha física inevitável, tornando a Tolerância a Partições (P) obrigatória. Quando essa falha ocorre, é impossível garantir as outras duas propriedades em simultâneo: o sistema tem de escolher entre bloquear o serviço para manter os dados sincronizados (Consistência) ou continuar a responder entregando dados desatualizados (Disponibilidade).",
-      "justificacao": "O professor procura especificamente a compreensão de que a Partição não é uma escolha arquitetónica, mas uma falha física da rede, forçando o compromisso entre C e A."
+      "resposta_referencia": "As tecnologias coexistem porque resolvem problemas diferentes. O Spark processa os dados in-memory (RAM), sendo muito rápido e vital para avaliar fraudes em tempo real. O Hadoop realiza operações lendo e escrevendo no disco rígido, sendo mais lento, mas económico e perfeito para processamento pesado em Batch (lote) como o fecho mensal de contas. Para contornar a lentidão, o Hadoop utiliza o 'Data Locality', que dita que em vez de transferir Terabytes de dados pesados pela rede (o que seria incomportável), o sistema envia o pequeno programa de execução para correr localmente no servidor (DataNode) onde os blocos de dados já residem fisicamente.",
+      "justificacao": "O aluno deve provar que entende que o Spark não mata o Hadoop, complementam-se (RAM para Stream, Disco para Batch). O conceito de Data Locality é obrigatório."
     },
     {
-      "id": "SIM_CLD_001",
+      "id": "SIM_FINAL_004",
       "tipo": "open_ended",
-      "macro_tema": "Cloud_Computing",
-      "tema": "Provisionamento_e_Elasticidade",
-      "pergunta": "Contexto: A cadeia de supermercados Continente usava, há alguns anos, o método de 'Provisionamento Estático' para o seu site online, comprando servidores baseados numa estimativa de tráfego. No entanto, no primeiro dia de confinamento da pandemia, o site bloqueou devido a um pico de 1000% nas encomendas e, nos meses de verão seguintes, tiveram servidores parados sem uso. Explique as duas grandes falhas financeiras e operacionais do Provisionamento Estático sentidas pelo Continente, e justifique como a transição para a Cloud (focando nos conceitos de 'Elasticidade' e 'Utility Computing') resolve ambos os problemas.",
+      "macro_tema": "Otimizacao_Spark",
+      "tema": "DataFrames_e_Particionamento",
+      "pergunta": "Contexto: Um engenheiro de dados da 'EDP' tem uma rotina em PySpark que demora horas a correr num cluster pesado. Ao analisar o código, verificou que a rotina manipula as leituras dos contadores usando a abstração antiga RDD (Resilient Distributed Dataset) e termina usando a função 'repartition(50)' para reduzir os dados de 1000 para 50 partições finais. Proponha e justifique duas alterações de código vitais: a alteração da abstração de dados (de RDD para a moderna) e a substituição da função de redução de partições.",
       "palavras_chave": [
-        ["subdimensionamento", "perda", "bloqueou", "clientes"],
-        ["sobredimensionamento", "desperdício", "parados", "dinheiro", "custo"],
-        ["elasticidade", "dinâmico", "adaptar", "aumentar", "diminuir"],
-        ["utility computing", "pago pelo uso", "pay-per-use", "apenas o que usa"]
+        ["dataframe", "esquema", "colunas", "catalyst", "otimizador"],
+        ["rdd", "opaco", "baixo nível", "não estruturado"],
+        ["repartition", "shuffle", "rede", "pesado", "tráfego"],
+        ["coalesce", "fundir", "localmente", "eficiente"]
       ],
       "criterios_avaliacao": {
         "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
@@ -90,29 +90,8 @@
         "2_grupos": 0.5,
         "3_ou_4_grupos": 1
       },
-      "resposta_referencia": "O provisionamento estático causou subdimensionamento no pico da pandemia (perda de clientes/receita com o site em baixo) e sobredimensionamento no verão (desperdício de dinheiro com servidores ociosos). A transição para a Cloud resolve isto através da Elasticidade, permitindo o provisionamento dinâmico: os recursos aumentam e diminuem automaticamente consoante o tráfego real. Aliado ao modelo de Utility Computing, o Continente passa a pagar estritamente pelos recursos que consumiu em cada hora, eliminando investimentos inúteis em hardware físico.",
-      "justificacao": "O professor quer ver a associação entre o problema clássico (falhar as estimativas) e as duas soluções Cloud: a resposta técnica (Elasticidade) e a resposta financeira (Utility Computing)."
-    },
-    {
-      "id": "SIM_CLD_002",
-      "tipo": "open_ended",
-      "macro_tema": "Cloud_Computing",
-      "tema": "Modelos_de_Servico",
-      "pergunta": "Contexto: Uma agência de publicidade decidiu focar-se apenas na criatividade. Em vez de comprar e manter servidores de email próprios no escritório, decidiu assinar licenças do 'Microsoft Office 365' para os seus trabalhadores usarem diretamente no browser. Em contrapartida, a Farfetch necessita de treinar um modelo de Inteligência Artificial secreto e complexo, pelo que decidiu alugar servidores 'crus' na AWS (Amazon EC2), onde a sua equipa instala o seu próprio Linux e os pacotes de software de raiz. Classifique e justifique as escolhas de modelos Cloud (IaaS, PaaS, SaaS) efetuadas pela agência de publicidade e pela Farfetch.",
-      "palavras_chave": [
-        ["saas", "software", "agência", "office 365"],
-        ["pronto a usar", "utilizador final", "browser", "sem gerir"],
-        ["iaas", "infraestrutura", "farfetch", "ec2"],
-        ["controlo", "sistema operativo", "linux", "instalar"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
-      },
-      "resposta_referencia": "A agência de publicidade optou pelo modelo SaaS (Software as a Service), pois o Office 365 é um produto final pronto a usar no browser, libertando a empresa de qualquer gestão de código, sistemas operativos ou infraestrutura. A Farfetch optou pelo modelo IaaS (Infrastructure as a Service) com o Amazon EC2, alugando apenas os recursos computacionais fundamentais. Isto foi necessário porque o modelo de IaaS é o único que oferece controlo total à equipa de engenharia para instalar e configurar de raiz o seu próprio sistema operativo (Linux) e os softwares necessários para a sua IA.",
-      "justificacao": "É essencial destrinçar a diferença de responsabilidades: no SaaS o cliente só consome, no IaaS o cliente tem a responsabilidade máxima de gerir do sistema operativo para cima, ganhando controlo total."
+      "resposta_referencia": "A primeira alteração é substituir os RDDs por DataFrames. Os RDDs são estruturas opacas para o Spark. Ao usar DataFrames, os dados ganham um esquema (colunas tipadas), permitindo ao Spark usar o motor interno 'Catalyst Optimizer' para reescrever e executar as operações da forma mais eficiente possível. A segunda alteração é substituir a função 'repartition(50)' por 'coalesce(50)'. O repartition obriga a um Full Shuffle, movendo dados de forma pesada por toda a rede do cluster. Como o objetivo é apenas reduzir partições, o coalesce é muito mais eficiente pois tenta fundir partições no mesmo nó de processamento (localmente), minimizando o tráfego de rede.",
+      "justificacao": "Esta é uma pergunta avançada de arquitetura de software: compreender que otimizar o Spark passa por dar estrutura aos dados (DataFrame/Catalyst) e proteger a rede evitando Shuffles desnecessários (Coalesce)."
     }
   ]
 }

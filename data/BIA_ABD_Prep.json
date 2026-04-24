@@ -1,12 +1,14 @@
 {
-  "disciplina": "Big Data - Treino",
+  "disciplina": "Big Data - Treino Consolidado Final",
   "opcoes_exame": {
-    "duracao_minutos": 20,
+    "duracao_minutos": 45,
     "desconto_erro": 0.5
   },
   "configuracao_teste": {
-    "RDBMS_e_NoSQL": 3,
-    "Cloud_Computing": 2
+    "RDBMS_e_NoSQL": 6,
+    "Cloud_Computing": 6,
+    "Taxonomia_e_Formatos": 5,
+    "Hadoop_e_Spark": 8
   },
   "perguntas": [
     {
@@ -21,7 +23,7 @@
         "Atomicidade (Atomicity)."
       ],
       "resposta_correta": "Atomicidade (Atomicity).",
-      "justificacao": "A rasteira aqui é confundir Consistência com Atomicidade. A Consistência garante que as regras do banco (ex: não ter saldo negativo) são cumpridas. A Atomicidade é a regra que garante que a transação é executada na sua totalidade ou falha por completo (rollback), não deixando dinheiro 'perdido' a meio caminho."
+      "justificacao": "A Atomicidade garante que uma transação é executada na totalidade ou falha por completo (rollback), impedindo que o sistema fique num estado inconsistente."
     },
     {
       "id": "BIA_ADV_002",
@@ -35,53 +37,41 @@
         "Volume e Valor."
       ],
       "resposta_correta": "Veracidade e Valor.",
-      "justificacao": "A limpeza de dados corrompidos de contadores avariados garante a 'Veracidade' (qualidade e fiabilidade da informação). O facto de utilizarem esses dados limpos para prever picos de consumo e otimizar a rede elétrica representa a extração de 'Valor' para o negócio."
+      "justificacao": "A limpeza de dados corrompidos (Veracidade) permite extrair insights úteis para o negócio, como a previsão de picos (Valor)."
     },
     {
-      "id": "BIA_ADV_003",
+      "id": "BIA_ADV_006",
       "tipo": "multiple_choice",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "A Worten pretende modernizar a sua base de dados de catálogo online. Um frigorífico tem atributos como 'litragem' e 'eficiência energética', enquanto um computador tem 'memória RAM' e 'processador'. Como os atributos variam drasticamente de produto para produto, uma base de dados relacional (RDBMS) com colunas fixas deixaria milhares de espaços em branco (nulls). Qual a solução NoSQL mais indicada para este cenário?",
+      "macro_tema": "Bases_de_Dados_NoSQL",
+      "pergunta": "A equipa do Continente Online está a desenvolver um motor de recomendações que cruza o histórico de compras de um cliente com os perfis de milhares de outros utilizadores com gostos semelhantes. Para mapear estas relações complexas, qual a base de dados NoSQL ideal?",
       "opcoes": [
-        "Base de Dados Orientada a Grafos (Graph Database).",
-        "Base de Dados Chave-Valor (Key-Value Store).",
-        "Base de Dados Orientada a Documentos (Document Database).",
-        "Armazenamento em Colunas (Column-Family Store)."
+        "Base de Dados Orientada a Documentos (ex: MongoDB).",
+        "Base de Dados Orientada a Grafos (ex: Neo4j).",
+        "Armazenamento em Colunas (ex: Cassandra).",
+        "Base de Dados Chave-Valor (ex: Redis)."
       ],
-      "resposta_correta": "Base de Dados Orientada a Documentos (Document Database).",
-      "justificacao": "As bases de dados de Documentos (como o MongoDB) guardam a informação em formatos flexíveis como JSON. Isto permite que o 'documento' do frigorífico tenha campos completamente diferentes do 'documento' do computador na mesma base de dados, resolvendo o problema dos esquemas rígidos das RDBMS."
+      "resposta_correta": "Base de Dados Orientada a Grafos (ex: Neo4j).",
+      "justificacao": "As bases de dados de Grafos são otimizadas para navegar em relacionamentos e conexões profundas entre entidades."
     },
     {
       "id": "BIA_ADV_004",
       "tipo": "multiple_choice",
       "macro_tema": "Bases_de_Dados_NoSQL",
-      "pergunta": "Durante a transmissão de um grande evento desportivo em direto, os servidores europeus da Netflix perdem a comunicação com os servidores centrais nos EUA. Em vez de bloquear o acesso aos utilizadores europeus para garantir que a sua lista de visualizações ficava rigorosamente igual à base de dados central, a Netflix permitiu que os utilizadores continuassem a ver filmes, atualizando o histórico mais tarde. À luz do Teorema CAP, a Netflix adotou que postura?",
+      "pergunta": "Durante a transmissão de um grande evento desportivo em direto, os servidores europeus da Netflix perdem a comunicação com os servidores centrais nos EUA. Em vez de bloquear o acesso, a Netflix permitiu que os utilizadores continuassem a ver filmes, atualizando o histórico mais tarde. À luz do Teorema CAP, a Netflix adotou que postura?",
       "opcoes": [
-        "Ignorou a Tolerância a Partições (P) para focar-se exclusivamente na Disponibilidade (A).",
-        "Adotou um modelo CA (Consistency e Availability), uma vez que a falha de rede era previsível.",
-        "Assumiu a ocorrência da Partição (P) e escolheu manter a Disponibilidade (A), sacrificando a Consistência imediata (C).",
-        "Assumiu a ocorrência da Partição (P) e escolheu manter a Consistência (C), sacrificando a Disponibilidade (A)."
+        "Ignorou a Tolerância a Partições (P) para focar na Disponibilidade (A).",
+        "Manteve a Partição (P) e a Disponibilidade (A), sacrificando a Consistência (C).",
+        "Manteve a Consistência (C) e a Disponibilidade (A), ignorando a Partição (P).",
+        "Assumiu a ocorrência da Partição (P) e escolheu a Consistência (C)."
       ],
-      "resposta_correta": "Assumiu a ocorrência da Partição (P) e escolheu manter a Disponibilidade (A), sacrificando a Consistência imediata (C).",
-      "justificacao": "A rasteira reside em compreender que a Tolerância a Partição (P) não é uma 'escolha', mas uma inevitabilidade tecnológica quando a rede cai. Face a essa quebra, a Netflix não bloqueou a plataforma (o que seria priorizar a Consistência/C), optando antes por manter o serviço a funcionar sem interrupções (Disponibilidade/A) mesmo com dados momentaneamente desatualizados."
-    },
-    {
-      "id": "BIA_ADV_005",
-      "tipo": "true_false",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "O conceito de 'Schema-less' nas bases de dados NoSQL significa que a informação é guardada sem qualquer tipo de estrutura organizativa interna ou lógica de acesso, operando essencialmente como um buraco negro de dados cru ('Data Dump').",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "A rasteira está na tradução literal. 'Schema-less' não significa ausência total de estrutura; significa ausência de um esquema rígido pré-definido e imutável (como as tabelas do SQL). Os dados NoSQL têm organização lógica (seja em documentos JSON, pares de chave-valor ou grafos), apenas são flexíveis e adaptáveis em tempo de execução."
+      "resposta_correta": "Manteve a Partição (P) e a Disponibilidade (A), sacrificando a Consistência (C).",
+      "justificacao": "Perante uma falha de rede (P), a empresa optou por manter o serviço online (A), aceitando dados temporariamente dessincronizados (consistência eventual)."
     },
     {
       "id": "CLD_ADV_001",
       "tipo": "multiple_choice",
       "macro_tema": "Cloud_Computing",
-      "pergunta": "A Worten prepara-se para a Black Friday. Sabendo que o tráfego vai aumentar 500%, a equipa de engenharia decide adicionar 10 novos servidores virtuais ao balanceador de carga em vez de tentar colocar mais memória RAM no servidor principal, o que exigiria desligá-lo temporariamente. Que conceito de escalabilidade foi aplicado?",
+      "pergunta": "A Worten prepara-se para a Black Friday. Sabendo que o tráfego vai aumentar 500%, a equipa decide adicionar 10 novos servidores virtuais ao balanceador de carga em vez de aumentar a RAM do servidor principal. Que conceito foi aplicado?",
       "opcoes": [
         "Escalonamento Vertical (Scale Up).",
         "Escalonamento Horizontal (Scale Out).",
@@ -89,13 +79,13 @@
         "Redundância SLA."
       ],
       "resposta_correta": "Escalonamento Horizontal (Scale Out).",
-      "justificacao": "A rasteira é não confundir os eixos. Adicionar 'mais máquinas' à rede é escalar horizontalmente. Adicionar 'mais recursos' (RAM/CPU) à mesma máquina já existente é escalar verticalmente."
+      "justificacao": "Adicionar mais máquinas/nós à rede é escalar horizontalmente. Aumentar recursos (RAM/CPU) numa máquina existente é escalar verticalmente."
     },
     {
       "id": "CLD_ADV_002",
       "tipo": "multiple_choice",
       "macro_tema": "Cloud_Computing",
-      "pergunta": "Uma startup portuguesa de software desenvolveu uma aplicação inovadora. No entanto, não têm orçamento para contratar administradores de sistemas para gerir atualizações do Linux, firewalls ou patching de segurança dos servidores. Só querem focar-se em fazer o upload do seu código e deixar que o fornecedor Cloud gira a infraestrutura e o sistema operativo subjacente. Que modelo de Cloud devem adotar?",
+      "pergunta": "Uma startup portuguesa quer focar-se apenas no código da sua aplicação, deixando que o fornecedor Cloud gira o sistema operativo, firewalls e firewalls. Que modelo de Cloud devem adotar?",
       "opcoes": [
         "IaaS (Infrastructure as a Service).",
         "PaaS (Platform as a Service).",
@@ -103,39 +93,13 @@
         "On-Premises."
       ],
       "resposta_correta": "PaaS (Platform as a Service).",
-      "justificacao": "Eles não querem SaaS porque são eles que desenvolvem a aplicação (não estão a comprar um produto final como o Office 365). Não querem IaaS porque o IaaS obriga o cliente a gerir o Sistema Operativo. O PaaS é o meio-termo perfeito: a Cloud fornece a plataforma de execução (OS gerido), e o cliente só gere a sua aplicação/código."
-    },
-    {
-      "id": "CLD_ADV_003",
-      "tipo": "true_false",
-      "macro_tema": "Cloud_Computing",
-      "pergunta": "O conceito de 'Utility Computing' (Computação como Serviço de Utilidade) significa que a empresa compra os servidores físicos à AWS ou à Google, instalando-os no seu próprio edifício, mas paga a manutenção através de uma fatura mensal fixa.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Utility Computing funciona exatamente como a conta da água ou da luz: tu não compras a infraestrutura física (hardware), apenas consomes o serviço através da rede e pagas estritamente pelo que usaste (pay-per-use), convertendo custos de capital (Capex) em custos operacionais (Opex)."
-    },
-    {
-      "id": "CLD_ADV_004",
-      "tipo": "multiple_choice",
-      "macro_tema": "Cloud_Computing",
-      "pergunta": "Um banco comercial gere duas realidades distintas: possui dados altamente confidenciais dos clientes que, por motivos legais rigorosos, têm de estar alojados nos seus próprios servidores físicos privados e fechados; simultaneamente, usa servidores da Amazon Web Services (AWS) para alojar o seu website de marketing, que lida com milhões de visitas públicas e precisa de elasticidade. As duas infraestruturas comunicam entre si de forma segura. Como se classifica esta arquitetura?",
-      "opcoes": [
-        "Cloud Pública Múltipla.",
-        "Cloud Privada Distribuída.",
-        "Cloud Híbrida.",
-        "Data Lake Architecture."
-      ],
-      "resposta_correta": "Cloud Híbrida.",
-      "justificacao": "A Cloud Híbrida é exatamente a junção orquestrada de uma infraestrutura privada (on-premises, para dados sensíveis) com uma Cloud pública (AWS/Azure, para escalabilidade web), permitindo o melhor dos dois mundos."
+      "justificacao": "No modelo PaaS, o utilizador gere apenas a aplicação, enquanto o fornecedor gere o ambiente de execução e o SO."
     },
     {
       "id": "CLD_ADV_005",
       "tipo": "multiple_choice",
       "macro_tema": "Cloud_Computing",
-      "pergunta": "O que torna possível, do ponto de vista técnico, pegar num único servidor físico superpotente num Data Center da Amazon e alugá-lo simultaneamente a três clientes diferentes, permitindo que o Cliente A corra Windows, o Cliente B corra Linux Ubuntu e o Cliente C corra RedHat, tudo em isolamento e segurança?",
+      "pergunta": "O que torna possível pegar num único servidor físico superpotente e dividi-lo em múltiplas Máquinas Virtuais (VMs) independentes e seguras?",
       "opcoes": [
         "Service Level Agreement (SLA).",
         "O Hypervisor (Camada de Virtualização).",
@@ -143,7 +107,133 @@
         "Balanceador de Carga (Load Balancer)."
       ],
       "resposta_correta": "O Hypervisor (Camada de Virtualização).",
-      "justificacao": "O Hypervisor (ou Virtual Machine Monitor) é o software mágico da Cloud. É a camada de abstração que se senta acima do hardware físico e divide a máquina real em múltiplas Máquinas Virtuais (VMs) independentes, permitindo a partilha do hardware e o isolamento de sistemas operativos."
+      "justificacao": "O Hypervisor é o software que abstrai o hardware e permite a partilha de recursos físicos por múltiplos sistemas operativos isolados."
+    },
+    {
+      "id": "TAX_ADV_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Taxonomia_e_Formatos",
+      "pergunta": "Um sensor meteorológico regista a temperatura em graus Celsius. Como se classifica esta variável e qual o seu principal problema matemático?",
+      "opcoes": [
+        "Escala de Razão; não permite médias.",
+        "Escala Nominal; não tem ordem.",
+        "Escala Intervalar; falta de um zero absoluto (falha de linearidade).",
+        "Escala Ordinal; não permite desvio padrão."
+      ],
+      "resposta_correta": "Escala Intervalar; falta de um zero absoluto (falha de linearidade).",
+      "justificacao": "A temperatura Celsius é intervalar porque o zero é uma convenção. Isto causa falha de linearidade (20ºC não é o dobro do calor de 10ºC)."
+    },
+    {
+      "id": "FRM_ADV_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Taxonomia_e_Formatos",
+      "pergunta": "Ao converter um ficheiro Parquet para JSON, o tamanho do ficheiro disparou. Qual a principal razão técnica?",
+      "opcoes": [
+        "O JSON é binário e o Parquet é texto.",
+        "O JSON repete as chaves descritivas em cada linha, sendo muito verboso.",
+        "O Parquet é orientado a linhas e o JSON a colunas.",
+        "O JSON aplica compressão Snappy por defeito."
+      ],
+      "resposta_correta": "O JSON repete as chaves descritivas em cada linha, sendo muito verboso.",
+      "justificacao": "O JSON armazena metadados (nomes de colunas) repetidamente para cada registo, ao contrário do formato binário/colunar do Parquet."
+    },
+    {
+      "id": "FRM_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Taxonomia_e_Formatos",
+      "pergunta": "A Jerónimo Martins precisa de efetuar atualizações (UPDATE/DELETE) em faturas específicas numa tabela analítica massiva garantindo propriedades ACID. Que formato moderno é ideal?",
+      "opcoes": [
+        "Apache Iceberg.",
+        "Apache Avro.",
+        "JSON.",
+        "Sequence File."
+      ],
+      "resposta_correta": "Apache Iceberg.",
+      "justificacao": "O Iceberg permite operações SQL flexíveis (como deletes e updates) em tabelas de Big Data sem reescrever o ficheiro inteiro."
+    },
+    {
+      "id": "HS_ADV_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "A Uber analisa rotas em tempo real para preços dinâmicos, mas processa pagamentos mensais de motoristas em lote. Que tecnologias se adequam melhor, respetivamente?",
+      "opcoes": [
+        "Hadoop para rotas; Spark para pagamentos.",
+        "Spark para rotas; Hadoop para pagamentos.",
+        "HDFS para rotas; Presto para pagamentos.",
+        "Data Warehouse para rotas; Data Lake para pagamentos."
+      ],
+      "resposta_correta": "Spark para rotas; Hadoop para pagamentos.",
+      "justificacao": "Spark é ideal para tempo real (RAM); Hadoop é ideal para processamento pesado em lote (Disco/Batch)."
+    },
+    {
+      "id": "HS_ADV_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "O que dita o princípio de 'Data Locality' (Localidade dos Dados) na arquitetura Hadoop?",
+      "opcoes": [
+        "Transferir os dados para o computador do utilizador.",
+        "Enviar o programa de processamento para o servidor onde os dados já estão fisicamente guardados.",
+        "Garantir que os dados estão na mesma cidade para evitar latência.",
+        "Processar os dados apenas em Cloud Pública."
+      ],
+      "resposta_correta": "Enviar o programa de processamento para o servidor onde os dados já estão fisicamente guardados.",
+      "justificacao": "Mover código (KBs) é mais eficiente do que mover Terabytes de dados pela rede."
+    },
+    {
+      "id": "SPK_ADV_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "Precisas de reduzir o número de partições de dados de 100 para 10 no Spark de forma eficiente. Qual a função a usar?",
+      "opcoes": [
+        "repartition(); porque equilibra os dados perfeitamente.",
+        "coalesce(); porque evita o 'Full Shuffle' de dados pela rede.",
+        "shuffle(); porque é o mecanismo nativo de agregação.",
+        "map(); porque transforma os dados localmente."
+      ],
+      "resposta_correta": "coalesce(); porque evita o 'Full Shuffle' de dados pela rede.",
+      "justificacao": "O coalesce() funde partições localmente sempre que possível, evitando o tráfego pesado de rede do repartition()."
+    },
+    {
+      "id": "HS_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "Na 'Medallion Architecture' de um Data Lake, em que camada se guardam os dados cru (Raw) exatamente como vieram da fonte?",
+      "opcoes": [
+        "Camada Gold.",
+        "Camada Silver.",
+        "Camada Bronze.",
+        "Data Warehouse."
+      ],
+      "resposta_correta": "Camada Bronze.",
+      "justificacao": "A camada Bronze é a 'fonte da verdade', contendo os dados brutos sem tratamento."
+    },
+    {
+      "id": "HAD_ADV_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "O Hadoop 3.x introduziu o 'Erasure Coding'. Qual a principal vantagem face à replicação tradicional?",
+      "opcoes": [
+        "É mais rápido a processar dados.",
+        "Reduz o desperdício de espaço em disco (overhead) de 200% para cerca de 50%.",
+        "Elimina a necessidade de DataNodes.",
+        "Permite processamento in-memory."
+      ],
+      "resposta_correta": "Reduz o desperdício de espaço em disco (overhead) de 200% para cerca de 50%.",
+      "justificacao": "Usa blocos de paridade matemáticos em vez de cópias exatas, poupando imenso espaço de armazenamento."
+    },
+    {
+      "id": "SPK_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop_e_Spark",
+      "pergunta": "Na biblioteca Spark MLlib, qual a diferença técnica entre um 'Estimator' e um 'Transformer'?",
+      "opcoes": [
+        "Estimator avalia erros; Transformer limpa dados.",
+        "Estimator aprende com os dados (fit()) para produzir um modelo; o modelo atua como Transformer (transform()).",
+        "São sinónimos em PySpark.",
+        "Transformer treina a rede; Estimator aplica as previsões."
+      ],
+      "resposta_correta": "Estimator aprende com os dados (fit()) para produzir um modelo; o modelo atua como Transformer (transform()).",
+      "justificacao": "O Estimator é o algoritmo de treino; o modelo resultante é o Transformer que aplica o conhecimento aos dados."
     }
   ]
 }

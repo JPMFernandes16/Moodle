@@ -87,19 +87,29 @@ document.addEventListener("DOMContentLoaded", () => {
       "BIA_ABD_Exam": {
           pdfs: [
               { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
-              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" }
+              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" },
+              { name: "2. Cloud e Arquitetura", file: "pdfs/BIA_ABD_02.pdf" },
+              { name: "3. Taxonomia e Formatos de Big Data", file: "pdfs/BIA_ABD_03.pdf" }
+
           ],
           videos: [
-              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" }
+              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" },
+              { name: "2. Cloud e Arquitetura", file: "videos/BIA_ABD_02.mp4" },
+              { name: "3. Taxonomia e Formatos de Big Data", file: "videos/BIA_ABD_03.mp4" }
           ]
       },
       "BIA_ABD_Prep": {
           pdfs: [
               { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
-              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" }
+              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" },
+              { name: "2. Cloud e Arquitetura", file: "pdfs/BIA_ABD_02.pdf" },
+              { name: "3. Taxonomia e Formatos de Big Data", file: "pdfs/BIA_ABD_03.pdf" }
+
           ],
           videos: [
-              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" }
+              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" },
+              { name: "2. Cloud e Arquitetura", file: "videos/BIA_ABD_02.mp4" },
+              { name: "3. Taxonomia e Formatos de Big Data", file: "videos/BIA_ABD_03.mp4" }
           ]
       },
       "GM_MR": {
