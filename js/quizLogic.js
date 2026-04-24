@@ -98,11 +98,24 @@ export function getQuestionScore(question, index) {
         const userArr = Array.isArray(selectedAnswer) ? selectedAnswer : [];
         const correctArr = Array.isArray(question.resposta_correta) ? question.resposta_correta : [];
         if (userArr.length === 0 || userArr.length !== correctArr.length) return 0;
-        const isAllCorrect = userArr.every(ans => correctArr.map(normalizeText).includes(normalizeText(ans)));
+        const isAllCorrect = userArr.every(ans => 
+            correctArr.some(c => normalizeText(c) === normalizeText(ans) || (question.opcoes && typeof question.opcoes === 'object' && !Array.isArray(question.opcoes) && normalizeText(question.opcoes[ans]) === normalizeText(c)))
+        );
         return isAllCorrect ? 1 : 0;
     }
     else { 
-        return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta) ? 1 : 0; 
+        // 1ª Tentativa: Avaliar se a Letra "B" bate certo com a resposta_correta "B"
+        const isDirectMatch = normalizeText(selectedAnswer) === normalizeText(question.resposta_correta);
+        if (isDirectMatch) return 1;
+
+        // 2ª Tentativa (Fallback): O JSON diz que a resposta certa é o "Texto Longo" mas tu submeteste o ID "B"
+        if (typeof question.opcoes === 'object' && !Array.isArray(question.opcoes) && question.opcoes !== null) {
+            const textOfSelected = question.opcoes[selectedAnswer];
+            if (textOfSelected && normalizeText(textOfSelected) === normalizeText(question.resposta_correta)) {
+                return 1;
+            }
+        }
+        return 0; 
     }
 }
 

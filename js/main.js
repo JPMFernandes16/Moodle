@@ -617,7 +617,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let optionsList = [];
 
-      // MAGIA ACONTECE AQUI: Adaptação para ler o formato antigo (Array) OU o novo formato (Objeto A,B,C,D)
       if (Array.isArray(question.opcoes)) {
           optionsList = question.opcoes.map((texto, index) => {
               return { id: texto, text: texto, letter: String.fromCharCode(65 + index) };
@@ -629,13 +628,17 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       optionsList.forEach((opt) => {
-          const isChecked = userAnsArray.map(normalizeText).includes(normalizeText(opt.id));
-          const isCorrectOption = correctArr.map(normalizeText).includes(normalizeText(opt.id));
+          // BLINDAGEM: Avalia se o user clicou comparando quer o ID ("A") quer o texto longo
+          const isChecked = userAnsArray.some(ans => normalizeText(ans) === normalizeText(opt.id) || normalizeText(ans) === normalizeText(opt.text));
+          
+          // BLINDAGEM: Verifica se está correta usando o ID ou o texto do JSON
+          const isCorrectOption = correctArr.some(correctVal => 
+              normalizeText(correctVal) === normalizeText(opt.id) || normalizeText(correctVal) === normalizeText(opt.text)
+          );
           
           const label = document.createElement('label'); label.className = `option-item ${isChecked ? 'selected' : ''}`;
           if (disabled) { if (isCorrectOption) label.classList.add("option-correct"); else if (isChecked && !isCorrectOption) label.classList.add("option-selected-wrong"); }
 
-          // O input agora guarda o 'id' correto consoante o formato (ou o texto completo, ou a letra 'A', 'B' etc.)
           const input = document.createElement('input'); input.type = isMulti ? 'checkbox' : 'radio'; input.name = `question-${state.currentQuestionIndex}`; input.value = opt.id; input.checked = isChecked; if (disabled) input.disabled = true;
           const customDiv = document.createElement('div'); customDiv.className = isMulti ? 'custom-checkbox' : 'custom-radio';
           const letterSpan = document.createElement('span'); letterSpan.style.cssText = "font-weight: 800; color: var(--text-muted); margin-right: 10px; font-family: 'JetBrains Mono', monospace;"; letterSpan.textContent = `${opt.letter}.`;
