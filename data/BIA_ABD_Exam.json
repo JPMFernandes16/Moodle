@@ -1,10 +1,11 @@
 {
+  "disciplina": "Big Data - Teste",
   "opcoes_exame": {
     "duracao_minutos": 90,
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "RDBMS_e_NoSQL": 1,
+    "RDBMS_e_NoSQL": 2,
     "Cloud_Computing": 1
   },
   "perguntas": [
@@ -32,7 +33,7 @@
     {
       "id": "SIM_002",
       "tipo": "open_ended",
-      "macro_tema": "Bases_de_Dados_NoSQL",
+      "macro_tema": "RDBMS_e_NoSQL",
       "tema": "Teorema_CAP",
       "pergunta": "Contexto: A Farfetch, empresa global de luxo, opera com dados distribuídos. Durante a Black Friday, ocorre uma falha nos cabos submarinos (corte de rede) entre a Europa e os EUA, mas os clientes continuaram a navegar e a adicionar ao carrinho. Sabendo que usam Big Data em vez de bases relacionais, utilize o Teorema CAP para justificar a decisão de arquitetura do sistema face à propriedade ACID.",
       "palavras_chave": [
@@ -53,7 +54,7 @@
     {
       "id": "SIM_003",
       "tipo": "open_ended",
-      "macro_tema": "Bases_de_Dados_NoSQL",
+      "macro_tema": "RDBMS_e_NoSQL",
       "tema": "Teoria_CAP_Obrigatoriedade",
       "pergunta": "Baseado no Teorema CAP, explique por que razão a Tolerância a Partições (P) é considerada uma obrigatoriedade em sistemas de Big Data distribuídos baseados em Cloud, e justifique o motivo pelo qual o sistema é forçado a escolher apenas entre Consistência (C) e Disponibilidade (A) perante essa realidade.",
       "palavras_chave": [

@@ -1,4 +1,5 @@
 {
+  "disciplina": "Big Data - Treino",
   "opcoes_exame": {
     "duracao_minutos": 20,
     "desconto_erro": 0.5
