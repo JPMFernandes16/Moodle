@@ -25,23 +25,48 @@ export function generateQuizDataLocally(selectedTopics, mode = "normal") {
             const perguntaObrigatoria = perguntasDnd[Math.floor(Math.random() * perguntasDnd.length)];
             testeFinal.push(perguntaObrigatoria);
             if (configTemas[perguntaObrigatoria.macro_tema] > 0) configTemas[perguntaObrigatoria.macro_tema] -= 1;
+            // Remove a pergunta obrigatória da base para não ser duplicada
             basePerguntas = basePerguntas.filter(p => p.id !== perguntaObrigatoria.id);
         }
-        for (const [macroTema, quantidade] of Object.entries(configTemas)) {
-            if (quantidade <= 0) continue;
-            const perguntasDoTema = basePerguntas.filter(p => p.macro_tema === macroTema);
-            const selecionadas = shuffleArray([...perguntasDoTema]).slice(0, Math.min(quantidade, perguntasDoTema.length));
-            testeFinal.push(...selecionadas);
+        
+        // Verifica se existe uma configuração de teste definida no JSON
+        const temConfiguracao = Object.keys(configTemas).length > 0;
+
+        if (temConfiguracao) {
+            // Segue estritamente a configuração do JSON
+            for (const [macroTema, quantidade] of Object.entries(configTemas)) {
+                if (quantidade <= 0) continue;
+                
+                const idsJaSelecionados = testeFinal.map(p => p.id);
+                // Filtra pelo tema e garante que não repete perguntas já selecionadas
+                const perguntasDoTema = basePerguntas.filter(p => 
+                    p.macro_tema === macroTema && !idsJaSelecionados.includes(p.id)
+                );
+                
+                const selecionadas = shuffleArray([...perguntasDoTema]).slice(0, Math.min(quantidade, perguntasDoTema.length));
+                testeFinal.push(...selecionadas);
+            }
+        } else {
+            // Fallback apenas se o JSON não tiver a secção "configuracao_teste" ou se estiver vazia
+            const idsJaSelecionados = testeFinal.map(p => p.id);
+            const perguntasRestantes = basePerguntas.filter(p => !idsJaSelecionados.includes(p.id));
+            
+            if(testeFinal.length < 10 && perguntasRestantes.length > 0) {
+                // Tenta preencher até um máximo de 10
+                const numFaltam = 10 - testeFinal.length;
+                testeFinal.push(...shuffleArray(perguntasRestantes).slice(0, numFaltam));
+            }
         }
-        if(testeFinal.length < 10 && basePerguntas.length > 0) {
-            testeFinal.push(...shuffleArray(basePerguntas).slice(0, 10));
-        }
+
         testeFinal = shuffleArray(testeFinal);
     }
 
     testeFinal.forEach(p => {
-        if ((p.tipo === "multiple_choice" || p.tipo === "multiple_select") && p.opcoes) p.opcoes = shuffleArray([...p.opcoes]);
-        else if (p.tipo === "drag_and_drop" && p.pares) p.pares = shuffleArray([...p.pares]);
+        if ((p.tipo === "multiple_choice" || p.tipo === "multiple_select") && p.opcoes) {
+            p.opcoes = shuffleArray([...p.opcoes]);
+        } else if (p.tipo === "drag_and_drop" && p.pares) {
+            p.pares = shuffleArray([...p.pares]);
+        }
     });
     return testeFinal;
 }
