@@ -1,0 +1,93 @@
+{
+  "opcoes_exame": {
+    "duracao_minutos": 20,
+    "desconto_erro": 0.5
+  },
+  "configuracao_teste": {
+    "RDBMS_e_NoSQL": 3,
+    "Caso_Pratico_wtvision_TheFloor": 9
+  },
+  "perguntas": [
+    {
+      "id": "BIA_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "No contexto das propriedades ACID em Bases de Dados Relacionais (RDBMS), qual das seguintes opções descreve rigorosamente a propriedade de 'Isolamento' (Isolation)?",
+      "opcoes": [
+        "A garantia de que tudo numa transação se completa em pleno ou falha na totalidade.",
+        "A garantia de que transações simultâneas não interferem umas nas outras.",
+        "A garantia de que os dados gravados persistem mesmo após uma falha de energia.",
+        "A garantia de que o sistema respeita sempre todas as regras de integridade do modelo de dados."
+      ],
+      "resposta_correta": "A garantia de que transações simultâneas não interferem umas nas outras.",
+      "justificacao": "O Isolamento assegura que múltiplas transações a decorrer em paralelo são isoladas umas das outras. As outras opções descrevem a Atomicidade (tudo ou nada), Durabilidade (persistência após falha) e Consistência (regras de integridade)."
+    },
+    {
+      "id": "BIA_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "De acordo com o Teorema CAP para sistemas distribuídos (como as bases de dados NoSQL), se houver uma falha de rede (Tolerância a Partição - P), um sistema do tipo 'AP' (Availability & Partition Tolerance) foca-se em quê?",
+      "opcoes": [
+        "Bloquear temporariamente a operação para garantir que nenhum nó lê dados errados (consistência).",
+        "Continuar a responder e fornecer dados, mesmo que isso signifique sacrificar a consistência momentânea dos mesmos.",
+        "Assegurar que todos os utilizadores veem exatamente os mesmos dados ao mesmo tempo, mesmo que o sistema fique lento.",
+        "Manter a consistência através de replicação síncrona ignorando a falha de rede."
+      ],
+      "resposta_correta": "Continuar a responder e fornecer dados, mesmo que isso signifique sacrificar a consistência momentânea dos mesmos.",
+      "justificacao": "Num sistema AP (como CouchDB ou DynamoDB), perante uma falha de rede, o sistema continua a responder aos pedidos (Disponibilidade) sacrificando a Consistência lógica da informação."
+    },
+    {
+      "id": "BIA_003",
+      "tipo": "drag_and_drop",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "Associa o tipo de Base de Dados NoSQL à sua descrição/caso de uso clássico.",
+      "pares": [
+        { "definicao": "Dicionário gigante ideal para carrinhos de compras ou sessões rápidas.", "conceito": "Key-Value (ex: Redis)" },
+        { "definicao": "Guarda informação flexível, permitindo mudar campos sem parar a base, formatada em JSON/XML.", "conceito": "Documentos (ex: MongoDB)" },
+        { "definicao": "Inverte a lógica ao guardar dados por atributos, muito rápido para análise.", "conceito": "Colunas (ex: Cassandra)" },
+        { "definicao": "Foca-se em relações e conexões, ideal para redes sociais e recomendações.", "conceito": "Grafos (ex: Neo4j)" }
+      ],
+      "justificacao": "A tipologia NoSQL divide-se em 4 classes fundamentais, cada uma otimizada para diferentes estruturas de dados, desde a extrema velocidade do Key-Value até à complexidade relacional dos Grafos."
+    },
+    {
+      "id": "BIA_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "No que toca aos 5 V's do Big Data, qual a afirmação que descreve corretamente a diferença entre 'Variedade' e 'Veracidade'?",
+      "opcoes": [
+        "Variedade é a velocidade a que os dados são gerados; Veracidade é o valor extraído dos insights.",
+        "Variedade refere-se apenas a dados estruturados em bases relacionais; Veracidade refere-se à quantidade de dados.",
+        "Variedade refere-se à evolução de tabelas para formatos não estruturados (áudio, JSON, vídeo); Veracidade é a capacidade de limpar e confiar nos dados (qualidade).",
+        "Variedade é a limpeza dos dados (qualidade); Veracidade é a multiplicidade de fontes de dados (áudio, texto, vídeo)."
+      ],
+      "resposta_correta": "Variedade refere-se à evolução de tabelas para formatos não estruturados (áudio, JSON, vídeo); Veracidade é a capacidade de limpar e confiar nos dados (qualidade).",
+      "justificacao": "A Variedade (Diversity of Data) prende-se com a tipologia dos dados (texto, áudio, JSON). A Veracidade (Accuracy of Data) refere-se à fiabilidade e qualidade desses mesmos dados."
+    },
+    {
+      "id": "BIA_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "O termo 'Consistência' figura como um pilar conceptual tanto nas arquiteturas ACID (Bases Relacionais) como no Teorema CAP (Sistemas Distribuídos NoSQL). Qual das afirmações destrinça corretamente o significado deste vocábulo em cada modelo?",
+      "opcoes": [
+        "No ACID reporta-se à garantia de ausência de locks ao ler tabelas longas; no CAP designa a estrita aplicação de chaves forasteiras e normalização até à 3NF.",
+        "No ACID significa que todas as transações confirmadas não perdem bytes caso ocorra downtime energético; no CAP traduz o tempo que um nó retém resposta ao longo de um timeout.",
+        "No ACID significa que a execução de uma transação transita a base de dados de um estado válido para outro estado válido sem violar as regras do schema; no CAP define que todos os nós na rede apresentam e partilham a exata mesma cópia da informação aquando de uma leitura simultânea.",
+        "Ambas garantem que o sistema recupera de um 'split brain network', revertendo todas as bases de dados para os backups logísticos gravados em paridade."
+      ],
+      "resposta_correta": "No ACID significa que a execução de uma transação transita a base de dados de um estado válido para outro estado válido sem violar as regras do schema; no CAP define que todos os nós na rede apresentam e partilham a exata mesma cópia da informação aquando de uma leitura simultânea.",
+      "justificacao": "A semântica difere estruturalmente. Em ACID (Consistency), a consistência visa a verificação das regras/chaves primárias na transição transacional de dados. Em CAP (Consistency), trata-se unicamente de sincronia e replicação exata."
+    },
+    {
+      "id": "BIA_006",
+      "tipo": "true_false",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "pergunta": "A propriedade de 'Atomicidade' num sistema de Base de Dados Relacional (RDBMS) garante que, perante uma falha no meio de uma transação complexa, a base de dados apenas guarda as partes da operação que foram bem-sucedidas.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "A Atomicidade é a regra do 'tudo ou nada'. Garante exatamente o oposto: se uma falha ocorrer a meio, a transação falha na totalidade (faz rollback) para não deixar a base de dados num estado intermédio."
+    }
+  ]
+}

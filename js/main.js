@@ -84,21 +84,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // CATÁLOGO DE FICHEIROS (MULTIMÉDIA)
   // ======================================================
   const mediaCatalog = {
-      "BIA_BIAT": {
+      "BIA_ABD_Exam": {
           pdfs: [
-              { name: "Resumo BIA BIAT", file: "pdfs/BIA_BIAT.pdf" }
-          ],
-          videos: []
-      },
-      "BIA_SP": {
-          pdfs: [
-              { name: "Conceitos Gerais sobre Segurança da Informação", file: "pdfs/BIA_SP_01.pdf" },
-              { name: "Normativos em Segurança e Privacidade", file: "pdfs/BIA_SP_02.pdf" },
-              { name: "Resumo Geral", file: "pdfs/BIA_SP_03.pdf" }
+              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
+              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" }
           ],
           videos: [
-              { name: "Conceitos Gerais sobre Segurança da Informação", file: "videos/BIA_SP_01.mp4" },
-              { name: "Normativos em Segurança e Privacidade", file: "videos/BIA_SP_02.mp4" }
+              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" }
+          ]
+      },
+      "BIA_ABD_Prep": {
+          pdfs: [
+              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
+              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" }
+          ],
+          videos: [
+              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" }
           ]
       },
       "GM_MR": {
@@ -114,18 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
           videos: [
               { name: "Vídeo de Apresentação", file: "videos/CV_JOAO.mp4" }
           ]
-      },
-      "BIA_STP": {
-          pdfs: [
-              { name: "Resumo Séries Temporais", file: "pdfs/BIA_STP.pdf" }
-          ],
-          videos: []
-      },
-      "BIA_ABD": {
-          pdfs: [
-              { name: "Resumo Analítica para Big Data", file: "pdfs/BIA_ABD.pdf" }
-          ],
-          videos: []
       }
   };
 
