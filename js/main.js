@@ -611,22 +611,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function buildMultipleChoice(question, selectedAnswer, disabled) {
       const group = document.createElement('div'); group.className = "options-group";
-      const options = Array.isArray(question.opcoes) ? question.opcoes : [];
       const isMulti = question.tipo === "multiple_select"; 
       const correctArr = isMulti ? (Array.isArray(question.resposta_correta) ? question.resposta_correta : []) : [question.resposta_correta];
       const userAnsArray = Array.isArray(selectedAnswer) ? selectedAnswer : (selectedAnswer ? [selectedAnswer] : []);
 
-      options.forEach((option, idx) => {
-          const isChecked = userAnsArray.map(normalizeText).includes(normalizeText(option));
-          const isCorrectOption = correctArr.map(normalizeText).includes(normalizeText(option));
+      let optionsList = [];
+
+      // MAGIA ACONTECE AQUI: Adaptação para ler o formato antigo (Array) OU o novo formato (Objeto A,B,C,D)
+      if (Array.isArray(question.opcoes)) {
+          optionsList = question.opcoes.map((texto, index) => {
+              return { id: texto, text: texto, letter: String.fromCharCode(65 + index) };
+          });
+      } else if (typeof question.opcoes === 'object' && question.opcoes !== null) {
+          optionsList = Object.entries(question.opcoes).map(([key, texto]) => {
+              return { id: key, text: texto, letter: key };
+          });
+      }
+
+      optionsList.forEach((opt) => {
+          const isChecked = userAnsArray.map(normalizeText).includes(normalizeText(opt.id));
+          const isCorrectOption = correctArr.map(normalizeText).includes(normalizeText(opt.id));
           
           const label = document.createElement('label'); label.className = `option-item ${isChecked ? 'selected' : ''}`;
           if (disabled) { if (isCorrectOption) label.classList.add("option-correct"); else if (isChecked && !isCorrectOption) label.classList.add("option-selected-wrong"); }
 
-          const input = document.createElement('input'); input.type = isMulti ? 'checkbox' : 'radio'; input.name = `question-${state.currentQuestionIndex}`; input.value = option; input.checked = isChecked; if (disabled) input.disabled = true;
+          // O input agora guarda o 'id' correto consoante o formato (ou o texto completo, ou a letra 'A', 'B' etc.)
+          const input = document.createElement('input'); input.type = isMulti ? 'checkbox' : 'radio'; input.name = `question-${state.currentQuestionIndex}`; input.value = opt.id; input.checked = isChecked; if (disabled) input.disabled = true;
           const customDiv = document.createElement('div'); customDiv.className = isMulti ? 'custom-checkbox' : 'custom-radio';
-          const letterSpan = document.createElement('span'); letterSpan.style.cssText = "font-weight: 800; color: var(--text-muted); margin-right: 10px; font-family: 'JetBrains Mono', monospace;"; letterSpan.textContent = `${String.fromCharCode(65 + idx)}.`;
-          const textSpan = document.createElement('span'); textSpan.style.cssText = "font-size: 1rem; font-weight: 500;"; textSpan.textContent = option;
+          const letterSpan = document.createElement('span'); letterSpan.style.cssText = "font-weight: 800; color: var(--text-muted); margin-right: 10px; font-family: 'JetBrains Mono', monospace;"; letterSpan.textContent = `${opt.letter}.`;
+          const textSpan = document.createElement('span'); textSpan.style.cssText = "font-size: 1rem; font-weight: 500;"; textSpan.textContent = opt.text;
           
           label.append(input, customDiv, letterSpan, textSpan); group.appendChild(label);
       });
@@ -926,7 +939,12 @@ document.addEventListener("DOMContentLoaded", () => {
       if(termo === "") return;
       
       const resultados = state.fullDatabase.filter(p => {
-          const textoCompleto = ((p.pergunta || "") + " " + (p.justificacao || "") + " " + (p.opcoes ? p.opcoes.join(" ") : "") + " " + (p.pares ? p.pares.map(x=>x.conceito).join(" ") : "")).toLowerCase();
+          // Prevenção de erro: junta o texto de opções em formato Array ou Objeto
+          let opcoesText = "";
+          if (p.opcoes) {
+              opcoesText = Array.isArray(p.opcoes) ? p.opcoes.join(" ") : Object.values(p.opcoes).join(" ");
+          }
+          const textoCompleto = ((p.pergunta || "") + " " + (p.contexto || "") + " " + (p.justificacao || "") + " " + opcoesText + " " + (p.pares ? p.pares.map(x=>x.conceito).join(" ") : "")).toLowerCase();
           return textoCompleto.includes(termo);
       });
       
