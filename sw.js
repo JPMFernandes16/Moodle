@@ -1,7 +1,7 @@
 // sw.js
 // 🚨 REGRA DE OURO: SEMPRE QUE FIZERES ALTERAÇÕES NO PROJETO, MUDA ESTES NÚMEROS!
-const STATIC_CACHE = 'moodle-bia-static-v13'; 
-const DYNAMIC_CACHE = 'moodle-bia-dynamic-v13';
+const STATIC_CACHE = 'moodle-bia-static-v14'; 
+const DYNAMIC_CACHE = 'moodle-bia-dynamic-v14';
 // Apenas ficheiros da "carcaça" da aplicação (App Shell)
 // NOTA: Adicionei os novos ficheiros que criámos na refatoração!
 const urlsToCache = [

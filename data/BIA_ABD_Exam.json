@@ -14,87 +14,67 @@
   "perguntas": [
     {
       "id": "SIM_FINAL_001",
-      "tipo": "open_ended",
+      "tipo": "multiple_choice",
       "macro_tema": "Cloud_e_Bases_de_Dados",
       "tema": "Provisionamento_e_Teorema_CAP",
-      "pergunta": "Contexto: A plataforma de e-commerce da 'Sonae' colapsou na Black Friday do ano passado porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Este ano, migraram para a Cloud AWS e adotaram uma base de dados NoSQL. Explique como a característica de 'Elasticidade' da Cloud resolve o problema de infraestrutura, e utilize o Teorema CAP para justificar por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário de vendas massivas e globais onde a rede pode falhar.",
-      "palavras_chave": [
-        ["estático", "elasticidade", "dinâmico", "horizontal", "aumentar"],
-        ["utility computing", "pay-per-use", "pago pelo uso"],
-        ["cap", "partição", "falha de rede", "inevitável"],
-        ["disponibilidade", "responder", "online", "sacrificar", "consistência eventual"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
+      "contexto": "A plataforma de e-commerce da 'Sonae' colapsou na Black Friday do ano passado porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Este ano, migraram para a Cloud AWS e adotaram uma base de dados NoSQL.",
+      "pergunta": "Como a 'Elasticidade' da Cloud resolve o problema de infraestrutura, e por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário de vendas massivas e globais onde a rede pode falhar, segundo o Teorema CAP?",
+      "opcoes": {
+        "A": "A Elasticidade garante que a infraestrutura é estática e segura. NoSQL prioriza a Consistência absoluta perante falhas de rede, bloqueando as compras para evitar erros de stock.",
+        "B": "A Elasticidade permite escalar horizontalmente de forma dinâmica. NoSQL prioriza a Disponibilidade perante uma falha de rede (Partição), garantindo que a loja continua a faturar com consistência eventual.",
+        "C": "A Elasticidade permite pagar uma taxa fixa anual (Utility Computing). NoSQL ignora o Teorema CAP por ser independente do estado da rede.",
+        "D": "A Elasticidade muda a base de dados de NoSQL para RDBMS automaticamente. NoSQL escolhe sempre Consistência e Partição, abdicando totalmente da Disponibilidade."
       },
-      "resposta_referencia": "No provisionamento estático, a Sonae estava limitada ao hardware físico, colapsando sob picos de tráfego. A Elasticidade da Cloud resolve isto permitindo escalar horizontalmente (adicionar servidores virtuais) de forma dinâmica consoante a procura, pagando apenas o que usa (Utility Computing). Ao nível de dados, perante uma quebra de rede (Partição inevitável no Teorema CAP), o modelo ACID bloquearia o sistema para garantir a Consistência. A adoção do NoSQL permite à Sonae escolher a Disponibilidade (A), mantendo a loja a faturar e a responder aos clientes, aceitando que os dados fiquem com consistência eventual temporária.",
-      "justificacao": "O aluno deve cruzar o conceito financeiro/operacional da Cloud (Elasticidade) com a decisão arquitetónica de dados (Teorema CAP)."
+      "resposta_correta": "B",
+      "justificacao": "A Elasticidade permite escalar servidores (horizontalmente) pagando apenas o uso. No Teorema CAP, falhas de rede (Partição) são inevitáveis. O NoSQL permite à Sonae escolher Disponibilidade, mantendo o site online."
     },
     {
       "id": "SIM_FINAL_002",
-      "tipo": "open_ended",
+      "tipo": "multiple_choice",
       "macro_tema": "Arquitetura_e_Formatos",
       "tema": "Data_Lake_e_Medallion",
-      "pergunta": "Contexto: A seguradora 'Fidelidade' está a construir um Data Lakehouse utilizando a 'Medallion Architecture' (Bronze, Silver, Gold). Explique a diferença fundamental entre a abordagem 'Schema on Read' do Data Lake e o 'Schema on Write' do Data Warehouse clássico. Em seguida, justifique por que razão a equipa de engenharia decidiu guardar os dados na camada Bronze em formato Apache Avro ou JSON, mas exige que a camada Gold seja estritamente armazenada em Apache Parquet.",
-      "palavras_chave": [
-        ["schema on read", "leitura", "bruto", "lake"],
-        ["schema on write", "escrita", "etl", "warehouse", "limpos"],
-        ["bronze", "avro", "json", "evolução de esquema", "linhas"],
-        ["gold", "parquet", "colunar", "rápido", "agregados", "queries"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
+      "contexto": "A seguradora 'Fidelidade' está a construir um Data Lakehouse utilizando a 'Medallion Architecture' (Bronze, Silver, Gold).",
+      "pergunta": "Qual é a diferença fundamental entre 'Schema on Read' e 'Schema on Write', e por que razão a camada Bronze usa Apache Avro/JSON enquanto a camada Gold exige Apache Parquet?",
+      "opcoes": {
+        "A": "'Schema on Read' aplica a estrutura na leitura (ideal para dados brutos no Lake), enquanto 'Schema on Write' obriga a estruturar antes de gravar (Warehouse). Bronze usa Avro/JSON pela flexibilidade de esquema, e Gold usa Parquet por ser colunar e otimizar queries analíticas.",
+        "B": "'Schema on Write' grava dados brutos sem tratamento, 'Schema on Read' exige ETL prévio para estruturar a leitura. Bronze usa Parquet por ser orientado à linha, e Gold usa JSON para permitir evolução de esquema contínua.",
+        "C": "Ambos exigem processos ETL pesados. A camada Bronze usa JSON porque é o único formato suportado nativamente na Cloud, e a camada Gold usa Parquet porque impede a agregação de dados.",
+        "D": "'Schema on Read' é exclusivo de RDBMS transacionais. Bronze usa Avro para garantir restrições ACID imediatas, e Gold usa Parquet exclusivamente para lidar com streaming de vídeo."
       },
-      "resposta_referencia": "O Data Warehouse usa 'Schema on Write', obrigando a limpar e estruturar os dados antes de os gravar (ETL). O Data Lake usa 'Schema on Read', permitindo despejar os dados na camada Bronze no seu formato original e bruto, aplicando o esquema apenas quando são lidos. A camada Bronze usa Avro ou JSON porque são excelentes a lidar com dados não estruturados e permitem Evolução de Esquema à medida que a origem muda. A camada Gold, destinada a BI e Dashboards, usa Parquet porque é um formato colunar altamente comprimido, tornando as queries analíticas muito mais rápidas ao ler apenas as colunas necessárias.",
-      "justificacao": "Testa o domínio da taxonomia de armazenamento: como a flexibilidade dos dados crus (Avro/JSON) na entrada do Lake se transforma em eficiência colunar (Parquet) na saída para negócio."
+      "resposta_correta": "A",
+      "justificacao": "O Data Lake usa 'Schema on Read' para ingerir dados rapidamente na sua forma bruta. Formatos orientados à linha como Avro/JSON são perfeitos para a entrada (Bronze), enquanto o Parquet (colunar) é vital para a eficiência das queries na camada de negócio (Gold)."
     },
     {
       "id": "SIM_FINAL_003",
-      "tipo": "open_ended",
+      "tipo": "multiple_choice",
       "macro_tema": "Processamento_Distribuido",
       "tema": "Hadoop_Spark_e_DataLocality",
-      "pergunta": "Contexto: O 'Millennium BCP' usa a plataforma Hadoop para o fecho de contas de milhões de clientes ao final do mês, mas implementou Apache Spark especificamente para o seu novo sistema de deteção de fraudes em cartões de crédito. Justifique a coexistência destas duas tecnologias focando-se no paradigma de hardware (Disco vs RAM) subjacente a cada uma. Na sua justificação sobre o Hadoop, explique obrigatoriamente como atua o princípio de 'Data Locality' para otimizar o processamento mensal pesado.",
-      "palavras_chave": [
-        ["hadoop", "disco", "batch", "lote", "fecho", "lento"],
-        ["spark", "ram", "memória", "tempo real", "fraudes", "rápido"],
-        ["data locality", "código", "programa", "script"],
-        ["evitar", "transferir", "rede", "dados", "localmente"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
+      "contexto": "O 'Millennium BCP' usa a plataforma Hadoop para o fecho de contas de milhões de clientes ao final do mês, mas implementou Apache Spark especificamente para o seu novo sistema de deteção de fraudes em cartões de crédito.",
+      "pergunta": "Tendo em conta o paradigma de hardware (Disco vs RAM), por que razão coexistem estas tecnologias e como atua o princípio de 'Data Locality' no Hadoop?",
+      "opcoes": {
+        "A": "Spark usa Disco rígido, o que é ideal para tempo real; Hadoop usa RAM, ideal para grandes lotes. Data Locality foca-se em transferir os dados mais pesados pela rede para um nó de processamento central.",
+        "B": "Spark e Hadoop usam ambos exclusivamente a memória RAM. Data Locality significa que os dados são apagados localmente após o seu uso para poupar espaço em disco nos servidores do banco.",
+        "C": "Hadoop substituiu o Spark no Millennium devido aos custos. Data Locality é uma funcionalidade nativa do Spark que permite gravar dados diretamente num disco rígido externo.",
+        "D": "Spark opera em RAM (in-memory), permitindo respostas rápidas para fraudes em tempo real. Hadoop opera em Disco (batch pesado). O Data Locality otimiza o Hadoop ao enviar o código para ser executado no nó onde os dados residem, evitando tráfego de rede."
       },
-      "resposta_referencia": "As tecnologias coexistem porque resolvem problemas diferentes. O Spark processa os dados in-memory (RAM), sendo muito rápido e vital para avaliar fraudes em tempo real. O Hadoop realiza operações lendo e escrevendo no disco rígido, sendo mais lento, mas económico e perfeito para processamento pesado em Batch (lote) como o fecho mensal de contas. Para contornar a lentidão, o Hadoop utiliza o 'Data Locality', que dita que em vez de transferir Terabytes de dados pesados pela rede (o que seria incomportável), o sistema envia o pequeno programa de execução para correr localmente no servidor (DataNode) onde os blocos de dados já residem fisicamente.",
-      "justificacao": "O aluno deve provar que entende que o Spark não mata o Hadoop, complementam-se (RAM para Stream, Disco para Batch). O conceito de Data Locality é obrigatório."
+      "resposta_correta": "D",
+      "justificacao": "As tecnologias complementam-se (RAM para tempo real, Disco para processamento massivo em lote). O Data Locality resolve a lentidão natural do disco movendo a computação para junto do dado, não o dado para a computação."
     },
     {
       "id": "SIM_FINAL_004",
-      "tipo": "open_ended",
+      "tipo": "multiple_choice",
       "macro_tema": "Otimizacao_Spark",
       "tema": "DataFrames_e_Particionamento",
-      "pergunta": "Contexto: Um engenheiro de dados da 'EDP' tem uma rotina em PySpark que demora horas a correr num cluster pesado. Ao analisar o código, verificou que a rotina manipula as leituras dos contadores usando a abstração antiga RDD (Resilient Distributed Dataset) e termina usando a função 'repartition(50)' para reduzir os dados de 1000 para 50 partições finais. Proponha e justifique duas alterações de código vitais: a alteração da abstração de dados (de RDD para a moderna) e a substituição da função de redução de partições.",
-      "palavras_chave": [
-        ["dataframe", "esquema", "colunas", "catalyst", "otimizador"],
-        ["rdd", "opaco", "baixo nível", "não estruturado"],
-        ["repartition", "shuffle", "rede", "pesado", "tráfego"],
-        ["coalesce", "fundir", "localmente", "eficiente"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão representados na resposta.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
+      "contexto": "Um engenheiro de dados da 'EDP' tem uma rotina em PySpark que demora horas a correr num cluster pesado. Ao analisar o código, verificou que a rotina manipula as leituras dos contadores usando a abstração antiga RDD (Resilient Distributed Dataset) e termina usando a função 'repartition(50)' para reduzir os dados de 1000 para 50 partições finais.",
+      "pergunta": "Quais são as duas alterações de código vitais para otimizar o tempo desta rotina e porquê?",
+      "opcoes": {
+        "A": "Mudar para DataFrames, pois não têm esquema fixo e ignoram o motor de otimização. Trocar 'repartition(50)' por 'shuffle(50)' para forçar a redundância dos dados.",
+        "B": "Mudar de RDD para Listas Python standard para simplificar a leitura. Manter a função 'repartition(50)', pois qualquer outra função causará perda irreparável de partições de dados.",
+        "C": "Mudar de RDD para DataFrames para aproveitar o 'Catalyst Optimizer' que otimiza dados estruturados. Trocar 'repartition(50)' por 'coalesce(50)' para fundir partições no mesmo nó e evitar um Shuffle na rede.",
+        "D": "Mudar para DataFrames unicamente por questões de sintaxe do código. Trocar 'repartition(50)' por 'reduceByKey(50)' para garantir que os dados são gravados no disco de forma imediata."
       },
-      "resposta_referencia": "A primeira alteração é substituir os RDDs por DataFrames. Os RDDs são estruturas opacas para o Spark. Ao usar DataFrames, os dados ganham um esquema (colunas tipadas), permitindo ao Spark usar o motor interno 'Catalyst Optimizer' para reescrever e executar as operações da forma mais eficiente possível. A segunda alteração é substituir a função 'repartition(50)' por 'coalesce(50)'. O repartition obriga a um Full Shuffle, movendo dados de forma pesada por toda a rede do cluster. Como o objetivo é apenas reduzir partições, o coalesce é muito mais eficiente pois tenta fundir partições no mesmo nó de processamento (localmente), minimizando o tráfego de rede.",
-      "justificacao": "Esta é uma pergunta avançada de arquitetura de software: compreender que otimizar o Spark passa por dar estrutura aos dados (DataFrame/Catalyst) e proteger a rede evitando Shuffles desnecessários (Coalesce)."
+      "resposta_correta": "C",
+      "justificacao": "DataFrames conferem esquema aos dados, permitindo a otimização automática pelo Spark (Catalyst). Quando o objetivo é apenas diminuir partições, o `coalesce` é muito superior ao `repartition` porque evita mover os dados por toda a rede (Full Shuffle)."
     }
   ]
 }

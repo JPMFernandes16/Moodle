@@ -501,30 +501,30 @@ document.addEventListener("DOMContentLoaded", () => {
     if (remainingCountElement) remainingCountElement.textContent = String(remaining);
   }
 
-  function renderQuestionNavigator() {
-    if (!questionNavigator) return;
-    questionNavigator.innerHTML = ""; 
-    if (!state.quizData.length) return;
-    
-    state.quizData.forEach((q, index) => {
-        const btn = document.createElement('button');
-        btn.type = "button";
-        let className = "nav-node";
-        if (index === state.currentQuestionIndex) className += " is-active";
-        if (getAnsweredCountForIndex(index) && !state.quizSubmitted) className += " is-answered";
-        
-        if (state.quizSubmitted || state.verifiedQuestions[index]) {
-            const score = getQuestionScore(q, index);
-            if (score === 1) className += " is-correct";
-            else if (score === 0.5) className += " is-partial";
-            else className += " is-incorrect";
-        }
-        btn.className = className;
-        btn.dataset.questionIndex = index;
-        btn.textContent = index + 1;
-        btn.addEventListener("click", () => goToQuestion(Number(btn.dataset.questionIndex)));
-        questionNavigator.appendChild(btn);
-    });
+ function renderQuestionNavigator() {
+      if (!questionNavigator) return;
+      questionNavigator.innerHTML = ""; 
+      if (!state.quizData.length) return;
+      
+      state.quizData.forEach((q, index) => {
+          const btn = document.createElement('button');
+          btn.type = "button";
+          let className = "nav-node";
+          if (index === state.currentQuestionIndex) className += " is-active";
+          if (getAnsweredCountForIndex(index) && !state.quizSubmitted) className += " is-answered";
+          
+          if (state.quizSubmitted || state.verifiedQuestions[index]) {
+              const score = getQuestionScore(q, index);
+              if (score === 1) className += " is-correct";
+              else if (score === 0.5) className += " is-partial";
+              else className += " is-incorrect";
+          }
+          btn.className = className;
+          btn.dataset.questionIndex = index;
+          btn.textContent = index + 1;
+          btn.addEventListener("click", () => goToQuestion(Number(btn.dataset.questionIndex)));
+          questionNavigator.appendChild(btn);
+      });
   }
 
   // ======================================================
@@ -553,36 +553,53 @@ document.addEventListener("DOMContentLoaded", () => {
       const btnReport = document.createElement('button'); btnReport.id = "btnReportQ"; btnReport.title = "Reportar erro"; btnReport.style.cssText = "background:none; border:none; font-size:1.2rem; cursor:pointer; opacity:0.6;"; btnReport.textContent = "🚩";
       qMeta.append(metaLeft, btnReport); card.appendChild(qMeta);
 
-      const title = document.createElement('h2'); title.className = "q-title"; title.textContent = question.pergunta; card.appendChild(title);
+      // --- INÍCIO DA ALTERAÇÃO (CONTEXTO) ---
+      if (question.contexto) {
+          const contextoBox = document.createElement('div');
+          contextoBox.style.cssText = "background: var(--bg-body); padding: 15px; border-radius: var(--radius-sm); border-left: 4px solid var(--text-muted); margin-bottom: 15px;";
+          
+          const labelContexto = document.createElement('strong');
+          labelContexto.style.cssText = "display: block; font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;";
+          labelContexto.textContent = "Contexto";
+          
+          const textoContexto = document.createElement('p');
+          textoContexto.style.cssText = "margin: 0; font-size: 0.95rem; font-style: italic; line-height: 1.5;";
+          textoContexto.textContent = question.contexto;
+          
+          contextoBox.appendChild(labelContexto);
+          contextoBox.appendChild(textoContexto);
+          card.appendChild(contextoBox);
+      }
+
+      const title = document.createElement('h2'); 
+      title.className = "q-title"; 
+      title.style.cssText = "margin-bottom: 20px;"; 
+
+      if(question.contexto) {
+          const labelTarefa = document.createElement('span');
+          labelTarefa.style.cssText = "display: block; font-size: 0.85rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 800;";
+          labelTarefa.textContent = "Pergunta";
+          title.appendChild(labelTarefa);
+      }
+      
+      const textoPergunta = document.createElement('span');
+      textoPergunta.textContent = question.pergunta;
+      title.appendChild(textoPergunta);
+      card.appendChild(title);
+      // --- FIM DA ALTERAÇÃO ---
 
       if (question.tipo === "drag_and_drop") card.appendChild(buildDragAndDrop(question, selectedAnswer, showResult));
       else if (question.tipo === "open_ended") card.appendChild(buildOpenEnded(question, selectedAnswer, showResult));
       else card.appendChild(buildMultipleChoice(question, selectedAnswer, showResult));
 
-      if (showResult) {
-          const statusColor = isCorrect ? 'var(--success)' : (isPartial ? 'var(--warning)' : 'var(--error)');
-          const statusText = isCorrect ? '✅ Resposta Validada' : (isPartial ? '⚠️ Resposta Incompleta' : '❌ Anomalia Detetada');
-          
-          const resultBox = document.createElement('div'); resultBox.style.cssText = `margin-top: 25px; padding: 20px; background: var(--bg-body); border-radius: var(--radius-sm); border: 1px solid ${statusColor}; border-left: 4px solid ${statusColor};`;
-          const pStatus = document.createElement('p'); pStatus.style.cssText = `color: ${statusColor}; font-weight: 800; font-size: 1.1rem; margin-bottom: 12px;`; pStatus.textContent = statusText; resultBox.appendChild(pStatus);
-          
-          if (question.tipo === "open_ended") { const pRef = document.createElement('p'); pRef.innerHTML = `<strong>Referência:</strong> ${escapeHtml(question.resposta_referencia)}`; resultBox.appendChild(pRef); }
-          else if (question.tipo === "multiple_choice" || question.tipo === "multiple_select" || question.tipo === "true_false") {
-             const cText = Array.isArray(question.resposta_correta) ? question.resposta_correta.join(" | ") : question.resposta_correta;
-             const pCerta = document.createElement('p'); pCerta.innerHTML = `<strong>Certa(s):</strong> ${escapeHtml(cText)}`; resultBox.appendChild(pCerta);
-          }
-          
-          const justBox = document.createElement('div'); justBox.style.cssText = "margin-top: 15px; border-top: 1px dashed var(--border); padding-top: 15px;";
-          const pJust = document.createElement('p'); pJust.style.cssText = "margin:0; font-size: 0.95rem;"; pJust.innerHTML = `<strong>Justificação:</strong> ${escapeHtml(question.justificacao)}`;
-          justBox.appendChild(pJust); resultBox.appendChild(justBox); card.appendChild(resultBox);
-      } 
-      else if (state.isTreinoMode) {
-          const btnVerif = document.createElement('button'); btnVerif.id = "btnVerificarTreino"; btnVerif.className = "btn btn--primary"; btnVerif.style.cssText = "margin-top: 20px; width: 100%; border-radius:8px;"; btnVerif.textContent = "🧘 Verificar Resposta Imediata";
-          card.appendChild(btnVerif);
-      }
-
+      // As linhas vitais que faltavam para fechar a função e adicionar ao DOM:
       quizContainer.appendChild(card);
-      setupQuestionListeners(question, showResult);
+
+      btnReport.addEventListener('click', () => {
+          showCustomConfirm(`Gostarias de reportar um erro na Questão ${state.currentQuestionIndex + 1}?`, () => {
+              showToast("Erro reportado! Obrigado.", "success");
+          });
+      });
   }
 
   function buildOpenEnded(question, selectedAnswer, disabled) {

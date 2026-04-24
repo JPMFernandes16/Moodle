@@ -63,7 +63,11 @@ export function generateQuizDataLocally(selectedTopics, mode = "normal") {
 
     testeFinal.forEach(p => {
         if ((p.tipo === "multiple_choice" || p.tipo === "multiple_select") && p.opcoes) {
-            p.opcoes = shuffleArray([...p.opcoes]);
+            // Verifica se é um Array (formato antigo) para poder baralhar.
+            // Se for um Objeto (formato novo "A", "B", "C", "D"), mantém a ordem intata.
+            if (Array.isArray(p.opcoes)) {
+                p.opcoes = shuffleArray([...p.opcoes]);
+            }
         } else if (p.tipo === "drag_and_drop" && p.pares) {
             p.pares = shuffleArray([...p.pares]);
         }
@@ -97,7 +101,9 @@ export function getQuestionScore(question, index) {
         const isAllCorrect = userArr.every(ans => correctArr.map(normalizeText).includes(normalizeText(ans)));
         return isAllCorrect ? 1 : 0;
     }
-    else { return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta) ? 1 : 0; }
+    else { 
+        return normalizeText(selectedAnswer) === normalizeText(question.resposta_correta) ? 1 : 0; 
+    }
 }
 
 export function isQuestionCorrect(question, index) { 
