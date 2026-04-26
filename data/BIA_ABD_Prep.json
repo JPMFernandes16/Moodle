@@ -1,15 +1,15 @@
 {
-  "disciplina": "Big Data - Preparação Total (Exame Final)",
+  "disciplina": "Big Data - Preparação Total (Apenas Escolha Múltipla)",
   "opcoes_exame": {
-    "duracao_minutos": 120,
+    "duracao_minutos": 60,
     "desconto_erro": 0.5
   },
   "configuracao_teste": {
     "RDBMS_e_NoSQL": 2,
-    "Cloud_Computing": 2,
+    "Cloud_Computing": 1,
     "Taxonomia_e_Formatos": 3,
-    "Hadoop": 3,
-    "Spark": 4
+    "Hadoop": 2,
+    "Spark": 2
   },
   "perguntas": [
     {
@@ -69,18 +69,6 @@
       "justificacao": "Perante uma falha de rede física (Partição, que é inevitável), a empresa optou por manter o serviço online a faturar (Disponibilidade), aceitando dados temporariamente dessincronizados (consistência eventual)."
     },
     {
-      "id": "BIA_ADV_005",
-      "tipo": "true_false",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "O conceito de 'Schema-less' nas bases de dados NoSQL significa que a informação é guardada sem qualquer tipo de estrutura organizativa interna ou lógica de acesso.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "'Schema-less' não significa ausência total de estrutura; significa ausência de um esquema rígido e imutável (como as tabelas RDBMS). Os dados NoSQL têm organização lógica (JSON, Grafos), apenas são flexíveis."
-    },
-    {
       "id": "CLD_ADV_001",
       "tipo": "multiple_choice",
       "macro_tema": "Cloud_Computing",
@@ -107,18 +95,6 @@
       ],
       "resposta_correta": "PaaS (Platform as a Service).",
       "justificacao": "No modelo PaaS, a Cloud fornece a plataforma de execução pronta (SO e ambiente geridos). O cliente preocupa-se estritamente com o seu código aplicacional."
-    },
-    {
-      "id": "CLD_ADV_003",
-      "tipo": "true_false",
-      "macro_tema": "Cloud_Computing",
-      "pergunta": "O conceito de 'Utility Computing' significa que a empresa compra os servidores físicos à AWS, mas paga a manutenção através de uma fatura mensal fixa.",
-      "opcoes": [
-        "Verdadeiro",
-        "Falso"
-      ],
-      "resposta_correta": "Falso",
-      "justificacao": "Utility Computing funciona como a água ou a luz: não se compra hardware físico, apenas se consome o serviço de Cloud e paga-se estritamente o volume de recursos utilizados (pay-per-use)."
     },
     {
       "id": "CLD_ADV_005",
@@ -205,20 +181,6 @@
       "justificacao": "O Iceberg é um formato desenhado precisamente para suportar comandos SQL de manipulação flexível e ACID sobre Data Lakes."
     },
     {
-      "id": "HS_ADV_001",
-      "tipo": "multiple_choice",
-      "macro_tema": "Spark",
-      "pergunta": "A Uber analisa rotas em tempo real para preços dinâmicos, mas processa os pagamentos mensais dos motoristas numa rotina pesada de fim de mês. Que tecnologias se adequam melhor, respetivamente?",
-      "opcoes": [
-        "Hadoop para rotas; Spark para pagamentos.",
-        "Spark para rotas; Hadoop para pagamentos.",
-        "HDFS para rotas; Presto para pagamentos.",
-        "Data Warehouse para rotas; Data Lake para pagamentos."
-      ],
-      "resposta_correta": "Spark para rotas; Hadoop para pagamentos.",
-      "justificacao": "O Spark processa em memória RAM (sendo a escolha vital para tempo real), enquanto o Hadoop processa lendo/escrevendo em disco (ideal para grandes lotes Batch económicos noturnos)."
-    },
-    {
       "id": "HS_ADV_002",
       "tipo": "multiple_choice",
       "macro_tema": "Hadoop",
@@ -231,20 +193,6 @@
       ],
       "resposta_correta": "Enviar o pequeno programa de processamento (código) pela rede até ao servidor físico onde os blocos de dados já estão guardados.",
       "justificacao": "A rede é o gargalo do Big Data. O Data Locality poupa a largura de banda movendo a computação até aos dados, em vez de mover os dados até à computação."
-    },
-    {
-      "id": "HS_ADV_003",
-      "tipo": "multiple_choice",
-      "macro_tema": "Spark",
-      "pergunta": "Qual é a grande diferença operacional entre utilizar um RDD ou utilizar um DataFrame moderno no Apache Spark?",
-      "opcoes": [
-        "O RDD guarda dados tabulares nativos; o DataFrame guarda texto bruto opaco.",
-        "O RDD opera no disco rígido; o DataFrame opera em RAM.",
-        "O RDD lida com dados opacos sem esquemas; o DataFrame organiza a informação em colunas com nomes/tipos definidos, permitindo otimizações SQL avançadas.",
-        "Não existe diferença, RDD é a API em linguagem Scala e DataFrame é a API em Python."
-      ],
-      "resposta_correta": "O RDD lida com dados opacos sem esquemas; o DataFrame organiza a informação em colunas com nomes/tipos definidos, permitindo otimizações SQL avançadas.",
-      "justificacao": "Os DataFrames permitem ao motor 'Catalyst Optimizer' do Spark compreender a estrutura dos dados e aplicar otimizações matemáticas maciças de execução."
     },
     {
       "id": "HS_ADV_004",
@@ -261,20 +209,6 @@
       "justificacao": "A camada Bronze ingere os dados brutos. A Silver limpa e filtra. A Gold agrega métricas de negócio finais para os painéis de Business Intelligence."
     },
     {
-      "id": "SPK_ADV_002",
-      "tipo": "multiple_choice",
-      "macro_tema": "Spark",
-      "pergunta": "Precisas de reduzir o número de partições de um conjunto de dados massivo no Spark de 100 para 10 de forma eficiente. Qual a função crítica a usar e porquê?",
-      "opcoes": [
-        "repartition(); porque equilibra os dados perfeitamente de forma estrutural.",
-        "coalesce(); porque funde partições localmente no mesmo servidor, evitando congestionar a rede com um 'Full Shuffle'.",
-        "shuffle(); porque é o mecanismo nativo de agregação de redes distribuídas.",
-        "map(); porque transforma os dados localmente sem tocar na estrutura."
-      ],
-      "resposta_correta": "coalesce(); porque funde partições localmente no mesmo servidor, evitando congestionar a rede com um 'Full Shuffle'.",
-      "justificacao": "A função repartition() força a troca agressiva de dados entre servidores pela rede. A coalesce() é altamente otimizada estritamente para reduzir as partições de forma local."
-    },
-    {
       "id": "HAD_ADV_002",
       "tipo": "multiple_choice",
       "macro_tema": "Hadoop",
@@ -287,20 +221,6 @@
       ],
       "resposta_correta": "Reduz o desperdício colossal de espaço em disco (overhead de 200%) usando cálculos de paridade para tolerância a falhas.",
       "justificacao": "Em vez de triplicar o armazenamento guardando 3 cópias exatas do ficheiro, usa equações (paridade) para reconstruir dados perdidos, poupando imenso hardware."
-    },
-    {
-      "id": "SPK_ADV_004",
-      "tipo": "multiple_choice",
-      "macro_tema": "Spark",
-      "pergunta": "Na biblioteca Spark MLlib (Machine Learning), qual a distinção operacional dentro de um Pipeline entre um 'Estimator' e um 'Transformer'?",
-      "opcoes": [
-        "O Estimator avalia erros lógicos; o Transformer normaliza os dados textuais.",
-        "O Estimator estuda e aprende com os dados (fit()) para gerar um modelo; esse modelo resultante atua depois como Transformer para produzir as previsões finais (transform()).",
-        "São sinónimos operacionais na biblioteca PySpark moderna.",
-        "O Transformer cria partições na memória; o Estimator atribui CPU ao algoritmo."
-      ],
-      "resposta_correta": "O Estimator estuda e aprende com os dados (fit()) para gerar um modelo; esse modelo resultante atua depois como Transformer para produzir as previsões finais (transform()).",
-      "justificacao": "O Estimator representa o treino e a extração do conhecimento matemático; o Transformer é a aplicação desse conhecimento em novos DataFrames."
     },
     {
       "id": "DL_ADV_001",
@@ -317,198 +237,228 @@
       "justificacao": "A grande vantagem do Data Lake é não obrigar os engenheiros a decidirem qual é a estrutura perfeita das colunas antes de gravar. Os dados entram em bruto e organizam-se só quando são precisos."
     },
     {
-      "id": "DD_EIXO1_001",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Cloud_Computing",
-      "pergunta": "Associe o cenário empresarial de Infraestrutura/Bases de Dados à respetiva propriedade arquitetónica de resposta correta:",
-      "pares": [
-        {
-          "item": "Netflix a transmitir filmes globais aceitando perdas ligeiras de sincronia.",
-          "correspondencia": "Foco na Disponibilidade em caso de falha de rede (Teorema CAP)."
-        },
-        {
-          "item": "Worten a ligar instâncias de servidores temporários apenas para a Black Friday.",
-          "correspondencia": "Utility Computing aliado a Escalonamento Horizontal."
-        },
-        {
-          "item": "SIBS a reverter a transferência de um MBWay se o servidor de destino falhar.",
-          "correspondencia": "Proteção sistémica de Atomicidade (Modelo ACID)."
-        },
-        {
-          "item": "Farfetch a alugar a infraestrutura de rede nua apenas para instalar o seu próprio SO.",
-          "correspondencia": "Modelo puro de IaaS (Infrastructure as a Service)."
-        }
-      ],
-      "justificacao": "Valida o conhecimento das infraestruturas e bases de dados face a respostas de resiliência corporativa."
-    },
-    {
-      "id": "DD_EIXO2_001",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Taxonomia_e_Formatos",
-      "pergunta": "Associe o formato nativo de armazenamento Big Data ao seu caso de uso corporativo mais letal:",
-      "pares": [
-        {
-          "item": "Apache Parquet",
-          "correspondencia": "Otimizar drasticamente a leitura analítica faturando apenas as colunas específicas lidas."
-        },
-        {
-          "item": "Apache Avro",
-          "correspondencia": "Garantir a Evolução de Esquema fluída das métricas mutáveis da Uber guardando a estrutura em JSON."
-        },
-        {
-          "item": "Apache Iceberg",
-          "correspondencia": "Desbloquear atualizações complexas e deletes pontuais (ACID) em tabelas massivas de Data Lake."
-        },
-        {
-          "item": "Formato JSON Nativo",
-          "correspondencia": "Transportar dados na web devido à sua arquitetura flexível, suportando a penalidade do tamanho e da verbosidade em disco."
-        }
-      ],
-      "justificacao": "Confirma o conhecimento estrutural profundo sobre quando usar qual formato dependendo da exigência do processador."
-    },
-    {
-      "id": "DD_EIXO3_001",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Hadoop",
-      "pergunta": "Faça corresponder o bloco arquitetónico do modelo de processamento distribuído à sua funcionalidade técnica correta:",
-      "pares": [
-        {
-          "item": "Apache Spark (Context Engine)",
-          "correspondencia": "Processamento In-Memory estrito para tarefas analíticas Iterativas e de Tempo Real."
-        },
-        {
-          "item": "Hadoop MapReduce (Legacy Engine)",
-          "correspondencia": "Mecânica de leitura constante em disco, otimizada economicamente para processamento noturno isolado em Batch."
-        },
-        {
-          "item": "Data Locality (Eficiência de I/O)",
-          "correspondencia": "Migração forçada da rotina computacional ligeira para o servidor em que a massa de dados crítica já reside inalterada."
-        },
-        {
-          "item": "NameNode (HDFS)",
-          "correspondencia": "O 'Cérebro Central' que mapeia o local estrito do cluster sem participar do armazenamento pesado em si."
-        }
-      ],
-      "justificacao": "Obriga o estudante a conhecer os nomes das tecnologias distribuídas com a exatidão das mecânicas aplicadas no cluster em produção."
-    },
-    {
-      "id": "DD_EIXO4_001",
-      "tipo": "drag_and_drop",
+      "id": "HS_ADV_001",
+      "tipo": "multiple_choice",
       "macro_tema": "Spark",
-      "pergunta": "Ligue a tática defensiva de otimização de cluster e segurança lógica Spark/Hadoop ao impacto estrutural esperado:",
-      "pares": [
-        {
-          "item": "Migração para DataFrames",
-          "correspondencia": "Habilita o 'Catalyst Optimizer' nativo definindo estritamente as colunas tipadas e a sua integridade."
-        },
-        {
-          "item": "Uso nativo do comando Coalesce()",
-          "correspondencia": "Restringe e funde partições internamente de modo isolado nos Nodes, anulando as movimentações desnecessárias em rede."
-        },
-        {
-          "item": "Invocações de Repartition()",
-          "correspondencia": "Provoca violentamente um 'Full Shuffle' forçado, forçando um rearranjo total dos dados em tráfego por todo o cluster."
-        },
-        {
-          "item": "Erasure Coding (HDFS 3.x)",
-          "correspondencia": "Gera matrizes algorítmicas de paridade de restauro com a intenção explícita de evitar a tolerância primitiva de tripla replicação de disco."
-        }
+      "pergunta": "A Uber analisa rotas em tempo real para preços dinâmicos, mas processa os pagamentos mensais dos motoristas numa rotina pesada de fim de mês. Que tecnologias se adequam melhor, respetivamente?",
+      "opcoes": [
+        "Hadoop para rotas; Spark para pagamentos.",
+        "Spark para rotas; Hadoop para pagamentos.",
+        "HDFS para rotas; Presto para pagamentos.",
+        "Data Warehouse para rotas; Data Lake para pagamentos."
       ],
-      "justificacao": "Associação crucial no Eixo 4 sobre a capacidade de reescrever queries lentas num cluster saturado."
+      "resposta_correta": "Spark para rotas; Hadoop para pagamentos.",
+      "justificacao": "O Spark processa em memória RAM (sendo a escolha vital para tempo real), enquanto o Hadoop processa lendo/escrevendo em disco (ideal para grandes lotes Batch económicos noturnos)."
     },
     {
-      "id": "FAST_EIXO1_001",
-      "tipo": "short_answer",
-      "macro_tema": "Cloud_Computing",
-      "pergunta": "A Sonae migrou para a Cloud para adicionar servidores virtuais automaticamente na Black Friday. Como se chama a característica arquitetónica que permite adaptar os recursos dinamicamente à procura (o oposto ao Provisionamento Estático)?",
-      "respostas_esperadas": [
-        "Elasticidade",
-        "Provisionamento Dinâmico",
-        "Escalonamento Horizontal"
+      "id": "HS_ADV_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "Qual é a grande diferença operacional entre utilizar um RDD ou utilizar um DataFrame moderno no Apache Spark?",
+      "opcoes": [
+        "O RDD guarda dados tabulares nativos; o DataFrame guarda texto bruto opaco.",
+        "O RDD opera no disco rígido; o DataFrame opera em RAM.",
+        "O RDD lida com dados opacos sem esquemas; o DataFrame organiza a informação em colunas com nomes/tipos definidos, permitindo otimizações SQL avançadas.",
+        "Não existe diferença, RDD é a API em linguagem Scala e DataFrame é a API em Python."
       ],
-      "justificacao": "A Elasticidade é a capacidade da Cloud de escalar os recursos de forma automática para cima ou para baixo conforme o tráfego exige."
+      "resposta_correta": "O RDD lida com dados opacos sem esquemas; o DataFrame organiza a informação em colunas com nomes/tipos definidos, permitindo otimizações SQL avançadas.",
+      "justificacao": "Os DataFrames permitem ao motor 'Catalyst Optimizer' do Spark compreender a estrutura dos dados e aplicar otimizações matemáticas maciças de execução."
     },
     {
-      "id": "FAST_EIXO1_002",
-      "tipo": "short_answer",
+      "id": "SPK_ADV_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "Precisas de reduzir o número de partições de um conjunto de dados massivo no Spark de 100 para 10 de forma eficiente. Qual a função crítica a usar e porquê?",
+      "opcoes": [
+        "repartition(); porque equilibra os dados perfeitamente de forma estrutural.",
+        "coalesce(); porque funde partições localmente no mesmo servidor, evitando congestionar a rede com um 'Full Shuffle'.",
+        "shuffle(); porque é o mecanismo nativo de agregação de redes distribuídas.",
+        "map(); porque transforma os dados localmente sem tocar na estrutura."
+      ],
+      "resposta_correta": "coalesce(); porque funde partições localmente no mesmo servidor, evitando congestionar a rede com um 'Full Shuffle'.",
+      "justificacao": "A função repartition() força a troca agressiva de dados entre servidores pela rede. A coalesce() é altamente otimizada estritamente para reduzir as partições de forma local."
+    },
+    {
+      "id": "SPK_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "Na biblioteca Spark MLlib (Machine Learning), qual a distinção operacional dentro de um Pipeline entre um 'Estimator' e um 'Transformer'?",
+      "opcoes": [
+        "O Estimator avalia erros lógicos; o Transformer normaliza os dados textuais.",
+        "O Estimator estuda e aprende com os dados (fit()) para gerar um modelo; esse modelo resultante atua depois como Transformer para produzir as previsões finais (transform()).",
+        "São sinónimos operacionais na biblioteca PySpark moderna.",
+        "O Transformer cria partições na memória; o Estimator atribui CPU ao algoritmo."
+      ],
+      "resposta_correta": "O Estimator estuda e aprende com os dados (fit()) para gerar um modelo; esse modelo resultante atua depois como Transformer para produzir as previsões finais (transform()).",
+      "justificacao": "O Estimator representa o treino e a extração do conhecimento matemático; o Transformer é a aplicação desse conhecimento em novos DataFrames."
+    },
+    {
+      "id": "BIA_ADV_007",
+      "tipo": "multiple_choice",
       "macro_tema": "RDBMS_e_NoSQL",
-      "pergunta": "Num sistema distribuído de bases de dados NoSQL, a rede falhou entre dois países. A empresa decidiu manter o serviço a faturar em vez de o bloquear, aceitando que os dados fiquem temporariamente dessincronizados. Segundo o Teorema CAP, que propriedade foi sacrificada?",
-      "respostas_esperadas": [
-        "Consistência",
-        "Consistency",
-        "C"
+      "pergunta": "A EDP analisa diariamente os consumos de todos os contadores inteligentes de um distrito inteiro para detetar padrões de uso. Qual é a tipologia de base de dados NoSQL desenhada especificamente para analisar volumes de dados massivos de forma ultrarrápida nestes cenários?",
+      "opcoes": [
+        "Base de Dados de Documentos.",
+        "Base de Dados Chave-Valor.",
+        "Base de Dados Orientada a Grafos.",
+        "Armazenamento em Colunas."
       ],
-      "justificacao": "Perante uma Partição (P), a empresa escolheu a Disponibilidade (A), sacrificando a Consistência (C) absoluta."
+      "resposta_correta": "Armazenamento em Colunas.",
+      "justificacao": "O armazenamento em colunas é a escolha de excelência da EDP para agregar e analisar valores (como consumos diários) numa escala massiva sem ter de ler linhas inteiras."
     },
     {
-      "id": "FAST_EIXO2_001",
-      "tipo": "short_answer",
-      "macro_tema": "Hadoop",
-      "pergunta": "O Data Warehouse exige que os dados sejam limpos e estruturados antes de serem guardados (Schema on Write). Como se chama a abordagem oposta, usada no Data Lake (camada Bronze), onde os dados são guardados em bruto e a estrutura é aplicada apenas no momento da análise?",
-      "respostas_esperadas": [
-        "Schema on Read",
-        "Esquema na Leitura"
+      "id": "CLD_ADV_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "A EDP utiliza o Microsoft Office 365 para os seus colaboradores, não gerindo qualquer código ou servidor. Por outro lado, a Farfetch aluga infraestrutura bruta na AWS para instalar o seu próprio Sistema Operativo e afinar modelos de IA. Que modelos de Cloud estão a ser usados, respetivamente?",
+      "opcoes": [
+        "SaaS para a EDP; IaaS para a Farfetch.",
+        "PaaS para a EDP; SaaS para a Farfetch.",
+        "IaaS para a EDP; PaaS para a Farfetch.",
+        "SaaS para a EDP; PaaS para a Farfetch."
       ],
-      "justificacao": "O Schema on Read garante máxima flexibilidade, evitando os processos pesados de ETL à entrada do Lake."
+      "resposta_correta": "SaaS para a EDP; IaaS para a Farfetch.",
+      "justificacao": "O Office 365 é um produto final pronto a usar (SaaS). A Farfetch precisa de controlo total sobre a máquina e o SO, o que corresponde ao aluguer de infraestrutura nua (IaaS)."
     },
     {
-      "id": "FAST_EIXO2_002",
-      "tipo": "short_answer",
+      "id": "CLD_ADV_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Cloud_Computing",
+      "pergunta": "Ao construir um Data Lake utilizando o armazenamento de objetos da AWS (Amazon S3), um programador repara que a sua aplicação não consegue aceder aos dados. Na Cloud, a segurança é fechada por defeito. O que deve o programador configurar para resolver o acesso?",
+      "opcoes": [
+        "Aumentar a RAM do Hypervisor.",
+        "Mudar de Provisionamento Estático para Dinâmico.",
+        "Criar políticas explícitas no IAM (Identity and Access Management).",
+        "Mudar a Base de Dados para um modelo AP do Teorema CAP."
+      ],
+      "resposta_correta": "Criar políticas explícitas no IAM (Identity and Access Management).",
+      "justificacao": "O AWS S3 funciona como Object Storage e bloqueia acessos por defeito. O IAM é o serviço obrigatório para definir quem e o quê (permissões de leitura/escrita) pode interagir com os dados."
+    },
+    {
+      "id": "TAX_ADV_003",
+      "tipo": "multiple_choice",
       "macro_tema": "Taxonomia_e_Formatos",
-      "pergunta": "Para a camada Gold do Data Lake, os engenheiros precisam de um formato altamente otimizado para queries analíticas, que leia no disco apenas a coluna 'idade' e ignore o resto. Qual é o formato nativo ideal do ecossistema para isto?",
-      "respostas_esperadas": [
-        "Parquet",
-        "Apache Parquet"
+      "pergunta": "Ao analisar a base de dados de RH de uma empresa, a coluna 'Salário' regista o valor exato ganho por cada funcionário em euros. Sabendo que é possível um funcionário ganhar 0€ (zero absoluto) e que 2000€ é exatamente o dobro de 1000€, como se classifica esta escala?",
+      "opcoes": [
+        "Quantitativa Intervalar.",
+        "Qualitativa Ordinal.",
+        "Quantitativa de Razão (Ratio).",
+        "Qualitativa Nominal."
       ],
-      "justificacao": "O Parquet é um formato colunar, o que significa que o disco apenas processa a coluna que foi pedida na query, poupando imenso I/O."
+      "resposta_correta": "Quantitativa de Razão (Ratio).",
+      "justificacao": "Ao contrário da temperatura Celsius (Intervalar), o salário possui um zero absoluto verdadeiro, o que permite linearidade e cálculo de proporções/rácios."
     },
     {
-      "id": "FAST_EIXO3_001",
-      "tipo": "short_answer",
+      "id": "FRM_ADV_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Taxonomia_e_Formatos",
+      "pergunta": "Se uma empresa pretender organizar as linhas de dados em blocos (Stripes) e, simultaneamente, suportar transações ACID através de uma integração com o Apache Hive, que formato de Big Data deve utilizar?",
+      "opcoes": [
+        "Apache Parquet.",
+        "Apache Avro.",
+        "JSON.",
+        "ORC (Optimized Row Columnar)."
+      ],
+      "resposta_correta": "ORC (Optimized Row Columnar).",
+      "justificacao": "O ORC destaca-se pela sua arquitetura em Stripes e pela integração nativa com o ecossistema Hive para garantir suporte a transações ACID."
+    },
+    {
+      "id": "HAD_ADV_003",
+      "tipo": "multiple_choice",
       "macro_tema": "Hadoop",
-      "pergunta": "Para evitar o colapso da rede ao transferir ficheiros de 50GB, o Hadoop envia o pequeno script de código (computação) diretamente para o servidor (DataNode) onde os blocos de dados já residem. Qual é o nome deste princípio fundamental de otimização?",
-      "respostas_esperadas": [
-        "Data Locality",
-        "Localidade dos Dados"
+      "pergunta": "Na arquitetura base do Hadoop, enquanto o HDFS divide e armazena os ficheiros em blocos e o MapReduce dita como processá-los, qual é o módulo responsável por atuar como 'gestor de tráfego' e decidir que computadores têm RAM e CPU disponíveis para executar a tarefa?",
+      "opcoes": [
+        "NameNode.",
+        "DataNode.",
+        "YARN (Yet Another Resource Negotiator).",
+        "Spark MLlib."
       ],
-      "justificacao": "O Data Locality é a regra de ouro do Hadoop: é sempre mais rápido mover a computação para os dados do que os dados para a computação."
+      "resposta_correta": "YARN (Yet Another Resource Negotiator).",
+      "justificacao": "O YARN é a camada de negociação de recursos do Hadoop, vital para não sobrecarregar os servidores e distribuir o esforço computacional corretamente."
     },
     {
-      "id": "FAST_EIXO3_002",
-      "tipo": "short_answer",
-      "macro_tema": "Spark",
-      "pergunta": "O Hadoop MapReduce é focado na leitura em disco rígido, sendo económico mas lento. O Apache Spark é até 100x mais rápido porque executa as operações de processamento onde?",
-      "respostas_esperadas": [
-        "RAM",
-        "Memória RAM",
-        "Memória",
-        "In-Memory",
-        "In memory"
+      "id": "HAD_ADV_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop",
+      "pergunta": "Ao executar o comando 'hdfs dfsadmin -report', um engenheiro nota que o sistema está em 'Safe Mode'. Qual é a consequência prática deste estado no cluster Hadoop?",
+      "opcoes": [
+        "O cluster fica offline e não permite sequer a leitura de dados.",
+        "O sistema entra em estado 'apenas leitura', bloqueando novas escritas enquanto o NameNode valida internamente se os blocos estão saudáveis e replicados.",
+        "O YARN duplica o uso de RAM para proteger os processos.",
+        "O Hadoop começa a apagar dados antigos para libertar espaço nos DataNodes."
       ],
-      "justificacao": "A velocidade estonteante do Spark vem puramente do seu paradigma de processamento In-Memory (na RAM), evitando escritas intermédias em disco."
+      "resposta_correta": "O sistema entra em estado 'apenas leitura', bloqueando novas escritas enquanto o NameNode valida internamente se os blocos estão saudáveis e replicados.",
+      "justificacao": "O Safe Mode é um mecanismo proativo de segurança estrutural. Protege a rede evitando novas gravações até que a verificação de saúde (health check) termine."
     },
     {
-      "id": "FAST_EIXO4_001",
-      "tipo": "short_answer",
-      "macro_tema": "Spark",
-      "pergunta": "Um engenheiro de dados precisa de reduzir as partições do PySpark de 1000 para 50. Para evitar um 'Full Shuffle' maciço que congestionaria a rede do cluster, qual é a função que ele deve usar obrigatoriamente em vez de repartition()?",
-      "respostas_esperadas": [
-        "coalesce",
-        "coalesce()",
-        "função coalesce"
+      "id": "HAD_ADV_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Hadoop",
+      "pergunta": "Num relatório do HDFS, a métrica 'Under replicated blocks' regista um valor superior a zero. O que significa isto na prática num cenário empresarial?",
+      "opcoes": [
+        "Que o Erasure Coding falhou os cálculos matemáticos de paridade.",
+        "Que os dados foram guardados em formato JSON em vez de Parquet.",
+        "Significa que um DataNode falhou ou 'ardeu', e o Hadoop detetou que faltam cópias de segurança de certos blocos, estando a tentar recriá-los.",
+        "Significa que o YARN parou o processamento por falta de memória RAM."
       ],
-      "justificacao": "O coalesce() tenta fundir as partições dentro do próprio servidor local, anulando a necessidade de movimentar Terabytes de dados pela rede."
+      "resposta_correta": "Significa que um DataNode falhou ou 'ardeu', e o Hadoop detetou que faltam cópias de segurança de certos blocos, estando a tentar recriá-los.",
+      "justificacao": "Esta é a prova visível da Tolerância a Falhas em ação. O NameNode percebe que a Block Replication não está garantida (ex: só há 2 cópias em vez de 3) e reage."
     },
     {
-      "id": "FAST_EIXO4_002",
-      "tipo": "short_answer",
+      "id": "SPK_ADV_005",
+      "tipo": "multiple_choice",
       "macro_tema": "Spark",
-      "pergunta": "Na biblioteca Spark MLlib, o algoritmo que treina sobre os dados do DataFrame (usando a função fit) chama-se Estimator. Como se chama o modelo gerado a partir daí que vai aplicar as previsões a novos dados (usando a função transform)?",
-      "respostas_esperadas": [
-        "Transformer",
-        "Transformador"
+      "pergunta": "O Continente Online utiliza o algoritmo ALS (Alternating Least Squares) para sugerir novos produtos aos clientes com base no que pessoas com gostos semelhantes compraram. A que módulo e conceito técnico do Apache Spark pertence esta operação?",
+      "opcoes": [
+        "Spark Streaming (Filtragem de Tráfego).",
+        "GraphX (Triangle Counting).",
+        "MLlib (Sistemas de Recomendação / Filtragem Colaborativa).",
+        "Spark SQL (Queries Otimizadas)."
       ],
-      "justificacao": "Nos Pipelines do Spark, o Estimator faz o treino matemático e gera um Transformer pronto a entrar em produção para fazer as previsões."
+      "resposta_correta": "MLlib (Sistemas de Recomendação / Filtragem Colaborativa).",
+      "justificacao": "O ALS é um algoritmo clássico de Filtragem Colaborativa incluído na biblioteca de Machine Learning (MLlib) do Spark, alimentando-se de feedback explícito (estrelas) ou implícito (cliques)."
+    },
+    {
+      "id": "SPK_ADV_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "A evolução do processamento ao vivo no Apache Spark passou pela transição de 'DStreams' para 'Structured Streaming'. Qual é a diferença revolucionária do novo modelo Structured Streaming (usado, por exemplo, com sensores GPS da Uber)?",
+      "opcoes": [
+        "Trata os dados de forma opaca (sem colunas), forçando o uso de RDDs.",
+        "Lida com os dados em lotes temporais fixos e parados (micro-batches).",
+        "Trata o fluxo constante de dados ininterruptos como uma 'tabela ilimitada' que nunca para de crescer, aplicando as mesmas lógicas do Spark SQL.",
+        "Grava a informação diretamente em disco rígido em vez da RAM."
+      ],
+      "resposta_correta": "Trata o fluxo constante de dados ininterruptos como uma 'tabela ilimitada' que nunca para de crescer, aplicando as mesmas lógicas do Spark SQL.",
+      "justificacao": "Os DStreams antigos usavam micro-batches limitados. O Structured Streaming unifica tudo, tratando dados ao vivo com a facilidade e otimização de uma tabela infinita."
+    },
+    {
+      "id": "SPK_ADV_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "A rede social LinkedIn analisa as ligações e recomenda novas conexões profissionais através de algoritmos como o PageRank. Qual é o módulo especializado do Apache Spark utilizado para mapear Pessoas e as suas Ligações (Vértices e Arestas)?",
+      "opcoes": [
+        "MLlib Pipeline.",
+        "GraphX.",
+        "HDFS NameNode.",
+        "Structured Streaming."
+      ],
+      "resposta_correta": "GraphX.",
+      "justificacao": "O GraphX é o motor do Spark dedicado exclusivamente ao processamento e análise de Grafos (redes compostas por Vértices e Arestas)."
+    },
+    {
+      "id": "SPK_ADV_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Spark",
+      "pergunta": "Numa operação de 'Structured Streaming', o engenheiro definiu o modo de saída (output mode) para 'Append'. O que acontece na prática quando os dados são escritos no destino?",
+      "opcoes": [
+        "A tabela inteira é apagada e reescrita a cada segundo com a informação global (Complete).",
+        "Apenas as linhas agregadas que sofreram alguma alteração de valor são atualizadas (Update).",
+        "São escritas estritamente as linhas de dados novas que acabaram de chegar do fluxo.",
+        "O modo converte o Spark Streaming para o motor antigo DStreams."
+      ],
+      "resposta_correta": "São escritas estritamente as linhas de dados novas que acabaram de chegar do fluxo.",
+      "justificacao": "Na mecânica de tabelas ilimitadas, o modo Append (Anexar) garante que apenas a nova informação recebida é transportada para a base de dados final, poupando imensos recursos."
     }
   ]
 }
