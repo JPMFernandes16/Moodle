@@ -6,21 +6,22 @@
     "desconto_erro": 0.0
   },
   "configuracao_teste": {
-    "Fiabilidade_Infraestrutura": 1,
-    "Armazenamento_Formatos": 1,
-    "Processamento_Rede": 1,
-    "Otimizacao_Seguranca": 1
+    "RDBMS_e_NoSQL": 1,
+    "Taxonomia_e_Formatos": 1,
+    "Hadoop": 1,
+    "Spark": 1
   },
   "perguntas": [
     {
-      "id": "SIM_EIXO1_001",
+      "id": "SIM_FINAL_001",
       "tipo": "open_ended",
-      "macro_tema": "Fiabilidade_Infraestrutura",
-      "tema": "Provisionamento e Teorema CAP",
-      "pergunta": "Contexto: A plataforma de e-commerce da 'Sonae' colapsava na Black Friday porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Após migrarem para a Cloud, adotaram uma base de dados NoSQL. Explique como a característica de 'Elasticidade' da Cloud resolve o problema do colapso de servidores, e utilize o Teorema CAP para justificar por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário global de vendas onde a rede pode falhar.",
+      "macro_tema": "RDBMS_e_NoSQL",
+      "tema": "Provisionamento_e_Teorema_CAP",
+      "contexto": "A plataforma de e-commerce da 'Sonae' colapsou na Black Friday do ano passado porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Este ano, migraram para a Cloud AWS e adotaram uma base de dados NoSQL.",
+      "pergunta": "Explique como a característica de 'Elasticidade' da Cloud resolve o problema de infraestrutura, e utilize o Teorema CAP para justificar por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário de vendas massivas e globais onde a rede pode falhar.",
       "palavras_chave": [
         ["estático", "elasticidade", "dinâmico", "horizontal", "aumentar"],
-        ["utility computing", "pay-per-use", "pago pelo uso", "máquinas virtuais"],
+        ["utility computing", "pay-per-use", "pago pelo uso"],
         ["cap", "partição", "falha de rede", "inevitável"],
         ["disponibilidade", "responder", "online", "sacrificar", "consistência eventual"]
       ],
@@ -34,11 +35,12 @@
       "justificacao": "O aluno tem de dominar o Eixo 1, cruzando infraestrutura em nuvem (Hypervisor/Elasticidade) com resiliência de bases de dados (CAP/NoSQL)."
     },
     {
-      "id": "SIM_EIXO2_001",
+      "id": "SIM_FINAL_002",
       "tipo": "open_ended",
-      "macro_tema": "Armazenamento_Formatos",
+      "macro_tema": "Taxonomia_e_Formatos",
       "tema": "Data Lake, Medallion e Formatos",
-      "pergunta": "Contexto: A seguradora 'Fidelidade' gere um Data Lake com a 'Medallion Architecture' (Bronze, Silver, Gold). Contrariando a regra do Data Warehouse antigo (Schema on Write), explique a vantagem do 'Schema on Read' do Data Lake. Em seguida, justifique tecnicamente porque é que os engenheiros guardam os dados de origem na camada Bronze em formato Apache Avro, mas processam a camada Gold obrigatoriamente em formato Apache Parquet.",
+      "contexto": "A seguradora 'Fidelidade' gere um Data Lake com a 'Medallion Architecture' (Bronze, Silver, Gold).",
+      "pergunta": "Contrariando a regra do Data Warehouse antigo (Schema on Write), explique a vantagem do 'Schema on Read' do Data Lake. Em seguida, justifique tecnicamente porque é que os engenheiros guardam os dados de origem na camada Bronze em formato Apache Avro, mas processam a camada Gold obrigatoriamente em formato Apache Parquet.",
       "palavras_chave": [
         ["schema on read", "leitura", "bruto", "lake", "flexibilidade"],
         ["schema on write", "escrita", "etl", "warehouse", "limpos"],
@@ -55,11 +57,12 @@
       "justificacao": "Avalia o domínio do Eixo 2: transição de paradigmas de estrutura de dados e as otimizações mecânicas dos formatos de ficheiro no percurso Bronze -> Gold."
     },
     {
-      "id": "SIM_EIXO3_001",
+      "id": "SIM_FINAL_003",
       "tipo": "open_ended",
-      "macro_tema": "Processamento_Rede",
+      "macro_tema": "Hadoop",
       "tema": "Hadoop vs Spark e Data Locality",
-      "pergunta": "Contexto: O 'Millennium BCP' mantém o Hadoop ativo para o fecho mensal de contas, mas viu-se obrigado a comprar instâncias de Apache Spark puramente para o seu sistema ao vivo de deteção de fraudes de cartões. Justifique a coexistência dos dois sistemas focando-se no paradigma de leitura de Hardware (Disco vs RAM) subjacente a cada um. No contexto do cluster Hadoop, explique como o princípio de 'Data Locality' previne o estrangulamento da rede corporativa.",
+      "contexto": "O 'Millennium BCP' mantém o Hadoop ativo para o fecho mensal de contas, mas viu-se obrigado a comprar instâncias de Apache Spark puramente para o seu sistema ao vivo de deteção de fraudes de cartões.",
+      "pergunta": "Justifique a coexistência dos dois sistemas focando-se no paradigma de leitura de Hardware (Disco vs RAM) subjacente a cada um. No contexto do cluster Hadoop, explique como o princípio de 'Data Locality' previne o estrangulamento da rede corporativa.",
       "palavras_chave": [
         ["hadoop", "disco", "batch", "lote", "lento"],
         ["spark", "ram", "memória", "tempo real", "fraudes", "rápido"],
@@ -76,11 +79,12 @@
       "justificacao": "Testa o conhecimento do Eixo 3: perceber as limitações físicas do Big Data e como a engenharia lida com a letargia do disco (Spark RAM) e com a barreira da largura de banda (Data Locality)."
     },
     {
-      "id": "SIM_EIXO4_001",
+      "id": "SIM_FINAL_004",
       "tipo": "open_ended",
-      "macro_tema": "Otimizacao_Seguranca",
+      "macro_tema": "Spark",
       "tema": "Otimização de Código Spark (DataFrames e Partições)",
-      "pergunta": "Contexto: Um engenheiro da 'EDP' tem uma rotina em PySpark que demora horas a processar milhões de leituras de contadores. O código manipula a informação recorrendo a abstrações antigas (RDD) e termina com o comando 'repartition(20)' para reduzir os blocos finais. Proponha as duas atualizações de otimização de código vitais que ele deve fazer, fundamentando o impacto de cada uma no motor do Spark e no uso da rede do cluster.",
+      "contexto": "Um engenheiro da 'EDP' tem uma rotina em PySpark que demora horas a processar milhões de leituras de contadores. O código manipula a informação recorrendo a abstrações antigas (RDD) e termina com o comando 'repartition(20)' para reduzir os blocos finais.",
+      "pergunta": "Proponha as duas atualizações de otimização de código vitais que ele deve fazer, fundamentando o impacto de cada uma no motor do Spark e no uso da rede do cluster.",
       "palavras_chave": [
         ["dataframe", "esquema", "colunas", "catalyst", "otimizador"],
         ["rdd", "opaco", "baixo nível", "não estruturado"],
@@ -94,7 +98,7 @@
         "3_ou_4_grupos": 1
       },
       "resposta_referencia": "A primeira alteração é a transição de RDDs (opacos e não estruturados) para DataFrames. Ao aplicar um esquema (colunas tipadas) aos dados, o Spark ativa o 'Catalyst Optimizer', que reescreve as queries matematicamente para máxima eficiência. A segunda é substituir o comando 'repartition(20)' por 'coalesce(20)'. O repartition causa um 'Full Shuffle', forçando os Worker Nodes a trocar dados exaustivamente por toda a rede. Para apenas diminuir as partições, o coalesce é ideal pois evita a rede (o Shuffle), tentando agrupar e fundir as partições localmente nos mesmos servidores.",
-      "justificacao": "Este Eixo 4 foca-se na otimização pura: saber que dar 'forma' aos dados acelera o motor Spark (Catalyst) e saber que a rede é frágil e tem de ser protegida contra o tráfego violento do Shuffle."
+      "justificacao": "Foca-se na otimização pura: saber que dar 'forma' aos dados acelera o motor Spark (Catalyst) e saber que a rede é frágil e tem de ser protegida contra o tráfego violento do Shuffle."
     }
   ]
 }
