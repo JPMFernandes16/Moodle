@@ -45,7 +45,6 @@ export function formatTime(totalSeconds) {
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 }
 
-// NOVO: Transforma datas normais em texto amigável (ex: "Há 5 minutos", "Ontem")
 export function timeAgo(dateString) {
     if (!dateString) return "Nunca";
     
@@ -68,7 +67,6 @@ export function timeAgo(dateString) {
 // PERFORMANCE (OTIMIZAÇÃO)
 // =========================================================
 
-// NOVO: Evita que funções pesadas (como a pesquisa) corram dezenas de vezes por segundo
 export function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -79,4 +77,32 @@ export function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// =========================================================
+// UI & NOTIFICAÇÕES (TOAST)
+// =========================================================
+
+export function showToast(message, type = 'info') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    let icon = 'ℹ️';
+    if(type === 'success') icon = '✅';
+    if(type === 'error') icon = '❌';
+    if(type === 'warning') icon = '⚠️';
+    
+    const iconSpan = document.createElement('span'); iconSpan.textContent = icon;
+    const msgSpan = document.createElement('span'); msgSpan.textContent = message;
+    
+    toast.appendChild(iconSpan); toast.appendChild(msgSpan);
+    container.appendChild(toast);
+    
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400); 
+    }, 3500);
 }

@@ -1,4 +1,5 @@
 // js/quizLogic.js
+
 import { state } from './store.js';
 import { shuffleArray, normalizeText, removeAcentos } from './utils.js';
 
@@ -87,12 +88,28 @@ export function getQuestionScore(question, index) {
     else if (question.tipo === "open_ended") {
         const text = removeAcentos(normalizeText(selectedAnswer).toLowerCase());
         if (text === "") return 0;
-        let gruposAtingidos = 0;
-        for (let group of question.palavras_chave) {
-            const hasMatch = group.some(word => text.includes(removeAcentos(word.toLowerCase())));
-            if (hasMatch) gruposAtingidos++;
+        
+        let palavrasEncontradas = 0;
+        
+        for (let word of question.palavras_chave) {
+            // --- CÓDIGO TOLERANTE (Suporta Novo e Antigo formato JSON) ---
+            if (typeof word === 'string') {
+                if (text.includes(removeAcentos(word.toLowerCase()))) {
+                    palavrasEncontradas++;
+                }
+            } else if (Array.isArray(word)) {
+                const hasMatch = word.some(w => text.includes(removeAcentos(w.toLowerCase())));
+                if (hasMatch) palavrasEncontradas++;
+            }
         }
-        if (gruposAtingidos >= 4) return 1; if (gruposAtingidos >= 2) return 0.5; return 0;                              
+        
+        // Ajuste dinâmico da percentagem de acerto
+        const totalChaves = question.palavras_chave.length;
+        const percentagem = totalChaves > 0 ? (palavrasEncontradas / totalChaves) : 0;
+        
+        if (percentagem >= 0.35 || palavrasEncontradas >= 4) return 1; // 100% dos pontos
+        if (percentagem >= 0.15 || palavrasEncontradas >= 2) return 0.5; // 50% dos pontos
+        return 0;                              
     } 
     else if (question.tipo === "multiple_select") {
         const userArr = Array.isArray(selectedAnswer) ? selectedAnswer : [];

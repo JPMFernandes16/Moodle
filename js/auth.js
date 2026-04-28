@@ -1,5 +1,7 @@
 // js/auth.js
+
 import { playClick, playSadSound } from './audio.js';
+import { showToast } from './utils.js'; // <-- NOVO: Importamos o sistema de notificações
 import { auth } from './firebase-config.js';
 import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
@@ -92,7 +94,9 @@ export function initAuth() {
             pwdInput.disabled = false;
             btnUnlock.textContent = "Entrar no Moodle";
             btnUnlock.disabled = false;
+            
             playSadSound();
+            showToast("Falha na autenticação.", "error"); // <-- Feedback visual extra
         }
     });
 
@@ -102,6 +106,7 @@ export function initAuth() {
             try {
                 await signOut(auth); 
                 playClick();
+                showToast("Sessão terminada com sucesso.", "info"); // <-- Despedida amigável
             } catch (error) {
                 console.error("Erro ao terminar sessão:", error);
             }

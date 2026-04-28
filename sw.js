@@ -1,9 +1,8 @@
 // sw.js
-// 🚨 REGRA DE OURO: SEMPRE QUE FIZERES ALTERAÇÕES NO PROJETO, MUDA ESTES NÚMEROS!
-const STATIC_CACHE = 'moodle-bia-static-v25'; 
-const DYNAMIC_CACHE = 'moodle-bia-dynamic-v25';
+const STATIC_CACHE = 'moodle-bia-static-v27'; 
+const DYNAMIC_CACHE = 'moodle-bia-dynamic-v27';
+
 // Apenas ficheiros da "carcaça" da aplicação (App Shell)
-// NOTA: Adicionei os novos ficheiros que criámos na refatoração!
 const urlsToCache = [
   './',
   './index.html',
@@ -16,6 +15,12 @@ const urlsToCache = [
   './js/store.js',
   './js/firebaseManager.js',
   './js/quizLogic.js',
+  // --- OS 4 NOVOS FICHEIROS DA REFATORAÇÃO ---
+  './js/dataLoader.js',
+  './js/questionBuilder.js',
+  './js/quizController.js',
+  './js/mediaViewer.js',
+  // -------------------------------------------
   './manifest.json',
   './image/logo.png'
 ];
@@ -79,7 +84,6 @@ self.addEventListener('fetch', event => {
         return networkResponse;
       }).catch(err => {
         console.warn('[Service Worker] Modo Offline detetado. A usar recursos locais.', err);
-        // Aqui podias adicionar uma página de "Fallback Offline" (ex: return caches.match('/offline.html');)
       });
 
       // DEVOLVE ISTO: Se tem cache devolve logo (super rápido), se não tem, espera pela rede
