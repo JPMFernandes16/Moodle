@@ -1,104 +1,94 @@
 {
-  "disciplina": "Simulacao_Teste_Real_Eixos",
-  "tema_foco": "Exame Final: Decisão Arquitetónica Big Data",
+  "disciplina": "Sistemas_Processamento_Larga_Escala",
+  "titulo_exame": "Exame Teórico: Sistemas de Armazenamento e Processamento em Larga Escala",
+  "cotacao_total": 10.0,
   "opcoes_exame": {
     "duracao_minutos": 90,
     "desconto_erro": 0.0
   },
-  "configuracao_teste": {
-    "RDBMS_e_NoSQL": 1,
-    "Taxonomia_e_Formatos": 1,
-    "Hadoop": 1,
-    "Spark": 1
-  },
-  "perguntas": [
+  "grupos": [
     {
-      "id": "SIM_FINAL_001",
-      "tipo": "open_ended",
-      "macro_tema": "RDBMS_e_NoSQL",
-      "tema": "Provisionamento_e_Teorema_CAP",
-      "contexto": "A plataforma de e-commerce da 'Sonae' colapsou na Black Friday do ano passado porque utilizava uma infraestrutura On-Premises com Provisionamento Estático e uma base de dados estritamente ACID (RDBMS). Este ano, migraram para a Cloud AWS e adotaram uma base de dados NoSQL.",
-      "pergunta": "Explique como a característica de 'Elasticidade' da Cloud resolve o problema de infraestrutura, e utilize o Teorema CAP para justificar por que razão a abordagem NoSQL é preferível ao modelo ACID num cenário de vendas massivas e globais onde a rede pode falhar.",
-      "palavras_chave": [
-        ["estático", "elasticidade", "dinâmico", "horizontal", "aumentar"],
-        ["utility computing", "pay-per-use", "pago pelo uso"],
-        ["cap", "partição", "falha de rede", "inevitável"],
-        ["disponibilidade", "responder", "online", "sacrificar", "consistência eventual"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão presentes.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
-      },
-      "resposta_referencia": "No provisionamento estático, a Sonae estava limitada ao hardware físico, colapsando sob picos. A Elasticidade da Cloud resolve isto escalando horizontalmente de forma automática (através de hypervisors), pagando apenas o consumido (Utility Computing). Sobre a base de dados, perante uma quebra de rede (Partição no Teorema CAP), o ACID bloquearia as vendas para garantir a Consistência. O NoSQL permite focar na Disponibilidade (A), mantendo a loja a faturar mesmo aceitando que os dados fiquem temporariamente dessincronizados (consistência eventual).",
-      "justificacao": "O aluno tem de dominar o Eixo 1, cruzando infraestrutura em nuvem (Hypervisor/Elasticidade) com resiliência de bases de dados (CAP/NoSQL)."
+      "id": "GRUPO_I",
+      "titulo": "Arquitetura Cloud e Estratégia de Dados",
+      "cotacao_grupo": 3.5,
+      "empresa_exemplo": "Farfetch",
+      "contexto": "A Farfetch, empresa líder global em moda de luxo, está a redesenhar a sua infraestrutura. Atualmente, usam um modelo tradicional (Static Provisioning) e enfrentam dois problemas críticos: perdem vendas na Black Friday porque os servidores vão abaixo com o pico de utilizadores, e estão a gastar milhões a manter discos rígidos caríssimos com o histórico de compras de utilizadores inativos de há 5 anos. A equipa de engenharia sugeriu migrar o site para um modelo PaaS na Cloud e reestruturar o armazenamento de ficheiros.",
+      "perguntas": [
+        {
+          "id": "G1_P1",
+          "cotacao_pergunta": 1.5,
+          "texto_pergunta": "Argumenta como os conceitos de Elasticidade (Dynamic Provisioning) e do Load Balancer resolvem tecnicamente e financeiramente o problema da Black Friday.",
+          "palavras_chave": ["elasticidade", "detetar pico", "gerar servidores", "tempo real", "pay-as-you-go", "load balancer", "coordenador", "distribuir", "justa", "sobrecargas", "spof"],
+          "resposta_referencia": "A Elasticidade permite ao sistema detetar o pico de tráfego e gerar servidores extra automaticamente em tempo real, pagando-se apenas o que se usa (pay-as-you-go, eliminando o desperdício). O Load Balancer atua como coordenador de tráfego, distribuindo os milhares de utilizadores de forma justa pelas novas máquinas para evitar sobrecargas (SPOF)."
+        },
+        {
+          "id": "G1_P2",
+          "cotacao_pergunta": 1.0,
+          "texto_pergunta": "Qual é a vantagem central do modelo PaaS para a equipa de programadores da Farfetch face a um modelo IaaS?",
+          "palavras_chave": ["paas", "caminha feita", "gerir", "sistema operativo", "foco", "desenvolvimento", "core business", "time-to-market"],
+          "resposta_referencia": "No PaaS (\"caminha feita\"), a equipa não perde tempo a gerir o sistema operativo, redes ou hardware (ao contrário do IaaS). O foco é 100% no desenvolvimento da aplicação (core business) e em reduzir o time-to-market."
+        },
+        {
+          "id": "G1_P3",
+          "cotacao_pergunta": 1.0,
+          "texto_pergunta": "Que serviço de armazenamento em Cloud recomendarias para guardar os dados históricos dos utilizadores inativos e porquê?",
+          "palavras_chave": ["aws s3 glacier", "cold storage", "arquivo histórico", "acesso raro", "retenção", "longo prazo", "corte drástico", "custos operacionais"],
+          "resposta_referencia": "O AWS S3 Glacier (Cold Storage). Por serem dados de arquivo histórico com acesso muito raro, é a opção que garante a retenção a longo prazo com um corte drástico nos custos operacionais."
+        }
+      ]
     },
     {
-      "id": "SIM_FINAL_002",
-      "tipo": "open_ended",
-      "macro_tema": "Taxonomia_e_Formatos",
-      "tema": "Data Lake, Medallion e Formatos",
-      "contexto": "A seguradora 'Fidelidade' gere um Data Lake com a 'Medallion Architecture' (Bronze, Silver, Gold).",
-      "pergunta": "Contrariando a regra do Data Warehouse antigo (Schema on Write), explique a vantagem do 'Schema on Read' do Data Lake. Em seguida, justifique tecnicamente porque é que os engenheiros guardam os dados de origem na camada Bronze em formato Apache Avro, mas processam a camada Gold obrigatoriamente em formato Apache Parquet.",
-      "palavras_chave": [
-        ["schema on read", "leitura", "bruto", "lake", "flexibilidade"],
-        ["schema on write", "escrita", "etl", "warehouse", "limpos"],
-        ["bronze", "avro", "evolução de esquema", "linhas", "json"],
-        ["gold", "parquet", "colunar", "rápido", "queries"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão presentes.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
-      },
-      "resposta_referencia": "O Data Lake usa 'Schema on Read', despejando todos os dados brutos na camada Bronze sem ETL prévio, garantindo flexibilidade total para aplicar o esquema só na leitura, ao contrário da rigidez do 'Schema on Write' do Warehouse. O Avro é ideal para a camada Bronze porque usa serialização orientada a linhas e guarda o esquema em JSON no cabeçalho, sendo exímio em Evolução de Esquema à medida que a origem muda. A camada Gold, destinada a dashboards, usa Parquet porque é altamente comprimido e orientado a colunas, tornando as queries massivas muito mais rápidas e com menos leitura de disco.",
-      "justificacao": "Avalia o domínio do Eixo 2: transição de paradigmas de estrutura de dados e as otimizações mecânicas dos formatos de ficheiro no percurso Bronze -> Gold."
+      "id": "GRUPO_II",
+      "titulo": "Ecossistema Hadoop vs. Spark",
+      "cotacao_grupo": 3.5,
+      "empresa_exemplo": "Continente",
+      "contexto": "O Continente quer implementar um sistema de caixa sem operadores (semelhante à Amazon Go), onde milhares de sensores e câmaras geram um fluxo contínuo de dados em tempo real (streaming). Precisam de detetar imediatamente se um cliente colocou um produto no saco sem ser registado.",
+      "perguntas": [
+        {
+          "id": "G2_P1",
+          "cotacao_pergunta": 1.5,
+          "texto_pergunta": "O sistema legado da empresa opera sobre o Hadoop MapReduce, mas a equipa avisou que essa tecnologia tornaria a prevenção de roubos inútil na prática. Explica a diferença fundamental de arquitetura entre o Spark e o Hadoop MapReduce e porque é que o Spark é obrigatório neste cenário.",
+          "palavras_chave": ["mecânica do hardware", "mapreduce", "escreve", "disco rígido", "lento", "spark", "memória", "ram", "rápido", "streaming", "latência"],
+          "resposta_referencia": "A diferença reside na mecânica do hardware: o MapReduce lê e escreve os resultados intermédios constantemente no disco rígido (o que é muito lento). O Spark processa a informação em memória (RAM), o que é até 100x mais rápido. Sendo o cenário de Streaming em tempo real (evitar um roubo na hora), a latência do disco do MapReduce faria o alerta chegar tarde demais."
+        },
+        {
+          "id": "G2_P2",
+          "cotacao_pergunta": 1.0,
+          "texto_pergunta": "Na análise final dos dados, a equipa adotou a Medallion Architecture (Bronze, Silver, Gold). Em que camada atuariam os Data Scientists para treinar modelos antifraude, e porquê?",
+          "palavras_chave": ["silver", "validados", "limpos", "filtrados", "detalhe", "granularidade", "treinar modelos"],
+          "resposta_referencia": "Atuariam na camada Silver. Esta camada contém os dados já validados, limpos e filtrados, oferecendo o nível de detalhe (granularidade) necessário para treinar modelos complexos de Machine Learning. (A Gold é agregada para BI/Dashboards)."
+        },
+        {
+          "id": "G2_P3",
+          "cotacao_pergunta": 1.0,
+          "texto_pergunta": "Para guardar os relatórios analíticos, optaram por ficheiros estruturados como o Parquet em vez do tradicional CSV. Qual é o grande benefício deste formato num sistema analítico?",
+          "palavras_chave": ["parquet", "colunas", "ignorar", "linhas inteiras", "métrica", "rapidez", "compressão"],
+          "resposta_referencia": "O Parquet é um formato organizado por colunas. Evita que o motor de busca perca tempo e processamento a ler linhas inteiras com dezenas de campos, permitindo ir direto apenas à métrica necessária, garantindo maior rapidez de leitura e forte compressão do ficheiro."
+        }
+      ]
     },
     {
-      "id": "SIM_FINAL_003",
-      "tipo": "open_ended",
-      "macro_tema": "Hadoop",
-      "tema": "Hadoop vs Spark e Data Locality",
-      "contexto": "O 'Millennium BCP' mantém o Hadoop ativo para o fecho mensal de contas, mas viu-se obrigado a comprar instâncias de Apache Spark puramente para o seu sistema ao vivo de deteção de fraudes de cartões.",
-      "pergunta": "Justifique a coexistência dos dois sistemas focando-se no paradigma de leitura de Hardware (Disco vs RAM) subjacente a cada um. No contexto do cluster Hadoop, explique como o princípio de 'Data Locality' previne o estrangulamento da rede corporativa.",
-      "palavras_chave": [
-        ["hadoop", "disco", "batch", "lote", "lento"],
-        ["spark", "ram", "memória", "tempo real", "fraudes", "rápido"],
-        ["data locality", "código", "programa", "script", "pequeno"],
-        ["evitar", "transferir", "rede", "dados", "localmente"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão presentes.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
-      },
-      "resposta_referencia": "Os sistemas complementam-se. O Hadoop (MapReduce) opera gravando repetidamente resultados no disco rígido, sendo económico mas lento e perfeitamente adequado para Batch noturno pesado (fecho de contas). O Spark processa tudo in-memory (RAM), sendo até 100x mais veloz e imperativo para streaming em tempo real (fraudes). Relativamente à rede, mover Terabytes é impossível. O Hadoop aplica o 'Data Locality', enviando a computação (o pequeno script de código do Driver) diretamente para o DataNode onde os blocos de dados físicos já residem, sendo analisados localmente sem esgotar a rede corporativa.",
-      "justificacao": "Testa o conhecimento do Eixo 3: perceber as limitações físicas do Big Data e como a engenharia lida com a letargia do disco (Spark RAM) e com a barreira da largura de banda (Data Locality)."
-    },
-    {
-      "id": "SIM_FINAL_004",
-      "tipo": "open_ended",
-      "macro_tema": "Spark",
-      "tema": "Otimização de Código Spark (DataFrames e Partições)",
-      "contexto": "Um engenheiro da 'EDP' tem uma rotina em PySpark que demora horas a processar milhões de leituras de contadores. O código manipula a informação recorrendo a abstrações antigas (RDD) e termina com o comando 'repartition(20)' para reduzir os blocos finais.",
-      "pergunta": "Proponha as duas atualizações de otimização de código vitais que ele deve fazer, fundamentando o impacto de cada uma no motor do Spark e no uso da rede do cluster.",
-      "palavras_chave": [
-        ["dataframe", "esquema", "colunas", "catalyst", "otimizador"],
-        ["rdd", "opaco", "baixo nível", "não estruturado"],
-        ["repartition", "shuffle", "rede", "pesado", "tráfego"],
-        ["coalesce", "fundir", "localmente", "eficiente"]
-      ],
-      "criterios_avaliacao": {
-        "logica": "Contar quantos dos 4 grupos de palavras-chave estão presentes.",
-        "0_ou_1_grupo": 0,
-        "2_grupos": 0.5,
-        "3_ou_4_grupos": 1
-      },
-      "resposta_referencia": "A primeira alteração é a transição de RDDs (opacos e não estruturados) para DataFrames. Ao aplicar um esquema (colunas tipadas) aos dados, o Spark ativa o 'Catalyst Optimizer', que reescreve as queries matematicamente para máxima eficiência. A segunda é substituir o comando 'repartition(20)' por 'coalesce(20)'. O repartition causa um 'Full Shuffle', forçando os Worker Nodes a trocar dados exaustivamente por toda a rede. Para apenas diminuir as partições, o coalesce é ideal pois evita a rede (o Shuffle), tentando agrupar e fundir as partições localmente nos mesmos servidores.",
-      "justificacao": "Foca-se na otimização pura: saber que dar 'forma' aos dados acelera o motor Spark (Catalyst) e saber que a rede é frágil e tem de ser protegida contra o tráfego violento do Shuffle."
+      "id": "GRUPO_III",
+      "titulo": "Machine Learning e Sistemas de Recomendação",
+      "cotacao_grupo": 3.0,
+      "empresa_exemplo": "Netflix",
+      "contexto": "A Netflix está a otimizar o seu motor analítico no ecossistema Spark (usando a biblioteca MLlib). O objetivo é recomendar filmes com maior precisão usando o algoritmo ALS (Alternating Least Squares). A equipa percebeu que a maioria dos clientes não clica nas \"estrelas\" para avaliar os filmes, mas simetricamente a plataforma sabe exatamente quantos minutos de um filme cada pessoa assistiu.",
+      "perguntas": [
+        {
+          "id": "G3_P1",
+          "cotacao_pergunta": 1.5,
+          "texto_pergunta": "Na terminologia dos Sistemas de Recomendação abordada na aula, a Netflix deve focar-se em Explicit Feedback ou Implicit Feedback? Justifica a tua resposta com base no comportamento dos utilizadores descrito.",
+          "palavras_chave": ["implicit feedback", "implícito", "não avaliam", "ativamente", "deduzir", "interesse", "ações indiretas", "duração"],
+          "resposta_referencia": "Devem usar Implicit Feedback (Feedback Implícito). Como os clientes não avaliam ativamente com estrelas (Feedback Explícito), a plataforma tem de deduzir o interesse monitorizando as suas ações indiretas, como a duração de visualização do filme ou cliques."
+        },
+        {
+          "id": "G3_P2",
+          "cotacao_pergunta": 1.5,
+          "texto_pergunta": "O Spark MLlib organiza as tarefas de Machine Learning em Pipelines. Explica, no contexto de treinar o algoritmo ALS com os dados antigos e depois usá-lo para prever filmes para os utilizadores hoje, qual a diferença funcional entre um Estimator e um Transformer.",
+          "palavras_chave": ["estimator", "estudo", "processa", "históricos", "fit", "aprender", "modelo", "transformer", "resultado", "finalizado", "transform", "previsão real"],
+          "resposta_referencia": "O Estimator é o algoritmo numa fase de \"estudo\" que processa os dados históricos usando a função fit() para tentar identificar padrões e aprender o modelo. O Transformer é o resultado desse treino, ou seja, o modelo finalizado que usa a função transform() para converter novos dados numa previsão real (a recomendação do filme)."
+        }
+      ]
     }
   ]
 }

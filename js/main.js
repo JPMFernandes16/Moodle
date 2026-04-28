@@ -86,34 +86,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const mediaCatalog = {
       "BIA_ABD_Exam": {
           pdfs: [
-              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
-              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" },
-              { name: "2. Cloud e Arquitetura", file: "pdfs/BIA_ABD_02.pdf" },
-              { name: "3. Taxonomia e Formatos de Big Data", file: "pdfs/BIA_ABD_03.pdf" },
-              { name: "4. HADOOP e Armazenamento", file: "pdfs/BIA_ABD_04.pdf" },
-              { name: "5. APACHE SPARK", file: "pdfs/BIA_ABD_05.pdf" },
-              
+              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" }           
           ],
           videos: [
-              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" },
-              { name: "2. Cloud e Arquitetura", file: "videos/BIA_ABD_02.mp4" },
-              { name: "3. Taxonomia e Formatos de Big Data", file: "videos/BIA_ABD_03.mp4" },
-              { name: "4. HADOOP e Armazenamento", file: "videos/BIA_ABD_04.mp4" },
-              { name: "5. APACHE SPARK", file: "videos/BIA_ABD_05.mp4" },
+              { name: "Resumo", file: "videos/BIA_ABD.mp4" }
           ]
       },
       "BIA_ABD_Prep": {
           pdfs: [
-              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" },
-              { name: "1. Introdução Big Data", file: "pdfs/BIA_ABD_01.pdf" },
-              { name: "2. Cloud e Arquitetura", file: "pdfs/BIA_ABD_02.pdf" },
-              { name: "3. Taxonomia e Formatos de Big Data", file: "pdfs/BIA_ABD_03.pdf" }
+              { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" }
 
           ],
           videos: [
-              { name: "1. Introdução Big Data", file: "videos/BIA_ABD_01.mp4" },
-              { name: "2. Cloud e Arquitetura", file: "videos/BIA_ABD_02.mp4" },
-              { name: "3. Taxonomia e Formatos de Big Data", file: "videos/BIA_ABD_03.mp4" }
+              { name: "Resumo", file: "videos/BIA_ABD.mp4" }
           ]
       },
       "GM_MR": {
