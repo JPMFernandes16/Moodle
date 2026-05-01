@@ -1,0 +1,160 @@
+{
+  "disciplina": "Series Temporais e Previsao",
+  "opcoes_exame": {
+    "duracao_minutos": 15,
+    "desconto_erro": 0
+  },
+  "configuracao_teste": {
+    "Introdução": 5
+  },
+  "perguntas": [
+    {
+      "id": "ST_001",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Introdução",
+      "pergunta": "Num modelo de previsão de vendas de uma loja, associe as variáveis à sua respetiva classificação técnica e funcional:",
+      "pares": [
+        {
+          "item": "Temperatura diária",
+          "correspondencia": "Feature Dinâmica (muda ao longo do tempo)."
+        },
+        {
+          "item": "ID da Loja",
+          "correspondencia": "Feature Estática (é fixa e não sofre variações temporais)."
+        },
+        {
+          "item": "Histórico de Vendas",
+          "correspondencia": "Target / Variável Alvo (aquilo que o modelo tenta prever)."
+        }
+      ]
+    },
+    {
+      "id": "ST_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Qual é a principal limitação da Previsão Pontual (Point Forecast)?",
+      "opcoes": [
+        "A) Demora muito tempo a ser calculada porque funciona de forma 'offline'.",
+        "B) Omite a incerteza, fornecendo apenas um número e apresentando alto risco de erro.",
+        "C) Só pode ser utilizada em modelos globais.",
+        "D) Exige a utilização de métricas baseadas em perda de quantis (como WQL)."
+      ],
+      "resposta_correta": "B) Omite a incerteza, fornecendo apenas um número e apresentando alto risco de erro.",
+      "justificacao": "A Previsão Pontual tenta adivinhar o valor exato no futuro sem oferecer margens de erro ou intervalos de confiança, o que é limitativo e arriscado para o planeamento de negócio."
+    },
+    {
+      "id": "ST_003",
+      "tipo": "true_false",
+      "macro_tema": "Introdução",
+      "pergunta": "Uma empresa de retalho quer prever as vendas de casacos para o próximo mês de Novembro usando o modelo baseline 'Seasonal Naïve'. O valor que o modelo assumirá como previsão será a média de todas as vendas de casacos registadas até hoje.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": false,
+      "justificacao": "Falso. O modelo Seasonal Naïve assume simplesmente que a previsão é o valor exato registado na mesma época do ciclo transato (neste caso, o valor exato das vendas do mês de Novembro do ano passado)."
+    },
+    {
+      "id": "ST_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "A tua equipa está a trabalhar com uma base de dados gigante que contém o histórico de vendas de milhares de produtos diferentes. Decidem treinar um único algoritmo que aprenda os padrões de todos os produtos em conjunto. Estão a utilizar um:",
+      "opcoes": [
+        "A) Modelo Univariado.",
+        "B) Modelo Local.",
+        "C) Modelo Multivariado.",
+        "D) Modelo Global."
+      ],
+      "resposta_correta": "D) Modelo Global.",
+      "justificacao": "Modelos Globais utilizam um único algoritmo (como redes neuronais ou LightGBM) treinado sobre múltiplas séries temporais simultaneamente, permitindo que o modelo partilhe conhecimento entre séries (cross-learning)."
+    },
+    {
+      "id": "ST_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "O professor pede-te para avaliares o erro do teu modelo numa série temporal intermitente (que tem vários dias com zero vendas). Que métrica tens de evitar a todo o custo (o 'Alerta de Alergia')?",
+      "opcoes": [
+        "A) MAE (Erro Absoluto Médio).",
+        "B) RMSE (Raiz do Erro Quadrático Médio).",
+        "C) MAPE / SMAPE (Erro Percentual Absoluto Médio).",
+        "D) WQL (Weighted Quantile Loss)."
+      ],
+      "resposta_correta": "C) MAPE / SMAPE (Erro Percentual Absoluto Médio).",
+      "justificacao": "Como o cálculo do MAPE divide o erro pelo valor real, a existência de dias com 0 vendas forçaria uma divisão por zero (causando falhas de cálculo ou erros tendentes para o infinito)."
+    },
+    {
+      "id": "ST_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Uma equipa de Data Science quer prever as vendas de uma única loja específica. Para garantir a máxima precisão, o modelo vai olhar para o histórico de vendas (Target) e para a variação diária de Preços dessa mesma loja (Feature). Trata-se de uma abordagem:",
+      "opcoes": [
+        "A) Univariada e Global.",
+        "B) Multivariada e Local.",
+        "C) Multivariada e Global.",
+        "D) Univariada e Local."
+      ],
+      "resposta_correta": "B) Multivariada e Local.",
+      "justificacao": "É 'Local' porque se debruça sobre uma única série (uma loja específica), e é 'Multivariada' porque, além do Target (vendas), recorre a outras variáveis explicativas (como o preço)."
+    },
+    {
+      "id": "ST_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "O teu chefe pediu-te para preveres as vendas de peças de reposição. A série é intermitente (tem zeros) e tem picos gigantescos e raros por causa de falhas sistémicas (outliers). Queres prever a mediana para ignorar os picos e precisas de uma métrica fiável. Qual deves escolher e qual deves proibir?",
+      "opcoes": [
+        "A) Usar RMSE / Evitar MAE.",
+        "B) Usar WQL / Evitar SQL.",
+        "C) Usar MAE / Evitar MAPE.",
+        "D) Usar MAPE / Evitar RMSE."
+      ],
+      "resposta_correta": "C) Usar MAE / Evitar MAPE.",
+      "justificacao": "O MAE é otimizado para a mediana e altamente robusto aos outliers (ao contrário do RMSE que avalia a média e pune os picos severamente). Como a série tem zeros, evita-se matematicamente o MAPE."
+    },
+    {
+      "id": "ST_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Vais usar a biblioteca StatsForecast (que exige as colunas unique_id, ds, e y) para testar vários baselines. Ao aplicar o modelo Seasonal Naïve para prever as vendas de casacos em dezembro de 2025, qual será a previsão e em que coluna o modelo a foi buscar?",
+      "opcoes": [
+        "A) Será a média de todo o histórico passado; baseada na coluna y.",
+        "B) Será igual a novembro de 2025; baseada na coluna ds.",
+        "C) Será igual a dezembro de 2024 somado à tendência de subida; baseada na coluna unique_id.",
+        "D) Será igual a dezembro de 2024; baseada na coluna y."
+      ],
+      "resposta_correta": "D) Será igual a dezembro de 2024; baseada na coluna y.",
+      "justificacao": "O modelo Seasonal Naïve projeta o valor homólogo anterior (dezembro de 2024). Na biblioteca Nixtla/StatsForecast, a série temporal numérica e histórica do target está sempre armazenada na coluna 'y'."
+    },
+    {
+      "id": "ST_009",
+      "tipo": "true_false",
+      "macro_tema": "Introdução",
+      "pergunta": "O Diretor Financeiro precisa de garantir que não há rotura de stock em 90% dos cenários possíveis no próximo mês. Tu geras uma previsão probabilística com o limite P90. Para medir se o modelo está a ser preciso, decides avaliá-lo com a métrica RMSE. Esta decisão está correta.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": false,
+      "justificacao": "Falso. O RMSE é uma métrica concebida para avaliar previsões pontuais. Quando trabalhamos com previsões probabilísticas e incerteza (quantis como P90), devem ser utilizadas métricas de perda de quantis como o WQL."
+    },
+    {
+      "id": "ST_010",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Introdução",
+      "pergunta": "A tua empresa treinou um algoritmo pesado capaz de prever simultaneamente as vendas de 1000 produtos diferentes. O algoritmo cruzou o histórico de vendas com a 'Categoria do Produto' e a 'Temperatura Diária'. Associe as configurações técnicas aplicadas à sua definição:",
+      "pares": [
+        {
+          "item": "Treinar um único algoritmo para 1000 produtos simultaneamente.",
+          "correspondencia": "Abordagem de Modelo Global."
+        },
+        {
+          "item": "Categoria do Produto",
+          "correspondencia": "Feature Estática"
+        },
+        {
+          "item": "Temperatura Diária",
+          "correspondencia": "Feature Dinâmica"
+        }
+      ]
+    }
+  ]
+}

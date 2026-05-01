@@ -94,7 +94,7 @@ export async function fetchUserProfile(user) {
         const defaultProfile = {
             nome: user.email.split('@')[0], 
             curso: "Estudante",
-            disciplinas: [{ value: "BIA_BIAT", text: "Business Intelligence & Analytics Tools" }]
+            disciplinas: [{ value: "BIA_STP", text: "Séries Temporais e Previsão" }]
         };
         await setDoc(docRef, defaultProfile, { merge: true });
         return defaultProfile;

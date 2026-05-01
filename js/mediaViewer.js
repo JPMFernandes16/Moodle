@@ -6,27 +6,21 @@ import { state } from './store.js';
 // CATÁLOGO DE FICHEIROS (MULTIMÉDIA)
 // ======================================================
 const mediaCatalog = {
-    "BIA_ABD_Exam": {
+    "BIA_STP": {
         pdfs: [
-            { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" }           
+            { name: "Resumo Geral", file: "pdfs/BIA_STP.pdf" }           
         ],
         videos: [
-            { name: "Resumo", file: "videos/BIA_ABD.mp4" }
+            { name: "Resumo", file: "videos/BIA_STP.mp4" }
         ]
     },
-    "BIA_ABD_Prep": {
+    "BIA_TMBA": {
         pdfs: [
-            { name: "Resumo Geral", file: "pdfs/BIA_ABD.pdf" }
+            { name: "Resumo Geral", file: "pdfs/BIA_TMBA.pdf" }
         ],
         videos: [
-            { name: "Resumo", file: "videos/BIA_ABD.mp4" }
+            { name: "Resumo", file: "videos/BIA_TMBA.mp4" }
         ]
-    },
-    "GM_MR": {
-        pdfs: [
-            { name: "Resumo Marketing Relacional", file: "pdfs/GM_MR.pdf" }
-        ],
-        videos: []
     },
     "CV_JOAO": {
         pdfs: [

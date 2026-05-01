@@ -1,0 +1,299 @@
+{
+  "disciplina": "Text Mining para Business Analytic",
+  "opcoes_exame": {
+    "duracao_minutos": 15,
+    "desconto_erro": 0
+  },
+  "configuracao_teste": {
+    "Introdução": 5,
+    "Text_Mining_e_NLP": 5
+  },
+  "perguntas": [
+    {
+      "id": "TM_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Qual é a relação correta entre os conceitos de KDD e Data Mining?",
+      "opcoes": [
+        "A) O KDD é uma fase específica dentro do processo de Data Mining.",
+        "B) São sinónimos exatos na área de Business Intelligence.",
+        "C) O Data Mining é apenas uma fase específica dentro do processo global de KDD.",
+        "D) O Data Mining foca-se em dados não-estruturados, enquanto o KDD foca-se em dados estruturados."
+      ],
+      "resposta_correta": "C) O Data Mining é apenas uma fase específica dentro do processo global de KDD.",
+      "justificacao": "O Knowledge Discovery in Databases (KDD) é o processo abrangente de extração de conhecimento, desde a recolha até à avaliação. O Data Mining é apenas a etapa central deste processo, onde se aplicam os algoritmos para encontrar padrões."
+    },
+    {
+      "id": "TM_002",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Introdução",
+      "pergunta": "Associe os seguintes tipos de tarefas de Machine Learning aos resultados específicos que pretendem atingir, distinguindo os vários modelos:",
+      "pares": [
+        {
+          "item": "Classificação",
+          "correspondencia": "Prevê um valor finito (categorias), separando os dados em classes pré-definidas."
+        },
+        {
+          "item": "Regressão",
+          "correspondencia": "Prevê um valor numérico contínuo com base em dados passados."
+        },
+        {
+          "item": "Clustering",
+          "correspondencia": "Agrupa os dados por semelhança de forma não-supervisionada, sem categorias pré-definidas."
+        }
+      ]
+    },
+    {
+      "id": "TM_003",
+      "tipo": "true_false",
+      "macro_tema": "Introdução",
+      "pergunta": "No contexto da taxonomia dos dados, os ficheiros em formato XML ou JSON são classificados rigorosamente como Dados Não-Estruturados, uma vez que não utilizam tabelas relacionais clássicas.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Apesar de não estarem organizados em linhas e colunas fixas (como os Dados Estruturados), os formatos XML e JSON possuem tags, chaves e hierarquias lógicas. Por isso, são classificados como Dados Semi-Estruturados."
+    },
+    {
+      "id": "TM_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "A técnica que permite a um modelo de linguagem (LLM) usar informação privada e atualizada de uma organização, sem necessidade de o treinar novamente, chama-se:",
+      "opcoes": [
+        "A) IA Generativa.",
+        "B) Agentic AI.",
+        "C) Sumarização Abstrativa.",
+        "D) RAG (Retrieval-Augmented Generation)."
+      ],
+      "resposta_correta": "D) RAG (Retrieval-Augmented Generation).",
+      "justificacao": "O RAG combina a geração de texto de um LLM com um sistema de recuperação de informação, permitindo que o modelo consulte bases de dados locais e documentos da empresa em tempo real."
+    },
+    {
+      "id": "TM_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "A Análise de Sentimentos em Text Mining foca-se principalmente em:",
+      "opcoes": [
+        "A) Expressões objetivas e factos numéricos.",
+        "B) Expressões subjetivas (opiniões) para detetar polaridade.",
+        "C) Sumarizar de forma extrativa o texto analisado.",
+        "D) Encontrar regras de associação entre as palavras mais usadas."
+      ],
+      "resposta_correta": "B) Expressões subjetivas (opiniões) para detetar polaridade.",
+      "justificacao": "A Análise de Sentimentos ignora grande parte da objetividade para focar-se em opiniões, emoções e atitudes, classificando a polaridade do texto como positiva, negativa ou neutra."
+    },
+    {
+      "id": "TM_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Num projeto de extração de conhecimento, a equipa está na fase exata onde vai aplicar algoritmos matemáticos e de Machine Learning para encontrar padrões ocultos nos dados. A que fase específica nos referimos?",
+      "opcoes": [
+        "A) KDD (Knowledge Discovery in Databases).",
+        "B) Data Mining.",
+        "C) Pré-processamento.",
+        "D) Transformação de Dados."
+      ],
+      "resposta_correta": "B) Data Mining.",
+      "justificacao": "O Data Mining é a fase do KDD dedicada unicamente à aplicação de algoritmos (como redes neuronais ou árvores de decisão) para modelar e extrair padrões."
+    },
+    {
+      "id": "TM_007",
+      "tipo": "true_false",
+      "macro_tema": "Introdução",
+      "pergunta": "Uma agência imobiliária quer criar um modelo preditivo que indique o valor exato (em euros) pelo qual uma casa será vendida no próximo ano. Este problema resolve-se utilizando tarefas de Classificação (Aprendizagem Supervisionada).",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": "Falso",
+      "justificacao": "Como o objetivo é prever uma quantidade ou um valor numérico contínuo (o preço em euros), trata-se de um problema de Regressão e não de Classificação."
+    },
+    {
+      "id": "TM_008",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Introdução",
+      "pergunta": "O Text Mining lida com diferentes taxonomias e estruturas de informação. Associe os exemplos práticos à sua respetiva classificação de dados:",
+      "pares": [
+        {
+          "item": "Vídeos, ficheiros de áudio e texto livre extraído de redes sociais.",
+          "correspondencia": "Dados Não-Estruturados"
+        },
+        {
+          "item": "Ficheiros de registo e comunicação entre APIs, como JSON.",
+          "correspondencia": "Dados Semi-Estruturados"
+        },
+        {
+          "item": "Base de dados relacional (SQL) organizada estritamente em tabelas e colunas.",
+          "correspondencia": "Dados Estruturados"
+        }
+      ]
+    },
+    {
+      "id": "TM_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Um sistema de IA que não se limita a gerar texto, mas consegue compreender um objetivo, criar um plano passo-a-passo e interagir com outros sistemas de forma totalmente autónoma (ex: pesquisar, reservar e pagar um voo sozinho) é classificado como:",
+      "opcoes": [
+        "A) RAG (Retrieval-Augmented Generation).",
+        "B) IA Generativa.",
+        "C) Agentic AI.",
+        "D) Processamento de Linguagem Natural (PLN)."
+      ],
+      "resposta_correta": "C) Agentic AI.",
+      "justificacao": "A Agentic AI (IA Agente) caracteriza-se por ter autonomia, capacidade de raciocínio sequencial, uso de ferramentas externas e execução orientada a objetivos complexos."
+    },
+    {
+      "id": "TM_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Introdução",
+      "pergunta": "Na Análise de Sentimentos, um utilizador escreve: 'O vosso serviço de entregas é tão rápido que a minha encomenda demorou apenas 3 meses a chegar...'. O algoritmo classifica a frase como Positiva porque leu as palavras 'rápido' e 'apenas', ignorando o verdadeiro significado da frase. Este é um exemplo clássico de que desafio do Text Mining?",
+      "opcoes": [
+        "A) Negação.",
+        "B) Sensibilidade de Contexto.",
+        "C) Extração de Terminologia.",
+        "D) Ironia/Sarcasmo."
+      ],
+      "resposta_correta": "D) Ironia/Sarcasmo.",
+      "justificacao": "A ironia e o sarcasmo são um dos maiores desafios do Processamento de Linguagem Natural, pois o texto literal (positivo) contradiz o verdadeiro sentimento do emissor (negativo)."
+    },
+    {
+      "id": "TM_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Na pipeline de Text Mining, qual é a principal função do Processamento de Linguagem Natural (NLP)?",
+      "opcoes": [
+        "A) Extrair documentos inteiros e relevantes de uma base de dados.",
+        "B) Gerar novas palavras para criar um resumo automático do texto.",
+        "C) Limpar e filtrar os dados textuais, atuando como uma fase de pré-processamento para preparar a classificação.",
+        "D) Converter dados estruturados num formato não-estruturado."
+      ],
+      "resposta_correta": "C) Limpar e filtrar os dados textuais, atuando como uma fase de pré-processamento para preparar a classificação.",
+      "justificacao": "O NLP atua fundamentalmente na limpeza e estruturação inicial do texto (ex: tokenização, lematização, remoção de stop words) para preparar os dados não-estruturados para os algoritmos de classificação matemáticos."
+    },
+    {
+      "id": "TM_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Um sistema de IA lê uma notícia longa de 5 páginas. No final, devolve um parágrafo de três linhas, utilizando palavras novas e estruturas frásicas que o próprio algoritmo inventou para explicar a ideia geral. Que técnica foi aplicada?",
+      "opcoes": [
+        "A) Sumarização Extrativa.",
+        "B) Extração de Informação.",
+        "C) Sumarização Abstrativa.",
+        "D) Pesquisa e Seleção de Informação."
+      ],
+      "resposta_correta": "C) Sumarização Abstrativa.",
+      "justificacao": "A sumarização abstrativa gera texto novo e original, ao contrário da extrativa, que apenas recorta e cola as frases mais importantes exatamente como aparecem no documento original."
+    },
+    {
+      "id": "TM_013",
+      "tipo": "true_false",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Uma empresa de telecomunicações quer analisar as gravações de áudio puro das chamadas de apoio ao cliente. De acordo com a teoria dos Tipos de Dados, este ficheiro de áudio puro é classificado como um Dado Não-Estruturado.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": true,
+      "justificacao": "Correto. O áudio puro (tal como imagens, vídeo e texto livre) não tem qualquer estrutura tabular fixa em base de dados (estruturado) nem um sistema interno de tags/marcação lógico (semi-estruturado)."
+    },
+    {
+      "id": "TM_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "A Análise de Sentimentos avalia a polaridade do texto. Qual destas frases seria o principal alvo de análise para um modelo de Text Mining?",
+      "opcoes": [
+        "A) \"O computador pesa exatamente 2 quilos.\" (Expressão Objetiva).",
+        "B) \"O computador tem um processador de 8 núcleos.\" (Facto).",
+        "C) \"O computador custou-me 1500 euros na loja.\" (Dado Estruturado).",
+        "D) \"O computador é incrível e super rápido!\" (Expressão Subjetiva/Opinião)."
+      ],
+      "resposta_correta": "D) \"O computador é incrível e super rápido!\" (Expressão Subjetiva/Opinião).",
+      "justificacao": "A Análise de Sentimentos descarta os factos e expressões puramente objetivas. O seu principal foco é a extração de opiniões, perceções e emoções (polaridade subjetiva)."
+    },
+    {
+      "id": "TM_015",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Um utilizador escreve no Twitter: 'Maravilhoso, o meu voo foi cancelado e vou dormir no chão do aeroporto. Melhor dia de sempre!'. O algoritmo classificou a frase como Positiva porque identificou as palavras 'Maravilhoso' e 'Melhor'. Que desafio clássico do Text Mining causou este erro de avaliação?",
+      "opcoes": [
+        "A) Sensibilidade de Contexto.",
+        "B) Ironia/Sarcasmo.",
+        "C) Negação.",
+        "D) Falta de Sumarização."
+      ],
+      "resposta_correta": "B) Ironia/Sarcasmo.",
+      "justificacao": "A ironia inverte o sentido literal das palavras, o que muitas vezes confunde os algoritmos mais elementares que analisam a polaridade baseando-se apenas num dicionário estático de palavras-chave positivas."
+    },
+    {
+      "id": "TM_016",
+      "tipo": "drag_and_drop",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Associe os seguintes processos da pipeline de exploração de dados textuais à sua respetiva descrição ou resultado prático:",
+      "pares": [
+        {
+          "item": "Pesquisa e Seleção de Informação",
+          "correspondencia": "Devolve os documentos originais e inteiros com base numa query de pesquisa ou palavra-chave."
+        },
+        {
+          "item": "Extração de Informação",
+          "correspondencia": "Abre os documentos, lê o interior e devolve apenas os dados, entidades ou factos específicos solicitados."
+        }
+      ]
+    },
+    {
+      "id": "TM_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "O diretor pediu-te para usares uma ferramenta que leia um relatório em PDF e devolva um resumo rápido. O software devolveu um texto curto, composto apenas por frases exatas que já existiam no relatório original, coladas umas a seguir às outras. Que método foi utilizado?",
+      "opcoes": [
+        "A) Sumarização Abstrativa.",
+        "B) Extração de Informação.",
+        "C) NLP (Processamento de Linguagem Natural).",
+        "D) Sumarização Extrativa."
+      ],
+      "resposta_correta": "D) Sumarização Extrativa.",
+      "justificacao": "A sumarização extrativa funciona exatamente como um marcador fluorescente humano num texto impresso: avalia as passagens mais importantes e extrai-as 'ipsis verbis' para formar o resumo."
+    },
+    {
+      "id": "TM_018",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Qual é a característica fundamental que distingue os dados Semi-Estruturados dos Não-Estruturados?",
+      "opcoes": [
+        "A) Os semi-estruturados têm um formato rígido em tabelas, tal como os estruturados.",
+        "B) Os semi-estruturados possuem alguma organização interna (como tags ou marcadores), ao passo que os não-estruturados não possuem qualquer estrutura predefinida.",
+        "C) Os dados semi-estruturados englobam imagens e vídeos organizados em pastas, enquanto os não-estruturados são apenas texto.",
+        "D) Os semi-estruturados são usados apenas na Sumarização Abstrativa."
+      ],
+      "resposta_correta": "B) Os semi-estruturados possuem alguma organização interna (como tags ou marcadores), ao passo que os não-estruturados não possuem qualquer estrutura predefinida.",
+      "justificacao": "Ficheiros como o JSON ou XML são semi-estruturados porque utilizam hierarquias e identificadores explícitos (chaves e valores). Já o texto não-estruturado não possui esta formatação lógica nativa."
+    },
+    {
+      "id": "TM_019",
+      "tipo": "true_false",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Lê a seguinte frase retirada de um artigo: 'O lucro líquido da empresa no primeiro trimestre foi de 2 milhões de euros.' No âmbito da Análise de Sentimentos, esta expressão classifica-se como uma expressão subjetiva de polaridade positiva, pois o facto de haver 'lucro' indica sucesso financeiro.",
+      "opcoes": [
+        "Verdadeiro",
+        "Falso"
+      ],
+      "resposta_correta": false,
+      "justificacao": "É uma expressão objetiva (um facto inquestionável). A Análise de Sentimentos não mede o impacto financeiro de um facto para a empresa, mas sim a presença de carga opinativa ou emocional no texto, que neste caso é nula."
+    },
+    {
+      "id": "TM_020",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining_e_NLP",
+      "pergunta": "Um algoritmo de Análise de Sentimentos está a analisar notícias. Numa frase lê a palavra 'banco' e classifica-a como uma instituição financeira. Noutra notícia, lê a palavra 'banco' e classifica-a como um assento de jardim. Este é um exemplo da aplicação bem-sucedida contra que desafio do Text Mining?",
+      "opcoes": [
+        "A) Sensibilidade de contexto.",
+        "B) Ironia/Sarcasmo.",
+        "C) Negação.",
+        "D) Ambiguidade abstrativa."
+      ],
+      "resposta_correta": "A) Sensibilidade de contexto.",
+      "justificacao": "A sensibilidade de contexto lida precisamente com a polissemia (palavras com vários significados). O algoritmo tem de analisar os termos vizinhos para entender qual é a definição correta que se aplica."
+    }
+  ]
+}

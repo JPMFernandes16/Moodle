@@ -13,7 +13,7 @@ export async function carregarDisciplinaBase() {
     const btnLerResumo = document.getElementById("btnLerResumo");
     const btnVerVideo = document.getElementById("btnVerVideo");
 
-    state.currentDisciplina = disciplinaSelect?.value || "BIA_BIAT";
+    state.currentDisciplina = disciplinaSelect?.value || "BIA_STP";
     
     try {
         let response = await fetch(`data/${state.currentDisciplina}.json`);
