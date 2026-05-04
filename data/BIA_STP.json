@@ -5,7 +5,9 @@
     "desconto_erro": 0
   },
   "configuracao_teste": {
-    "Introdução": 5
+    "Introdução": 5,
+    "Modelos Clássicos": 5,
+    "Regressores Exógenos e Erros ARIMA": 2
   },
   "perguntas": [
     {
@@ -153,6 +155,220 @@
         {
           "item": "Temperatura Diária",
           "correspondencia": "Feature Dinâmica"
+        },
+        {
+          "id": "ST_011",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "O teste ADF à tua série de vendas originou um p-value de 0.88. Descontente, aplicaste o método diff() do Pandas à série e voltaste a fazer o teste, obtendo um p-value de 0.12. Aplicaste o diff() uma segunda vez aos resultados e o p-value desceu para 0.01. Num modelo ARIMA, qual é o valor obrigatório do parâmetro $d$?",
+          "opcoes": [
+            "A) 0",
+            "B) 1",
+            "C) 2",
+            "D) 0.01"
+          ],
+          "resposta_correta": "C) 2",
+          "justificacao": "O parâmetro $d$ (diferenciação) representa o número de vezes que a série precisa de ser diferenciada até se tornar estacionária (ou seja, até obter um p-value < 0.05 no teste de Dickey-Fuller). Como o diff() foi aplicado duas vezes, $d=2$."
+        },
+        {
+          "id": "ST_012",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Qual destas configurações matemáticas do modelo ARIMA corresponde exatamente ao baseline que estudaste chamado 'Naïve' (onde o dia de amanhã é igual ao de hoje, assumindo um Random Walk puro)?",
+          "opcoes": [
+            "A) ARIMA(1,0,0) com constante.",
+            "B) ARIMA(0,1,0) com constante.",
+            "C) ARIMA(0,1,0) sem constante.",
+            "D) ARIMA(0,0,1) sem constante."
+          ],
+          "resposta_correta": "C) ARIMA(0,1,0) sem constante.",
+          "justificacao": "No modelo Naïve, prevê-se que o valor futuro será exatamente igual ao último valor observado. Isto é a definição de um passeio aleatório (Random Walk) sem tendência contínua (sem drift/constante), o que matematicamente equivale apenas a uma diferenciação ($d=1$) e a 0 parâmetros AR e MA."
+        },
+        {
+          "id": "ST_013",
+          "tipo": "true_false",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "No algoritmo AutoARIMA, testaste dois modelos. O Modelo A gerou um erro de treino ligeiramente menor que o Modelo B. No entanto, o AutoARIMA selecionou automaticamente o Modelo B como vencedor através do critério AICc. Isto aconteceu porque o critério AICc penaliza a complexidade matemática, preferindo modelos mais simples (com menos parâmetros) que generalizam melhor para o futuro.",
+          "opcoes": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "resposta_correta": true,
+          "justificacao": "Verdadeiro. O AICc (Akaike Information Criterion corrected) avalia o equilíbrio. Não olha apenas para a minimização do erro no treino, mas aplica uma forte penalização matemática por cada parâmetro extra adicionado ao modelo, evitando o overfitting (sobreajuste)."
+        },
+        {
+          "id": "ST_014",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Num processo de análise de dados mensais já diferenciados, olhas para os gráficos e notas um pico abrupto e muito forte apenas no lag 12 do PACF. No ACF, notas um decaimento (vários picos que diminuem) nos lags 12, 24 e 36. Que componente sazonal do teu SARIMA deves ativar?",
+          "opcoes": [
+            "A) $P = 1$",
+            "B) $Q = 1$",
+            "C) $p = 12$",
+            "D) $q = 12$"
+          ],
+          "resposta_correta": "A) $P = 1$",
+          "justificacao": "Um corte abrupto no PACF no primeiro lag sazonal (o lag 12, para dados mensais) em conjugação com um decaimento progressivo nos múltiplos desse lag sazonal no ACF é a assinatura teórica pura de um modelo AutoRegressivo Sazonal de ordem 1 ($P = 1$)."
+        },
+        {
+          "id": "ST_015",
+          "tipo": "true_false",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Após ajustares um modelo ARIMA complicado, verificas que os resíduos têm média zero e não apresentam qualquer autocorrelação, indicando que não há mais padrão para aprender. No entanto, o histograma dos resíduos falha em ter uma distribuição perfeitamente Normal. Neste cenário, deves descartar imediatamente o modelo, pois a normalidade é uma regra obrigatória que invalida o processo.",
+          "opcoes": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "resposta_correta": false,
+          "justificacao": "Falso. As condições estritamente obrigatórias para um modelo ter capturado a informação toda é os resíduos terem média zero e ausência de autocorrelação. A normalidade é uma propriedade 'ideal' apenas exigida se quisermos construir intervalos de confiança probabilísticos totalmente rigorosos, mas não invalida o modelo pontual."
+        },
+        {
+          "id": "ST_016",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Estás a prever dados com periodicidade trimestral (como lucros de empresas ao longo do ano) e defines um modelo com a estrutura ARIMA(1,1,0)(0,1,1)$_m$. Qual o valor matemático exato do parâmetro $m$ (frequência sazonal) que a função vai assumir nos bastidores?",
+          "opcoes": [
+            "A) 1",
+            "B) 3",
+            "C) 4",
+            "D) 12"
+          ],
+          "resposta_correta": "C) 4",
+          "justificacao": "O parâmetro $m$ especifica o número de observações num ciclo completo de sazonalidade. Como os dados são trimestrais e um ano inteiro compõe-se de 4 trimestres, o ciclo ($m$) tem o valor exato de 4."
+        },
+        {
+          "id": "ST_017",
+          "tipo": "drag_and_drop",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Na literatura clássica de séries temporais, os autores utilizam frequentemente a notação algébrica com o operador de 'Backshift' ($B$) para representar transformações matemáticas aplicadas aos dados. Associe as notações às respetivas operações:",
+          "pares": [
+            {
+              "item": "$(1 - B) y_t$",
+              "correspondencia": "Diferenciação regular de 1ª ordem ($d=1$)."
+            },
+            {
+              "item": "$(1 - B)^2 y_t$",
+              "correspondencia": "Dupla diferenciação não-sazonal ($d=2$)."
+            },
+            {
+              "item": "$(1 - B^m) y_t$",
+              "correspondencia": "Diferenciação sazonal ($D=1$) num ciclo temporal $m$."
+            }
+          ]
+        },
+        {
+          "id": "ST_018",
+          "tipo": "drag_and_drop",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Na teoria dos modelos clássicos, a construção estatística dos modelos opera sob restrições fundamentais diferentes. Associe cada modelo clássico à sua exigência matemática correspondente:",
+          "pares": [
+            {
+              "item": "Modelos AutoRegressivos (AR)",
+              "correspondencia": "Exigem estritamente a propriedade da Estacionariedade."
+            },
+            {
+              "item": "Modelos de Médias Móveis (MA)",
+              "correspondencia": "Exigem a restrição matemática da Invertibilidade (garantindo pesos decrescentes para os erros antigos)."
+            }
+          ]
+        },
+        {
+          "id": "ST_019",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "No gráfico da Autocorrelação Parcial (PACF), o que é que o cálculo tenta efetivamente medir para ajudar o analista a identificar a ordem correta do componente AR ($p$)?",
+          "opcoes": [
+            "A) A correlação acumulada entre o momento $t$ e os seus erros passados.",
+            "B) A relação direta e isolada entre $y_t$ e $y_{t-k}$, ignorando as correlações e os ruídos causados pelos lags intermédios.",
+            "C) A variância constante do ruído branco ao longo do tempo.",
+            "D) A dependência entre a sazonalidade atual e a tendência de crescimento."
+          ],
+          "resposta_correta": "B) A relação direta e isolada entre $y_t$ e $y_{t-k}$, ignorando as correlações e os ruídos causados pelos lags intermédios.",
+          "justificacao": "O objetivo do PACF é medir o efeito puro e 'parcial' de um desfasamento (lag) passado sobre o momento atual, matematicamente anulando as ondas de choque (correlação induzida) que passam pelos instantes de tempo que estão no meio do caminho."
+        },
+        {
+          "id": "ST_020",
+          "tipo": "multiple_choice",
+          "macro_tema": "Modelos Classicos",
+          "pergunta": "Observas o gráfico da tua série temporal bruta e notas que os picos sazonais de vendas aumentam agressivamente de amplitude (ficam muito mais altos e largos) todos os anos. Que tipo de série é esta e o que deverias aplicar obrigatoriamente antes de usares o ARIMA?",
+          "opcoes": [
+            "A) Série Aditiva; Diferenciação sazonal profunda.",
+            "B) Série Multiplicativa; Transformação matemática (ex: Box-Cox ou Log) para estabilizar a variância.",
+            "C) Série Estacionária; Regressores exógenos.",
+            "D) Série de Ruído Branco; Nenhuma transformação."
+          ],
+          "resposta_correta": "B) Série Multiplicativa; Transformação matemática (ex: Box-Cox ou Log) para estabilizar a variância.",
+          "justificacao": "Se as flutuações sazonais crescem proporcionalmente ao nível da série, a variância não é constante (série multiplicativa). Como a diferenciação não resolve a variância oscilante, precisamos comprimir matematicamente esses picos usando transformações logarítmicas ou de Box-Cox antes de ajustarmos qualquer modelo."
+        },
+        {
+          "id": "ST_021",
+          "tipo": "drag_and_drop",
+          "macro_tema": "Regressores Exógenos e Erros ARIMA",
+          "pergunta": "Num modelo de regressão com erros ARIMA, o algoritmo lida com duas camadas distintas de ruído/erro. Associe cada notação estatística à sua regra matemática de validação:",
+          "pares": [
+            {
+              "item": "Erro da regressão ($\\eta_t$)",
+              "correspondencia": "Pode conter autocorrelação, sendo posteriormente modelado e absorvido pelo componente ARIMA."
+            },
+            {
+              "item": "Erro do modelo ARIMA ($\\varepsilon_t$)",
+              "correspondencia": "Tem de ser obrigatoriamente um Ruído Branco (não correlacionado) para o modelo global ser considerado válido."
+            }
+          ]
+        },
+        {
+          "id": "ST_022",
+          "tipo": "true_false",
+          "macro_tema": "Regressores Exógenos e Erros ARIMA",
+          "pergunta": "Em termos estatísticos, se ajustarmos um modelo de regressão linear clássico a uma série temporal ignorando completamente a autocorrelação nos erros, os p-values dos coeficientes tendem a ser demasiado pequenos, criando o risco grave de uma 'regressão espúria' (onde variáveis inúteis parecem ter enorme importância estatística).",
+          "opcoes": [
+            "Verdadeiro",
+            "Falso"
+          ],
+          "resposta_correta": true,
+          "justificacao": "Verdadeiro. A autocorrelação positiva nos resíduos de uma regressão clássica subestima artificialmente os erros padrão. Isto inflaciona as estatísticas de teste, criando a ilusão matemática de que variáveis não relacionadas são altamente significativas."
+        },
+        {
+          "id": "ST_023",
+          "tipo": "multiple_choice",
+          "macro_tema": "Regressores Exógenos e Erros ARIMA",
+          "pergunta": "Uma condição obrigatória antes de treinar uma regressão com erros ARMA é garantir que todas as variáveis envolvidas (o Target e todos os Regressores Exógenos) são estacionárias. Se não forem, o que se deve fazer por norma?",
+          "opcoes": [
+            "A) Diferenciar todas as variáveis (Target e Regressores) para manter a forma da relação entre elas.",
+            "B) Diferenciar apenas a variável Target ($y_t$), mantendo os regressores originais.",
+            "C) Eliminar as variáveis não-estacionárias do modelo.",
+            "D) Converter o modelo num Modelo Global, para diluir a não-estacionariedade."
+          ],
+          "resposta_correta": "A) Diferenciar todas as variáveis (Target e Regressores) para manter a forma da relação entre elas.",
+          "justificacao": "Para preservar a estrutura e a relação de causalidade temporal entre a variável dependente e as variáveis independentes, as transformações de estacionariedade (como a diferenciação) têm de ser aplicadas simetricamente a todo o conjunto de dados."
+        },
+        {
+          "id": "ST_024",
+          "tipo": "multiple_choice",
+          "macro_tema": "Regressores Exógenos e Erros ARIMA",
+          "pergunta": "Na implementação prática usando a biblioteca StatsForecast, estás a preparar o DataFrame de treino para incluir a temperatura e o preço como regressores exógenos. Qual é a regra estrita de formatação que deves respeitar na estrutura das colunas?",
+          "opcoes": [
+            "A) Os regressores devem substituir a coluna unique_id.",
+            "B) O DataFrame deve ter apenas 3 colunas, combinando os regressores com a coluna y numa lista.",
+            "C) Os regressores exógenos (Temperatura e Preço) têm de ser colocados em colunas a seguir à variável target y.",
+            "D) A variável ds (data) tem de ser transformada em número inteiro antes de juntar os regressores."
+          ],
+          "resposta_correta": "C) Os regressores exógenos (Temperatura e Preço) têm de ser colocados em colunas a seguir à variável target y.",
+          "justificacao": "A biblioteca StatsForecast exige um formato tabular rígido: as três primeiras colunas devem ser obrigatoriamente `unique_id`, `ds` e `y`. Todas as colunas adicionais inseridas à direita do `y` são automaticamente processadas como features dinâmicas (regressores exógenos)."
+        },
+        {
+          "id": "ST_025",
+          "tipo": "multiple_choice",
+          "macro_tema": "Regressores Exógenos e Erros ARIMA",
+          "pergunta": "Vais prever as vendas de protetor solar para os próximos 14 dias (horizonte de previsão $h=14$). Usaste a temperatura e uma campanha de marketing planeada como regressores exógenos no teu treino. O que precisas OBRIGATORIAMENTE de fornecer à função sf.forecast() no momento de prever o futuro?",
+          "opcoes": [
+            "A) Um DataFrame com os valores históricos (passados) dos regressores, para o modelo calcular a média.",
+            "B) Um DataFrame (o argumento X_df) contendo as estimativas/valores da temperatura e do marketing para os exatos 14 dias futuros que queres prever.",
+            "C) Apenas o número 14 (o parâmetro h), pois o modelo extrapola sozinho o comportamento dos regressores.",
+            "D) Os níveis de intervalo de confiança (level=[95]), pois modelos com regressores não suportam previsões pontuais."
+          ],
+          "resposta_correta": "B) Um DataFrame (o argumento X_df) contendo as estimativas/valores da temperatura e do marketing para os exatos 14 dias futuros que queres prever.",
+          "justificacao": "Sempre que treinamos um modelo temporal dependente de regressores exógenos dinâmicos, o modelo é incapaz de prever o Target no futuro sem conhecer os valores dessas variáveis explicativas nesse exato horizonte de tempo. Este input é fornecido através do argumento `X_df`."
         }
       ]
     }
