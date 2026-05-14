@@ -1,6 +1,6 @@
 // sw.js
-const STATIC_CACHE = 'moodle-bia-static-v29'; 
-const DYNAMIC_CACHE = 'moodle-bia-dynamic-v29';
+const STATIC_CACHE = 'moodle-bia-static-v30'; 
+const DYNAMIC_CACHE = 'moodle-bia-dynamic-v30';
 
 // Apenas ficheiros da "carcaça" da aplicação (App Shell)
 const urlsToCache = [
@@ -15,12 +15,10 @@ const urlsToCache = [
   './js/store.js',
   './js/firebaseManager.js',
   './js/quizLogic.js',
-  // --- OS 4 NOVOS FICHEIROS DA REFATORAÇÃO ---
   './js/dataLoader.js',
   './js/questionBuilder.js',
   './js/quizController.js',
   './js/mediaViewer.js',
-  // -------------------------------------------
   './manifest.json',
   './image/logo.png'
 ];
