@@ -8,10 +8,10 @@ import { state } from './store.js';
 const mediaCatalog = {
     "BIA_STP": {
         pdfs: [
-            { name: "Resumo Geral", file: "pdfs/BIA_STP.pdf" }           
+            { name: "Resumo Geral", file: "pdfs/BIA_STP_01.pdf" }           
         ],
         videos: [
-            { name: "Resumo", file: "videos/BIA_STP.mp4" }
+            { name: "Resumo", file: "videos/BIA_STP_01.mp4" }
         ]
     },
     "BIA_TMBA": {
