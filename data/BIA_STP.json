@@ -5,10 +5,10 @@
     "desconto_erro": 0.25
   },
   "configuracao_teste": {
-    "Introducao_Time_Series": 29,
-    "Statistical_Forecasting": 8,
-    "Machine_Learning": 10,
-    "Deep_Neural_Networks": 10
+    "Introducao_Time_Series": 8,
+    "Statistical_Forecasting": 0,
+    "Machine_Learning": 0,
+    "Deep_Neural_Networks": 0
   },
   "perguntas": [
     {

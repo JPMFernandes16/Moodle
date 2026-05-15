@@ -1,6 +1,6 @@
 // sw.js
-const STATIC_CACHE = 'moodle-bia-static-v32'; 
-const DYNAMIC_CACHE = 'moodle-bia-dynamic-v32';
+const STATIC_CACHE = 'moodle-bia-static-v33'; 
+const DYNAMIC_CACHE = 'moodle-bia-dynamic-v33';
 
 // Apenas ficheiros da "carcaça" da aplicação (App Shell)
 const urlsToCache = [
