@@ -8,10 +8,17 @@ import { state } from './store.js';
 const mediaCatalog = {
     "BIA_STP": {
         pdfs: [
-            { name: "Resumo Geral", file: "pdfs/BIA_STP_01.pdf" }           
+            { name: "Teste", file: "pdfs/BIA_STP.pdf" },
+            { name: "1. Introduction to Time Series Forecasting", file: "pdfs/BIA_STP_01.pdf" }, 
+            { name: "2. Statistical Forescasting Models", file: "pdfs/BIA_STP_02.pdf" },
+            { name: "3. Machine Learning Forecasting Models", file: "pdfs/BIA_STP_03.pdf" },
+            { name: "4. Deep Neural Networks Forecasting models", file: "pdfs/BIA_STP_04.pdf" }           
         ],
         videos: [
-            { name: "Resumo", file: "videos/BIA_STP_01.mp4" }
+            { name: "1. Introduction to Time Series Forecasting", file: "videos/BIA_STP_01.mp4" }, 
+            { name: "2. Statistical Forescasting Models", file: "videos/BIA_STP_02.mp4" },
+            { name: "3. Machine Learning Forecasting Models", file: "videos/BIA_STP_03.mp4" },
+            { name: "4. Deep Neural Networks Forecasting models", file: "videos/BIA_STP_04.mp4" } 
         ]
     },
     "BIA_TMBA": {

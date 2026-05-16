@@ -5,10 +5,10 @@
     "desconto_erro": 0.25
   },
   "configuracao_teste": {
-    "Introducao_Time_Series": 8,
-    "Statistical_Forecasting": 0,
-    "Machine_Learning": 0,
-    "Deep_Neural_Networks": 0
+    "Introducao_Time_Series": 4,
+    "Statistical_Forecasting": 4,
+    "Machine_Learning": 2,
+    "Deep_Neural_Networks": 5
   },
   "perguntas": [
     {
@@ -416,6 +416,944 @@
       ],
       "resposta_correta": "MAE",
       "justificacao": "O MAE é mais resistente a outliers do que métricas quadráticas, mas continua a depender da escala original dos dados."
+    },
+    {
+      "id": "SF_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "No contexto de modelos ARIMA, o que caracteriza especificamente uma série temporal estacionária?",
+      "opcoes": [
+        "Possui uma taxa de crescimento linear constante, permitindo previsões baseadas em regressão simples.",
+        "Apresenta ciclos sazonais perfeitamente previsíveis que se repetem em intervalos fixos.",
+        "Apresenta uma média e variância constantes ao longo do tempo, sem tendências ou sazonalidade óbvias.",
+        "É uma série onde a variância aumenta proporcionalmente ao valor da média temporal."
+      ],
+      "resposta_correta": "Apresenta uma média e variância constantes ao longo do tempo, sem tendências ou sazonalidade óbvias.",
+      "justificacao": "Uma série estacionária apresenta propriedades estatísticas constantes ao longo do tempo, especialmente média e variância."
+    },
+    {
+      "id": "SF_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Ao realizar o Teste ADF (Dickey-Fuller), qual é a conclusão correta perante um p-value de 0.07?",
+      "opcoes": [
+        "O modelo ARIMA deve obrigatoriamente incluir uma componente de média móvel (q).",
+        "A série possui ruído branco e não pode ser modelada por métodos estatísticos.",
+        "A série não é estacionária e necessita da aplicação de diferenciação (d).",
+        "A série é considerada estacionária e está pronta para a modelagem direta."
+      ],
+      "resposta_correta": "A série não é estacionária e necessita da aplicação de diferenciação (d).",
+      "justificacao": "Num teste ADF, um p-value superior a 0.05 indica que não há evidência suficiente para rejeitar a hipótese nula de não estacionariedade."
+    },
+    {
+      "id": "SF_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é a interpretação física da componente q (Média Móvel) num modelo ARIMA?",
+      "opcoes": [
+        "Representa a dependência do valor atual em relação aos seus próprios valores passados.",
+        "Representa a suavização exponencial aplicada aos dados mais recentes da série.",
+        "Representa o número de subtrações necessárias para tornar a série estacionária.",
+        "Representa a influência de choques ou erros aleatórios passados no valor presente."
+      ],
+      "resposta_correta": "Representa a influência de choques ou erros aleatórios passados no valor presente.",
+      "justificacao": "A componente MA(q) modela a influência dos erros aleatórios passados sobre os valores atuais da série."
+    },
+    {
+      "id": "SF_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "No AutoARIMA, qual é o objetivo principal ao utilizar o critério AIC?",
+      "opcoes": [
+        "Garantir que a série temporal seja diferenciada o máximo de vezes possível.",
+        "Minimizar o erro absoluto médio independentemente do número de parâmetros.",
+        "Encontrar um equilíbrio entre o ajuste aos dados e a simplicidade do modelo.",
+        "Maximizar a complexidade do modelo para capturar todos os ruídos da série."
+      ],
+      "resposta_correta": "Encontrar um equilíbrio entre o ajuste aos dados e a simplicidade do modelo.",
+      "justificacao": "O AIC penaliza modelos excessivamente complexos, procurando um equilíbrio entre qualidade de ajuste e parcimónia."
+    },
+    {
+      "id": "SF_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Diferente do ARIMA, qual é o princípio fundamental da filosofia da família de modelos ETS?",
+      "opcoes": [
+        "Procura correlações diretas entre observações separadas por longos intervalos de tempo.",
+        "Utiliza obrigatoriamente variáveis exógenas como temperatura e preço para a previsão.",
+        "Exige que a série seja transformada em ruído branco antes da modelagem.",
+        "Atribui maior peso às observações mais recentes através de suavização exponencial."
+      ],
+      "resposta_correta": "Atribui maior peso às observações mais recentes através de suavização exponencial.",
+      "justificacao": "Os modelos ETS utilizam suavização exponencial, dando mais importância às observações recentes."
+    },
+    {
+      "id": "SF_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Um modelo ETS é definido pela tripla (E,T,S). O que significa a componente T ser Amortecida (Ad)?",
+      "opcoes": [
+        "A tendência de crescimento ou queda perde força ao longo do horizonte de previsão.",
+        "O modelo ignora completamente a tendência histórica da série.",
+        "A tendência é removida através de uma diferenciação de primeira ordem.",
+        "A tendência é multiplicativa em vez de aditiva."
+      ],
+      "resposta_correta": "A tendência de crescimento ou queda perde força ao longo do horizonte de previsão.",
+      "justificacao": "Uma tendência amortecida assume que o crescimento ou queda desacelera progressivamente ao longo do tempo."
+    },
+    {
+      "id": "SF_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Por que razão um modelo ETS com componente Multiplicativa (M) pode falhar ou partir?",
+      "opcoes": [
+        "Se a variância da série for perfeitamente constante ao longo do tempo.",
+        "Se o número de observações for superior a 1000 pontos de dados.",
+        "Se a série apresentar uma sazonalidade estritamente aditiva.",
+        "Se a série temporal contiver valores iguais a zero ou valores negativos."
+      ],
+      "resposta_correta": "Se a série temporal contiver valores iguais a zero ou valores negativos.",
+      "justificacao": "Componentes multiplicativas requerem valores positivos, pois envolvem multiplicações e divisões."
+    },
+    {
+      "id": "SF_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Ao utilizar um modelo ARIMAX para prever h passos no futuro, qual é o requisito obrigatório em relação aos regressores exógenos?",
+      "opcoes": [
+        "É necessário fornecer os valores exatos dessas variáveis para todo o horizonte de previsão h.",
+        "Os regressores devem ser calculados automaticamente pelo modelo durante a fase de treino.",
+        "Apenas os valores históricos dos regressores são necessários para prever o futuro.",
+        "As variáveis exógenas devem ter uma correlação de zero com a variável dependente."
+      ],
+      "resposta_correta": "É necessário fornecer os valores exatos dessas variáveis para todo o horizonte de previsão h.",
+      "justificacao": "Modelos ARIMAX necessitam dos valores futuros das variáveis exógenas para gerar previsões futuras."
+    },
+    {
+      "id": "SF_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Na análise de um gráfico PACF, o que indica um corte abrupto após o primeiro lag?",
+      "opcoes": [
+        "Um modelo de Média Móvel de ordem 1 (MA(1)).",
+        "Um modelo Autorregressivo de ordem 1 (AR(1)).",
+        "A presença de uma sazonalidade anual muito forte.",
+        "Que a série necessita de pelo menos duas diferenciações."
+      ],
+      "resposta_correta": "Um modelo Autorregressivo de ordem 1 (AR(1)).",
+      "justificacao": "Num processo AR(p), o PACF tende a cortar abruptamente após p lags."
+    },
+    {
+      "id": "SF_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Como se comporta o gráfico ACF num processo de Média Móvel puro de ordem q?",
+      "opcoes": [
+        "Apresenta picos isolados apenas nos múltiplos do ciclo sazonal.",
+        "Corta de repente após q lags significativos.",
+        "Mantém todos os lags acima do nível de significância permanentemente.",
+        "Decai suavemente de forma exponencial ou sinusoidal."
+      ],
+      "resposta_correta": "Corta de repente após q lags significativos.",
+      "justificacao": "Num modelo MA(q), o ACF apresenta corte abrupto após q lags."
+    },
+    {
+      "id": "SF_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Se observar picos isolados nos lags 12, 24 e 36 de um gráfico ACF para dados mensais, qual é a suspeita diagnóstica?",
+      "opcoes": [
+        "O modelo ARIMA deve ter a ordem p = 36.",
+        "Existe uma sazonalidade anual (s = 12) que deve ser tratada, por exemplo com SARIMA.",
+        "A série temporal não possui qualquer componente modelável.",
+        "A série é um ruído branco puro com variância inconstante."
+      ],
+      "resposta_correta": "Existe uma sazonalidade anual (s = 12) que deve ser tratada, por exemplo com SARIMA.",
+      "justificacao": "Picos nos lags 12, 24 e 36 em dados mensais indicam repetição anual, sugerindo sazonalidade com período 12."
+    },
+    {
+      "id": "SF_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Por que razão o método de Validação Cruzada K-Fold clássico é considerado um Erro Mortal em séries temporais?",
+      "opcoes": [
+        "Porque exige que todas as janelas de teste tenham o mesmo tamanho da média da série.",
+        "Porque não permite o uso de variáveis exógenas no conjunto de teste.",
+        "Porque demora demasiado tempo a processar grandes volumes de dados.",
+        "Porque baralha a ordem dos dados, resultando em Data Leakage, ou seja, usar o futuro para prever o passado."
+      ],
+      "resposta_correta": "Porque baralha a ordem dos dados, resultando em Data Leakage, ou seja, usar o futuro para prever o passado.",
+      "justificacao": "Em séries temporais, a ordem cronológica deve ser preservada. O K-Fold clássico pode misturar passado e futuro, causando Data Leakage."
+    },
+    {
+      "id": "SF_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Na técnica de Sliding Window, qual é a regra de ouro sobre o posicionamento dos conjuntos de Treino e Teste?",
+      "opcoes": [
+        "O Treino e o Teste podem sobrepor-se para maximizar o uso da informação.",
+        "O conjunto de Teste deve sempre preceder o conjunto de Treino.",
+        "O Treino desliza para a frente, mas o conjunto de Teste deve vir SEMPRE depois do Treino.",
+        "A janela de Teste deve conter apenas o último valor disponível da série completa."
+      ],
+      "resposta_correta": "O Treino desliza para a frente, mas o conjunto de Teste deve vir SEMPRE depois do Treino.",
+      "justificacao": "Na validação de séries temporais, o teste deve simular o futuro, ficando sempre depois do período de treino."
+    },
+    {
+      "id": "SF_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é a configuração do parâmetro step_size que define uma validação cruzada do tipo Non-overlapping, sem sobreposição de janelas de teste?",
+      "opcoes": [
+        "O step_size deve ser igual a 1 para testar todos os pontos possíveis.",
+        "O step_size deve ser o dobro do número de janelas.",
+        "O step_size deve ser determinado automaticamente pela maximização da Likelihood.",
+        "O step_size deve ser igual ao tamanho do horizonte de teste h."
+      ],
+      "resposta_correta": "O step_size deve ser igual ao tamanho do horizonte de teste h.",
+      "justificacao": "Quando o step_size é igual ao horizonte h, as janelas de teste avançam sem se sobrepor."
+    },
+    {
+      "id": "SF_015",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Num modelo ARIMA, o que representa matematicamente a operação de diferenciação ∇y_t = y_t - y_{t-1}?",
+      "opcoes": [
+        "A normalização dos dados para uma escala entre 0 e 1.",
+        "A média ponderada dos últimos dois valores da série.",
+        "O erro de previsão acumulado desde o início da série.",
+        "A variação ou mudança absoluta entre observações consecutivas."
+      ],
+      "resposta_correta": "A variação ou mudança absoluta entre observações consecutivas.",
+      "justificacao": "A diferenciação calcula a diferença entre valores consecutivos, ajudando a remover tendências e tornar a série mais estacionária."
+    },
+    {
+      "id": "SF_016",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é a principal diferença entre os critérios AIC e BIC na seleção de modelos?",
+      "opcoes": [
+        "O AIC foca na verosimilhança, enquanto o BIC foca apenas no erro quadrático médio.",
+        "O AIC garante que o modelo nunca sofra de Data Leakage.",
+        "O BIC penaliza modelos com mais parâmetros de forma mais rigorosa que o AIC.",
+        "O AIC é usado apenas para ETS, enquanto o BIC é exclusivo para ARIMA."
+      ],
+      "resposta_correta": "O BIC penaliza modelos com mais parâmetros de forma mais rigorosa que o AIC.",
+      "justificacao": "O BIC aplica uma penalização mais forte à complexidade do modelo, favorecendo modelos mais simples quando comparado com o AIC."
+    },
+    {
+      "id": "SF_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "O que indica a componente Erro (E) num modelo ETS ser do tipo Aditivo (A)?",
+      "opcoes": [
+        "A variância do erro é constante e independente do nível atual da série.",
+        "O erro deve ser sempre um número positivo.",
+        "O modelo falha se existirem zeros na série.",
+        "A magnitude do erro aumenta à medida que o nível da série aumenta."
+      ],
+      "resposta_correta": "A variância do erro é constante e independente do nível atual da série.",
+      "justificacao": "Num erro aditivo, a magnitude dos erros não depende do nível da série, mantendo uma variância aproximadamente constante."
+    },
+    {
+      "id": "SF_018",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "No diagnóstico visual de modelos ARIMA, se o ACF decair suavemente e o PACF cortar abruptamente no lag 2, qual o modelo sugerido?",
+      "opcoes": [
+        "ARIMA(0, d, 0)",
+        "ARIMA(0, d, 2)",
+        "ARIMA(2, d, 0)",
+        "ARIMA(1, d, 1)"
+      ],
+      "resposta_correta": "ARIMA(2, d, 0)",
+      "justificacao": "Quando o PACF corta no lag 2 e o ACF decai suavemente, isso sugere uma componente autorregressiva de ordem 2."
+    },
+    {
+      "id": "SF_019",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Na prática de previsão, o que acontece se o utilizador não fornecer o futuro dos regressores num modelo ARIMAX?",
+      "opcoes": [
+        "O modelo transforma-se automaticamente num ETS(A,N,N).",
+        "O modelo assume que o valor futuro é igual à média histórica.",
+        "O modelo utiliza o último valor conhecido y_t para preencher as lacunas.",
+        "O algoritmo gera um erro ou falha no momento do predict."
+      ],
+      "resposta_correta": "O algoritmo gera um erro ou falha no momento do predict.",
+      "justificacao": "Modelos ARIMAX precisam dos valores futuros dos regressores exógenos para produzir previsões; sem eles, a previsão não pode ser calculada corretamente."
+    },
+    {
+      "id": "SF_020",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Ao analisar o gráfico de sazonalidade, o que distingue uma sazonalidade Multiplicativa (M) de uma Aditiva (A)?",
+      "opcoes": [
+        "A sazonalidade Aditiva é a única que permite valores negativos.",
+        "A sazonalidade Multiplicativa só ocorre em modelos ARIMA.",
+        "A amplitude das oscilações sazonais aumenta ou diminui proporcionalmente ao nível da série.",
+        "A sazonalidade Multiplicativa tem picos de altura constante independentemente da tendência."
+      ],
+      "resposta_correta": "A amplitude das oscilações sazonais aumenta ou diminui proporcionalmente ao nível da série.",
+      "justificacao": "Na sazonalidade multiplicativa, a amplitude dos padrões sazonais varia com o nível da série."
+    },
+    {
+      "id": "SF_021",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é a função do parâmetro n_windows na validação cruzada de séries temporais?",
+      "opcoes": [
+        "Define o número de anos de dados necessários para uma previsão estável.",
+        "Controla o número de variáveis exógenas permitidas no modelo.",
+        "Define a largura total da janela de treino inicial.",
+        "Indica quantos testes ou saltos de validação serão realizados para avaliar o modelo."
+      ],
+      "resposta_correta": "Indica quantos testes ou saltos de validação serão realizados para avaliar o modelo.",
+      "justificacao": "O parâmetro n_windows define quantas janelas de validação serão usadas na avaliação temporal do modelo."
+    },
+    {
+      "id": "SF_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Se um modelo AutoETS escolhe a combinação (M, Ad, M), o que isso revela sobre a série temporal?",
+      "opcoes": [
+        "A série é um ruído branco puro sem tendência.",
+        "O modelo falhou em encontrar qualquer padrão e usou a configuração padrão.",
+        "A série deve ser obrigatoriamente diferenciada antes da próxima previsão.",
+        "A série tem erro multiplicativo, tendência que perde força e sazonalidade que escala com o nível."
+      ],
+      "resposta_correta": "A série tem erro multiplicativo, tendência que perde força e sazonalidade que escala com o nível.",
+      "justificacao": "A combinação (M, Ad, M) representa erro multiplicativo, tendência aditiva amortecida e sazonalidade multiplicativa."
+    },
+    {
+      "id": "SF_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é a principal desvantagem de usar um step_size muito pequeno, por exemplo 1, numa Sliding Window?",
+      "opcoes": [
+        "A componente de sazonalidade será apagada do diagnóstico visual.",
+        "O modelo tornar-se-á estacionário automaticamente.",
+        "Os resultados da validação serão altamente correlacionados entre si devido à grande sobreposição.",
+        "É impossível calcular o AIC para passos pequenos."
+      ],
+      "resposta_correta": "Os resultados da validação serão altamente correlacionados entre si devido à grande sobreposição.",
+      "justificacao": "Um step_size pequeno gera janelas muito próximas e sobrepostas, fazendo com que os resultados dos testes sejam muito semelhantes entre si."
+    },
+    {
+      "id": "SF_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "No gráfico de diagnóstico visual, se o ACF decair suavemente e o PACF também decair suavemente, o que isto sugere?",
+      "opcoes": [
+        "Um modelo misto ARMA/ARIMA com ambas as componentes p e q presentes.",
+        "Um modelo AR puro.",
+        "Um modelo MA puro.",
+        "Que a série já é ruído branco."
+      ],
+      "resposta_correta": "Um modelo misto ARMA/ARIMA com ambas as componentes p e q presentes.",
+      "justificacao": "Quando ACF e PACF decaem suavemente, isso sugere a presença conjunta de componentes autorregressivas e de média móvel."
+    },
+    {
+      "id": "SF_025",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "O que acontece à variância numa série estacionária?",
+      "opcoes": [
+        "Deve ser sempre igual a zero para garantir previsões perfeitas.",
+        "A variância não tem relevância para a definição de estacionariedade.",
+        "Deve aumentar exponencialmente para permitir o uso de modelos logarítmicos.",
+        "Deve ser constante, significando que a dispersão dos dados é estável ao longo do tempo."
+      ],
+      "resposta_correta": "Deve ser constante, significando que a dispersão dos dados é estável ao longo do tempo.",
+      "justificacao": "Numa série estacionária, a variância mantém-se estável ao longo do tempo."
+    },
+    {
+      "id": "SF_026",
+      "tipo": "multiple_choice",
+      "macro_tema": "Statistical_Forecasting",
+      "pergunta": "Qual é o critério de vitória utilizado pelo AutoETS para selecionar o melhor modelo?",
+      "opcoes": [
+        "Minimizar o p-value do teste ADF.",
+        "Garantir que a componente de Tendência seja sempre Aditiva.",
+        "Minimizar o número de lags no gráfico PACF.",
+        "Maximizar a Likelihood, ou Verosimilhança."
+      ],
+      "resposta_correta": "Maximizar a Likelihood, ou Verosimilhança.",
+      "justificacao": "O AutoETS compara diferentes combinações de componentes ETS e seleciona o modelo com melhor ajuste segundo o critério de verosimilhança."
+    },
+    {
+      "id": "ML_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "No contexto do MLForecast, qual é a consequência imediata de não fornecer os valores de um Regressor Dinâmico (X_df) para todo o horizonte h no momento do predict?",
+      "opcoes": [
+        "O modelo ML não consegue realizar a previsão para os passos em que os dados estão ausentes.",
+        "O modelo assume automaticamente o valor médio histórico para os períodos em falta.",
+        "O sistema utiliza o último valor conhecido para preencher a lacuna.",
+        "A precisão do modelo diminui, mas a execução do pipeline de inferência continua normalmente."
+      ],
+      "resposta_correta": "O modelo ML não consegue realizar a previsão para os passos em que os dados estão ausentes.",
+      "justificacao": "Os regressores dinâmicos precisam de estar disponíveis para todo o horizonte de previsão; caso contrário, o modelo não consegue gerar inferência nesses períodos."
+    },
+    {
+      "id": "ML_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Ao aplicar a Regra de Sobrevivência para Transfer Learning (Abordagem Zero-Shot), por que razão o uso de variáveis categóricas locais é proibido?",
+      "opcoes": [
+        "Devido à necessidade de normalização global que impede o uso de One-Hot Encoding.",
+        "Porque as redes neuronais não conseguem processar dados categóricos nativamente.",
+        "Para evitar que o Early Stopping Global interrompa o treino prematuramente devido ao ruído das categorias.",
+        "Porque o modelo deve depender estritamente de padrões matemáticos universais para poder ser generalizado e aplicado diretamente num novo dataset."
+      ],
+      "resposta_correta": "Porque o modelo deve depender estritamente de padrões matemáticos universais para poder ser generalizado e aplicado diretamente num novo dataset.",
+      "justificacao": "No Transfer Learning Zero-Shot, o modelo deve aprender padrões universais reutilizáveis, evitando dependência de categorias específicas locais."
+    },
+    {
+      "id": "ML_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Qual é a principal vantagem teórica da utilização de Conformal Prediction face aos métodos estatísticos tradicionais para calcular intervalos de confiança?",
+      "opcoes": [
+        "O CP permite que modelos baseados em árvores calculem probabilidades nativamente no fit.",
+        "O CP adapta-se à realidade bruta dos dados sem exigir pressupostos teóricos sobre a curva de erros.",
+        "O CP reduz automaticamente o erro médio do modelo ao calibrar os quantis.",
+        "O CP garante que os resíduos sigam sempre uma distribuição Gaussiana perfeita."
+      ],
+      "resposta_correta": "O CP adapta-se à realidade bruta dos dados sem exigir pressupostos teóricos sobre a curva de erros.",
+      "justificacao": "O Conformal Prediction constrói intervalos baseados nos erros reais observados, sem assumir distribuições estatísticas específicas."
+    },
+    {
+      "id": "ML_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "A técnica de LocalStandardScaler é utilizada para resolver o problema de Cross-Learning. Qual é a fórmula matemática correta aplicada a cada série id?",
+      "opcoes": [
+        "zt = yt − yt−1",
+        "z = (y − μid) / σid",
+        "z = (y − minid) / (maxid − minid)",
+        "z = (lag_1 − lag_7) / μid"
+      ],
+      "resposta_correta": "z = (y − μid) / σid",
+      "justificacao": "O LocalStandardScaler padroniza cada série individualmente através da média e desvio padrão próprios."
+    },
+    {
+      "id": "ML_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "No pipeline do MLForecast, qual é o papel fundamental da função predict() em relação aos target_transforms?",
+      "opcoes": [
+        "Aplicar transformações de Lags aos dados de teste antes da previsão.",
+        "Inverter automaticamente as transformações matemáticas para devolver a previsão na escala original.",
+        "Calcular a média e o desvio padrão do horizonte de previsão.",
+        "Garantir que as linhas dos quantis nunca se cruzem."
+      ],
+      "resposta_correta": "Inverter automaticamente as transformações matemáticas para devolver a previsão na escala original.",
+      "justificacao": "A função predict() reverte automaticamente as transformações aplicadas ao target, devolvendo os resultados na escala real."
+    },
+    {
+      "id": "ML_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Durante a criação de Lags, o aparecimento de valores NaN no início do dataset é inevitável. Qual é a recomendação do material para lidar com este problema?",
+      "opcoes": [
+        "Utilizar fillna(method='bfill').",
+        "Utilizar dropna() antes do treino.",
+        "Substituir os NaNs por zero.",
+        "Ignorar os NaNs porque algoritmos como XGBoost e LightGBM conseguem lidar com eles."
+      ],
+      "resposta_correta": "Utilizar dropna() antes do treino.",
+      "justificacao": "Os primeiros registos após criação de lags não possuem histórico suficiente, sendo normalmente removidos com dropna()."
+    },
+    {
+      "id": "ML_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "No contexto de Otimização Global, o que caracteriza o funcionamento do Early Stopping Global?",
+      "opcoes": [
+        "Interrompe o treino assim que a primeira janela de validação atinge erro zero.",
+        "Para a criação de novas árvores se o tempo de execução exceder o limite do hardware.",
+        "Bloqueia a inclusão de novas séries temporais se estas aumentarem a variância do erro.",
+        "Aborta o treino automaticamente quando o erro médio entre todas as janelas de validação para de melhorar."
+      ],
+      "resposta_correta": "Aborta o treino automaticamente quando o erro médio entre todas as janelas de validação para de melhorar.",
+      "justificacao": "O Early Stopping Global monitoriza o desempenho global em validação e interrompe o treino quando não há melhoria."
+    },
+    {
+      "id": "ML_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Como é desenhada a Mancha de Incerteza utilizando ConformalPrediction?",
+      "opcoes": [
+        "Através de simulação de Monte Carlo aplicada às folhas das árvores.",
+        "Através da aplicação de um desvio padrão fixo sobre o dataset.",
+        "Pela multiplicação do Point Forecast por um fator de risco.",
+        "Utilizando a dispersão dos erros reais que o modelo cometeu durante a validação cruzada."
+      ],
+      "resposta_correta": "Utilizando a dispersão dos erros reais que o modelo cometeu durante a validação cruzada.",
+      "justificacao": "O Conformal Prediction usa erros empíricos observados na validação para construir intervalos probabilísticos."
+    },
+    {
+      "id": "ML_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "No pipeline MLForecast, qual é a diferença conceptual entre RollingMean e ExpandingMean?",
+      "opcoes": [
+        "RollingMean serve para normalização global e ExpandingMean para normalização local.",
+        "ExpandingMean é obrigatoriamente aplicada antes da criação de Lags simples.",
+        "RollingMean usa uma janela fixa de observações passadas, enquanto ExpandingMean utiliza todo o histórico disponível até aquele ponto.",
+        "RollingMean foca-se no horizonte futuro, enquanto ExpandingMean foca-se no passado."
+      ],
+      "resposta_correta": "RollingMean usa uma janela fixa de observações passadas, enquanto ExpandingMean utiliza todo o histórico disponível até aquele ponto.",
+      "justificacao": "RollingMean trabalha com janelas móveis fixas; ExpandingMean cresce progressivamente utilizando todo o histórico acumulado."
+    },
+    {
+      "id": "ML_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Sobre a Calibração de Intervalos, o que garante que o P50 esteja sempre blindado?",
+      "opcoes": [
+        "A utilização de Normalização Local.",
+        "A aplicação de uma barreira física no código.",
+        "A garantia matemática de que as linhas dos quantis nunca se cruzam se o modelo estiver bem calibrado.",
+        "O facto de ser calculado através da média aritmética simples."
+      ],
+      "resposta_correta": "A garantia matemática de que as linhas dos quantis nunca se cruzam se o modelo estiver bem calibrado.",
+      "justificacao": "Num modelo probabilístico corretamente calibrado, os quantis mantêm uma ordem lógica consistente."
+    },
+    {
+      "id": "ML_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "O Formato Obrigatório para o MLForecast exige três colunas base. Quais são?",
+      "opcoes": [
+        "unique_id, ds, y",
+        "unique_id, timestamp, target_value",
+        "id_serie, data, valor",
+        "series_id, date, labels"
+      ],
+      "resposta_correta": "unique_id, ds, y",
+      "justificacao": "O MLForecast utiliza o formato padrão long format com as colunas unique_id, ds e y."
+    },
+    {
+      "id": "ML_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Por que razão treinar milhares de séries ao mesmo tempo sem transformações de escala pode confundir o algoritmo de Machine Learning?",
+      "opcoes": [
+        "Porque o Early Stopping Global não funciona com séries de escalas diferentes.",
+        "Porque o formato Long Format exige amplitudes iguais.",
+        "Porque o algoritmo fica sem memória RAM.",
+        "Devido à dificuldade do modelo em distinguir padrões quando uma série vende 5 unidades e outra vende 5000."
+      ],
+      "resposta_correta": "Devido à dificuldade do modelo em distinguir padrões quando uma série vende 5 unidades e outra vende 5000.",
+      "justificacao": "Diferenças extremas de escala dificultam a aprendizagem de padrões globais consistentes."
+    },
+    {
+      "id": "ML_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Qual é a função do componente LightGBMCV no pipeline de otimização?",
+      "opcoes": [
+        "Garantir que a matriz X_df seja limpa de valores nulos.",
+        "Treinar múltiplos boosters em paralelo em várias janelas de validação.",
+        "Converter o modelo de Regressão em Classificação automaticamente.",
+        "Substituir a necessidade de utilizar Conformal Prediction."
+      ],
+      "resposta_correta": "Treinar múltiplos boosters em paralelo em várias janelas de validação.",
+      "justificacao": "O LightGBMCV realiza validação cruzada para otimizar hiperparâmetros e avaliar o modelo em múltiplas janelas."
+    },
+    {
+      "id": "ML_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Ao utilizar a transformação Differences(1), o que estamos a tentar remover da série temporal?",
+      "opcoes": [
+        "A sazonalidade semanal.",
+        "O ruído branco aleatório.",
+        "A tendência, subtraindo o valor anterior.",
+        "Os outliers ou valores extremos."
+      ],
+      "resposta_correta": "A tendência, subtraindo o valor anterior.",
+      "justificacao": "A diferenciação de primeira ordem remove tendências lineares através da diferença entre valores consecutivos."
+    },
+    {
+      "id": "ML_015",
+      "tipo": "multiple_choice",
+      "macro_tema": "Machine_Learning",
+      "pergunta": "Na secção de Incerteza, o que é referido como o Calcanhar de Aquiles do ML?",
+      "opcoes": [
+        "A incapacidade de processar grandes volumes de dados.",
+        "O facto de modelos baseados em árvores cuspirem apenas Point Forecasts.",
+        "O tempo excessivo gasto na etapa de Feature Engineering.",
+        "A necessidade obrigatória de converter todos os dados para o formato Long."
+      ],
+      "resposta_correta": "O facto de modelos baseados em árvores cuspirem apenas Point Forecasts.",
+      "justificacao": "Modelos baseados em árvores normalmente produzem apenas previsões pontuais, dificultando a representação direta da incerteza."
+    },
+    {
+      "id": "DNN_001",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No contexto do paradigma global (cross-learning), qual é o principal risco associado ao treino de um único modelo em milhares de séries simultaneamente sem o uso de técnicas de escalonamento (scaling)?",
+      "opcoes": [
+        "Ocorrência de Vanishing ou Exploding Gradients, levando ao colapso da rede e à estagnação dos pesos.",
+        "Sobreajuste do modelo a uma única série temporal dominante no conjunto de dados.",
+        "Incapacidade de capturar padrões globais devido à fragmentação dos pesos entre as séries.",
+        "Aumento excessivo do tempo de inferência devido à complexidade linear do modelo MLP."
+      ],
+      "resposta_correta": "Sobreajuste do modelo a uma única série temporal dominante no conjunto de dados.",
+      "justificacao": "Sem scaling, séries com magnitudes muito superiores podem dominar o processo de aprendizagem e enviesar o modelo."
+    },
+    {
+      "id": "DNN_002",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a distinção técnica fundamental entre o local_scaler_type e o scaler_type nas bibliotecas de NeuralForecast?",
+      "opcoes": [
+        "O local_scaler_type apresenta melhor performance em horizontes longos por manter a escala original dos dados.",
+        "O local_scaler_type é aplicado individualmente a cada série temporal, enquanto o scaler_type aplica uma normalização global ou a nível de dataset completo.",
+        "O local_scaler_type normaliza dinamicamente cada janela temporal dentro do modelo durante o treino e inferência, enquanto o scaler_type realiza o escalonamento estático de cada série temporal completa antes de alimentar as janelas ao modelo.",
+        "O scaler_type foca-se apenas na média da série, enquanto o local_scaler_type foca-se na variância e na tendência."
+      ],
+      "resposta_correta": "O local_scaler_type normaliza dinamicamente cada janela temporal dentro do modelo durante o treino e inferência, enquanto o scaler_type realiza o escalonamento estático de cada série temporal completa antes de alimentar as janelas ao modelo.",
+      "justificacao": "O local_scaler_type atua ao nível das janelas locais durante o treino, enquanto o scaler_type realiza o escalonamento global da série."
+    },
+    {
+      "id": "DNN_003",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Como é que o conceito de Residual Learning é aplicado na arquitetura N-BEATS para melhorar a previsão?",
+      "opcoes": [
+        "O modelo calcula o resíduo subtraindo o Forecast do Backcast em cada iteração de treino.",
+        "Cada bloco tenta prever apenas o resíduo que o bloco anterior não conseguiu capturar.",
+        "Cada bloco aprende a prever a tendência, deixando a sazonalidade como resíduo.",
+        "A rede utiliza ligações residuais para evitar o desaparecimento do gradiente."
+      ],
+      "resposta_correta": "Cada bloco tenta prever apenas o resíduo que o bloco anterior não conseguiu capturar.",
+      "justificacao": "O N-BEATS utiliza aprendizagem residual, onde cada bloco corrige o erro deixado pelo bloco anterior."
+    },
+    {
+      "id": "DNN_004",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a inovação introduzida pelo modelo N-HITS para resolver o problema da carga computacional em previsões de longo prazo?",
+      "opcoes": [
+        "Redução do número de camadas da MLP para evitar gradientes pesados.",
+        "Multi-rate Input Pooling, que lê a série temporal em frequências diferentes através de blocos com taxas distintas.",
+        "Uso de uma estrutura Encoder-Decoder baseada em LSTM.",
+        "Substituição total das camadas lineares por mecanismos de Auto-Correlation."
+      ],
+      "resposta_correta": "Multi-rate Input Pooling, que lê a série temporal em frequências diferentes através de blocos com taxas distintas.",
+      "justificacao": "O N-HITS utiliza múltiplas frequências de leitura para reduzir custo computacional e melhorar previsões longas."
+    },
+    {
+      "id": "DNN_005",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Na afinação de hiperparâmetros, qual é a Regra de Sobrevivência crítica para evitar cair num Ótimo Local?",
+      "opcoes": [
+        "Limitar o espaço de busca a 20 variáveis independentes.",
+        "Garantir que a taxa de aprendizagem é ajustada a cada 20 épocas.",
+        "A utilização exclusiva da ferramenta Optuna.",
+        "O parâmetro num_samples deve ser obrigatoriamente superior a 20."
+      ],
+      "resposta_correta": "O parâmetro num_samples deve ser obrigatoriamente superior a 20.",
+      "justificacao": "Poucas amostras exploram pouco o espaço de busca e aumentam o risco de encontrar apenas ótimos locais."
+    },
+    {
+      "id": "DNN_006",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No mecanismo de Self-Attention do Transformer, qual é a função das matrizes Q, K e V?",
+      "opcoes": [
+        "Q e K são filtros de convolução e V é o mapa de características.",
+        "Q é o vetor de entrada, K é o peso da camada oculta e V é a previsão final.",
+        "V define a importância temporal, enquanto Q e K lidam com a normalização.",
+        "Q representa o que estou a procurar, K representa as chaves de indexação e V representa o conteúdo real da informação."
+      ],
+      "resposta_correta": "Q representa o que estou a procurar, K representa as chaves de indexação e V representa o conteúdo real da informação.",
+      "justificacao": "No mecanismo de atenção, Query procura informação relevante nas Keys para recuperar os respetivos Values."
+    },
+    {
+      "id": "DNN_007",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é o impacto na complexidade computacional de um Transformer padrão se o tamanho do histórico for duplicado?",
+      "opcoes": [
+        "A complexidade linear faz com que o custo apenas duplique.",
+        "A complexidade quadrática O(L²) faz com que o custo quadruplique.",
+        "O custo permanece constante graças ao Multi-head Attention.",
+        "O custo aumenta logaritmicamente."
+      ],
+      "resposta_correta": "A complexidade quadrática O(L²) faz com que o custo quadruplique.",
+      "justificacao": "A atenção tradicional possui complexidade quadrática em relação ao tamanho da sequência."
+    },
+    {
+      "id": "DNN_008",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "O modelo Informer utiliza um truque chamado ProbSparse Attention. Qual é o principal ganho desta técnica?",
+      "opcoes": [
+        "Permite prever a série temporal ponto a ponto.",
+        "Garante interpretabilidade através de Variable Selection Networks.",
+        "Reduz a complexidade de memória para O(L log L) ao selecionar apenas as ligações dominantes.",
+        "Elimina a necessidade de Positional Encoding."
+      ],
+      "resposta_correta": "Reduz a complexidade de memória para O(L log L) ao selecionar apenas as ligações dominantes.",
+      "justificacao": "O ProbSparse Attention reduz drasticamente o custo computacional ao focar apenas nas atenções mais relevantes."
+    },
+    {
+      "id": "DNN_009",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No modelo Autoformer, como é realizada a extração de tendências brutas de forma nativa?",
+      "opcoes": [
+        "Utilizando Multi-rate Input Pooling.",
+        "Através do uso de Mixture of Experts.",
+        "Através da decomposição de série integrada dentro das próprias camadas.",
+        "Substituindo a atenção tradicional por convoluções 1D."
+      ],
+      "resposta_correta": "Através da decomposição de série integrada dentro das próprias camadas.",
+      "justificacao": "O Autoformer incorpora decomposição de tendência e sazonalidade diretamente na arquitetura."
+    },
+    {
+      "id": "DNN_010",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a vantagem fundamental da técnica de Patching introduzida pelo PatchTST?",
+      "opcoes": [
+        "Permite que cada variável seja processada de forma dependente.",
+        "Transforma a série temporal numa imagem para CNNs.",
+        "Garante previsão nativa de incerteza.",
+        "Agrupa a série em blocos, permitindo olhar para sub-sequências em vez de pontos isolados, reduzindo drasticamente a complexidade computacional e preservando informação local."
+      ],
+      "resposta_correta": "Agrupa a série em blocos, permitindo olhar para sub-sequências em vez de pontos isolados, reduzindo drasticamente a complexidade computacional e preservando informação local.",
+      "justificacao": "O PatchTST utiliza patches para resumir sequências temporais e reduzir a carga computacional dos Transformers."
+    },
+    {
+      "id": "DNN_011",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Por que motivo o Positional Encoding é considerado uma peça obrigatória em arquiteturas Transformer para séries temporais?",
+      "opcoes": [
+        "Para garantir que o modelo consiga lidar com séries de tamanhos variáveis através da normalização de camadas.",
+        "É necessário para evitar o congelamento dos pesos em sequências longas.",
+        "Porque sem ele, a rede trata a sequência como um saco de números desordenados, perdendo a noção de ordem temporal.",
+        "Serve para converter os valores da série temporal em frequências de senos e cossenos."
+      ],
+      "resposta_correta": "Porque sem ele, a rede trata a sequência como um saco de números desordenados, perdendo a noção de ordem temporal.",
+      "justificacao": "Transformers não possuem noção temporal intrínseca, sendo necessário adicionar informação de posição às sequências."
+    },
+    {
+      "id": "DNN_012",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Em séries temporais, por que é que se prefere a Layer Normalization em vez da Batch Normalization?",
+      "opcoes": [
+        "A Layer Normalization permite que o modelo ignore variáveis inúteis através do Gated Residual Network.",
+        "A Batch Normalization causa colapso da rede ao tentar normalizar pesos partilhados.",
+        "A Layer Norm é mais rápida devido à sua complexidade linear.",
+        "Porque a Layer Norm normaliza por instância e ao longo do eixo das características e tempo, lidando melhor com sequências variáveis."
+      ],
+      "resposta_correta": "Porque a Layer Norm normaliza por instância e ao longo do eixo das características e tempo, lidando melhor com sequências variáveis.",
+      "justificacao": "A Layer Normalization funciona melhor em sequências temporais porque não depende das estatísticas globais do batch."
+    },
+    {
+      "id": "DNN_013",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a função do componente Decoder numa arquitetura LSTM Encoder-Decoder?",
+      "opcoes": [
+        "Pega na memória comprimida e projeta o vetor do futuro para h passos.",
+        "Elimina o ruído da série temporal utilizando funções de ativação ReLU.",
+        "Calcula a atenção multi-cabeça.",
+        "Lê o passado e comprime a memória nos vetores Hidden State e Cell State."
+      ],
+      "resposta_correta": "Pega na memória comprimida e projeta o vetor do futuro para h passos.",
+      "justificacao": "O Decoder utiliza os estados gerados pelo Encoder para produzir as previsões futuras."
+    },
+    {
+      "id": "DNN_014",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No modelo TFT (Temporal Fusion Transformer), o que significa dizer que o output cospe incerteza nativa?",
+      "opcoes": [
+        "O modelo prevê múltiplos quantis como P10, P50 e P90 em vez de apenas um único valor pontual.",
+        "O modelo indica a probabilidade de falha do gradiente durante o treino.",
+        "A rede gera várias previsões aleatórias e calcula a média entre elas.",
+        "O output inclui um coeficiente de correlação para cada passo temporal."
+      ],
+      "resposta_correta": "O modelo prevê múltiplos quantis como P10, P50 e P90 em vez de apenas um único valor pontual.",
+      "justificacao": "O TFT produz previsões probabilísticas através de quantis, permitindo modelar incerteza."
+    },
+    {
+      "id": "DNN_015",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "O modelo FEDformer opera puramente no Domínio da Frequência. Qual é a principal ferramenta matemática utilizada para este fim?",
+      "opcoes": [
+        "Transformadas de Fourier ou Wavelets.",
+        "Matrizes de Adjacência.",
+        "Derivadas parciais de segunda ordem.",
+        "Regressão Logística polinomial."
+      ],
+      "resposta_correta": "Transformadas de Fourier ou Wavelets.",
+      "justificacao": "O FEDformer trabalha no domínio da frequência através de técnicas como Fourier e Wavelets."
+    },
+    {
+      "id": "DNN_016",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Se um utilizador configurar o num_samples como 5 numa ferramenta de Auto Tuning como o Optuna, qual é o risco imediato?",
+      "opcoes": [
+        "Risco alto de ficar preso num Ótimo Local por falta de exploração do espaço de busca.",
+        "O modelo irá sofrer de Underfitting severo.",
+        "Aumento exponencial do tempo de computação.",
+        "Incompatibilidade com o Ray Tune."
+      ],
+      "resposta_correta": "Risco alto de ficar preso num Ótimo Local por falta de exploração do espaço de busca.",
+      "justificacao": "Poucas amostras reduzem a exploração dos hiperparâmetros e aumentam a probabilidade de soluções subótimas."
+    },
+    {
+      "id": "DNN_017",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Na arquitetura N-BEATS, qual é o objetivo do componente Backcast?",
+      "opcoes": [
+        "Prever os valores futuros da série temporal.",
+        "Ajustar os pesos através de backpropagation.",
+        "Tentar reconstruir o passado para calcular o resíduo a passar ao bloco seguinte.",
+        "Inverter a ordem da série temporal."
+      ],
+      "resposta_correta": "Tentar reconstruir o passado para calcular o resíduo a passar ao bloco seguinte.",
+      "justificacao": "O Backcast reconstrói o histórico da série para medir o erro residual que será tratado pelo próximo bloco."
+    },
+    {
+      "id": "DNN_018",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "O que acontece na Multi-Head Attention quando múltiplas cabeças leem a série em paralelo?",
+      "opcoes": [
+        "Aumenta-se a complexidade para O(L⁴).",
+        "O modelo escolhe a melhor cabeça e descarta as restantes.",
+        "As cabeças competem entre si num sistema Winner-Takes-All.",
+        "Cada cabeça pode focar-se em aspetos diferentes da série, como tendências longas ou sazonalidade."
+      ],
+      "resposta_correta": "Cada cabeça pode focar-se em aspetos diferentes da série, como tendências longas ou sazonalidade.",
+      "justificacao": "As múltiplas cabeças de atenção aprendem representações distintas da sequência temporal."
+    },
+    {
+      "id": "DNN_019",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual das seguintes afirmações sobre o modelo TFT é verdadeira no que toca à sua explicabilidade?",
+      "opcoes": [
+        "A explicabilidade advém apenas da visualização dos pesos da atenção.",
+        "É uma caixa negra impenetrável.",
+        "Utiliza Variable Selection Networks para identificar quais variáveis realmente importam para a previsão.",
+        "Não permite o uso de variáveis externas."
+      ],
+      "resposta_correta": "Utiliza Variable Selection Networks para identificar quais variáveis realmente importam para a previsão.",
+      "justificacao": "O TFT inclui mecanismos de seleção de variáveis que ajudam a interpretar quais inputs influenciam mais a previsão."
+    },
+    {
+      "id": "DNN_020",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a Equação Mágica que define a Atenção num Transformer clássico?",
+      "opcoes": [
+        "Softmax(V)QKᵀ × √dₘ",
+        "Softmax(QKᵀ / √dₘ) × V",
+        "Sigmoid(QKᵀ) × V²",
+        "Softmax(Q + K + V) × √dₘ"
+      ],
+      "resposta_correta": "Softmax(QKᵀ / √dₘ) × V",
+      "justificacao": "A atenção escalada calcula similaridades entre Queries e Keys, aplica Softmax e pondera os Values."
+    },
+    {
+      "id": "DNN_021",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No N-HITS, a solução para previsões de longo prazo envolve três tipos de blocos. Quais são eles?",
+      "opcoes": [
+        "Bloco Rápido, Bloco Médio e Bloco Lento.",
+        "Bloco de Entrada, Bloco Oculto e Bloco de Saída.",
+        "Bloco de Tendência, Bloco de Sazonalidade e Bloco de Ruído.",
+        "Bloco Linear, Bloco Recorrente e Bloco de Atenção."
+      ],
+      "resposta_correta": "Bloco Rápido, Bloco Médio e Bloco Lento.",
+      "justificacao": "O N-HITS utiliza blocos especializados em diferentes frequências temporais para melhorar previsões longas."
+    },
+    {
+      "id": "DNN_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Qual é a principal função da ferramenta Ray Tune ou Optuna mencionada no Quadro 7?",
+      "opcoes": [
+        "Reduzir a complexidade quadrática dos Transformers.",
+        "Automatizar a afinação de hiperparâmetros para encontrar a configuração de melhor desempenho.",
+        "Gerar dados sintéticos para aumentar o tamanho do conjunto de treino.",
+        "Visualizar previsões em tempo real."
+      ],
+      "resposta_correta": "Automatizar a afinação de hiperparâmetros para encontrar a configuração de melhor desempenho.",
+      "justificacao": "Ferramentas como Ray Tune e Optuna automatizam a procura de hiperparâmetros ideais."
+    },
+    {
+      "id": "DNN_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Em relação à MLP no contexto de séries temporais, qual é uma característica fundamental apresentada no diagrama?",
+      "opcoes": [
+        "Possui memória intrínseca capaz de comprimir o histórico.",
+        "Resolve nativamente o problema de Vanishing Gradients.",
+        "Utiliza Multi-rate Input Pooling.",
+        "É uma das fundações clássicas que utiliza frequentemente a função de ativação ReLU."
+      ],
+      "resposta_correta": "É uma das fundações clássicas que utiliza frequentemente a função de ativação ReLU.",
+      "justificacao": "MLPs utilizam frequentemente ativações ReLU em arquiteturas feedforward clássicas."
+    },
+    {
+      "id": "DNN_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "Como o PatchTST lida com múltiplas séries temporais simultaneamente?",
+      "opcoes": [
+        "Através do Channel-Independence, lendo cada variável isoladamente no backbone.",
+        "Utilizando uma Variable Selection Network.",
+        "Concatenando todos os canais num único vetor de entrada.",
+        "Aplicando uma Transformada de Fourier diferente para cada canal."
+      ],
+      "resposta_correta": "Através do Channel-Independence, lendo cada variável isoladamente no backbone.",
+      "justificacao": "O PatchTST processa cada variável temporal separadamente para evitar ruído entre canais."
+    },
+    {
+      "id": "DNN_025",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "No modelo N-HITS, qual o resultado esperado ao aplicar esta arquitetura em horizontes de previsão longos?",
+      "opcoes": [
+        "Necessidade obrigatória de usar Positional Encoding.",
+        "Redução na precisão em troca de interpretabilidade.",
+        "Um modelo muito mais leve, rápido e preciso no longo prazo.",
+        "Aumento significativo no tempo de treino."
+      ],
+      "resposta_correta": "Um modelo muito mais leve, rápido e preciso no longo prazo.",
+      "justificacao": "O N-HITS foi desenhado para previsões longas com elevada eficiência computacional."
+    },
+    {
+      "id": "DNN_026",
+      "tipo": "multiple_choice",
+      "macro_tema": "Deep_Neural_Networks",
+      "pergunta": "A deconstrução do erro no N-BEATS significa que o Bloco 2 não tenta prever tudo de novo. O que é que ele tenta prever?",
+      "opcoes": [
+        "Os valores da série temporal original mas com os pesos invertidos.",
+        "A incerteza estatística da previsão feita pelo Bloco 1.",
+        "A tendência global enquanto o Bloco 1 foca no ruído.",
+        "Apenas a fração de erro, ou resíduo, que o Bloco 1 falhou em capturar."
+      ],
+      "resposta_correta": "Apenas a fração de erro, ou resíduo, que o Bloco 1 falhou em capturar.",
+      "justificacao": "No N-BEATS, cada bloco residual tenta modelar apenas o erro deixado pelos blocos anteriores."
     }
   ]
 }
