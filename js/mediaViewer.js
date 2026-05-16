@@ -23,10 +23,23 @@ const mediaCatalog = {
     },
     "BIA_TMBA": {
         pdfs: [
-            { name: "Resumo Geral", file: "pdfs/BIA_TMBA.pdf" }
+            { name: "Teste", file: "pdfs/BIA_TMBA.pdf" },
+            { name: "1 Text Mining", file: "pdfs/BIA_TMBA_01.pdf" },
+            { name: "2 Polaridade", file: "pdfs/BIA_TMBA_02.pdf" },
+            { name: "3 Analise Exploratória de Dados", file: "pdfs/BIA_TMBA_03.pdf" },
+            { name: "4 Técnicas de Pré Processamento", file: "pdfs/BIA_TMBA_04.pdf" },
+            { name: "5 Classificaçãp", file: "pdfs/BIA_TMBA_05.pdf" },
+            { name: "6 Large Languague Models", file: "pdfs/BIA_TMBA_06.pdf" },
+            { name: "7 Prompt Engineering", file: "pdfs/BIA_TMBA_07.pdf" }
         ],
         videos: [
-            { name: "Resumo", file: "videos/BIA_TMBA.mp4" }
+            { name: "1 Text Mining", file: "videos/BIA_TMBA_01.mp4" },
+            { name: "2 Polaridade", file: "videos/BIA_TMBA_02.mp4" },
+            { name: "3 Analise Exploratória de Dados", file: "videos/BIA_TMBA_03.mp4" },
+            { name: "4 Técnicas de Pré Processamento", file: "videos/BIA_TMBA_04.mp4" },
+            { name: "5 Classificaçãp", file: "videos/BIA_TMBA_05.mp4" },
+            { name: "6 Large Languague Models", file: "videos/BIA_TMBA_06.mp4" },
+            { name: "7 Prompt Engineering", file: "videos/BIA_TMBA_07.mp4" }
         ]
     },
     "CV_JOAO": {
