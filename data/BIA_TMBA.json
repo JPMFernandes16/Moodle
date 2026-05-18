@@ -5,295 +5,434 @@
     "desconto_erro": 0
   },
   "configuracao_teste": {
-    "Introdução": 5,
-    "Text_Mining_e_NLP": 5
+    "Text_Mining": 2,
+    "Polaridade": 2,
+    "Analise_Exploratoria_Dados": 2,
+    "Pre-Processamento_Texto": 2,
+    "Classificacao": 2,
+    "LLM": 2,
+    "Prompt_Engineering": 2
   },
   "perguntas": [
     {
       "id": "TM_001",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "Qual é a relação correta entre os conceitos de KDD e Data Mining?",
+      "macro_tema": "Text_Mining",
+      "pergunta": "De acordo com a tipologia de dados apresentada, como devem ser classificados os e-mails e os ficheiros XML, respetivamente?",
       "opcoes": [
-        "A) O KDD é uma fase específica dentro do processo de Data Mining.",
-        "B) São sinónimos exatos na área de Business Intelligence.",
-        "C) O Data Mining é apenas uma fase específica dentro do processo global de KDD.",
-        "D) O Data Mining foca-se em dados não-estruturados, enquanto o KDD foca-se em dados estruturados."
+        "A) Dados não-estruturados e dados semi-estruturados.",
+        "B) Ambos são classificados como dados não-estruturados.",
+        "C) Dados semi-estruturados e dados não-estruturados.",
+        "D) Dados estruturados e dados semi-estruturados."
       ],
-      "resposta_correta": "C) O Data Mining é apenas uma fase específica dentro do processo global de KDD.",
-      "justificacao": "O Knowledge Discovery in Databases (KDD) é o processo abrangente de extração de conhecimento, desde a recolha até à avaliação. O Data Mining é apenas a etapa central deste processo, onde se aplicam os algoritmos para encontrar padrões."
+      "resposta_correta": "A) Dados não-estruturados e dados semi-estruturados.",
+      "justificacao": "Os e-mails são geralmente classificados como dados não-estruturados, pois contêm texto livre, enquanto os ficheiros XML são semi-estruturados porque possuem uma organização através de etiquetas e hierarquias."
     },
     {
       "id": "TM_002",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Introdução",
-      "pergunta": "Associe os seguintes tipos de tarefas de Machine Learning aos resultados específicos que pretendem atingir, distinguindo os vários modelos:",
-      "pares": [
-        {
-          "item": "Classificação",
-          "correspondencia": "Prevê um valor finito (categorias), separando os dados em classes pré-definidas."
-        },
-        {
-          "item": "Regressão",
-          "correspondencia": "Prevê um valor numérico contínuo com base em dados passados."
-        },
-        {
-          "item": "Clustering",
-          "correspondencia": "Agrupa os dados por semelhança de forma não-supervisionada, sem categorias pré-definidas."
-        }
-      ]
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining",
+      "pergunta": "No contexto do processo global de extração de padrões, qual é a relação hierárquica correta entre KDD e Data Mining (DM)?",
+      "opcoes": [
+        "A) KDD e DM são termos sinónimos utilizados para descrever a mesma tarefa.",
+        "B) O KDD é a fase de aplicação de algoritmos que decorre dentro do Data Mining.",
+        "C) O DM é uma fase específica contida dentro do processo global de KDD.",
+        "D) O DM foca-se em dados estruturados, enquanto o KDT foca-se em KDD."
+      ],
+      "resposta_correta": "C) O DM é uma fase específica contida dentro do processo global de KDD.",
+      "justificacao": "O KDD é o processo global de descoberta de conhecimento em bases de dados. O Data Mining corresponde a uma das suas fases, na qual são aplicados algoritmos para descobrir padrões nos dados."
     },
     {
       "id": "TM_003",
-      "tipo": "true_false",
-      "macro_tema": "Introdução",
-      "pergunta": "No contexto da taxonomia dos dados, os ficheiros em formato XML ou JSON são classificados rigorosamente como Dados Não-Estruturados, uma vez que não utilizam tabelas relacionais clássicas.",
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining",
+      "pergunta": "Qual é a distinção fundamental entre as tarefas de Information Retrieval (IR) e Information Extraction (IE)?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "A) IR é um processo de limpeza linguística, enquanto IE é um processo de classificação de sentimento.",
+        "B) IR foca-se num universo de documentos, enquanto IE extrai dados específicos de dentro de um documento já recuperado.",
+        "C) IR extrai entidades como nomes e datas, enquanto IE recupera documentos de uma base de dados.",
+        "D) IE refere-se a documentos inteiros, enquanto IR foca-se apenas em sumários abstrativos."
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "Apesar de não estarem organizados em linhas e colunas fixas (como os Dados Estruturados), os formatos XML e JSON possuem tags, chaves e hierarquias lógicas. Por isso, são classificados como Dados Semi-Estruturados."
+      "resposta_correta": "B) IR foca-se num universo de documentos, enquanto IE extrai dados específicos de dentro de um documento já recuperado.",
+      "justificacao": "Information Retrieval procura e recupera documentos relevantes dentro de um conjunto maior. Information Extraction atua sobre documentos específicos, extraindo informação estruturada, como nomes, datas, locais ou relações."
     },
     {
       "id": "TM_004",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "A técnica que permite a um modelo de linguagem (LLM) usar informação privada e atualizada de uma organização, sem necessidade de o treinar novamente, chama-se:",
+      "macro_tema": "Text_Mining",
+      "pergunta": "Na Sumarização de texto, qual é a principal característica que diferencia o método Abstrativo do Extrativo?",
       "opcoes": [
-        "A) IA Generativa.",
-        "B) Agentic AI.",
-        "C) Sumarização Abstrativa.",
-        "D) RAG (Retrieval-Augmented Generation)."
+        "A) O método extrativo cria novos conceitos não presentes no texto original.",
+        "B) A sumarização abstrativa é uma tarefa de recuperação de documentos (IR).",
+        "C) O método abstrativo gera novas frases recorrendo a aprendizagem supervisionada.",
+        "D) Apenas o método extrativo utiliza algoritmos computacionais para o processamento."
       ],
-      "resposta_correta": "D) RAG (Retrieval-Augmented Generation).",
-      "justificacao": "O RAG combina a geração de texto de um LLM com um sistema de recuperação de informação, permitindo que o modelo consulte bases de dados locais e documentos da empresa em tempo real."
+      "resposta_correta": "C) O método abstrativo gera novas frases recorrendo a aprendizagem supervisionada.",
+      "justificacao": "A sumarização extrativa seleciona frases ou segmentos já existentes no texto original. A sumarização abstrativa pode gerar novas frases, reformulando o conteúdo com base no significado do texto."
     },
     {
       "id": "TM_005",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "A Análise de Sentimentos em Text Mining foca-se principalmente em:",
+      "macro_tema": "Text_Mining",
+      "pergunta": "Um sistema que identifica que os termos \"Automóvel\" e \"Viatura\" se referem ao mesmo conceito está a abordar qual desafio técnico?",
       "opcoes": [
-        "A) Expressões objetivas e factos numéricos.",
-        "B) Expressões subjetivas (opiniões) para detetar polaridade.",
-        "C) Sumarizar de forma extrativa o texto analisado.",
-        "D) Encontrar regras de associação entre as palavras mais usadas."
+        "A) Ambiguidade de Contexto.",
+        "B) Similaridade Semântica.",
+        "C) Tratamento de Negação.",
+        "D) Ruído nos Dados."
       ],
-      "resposta_correta": "B) Expressões subjetivas (opiniões) para detetar polaridade.",
-      "justificacao": "A Análise de Sentimentos ignora grande parte da objetividade para focar-se em opiniões, emoções e atitudes, classificando a polaridade do texto como positiva, negativa ou neutra."
+      "resposta_correta": "B) Similaridade Semântica.",
+      "justificacao": "A similaridade semântica permite reconhecer que palavras diferentes podem ter significados próximos ou equivalentes, como acontece com \"Automóvel\" e \"Viatura\"."
     },
     {
       "id": "TM_006",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "Num projeto de extração de conhecimento, a equipa está na fase exata onde vai aplicar algoritmos matemáticos e de Machine Learning para encontrar padrões ocultos nos dados. A que fase específica nos referimos?",
+      "macro_tema": "Polaridade",
+      "pergunta": "Qual é a diferença estrutural entre o modelo de Ekman e o de Plutchik?",
       "opcoes": [
-        "A) KDD (Knowledge Discovery in Databases).",
-        "B) Data Mining.",
-        "C) Pré-processamento.",
-        "D) Transformação de Dados."
+        "A) Ekman propõe 6 emoções base, enquanto Plutchik organiza as emoções numa roda de pares opostos.",
+        "B) O modelo de Ekman é usado para ironia, enquanto o de Plutchik é usado para sarcasmo.",
+        "C) Plutchik foca na polaridade positiva/negativa, enquanto Ekman foca em factos vs. opiniões.",
+        "D) Ambos os modelos classificam emoções apenas como 'Neutras' ou 'Polarizadas'."
       ],
-      "resposta_correta": "B) Data Mining.",
-      "justificacao": "O Data Mining é a fase do KDD dedicada unicamente à aplicação de algoritmos (como redes neuronais ou árvores de decisão) para modelar e extrair padrões."
+      "resposta_correta": "A) Ekman propõe 6 emoções base, enquanto Plutchik organiza as emoções numa roda de pares opostos.",
+      "justificacao": "Ekman identifica seis emoções básicas universais. Plutchik apresenta uma roda das emoções, organizada em pares opostos e diferentes intensidades emocionais."
     },
     {
       "id": "TM_007",
-      "tipo": "true_false",
-      "macro_tema": "Introdução",
-      "pergunta": "Uma agência imobiliária quer criar um modelo preditivo que indique o valor exato (em euros) pelo qual uma casa será vendida no próximo ano. Este problema resolve-se utilizando tarefas de Classificação (Aprendizagem Supervisionada).",
+      "tipo": "multiple_choice",
+      "macro_tema": "Polaridade",
+      "pergunta": "Porque é que a frase \"Perfeito! Avariou no primeiro dia\" representa um dos maiores desafios para a análise de sentimentos?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "A) Devido à presença de ruído nos dados, como erros ortográficos e abreviaturas.",
+        "B) Porque contém uma dupla negação que inverte a polaridade esperada.",
+        "C) Devido à utilização de um léxico positivo para expressar insatisfação técnica (Ironia/Sarcasmo).",
+        "D) Porque a palavra 'Avariou' é considerada semanticamente ambígua em diferentes contextos."
       ],
-      "resposta_correta": "Falso",
-      "justificacao": "Como o objetivo é prever uma quantidade ou um valor numérico contínuo (o preço em euros), trata-se de um problema de Regressão e não de Classificação."
+      "resposta_correta": "C) Devido à utilização de um léxico positivo para expressar insatisfação técnica (Ironia/Sarcasmo).",
+      "justificacao": "A palavra \"Perfeito\" tem polaridade positiva, mas neste contexto é usada de forma irónica para expressar descontentamento. Este tipo de ironia ou sarcasmo dificulta a análise automática de sentimentos."
     },
     {
       "id": "TM_008",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Introdução",
-      "pergunta": "O Text Mining lida com diferentes taxonomias e estruturas de informação. Associe os exemplos práticos à sua respetiva classificação de dados:",
-      "pares": [
-        {
-          "item": "Vídeos, ficheiros de áudio e texto livre extraído de redes sociais.",
-          "correspondencia": "Dados Não-Estruturados"
-        },
-        {
-          "item": "Ficheiros de registo e comunicação entre APIs, como JSON.",
-          "correspondencia": "Dados Semi-Estruturados"
-        },
-        {
-          "item": "Base de dados relacional (SQL) organizada estritamente em tabelas e colunas.",
-          "correspondencia": "Dados Estruturados"
-        }
-      ]
+      "tipo": "multiple_choice",
+      "macro_tema": "Text_Mining",
+      "pergunta": "Na classificação de dados por estrutura, qual a percentagem estimada de informação na Web que é considerada 'Não-estruturada'?",
+      "opcoes": [
+        "A) ≈10%",
+        "B) ≈50%",
+        "C) ≈75%",
+        "D) ≈90%"
+      ],
+      "resposta_correta": "D) ≈90%",
+      "justificacao": "Estima-se frequentemente que a grande maioria da informação disponível na Web seja não-estruturada, podendo rondar os 90%, incluindo texto livre, imagens, vídeos, páginas web e outros conteúdos sem estrutura rígida."
     },
     {
       "id": "TM_009",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "Um sistema de IA que não se limita a gerar texto, mas consegue compreender um objetivo, criar um plano passo-a-passo e interagir com outros sistemas de forma totalmente autónoma (ex: pesquisar, reservar e pagar um voo sozinho) é classificado como:",
+      "macro_tema": "Text_Mining",
+      "pergunta": "O termo \"Laranja\" pode referir-se a uma cor, uma fruta ou um partido político. Este exemplo ilustra qual dificuldade no processamento de linguagem natural?",
       "opcoes": [
-        "A) RAG (Retrieval-Augmented Generation).",
-        "B) IA Generativa.",
-        "C) Agentic AI.",
-        "D) Processamento de Linguagem Natural (PLN)."
+        "A) Similaridade Semântica.",
+        "B) Tratamento de Negação.",
+        "C) Sensibilidade de Contexto / Ambiguidade.",
+        "D) Reconhecimento de Entidades Nomeadas (NER)."
       ],
-      "resposta_correta": "C) Agentic AI.",
-      "justificacao": "A Agentic AI (IA Agente) caracteriza-se por ter autonomia, capacidade de raciocínio sequencial, uso de ferramentas externas e execução orientada a objetivos complexos."
+      "resposta_correta": "C) Sensibilidade de Contexto / Ambiguidade.",
+      "justificacao": "A palavra \"Laranja\" pode assumir diferentes significados dependendo do contexto. Este é um exemplo de ambiguidade semântica e da necessidade de interpretar corretamente o contexto."
     },
     {
       "id": "TM_010",
       "tipo": "multiple_choice",
-      "macro_tema": "Introdução",
-      "pergunta": "Na Análise de Sentimentos, um utilizador escreve: 'O vosso serviço de entregas é tão rápido que a minha encomenda demorou apenas 3 meses a chegar...'. O algoritmo classifica a frase como Positiva porque leu as palavras 'rápido' e 'apenas', ignorando o verdadeiro significado da frase. Este é um exemplo clássico de que desafio do Text Mining?",
+      "macro_tema": "Polaridade",
+      "pergunta": "De acordo com as definições de análise de sentimento, como se distinguem 'Opinião' e 'Facto'?",
       "opcoes": [
-        "A) Negação.",
-        "B) Sensibilidade de Contexto.",
-        "C) Extração de Terminologia.",
-        "D) Ironia/Sarcasmo."
+        "A) Factos são extraídos por NER; Opiniões são extraídas por motores de busca.",
+        "B) Factos são sempre positivos; Opiniões podem ser positivas, negativas ou neutras.",
+        "C) Factos são objetivos; Opiniões expressam crenças ou avaliações subjetivas.",
+        "D) Opiniões são dados estruturados; Factos são dados não-estruturados."
       ],
-      "resposta_correta": "D) Ironia/Sarcasmo.",
-      "justificacao": "A ironia e o sarcasmo são um dos maiores desafios do Processamento de Linguagem Natural, pois o texto literal (positivo) contradiz o verdadeiro sentimento do emissor (negativo)."
+      "resposta_correta": "C) Factos são objetivos; Opiniões expressam crenças ou avaliações subjetivas.",
+      "justificacao": "Os factos correspondem a informações objetivas e verificáveis. As opiniões representam avaliações, crenças ou sentimentos subjetivos sobre algo."
     },
     {
       "id": "TM_011",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Na pipeline de Text Mining, qual é a principal função do Processamento de Linguagem Natural (NLP)?",
+      "macro_tema": "Polaridade",
+      "pergunta": "Qual é a principal limitação das abordagens baseadas em Léxicos em comparação com a abordagem por Corpus?",
       "opcoes": [
-        "A) Extrair documentos inteiros e relevantes de uma base de dados.",
-        "B) Gerar novas palavras para criar um resumo automático do texto.",
-        "C) Limpar e filtrar os dados textuais, atuando como uma fase de pré-processamento para preparar a classificação.",
-        "D) Converter dados estruturados num formato não-estruturado."
+        "A) A dependência exclusiva de algoritmos de aprendizagem supervisionada.",
+        "B) A necessidade de grandes volumes de dados rotulados para treino.",
+        "C) A dificuldade em lidar com falhas de contexto e dependência do domínio.",
+        "D) A incapacidade de calcular a polaridade neutra de um termo."
       ],
-      "resposta_correta": "C) Limpar e filtrar os dados textuais, atuando como uma fase de pré-processamento para preparar a classificação.",
-      "justificacao": "O NLP atua fundamentalmente na limpeza e estruturação inicial do texto (ex: tokenização, lematização, remoção de stop words) para preparar os dados não-estruturados para os algoritmos de classificação matemáticos."
+      "resposta_correta": "C) A dificuldade em lidar com falhas de contexto e dependência do domínio.",
+      "justificacao": "As abordagens baseadas em léxicos possuem limitações relacionadas com contexto, ironia e dependência do domínio específico, enquanto abordagens por corpus conseguem adaptar-se melhor através de aprendizagem baseada em dados."
     },
     {
       "id": "TM_012",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Um sistema de IA lê uma notícia longa de 5 páginas. No final, devolve um parágrafo de três linhas, utilizando palavras novas e estruturas frásicas que o próprio algoritmo inventou para explicar a ideia geral. Que técnica foi aplicada?",
+      "macro_tema": "Polaridade",
+      "pergunta": "Ao utilizar o algoritmo VADER, como é classificado um texto que apresenta uma métrica Compound de 0.04?",
       "opcoes": [
-        "A) Sumarização Extrativa.",
-        "B) Extração de Informação.",
-        "C) Sumarização Abstrativa.",
-        "D) Pesquisa e Seleção de Informação."
+        "A) Negativo.",
+        "B) Neutro.",
+        "C) Positivo.",
+        "D) Inconclusivo."
       ],
-      "resposta_correta": "C) Sumarização Abstrativa.",
-      "justificacao": "A sumarização abstrativa gera texto novo e original, ao contrário da extrativa, que apenas recorta e cola as frases mais importantes exatamente como aparecem no documento original."
+      "resposta_correta": "B) Neutro.",
+      "justificacao": "No VADER, valores compound entre -0.05 e 0.05 são geralmente classificados como neutros."
     },
     {
       "id": "TM_013",
-      "tipo": "true_false",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Uma empresa de telecomunicações quer analisar as gravações de áudio puro das chamadas de apoio ao cliente. De acordo com a teoria dos Tipos de Dados, este ficheiro de áudio puro é classificado como um Dado Não-Estruturado.",
+      "tipo": "multiple_choice",
+      "macro_tema": "Polaridade",
+      "pergunta": "Na abordagem por Corpus, qual é o foco principal da vertente Semântica em contraste com a vertente Estatística?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "A) A atribuição de pesos baseada na frequência e contagem de palavras.",
+        "B) A criação manual de dicionários de palavras com polaridades fixas.",
+        "C) O treino de algoritmos através de aprendizagem supervisionada.",
+        "D) A análise de associações, relações linguísticas explícitas e ontologias."
       ],
-      "resposta_correta": true,
-      "justificacao": "Correto. O áudio puro (tal como imagens, vídeo e texto livre) não tem qualquer estrutura tabular fixa em base de dados (estruturado) nem um sistema interno de tags/marcação lógico (semi-estruturado)."
+      "resposta_correta": "D) A análise de associações, relações linguísticas explícitas e ontologias.",
+      "justificacao": "A vertente semântica da abordagem por corpus procura compreender relações de significado, ontologias e associações linguísticas, ao contrário da vertente estatística, que privilegia frequências e padrões quantitativos."
     },
     {
       "id": "TM_014",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "A Análise de Sentimentos avalia a polaridade do texto. Qual destas frases seria o principal alvo de análise para um modelo de Text Mining?",
+      "macro_tema": "LLM",
+      "pergunta": "Como é que o parâmetro 'Temperature' influencia a resposta de um LLM como o ChatGPT numa integração via Python?",
       "opcoes": [
-        "A) \"O computador pesa exatamente 2 quilos.\" (Expressão Objetiva).",
-        "B) \"O computador tem um processador de 8 núcleos.\" (Facto).",
-        "C) \"O computador custou-me 1500 euros na loja.\" (Dado Estruturado).",
-        "D) \"O computador é incrível e super rápido!\" (Expressão Subjetiva/Opinião)."
+        "A) Valores elevados restringem estritamente o comprimento da resposta gerada.",
+        "B) Quanto maior o valor, mais focada e menos aleatória será a resposta.",
+        "C) A temperatura define se o modelo utiliza aprendizagem supervisionada ou não.",
+        "D) Um valor baixo torna a resposta mais focada e determinística."
       ],
-      "resposta_correta": "D) \"O computador é incrível e super rápido!\" (Expressão Subjetiva/Opinião).",
-      "justificacao": "A Análise de Sentimentos descarta os factos e expressões puramente objetivas. O seu principal foco é a extração de opiniões, perceções e emoções (polaridade subjetiva)."
+      "resposta_correta": "D) Um valor baixo torna a resposta mais focada e determinística.",
+      "justificacao": "O parâmetro temperature controla o nível de criatividade e aleatoriedade. Valores baixos produzem respostas mais previsíveis e consistentes; valores altos aumentam a diversidade das respostas."
     },
     {
       "id": "TM_015",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Um utilizador escreve no Twitter: 'Maravilhoso, o meu voo foi cancelado e vou dormir no chão do aeroporto. Melhor dia de sempre!'. O algoritmo classificou a frase como Positiva porque identificou as palavras 'Maravilhoso' e 'Melhor'. Que desafio clássico do Text Mining causou este erro de avaliação?",
+      "macro_tema": "Polaridade",
+      "pergunta": "Quais são os quatro valores de output retornados pelo algoritmo VADER após analisar um texto?",
       "opcoes": [
-        "A) Sensibilidade de Contexto.",
-        "B) Ironia/Sarcasmo.",
-        "C) Negação.",
-        "D) Falta de Sumarização."
+        "A) pos, neg, neu e compound.",
+        "B) polarity, intensity, lexicon e score.",
+        "C) positive, negative, neutral e average.",
+        "D) subjective, objective, polarity e intensity."
       ],
-      "resposta_correta": "B) Ironia/Sarcasmo.",
-      "justificacao": "A ironia inverte o sentido literal das palavras, o que muitas vezes confunde os algoritmos mais elementares que analisam a polaridade baseando-se apenas num dicionário estático de palavras-chave positivas."
+      "resposta_correta": "A) pos, neg, neu e compound.",
+      "justificacao": "O VADER retorna quatro métricas principais: pos (positivo), neg (negativo), neu (neutro) e compound, que representa a polaridade global normalizada."
     },
     {
       "id": "TM_016",
-      "tipo": "drag_and_drop",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Associe os seguintes processos da pipeline de exploração de dados textuais à sua respetiva descrição ou resultado prático:",
-      "pares": [
-        {
-          "item": "Pesquisa e Seleção de Informação",
-          "correspondencia": "Devolve os documentos originais e inteiros com base numa query de pesquisa ou palavra-chave."
-        },
-        {
-          "item": "Extração de Informação",
-          "correspondencia": "Abre os documentos, lê o interior e devolve apenas os dados, entidades ou factos específicos solicitados."
-        }
-      ]
+      "tipo": "multiple_choice",
+      "macro_tema": "Polaridade",
+      "pergunta": "De que forma o VADER processa a frase: 'O filme não era nada bom, MAS a banda sonora é incrível!'?",
+      "opcoes": [
+        "A) Ignora a segunda parte da frase devido à negação inicial.",
+        "B) Atribui uma polaridade neutra porque os sentimentos se anulam matematicamente.",
+        "C) Considera apenas a pontuação para definir a intensidade global.",
+        "D) Identifica uma mudança de polaridade causada por uma conjunção adversativa."
+      ],
+      "resposta_correta": "D) Identifica uma mudança de polaridade causada por uma conjunção adversativa.",
+      "justificacao": "O VADER consegue identificar mudanças de contexto e polaridade introduzidas por conjunções adversativas como 'MAS', atribuindo maior relevância à parte posterior da frase."
     },
     {
       "id": "TM_017",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "O diretor pediu-te para usares uma ferramenta que leia um relatório em PDF e devolva um resumo rápido. O software devolveu um texto curto, composto apenas por frases exatas que já existiam no relatório original, coladas umas a seguir às outras. Que método foi utilizado?",
+      "macro_tema": "Polaridade",
+      "pergunta": "Qual dos seguintes léxicos é especificamente destacado por ser focado em notícias financeiras?",
       "opcoes": [
-        "A) Sumarização Abstrativa.",
-        "B) Extração de Informação.",
-        "C) NLP (Processamento de Linguagem Natural).",
-        "D) Sumarização Extrativa."
+        "A) SentiLexPT.",
+        "B) TextBlob.",
+        "C) AFINN.",
+        "D) VADER."
       ],
-      "resposta_correta": "D) Sumarização Extrativa.",
-      "justificacao": "A sumarização extrativa funciona exatamente como um marcador fluorescente humano num texto impresso: avalia as passagens mais importantes e extrai-as 'ipsis verbis' para formar o resumo."
+      "resposta_correta": "A) SentiLexPT.",
+      "justificacao": "O SentiLexPT é um recurso lexical focado na língua portuguesa e frequentemente associado a aplicações específicas, incluindo análise de textos financeiros e notícias."
     },
     {
       "id": "TM_018",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Qual é a característica fundamental que distingue os dados Semi-Estruturados dos Não-Estruturados?",
+      "macro_tema": "LLM",
+      "pergunta": "No contexto da integração de LLMs via Python, o que define a 'role' (papel) de um objeto na lista de mensagens?",
       "opcoes": [
-        "A) Os semi-estruturados têm um formato rígido em tabelas, tal como os estruturados.",
-        "B) Os semi-estruturados possuem alguma organização interna (como tags ou marcadores), ao passo que os não-estruturados não possuem qualquer estrutura predefinida.",
-        "C) Os dados semi-estruturados englobam imagens e vídeos organizados em pastas, enquanto os não-estruturados são apenas texto.",
-        "D) Os semi-estruturados são usados apenas na Sumarização Abstrativa."
+        "A) Diferencia as instruções de sistema ('system') das entradas do utilizador ('user').",
+        "B) Controla a temperatura da resposta para cada mensagem individual.",
+        "C) Escolhe automaticamente entre os modelos gpt-3.5-turbo ou gpt-4.",
+        "D) Define o limite de tokens que o modelo pode utilizar na resposta."
       ],
-      "resposta_correta": "B) Os semi-estruturados possuem alguma organização interna (como tags ou marcadores), ao passo que os não-estruturados não possuem qualquer estrutura predefinida.",
-      "justificacao": "Ficheiros como o JSON ou XML são semi-estruturados porque utilizam hierarquias e identificadores explícitos (chaves e valores). Já o texto não-estruturado não possui esta formatação lógica nativa."
+      "resposta_correta": "A) Diferencia as instruções de sistema ('system') das entradas do utilizador ('user').",
+      "justificacao": "A propriedade role identifica quem originou a mensagem, como system, user ou assistant, permitindo estruturar corretamente o contexto enviado ao modelo."
     },
     {
       "id": "TM_019",
-      "tipo": "true_false",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Lê a seguinte frase retirada de um artigo: 'O lucro líquido da empresa no primeiro trimestre foi de 2 milhões de euros.' No âmbito da Análise de Sentimentos, esta expressão classifica-se como uma expressão subjetiva de polaridade positiva, pois o facto de haver 'lucro' indica sucesso financeiro.",
+      "tipo": "multiple_choice",
+      "macro_tema": "Polaridade",
+      "pergunta": "Segundo os fundamentos da análise de sentimentos, qual é a diferença entre Polaridade e Intensidade?",
       "opcoes": [
-        "Verdadeiro",
-        "Falso"
+        "A) Intensidade refere-se ao uso de emojis, enquanto Polaridade refere-se apenas a palavras.",
+        "B) Polaridade é utilizada em Machine Learning e Intensidade apenas em Léxicos.",
+        "C) Intensidade é o valor global compound, enquanto Polaridade são as percentagens individuais.",
+        "D) Polaridade classifica o sentimento (ex: positivo), enquanto Intensidade mede o grau dessa emoção."
       ],
-      "resposta_correta": false,
-      "justificacao": "É uma expressão objetiva (um facto inquestionável). A Análise de Sentimentos não mede o impacto financeiro de um facto para a empresa, mas sim a presença de carga opinativa ou emocional no texto, que neste caso é nula."
+      "resposta_correta": "D) Polaridade classifica o sentimento (ex: positivo), enquanto Intensidade mede o grau dessa emoção.",
+      "justificacao": "A polaridade identifica a direção do sentimento (positivo, negativo ou neutro), enquanto a intensidade mede a força ou magnitude desse sentimento."
     },
     {
       "id": "TM_020",
       "tipo": "multiple_choice",
-      "macro_tema": "Text_Mining_e_NLP",
-      "pergunta": "Um algoritmo de Análise de Sentimentos está a analisar notícias. Numa frase lê a palavra 'banco' e classifica-a como uma instituição financeira. Noutra notícia, lê a palavra 'banco' e classifica-a como um assento de jardim. Este é um exemplo da aplicação bem-sucedida contra que desafio do Text Mining?",
+      "macro_tema": "Polaridade",
+      "pergunta": "O que acontece ao score de um sentimento no VADER quando uma palavra é escrita integralmente em MAIÚSCULAS (ex: 'GOOD')?",
       "opcoes": [
-        "A) Sensibilidade de contexto.",
-        "B) Ironia/Sarcasmo.",
-        "C) Negação.",
-        "D) Ambiguidade abstrativa."
+        "A) A polaridade é invertida para o oposto.",
+        "B) A intensidade do sentimento é intensificada.",
+        "C) O valor Compound é automaticamente fixado em 1 ou −1.",
+        "D) O termo é ignorado por ser considerado ruído ou grito."
       ],
-      "resposta_correta": "A) Sensibilidade de contexto.",
-      "justificacao": "A sensibilidade de contexto lida precisamente com a polissemia (palavras com vários significados). O algoritmo tem de analisar os termos vizinhos para entender qual é a definição correta que se aplica."
+      "resposta_correta": "B) A intensidade do sentimento é intensificada.",
+      "justificacao": "O VADER interpreta palavras em maiúsculas como um reforço emocional, aumentando a intensidade do sentimento associado ao termo."
+    },
+    {
+      "id": "TM_021",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Ao realizar uma análise inicial de um DataFrame, qual é o método mais adequado para verificar especificamente o consumo de memória e a presença de valores nulos em cada coluna?",
+      "opcoes": [
+        "A) df.describe()",
+        "B) df.info()",
+        "C) df.value_counts()",
+        "D) pd.set_option()"
+      ],
+      "resposta_correta": "B) df.info()",
+      "justificacao": "O método df.info() apresenta informações sobre o DataFrame, incluindo tipos de dados, quantidade de valores não nulos e consumo de memória."
+    },
+    {
+      "id": "TM_022",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Para garantir que o conteúdo de colunas com texto longo (como tweets) não seja cortado na visualização do Jupyter Notebook, que configuração deve ser aplicada?",
+      "opcoes": [
+        "A) pd.set_option('display.max_colwidth', None)",
+        "B) df[['col1', 'col2']]",
+        "C) WordCloud(collocations=False)",
+        "D) pd.set_option('display.expand_frame_repr', False)"
+      ],
+      "resposta_correta": "A) pd.set_option('display.max_colwidth', None)",
+      "justificacao": "A configuração display.max_colwidth permite controlar o número máximo de caracteres exibidos numa coluna textual, evitando cortes de texto."
+    },
+    {
+      "id": "TM_023",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Se o seu objetivo é visualizar estatísticas como o desvio-padrão e os quartis de um conjunto de dados numérico, qual o comando indicado pelo material de estudo?",
+      "opcoes": [
+        "A) df.info()",
+        "B) sns.countplot()",
+        "C) df.describe()",
+        "D) plt.pie()"
+      ],
+      "resposta_correta": "C) df.describe()",
+      "justificacao": "O método df.describe() apresenta estatísticas descritivas como média, desvio-padrão, quartis, mínimo e máximo."
+    },
+    {
+      "id": "TM_024",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Ao utilizar a biblioteca Seaborn, qual é a principal diferença funcional entre os métodos sns.countplot e sns.barplot?",
+      "opcoes": [
+        "A) O countplot requer que os dados sejam previamente agrupados manualmente pelo utilizador.",
+        "B) O countplot faz a contagem automática de uma variável categórica, enquanto o barplot exige a definição explícita dos eixos X e Y.",
+        "C) O countplot permite o uso do parâmetro 'hue', enquanto o barplot não suporta essa funcionalidade.",
+        "D) O barplot é utilizado apenas para percentagens, enquanto o countplot lida apenas com números inteiros."
+      ],
+      "resposta_correta": "B) O countplot faz a contagem automática de uma variável categórica, enquanto o barplot exige a definição explícita dos eixos X e Y.",
+      "justificacao": "O countplot calcula automaticamente a frequência das categorias, enquanto o barplot trabalha normalmente com valores já agregados."
+    },
+    {
+      "id": "TM_025",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Qual é o pré-requisito crítico obrigatório antes de passar os dados para a função que gera uma Nuvem de Palavras (WordCloud)?",
+      "opcoes": [
+        "A) Aplicar o método .describe(include='all') para identificar as palavras mais frequentes.",
+        "B) Converter a coluna do DataFrame numa lista de listas de strings.",
+        "C) Agregar todas as palavras da coluna numa única String contínua.",
+        "D) Definir o parâmetro collocations como True para filtrar as palavras isoladas."
+      ],
+      "resposta_correta": "C) Agregar todas as palavras da coluna numa única String contínua.",
+      "justificacao": "A biblioteca WordCloud necessita de uma única string contendo todo o texto agregado para conseguir calcular as frequências das palavras."
+    },
+    {
+      "id": "TM_026",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "No contexto da biblioteca Seaborn, qual é a utilidade do parâmetro hue em gráficos de barras ou de contagem?",
+      "opcoes": [
+        "A) Remover os valores nulos antes de realizar a plotagem do gráfico.",
+        "B) Alterar a cor de fundo do gráfico para melhorar o contraste da visualização.",
+        "C) Dividir as barras existentes por uma segunda categoria, diferenciando-as através de cores.",
+        "D) Ordenar as barras da maior para a menor frequência automaticamente."
+      ],
+      "resposta_correta": "C) Dividir as barras existentes por uma segunda categoria, diferenciando-as através de cores.",
+      "justificacao": "O parâmetro hue permite segmentar os dados por uma variável adicional, diferenciando visualmente as categorias através de cores."
+    },
+    {
+      "id": "TM_027",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "O que acontece ao utilizar o parâmetro collocations=False ao instanciar um objeto WordCloud?",
+      "opcoes": [
+        "A) As palavras são organizadas por ordem alfabética em vez de por frequência.",
+        "B) A nuvem de palavras passa a ignorar palavras com menos de três caracteres.",
+        "C) O gráfico impede a sobreposição de cores semelhantes em palavras vizinhas.",
+        "D) O algoritmo deixa de combinar pares de palavras (bigramas) e apresenta apenas palavras isoladas."
+      ],
+      "resposta_correta": "D) O algoritmo deixa de combinar pares de palavras (bigramas) e apresenta apenas palavras isoladas.",
+      "justificacao": "Ao definir collocations=False, a WordCloud deixa de agrupar combinações frequentes de palavras, exibindo apenas palavras individuais."
+    },
+    {
+      "id": "TM_028",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Qual é a finalidade específica do método value_counts() num DataFrame Pandas?",
+      "opcoes": [
+        "A) Calcular a soma total dos valores numéricos presentes em todas as colunas.",
+        "B) Contar o número de ocorrências de cada elemento único numa coluna, excluindo valores nulos por padrão.",
+        "C) Identificar apenas as 5 primeiras linhas que contêm valores duplicados.",
+        "D) Retornar uma lista com os nomes de todas as colunas que possuem dados do tipo String."
+      ],
+      "resposta_correta": "B) Contar o número de ocorrências de cada elemento único numa coluna, excluindo valores nulos por padrão.",
+      "justificacao": "O método value_counts() é utilizado para contar a frequência de valores únicos presentes numa coluna."
+    },
+    {
+      "id": "TM_029",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Por que razão é comum utilizar interpolation='bilinear' ao exibir uma Nuvem de Palavras com o Matplotlib?",
+      "opcoes": [
+        "A) Para permitir que o gráfico seja interativo e responda a cliques do utilizador.",
+        "B) Para traduzir automaticamente as palavras da nuvem para a língua configurada no sistema.",
+        "C) Para tornar a exibição da imagem da nuvem de palavras mais suave visualmente.",
+        "D) Para garantir que as palavras mais frequentes apareçam sempre no centro da imagem."
+      ],
+      "resposta_correta": "C) Para tornar a exibição da imagem da nuvem de palavras mais suave visualmente.",
+      "justificacao": "A interpolação bilinear suaviza a renderização da imagem, melhorando a qualidade visual da nuvem de palavras."
+    },
+    {
+      "id": "TM_030",
+      "tipo": "multiple_choice",
+      "macro_tema": "Analise_Exploratoria_Dados",
+      "pergunta": "Ao tentar filtrar múltiplas colunas de um DataFrame para criar um novo sub-conjunto de dados, qual é a sintaxe correta a utilizar?",
+      "opcoes": [
+        "A) df_filtrado = df.filter('col1' & 'col2')",
+        "B) df_filtrado = df[['col1', 'col2']]",
+        "C) df_filtrado = df['col1', 'col2']",
+        "D) df_filtrado = df.select_columns('col1', 'col2')"
+      ],
+      "resposta_correta": "B) df_filtrado = df[['col1', 'col2']]",
+      "justificacao": "Para selecionar múltiplas colunas num DataFrame Pandas, utiliza-se uma lista de nomes de colunas dentro de duplos parênteses retos."
     }
   ]
 }
